@@ -27,7 +27,7 @@ const SectionFormContact = () => {
     return (
         <div className='grid md:grid-cols-15 col-span-1 w-full h-full'>
             <div className="md:col-span-5 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px]">
-                <Image src={'/contact/left-no.png'} width={1280} height={1024} alt='' className='size-full object-contain aspect-square drop-shadow-xl' />
+                <Image src={'/example/contact/left-no.png'} width={1280} height={1024} alt='' className='size-full object-contain aspect-square drop-shadow-xl' />
             </div>
             <div className="md:col-span-10 bg-[#9EDAF4] relative flex flex-col 
             3xl:py-[104px] 2xl:py-[74px] xxl:py-[64px] xl:py-[64px] lg:py-[48px] md:py-[48px] py-[80px]  2xl:px-[145px] xxl:px-[104px] xl:px-[94px] lg:px-[88px] md:px-[64px] px-4
@@ -82,7 +82,7 @@ const SectionFormContact = () => {
                                                         placeholder="Email"
                                                         {...field}
                                                     />
-                                                    <Image src={'/contact/email.png'} width={24} height={24} alt='' className='absolute right-3 top-1/2 -translate-y-1/2' />
+                                                    <Image src={'/icons/contact/email.png'} width={24} height={24} alt='' className='absolute right-3 top-1/2 -translate-y-1/2' />
                                                 </div>
                                             </FormControl>
                                             {fieldState?.invalid && fieldState?.error && <FormMessage>{fieldState?.error?.message}</FormMessage>}
@@ -236,7 +236,7 @@ const SectionFormContact = () => {
 
                 <div className="absolute left-0 top-1/2  xxl:-translate-y-[42%] lg:-translate-y-[40%] md:-translate-y-[35%] -translate-y-[8%] size-full z-0">
                     <Image
-                        src={isVisibleMobile ? "/contact/elip-mobi.png" : '/contact/elip.png'}
+                        src={isVisibleMobile ? "/background/contact/elip-mobi.png" : '/background/contact/elip.png'}
                         width={1280}
                         height={1024}
                         alt=''

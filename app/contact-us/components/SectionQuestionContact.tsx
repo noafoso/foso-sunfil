@@ -104,7 +104,7 @@ const SectionQuestionContact = () => {
                         </p>
                         <div className="flex items-center md:gap-4 gap-2">
                             <Link href="#" className="text-[#272727] md:text-base text-base border-b border-black">help center</Link>
-                            <Image width={1280} height={1024} src={'/contact/out.png'} alt='' className='size-6 object-cover' />
+                            <Image width={1280} height={1024} src={'/icons/contact/out.png'} alt='' className='size-6 object-cover' />
                         </div>
                     </div>
                 </div>
