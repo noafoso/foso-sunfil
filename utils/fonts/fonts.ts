@@ -1,5 +1,6 @@
 import {
-    Space_Grotesk
+    Space_Grotesk,
+    Montserrat
 } from "next/font/google";
 
 // const geistMono = localFont({
@@ -15,4 +16,12 @@ const space_grotesk_init = Space_Grotesk({
     display: "swap",
 });
 
+const montserrat_init = Montserrat({
+    subsets: ["latin"],
+    weight: ["100", "200", "300", "400", "500", "600", "700", "800", "900"],
+    variable: "--font-montserrat",
+    display: "swap",
+});
+
 export const space_grotesk_sans = space_grotesk_init;
+export const montserrat_sans = montserrat_init;
