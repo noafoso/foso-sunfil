@@ -35,7 +35,7 @@ const SelectCustomNoSearch: React.FC<SelectCustomProps> = ({ classNameTrigger, d
             value={value}
             onValueChange={(value: string) => { handleSelectChange(value) }} // Fixed type of value
         >
-            <SelectTrigger className={`${classNameTrigger} h-auto 3xl:text-base text-sm min-w-[200px] focus:ring-0 placeholder-[#000000]  focus:ring-offset-0`}>
+            <SelectTrigger className={`${classNameTrigger} h-auto text-responsive min-w-[200px] focus:ring-0 placeholder-[#000000]  focus:ring-offset-0`}>
                 {
                     selectedItem?.label ?
                         <>
