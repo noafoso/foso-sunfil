@@ -1,14 +1,18 @@
 import React from 'react'
 import SectionIntroAbout from './components/SectionIntroAbout'
-import Sectionintroduce from './components/SectionIntroduce'
-import SectionSteps from './components/SectionSteps'
+import SectionIntroduceAbout from './components/SectionIntroduceAbout'
+import SectionStepsAbout from './components/SectionStepsAbout'
+import SectionProductAbout from './components/SectionProductAbout'
+import SectionFeelAbout from './components/SectionFeelAbout'
 
 const Page = () => {
     return (
-        <div className='flex flex-col gap-[124px]'>
+        <div className='flex flex-col 2xl:gap-[124px] gap-[84px]'>
             <SectionIntroAbout />
-            <Sectionintroduce />
-            <SectionSteps />
+            <SectionIntroduceAbout />
+            <SectionStepsAbout />
+            <SectionProductAbout />
+            <SectionFeelAbout />
         </div>
     )
 }

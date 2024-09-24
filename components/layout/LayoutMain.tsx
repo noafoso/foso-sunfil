@@ -21,6 +21,8 @@ import "swiper/css/scrollbar"
 import "swiper/css/thumbs"
 import "swiper/swiper-bundle.css"
 import "@/styles/globals.scss"
+import '@smastrom/react-rating/style.css';
+
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { usePathname } from 'next/navigation'

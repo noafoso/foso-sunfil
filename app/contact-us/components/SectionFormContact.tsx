@@ -25,7 +25,7 @@ const SectionFormContact = () => {
         }
     })
     return (
-        <div className='grid md:grid-cols-15 col-span-1 w-full h-full'>
+        <div className='grid md:grid-cols-15 col-span-1 w-full lg:h-screen h-full'>
             <div className="md:col-span-5 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px]">
                 <Image src={'/example/contact/left-no.png'} width={1280} height={1024} alt='' className='size-full object-contain aspect-square drop-shadow-xl' />
             </div>
@@ -53,7 +53,7 @@ const SectionFormContact = () => {
                                                     type="text"
                                                     className={`${fieldState?.invalid && fieldState?.error
                                                         ? "border-b border-b-[#F15A5A]" : "border-b border-b-[#555555]"
-                                                        } 3xl:text-base text-sm font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-base placeholder:text-sm focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
+                                                        } text-responsive font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-lg placeholder:text-base focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
                                                     placeholder="Họ và tên"
                                                     {...field}
                                                 />
@@ -78,7 +78,7 @@ const SectionFormContact = () => {
                                                         type="text"
                                                         className={`${fieldState?.invalid && fieldState?.error
                                                             ? "border-b border-b-[#F15A5A]" : "border-b border-b-[#555555]"
-                                                            } 3xl:text-base text-sm font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-base placeholder:text-sm focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
+                                                            } text-responsive font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-lg placeholder:text-base focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
                                                         placeholder="Email"
                                                         {...field}
                                                     />
@@ -117,7 +117,7 @@ const SectionFormContact = () => {
                                                     type="number"
                                                     className={`${fieldState?.invalid && fieldState?.error
                                                         ? "border-b border-b-[#F15A5A]" : "border-b border-b-[#555555]"
-                                                        } 3xl:text-base text-sm font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-base placeholder:text-sm focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
+                                                        } text-responsive font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-lg placeholder:text-base focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
                                                     placeholder="Số điện thoại"
                                                     {...field}
                                                 />
@@ -141,7 +141,7 @@ const SectionFormContact = () => {
                                                     type="text"
                                                     className={`${fieldState?.invalid && fieldState?.error
                                                         ? "border-b border-b-[#F15A5A]" : "border-b border-b-[#555555]"
-                                                        } 3xl:text-base text-sm font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-base placeholder:text-sm focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
+                                                        } text-responsive font-medium text-[#000000] rounded-none border-x-0 border-t-0 bg-transparent placeholder:text-[#000000] 3xl:placeholder:text-lg placeholder:text-base focus-visible:ring-0 focus-visible:ring-offset-0 3xl:py-4 py-3 h-auto`}
                                                     placeholder="Tên Công Ty"
                                                     {...field}
                                                 />
@@ -216,7 +216,7 @@ const SectionFormContact = () => {
                                                 <Textarea
                                                     {...field}
                                                     placeholder='Nội dung ghi chú'
-                                                    className='border-[#555555] rounded-none resize-none xl:h-[150px] lg:h-[100px] h-[150px] w-full py-4 px-6  3xl:text-base text-sm font-normal text-[#000000]' />
+                                                    className='border-[#555555] rounded-none resize-none xl:h-[150px] lg:h-[100px] h-[150px] w-full py-4 px-6  text-responsive font-normal text-[#000000]' />
                                             </FormControl>
                                             {fieldState?.invalid && fieldState?.error && <FormMessage>{fieldState?.error?.message}</FormMessage>}
                                         </FormItem>

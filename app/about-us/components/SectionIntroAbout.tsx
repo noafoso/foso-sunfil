@@ -1,46 +1,49 @@
 import AnimatedCountUp from '@/components/animation/AnimatedCountUp'
 import { uuidv4 } from '@/lib/uuid'
 import { montserrat_sans } from '@/utils/fonts/fonts'
-import React from 'react'
 
+const color = ['#00ADEF', '#FF9B05', '#ED1B24']
+const count = [
+    {
+        id: uuidv4(),
+        name: 'Danh mục',
+        count: 10
+    },
+    {
+        id: uuidv4(),
+        name: 'Sản phẩm',
+        count: 20000
+    },
+    {
+        id: uuidv4(),
+        name: 'Khách hàng',
+        count: 5000
+    }
+]
 const SectionIntroAbout = () => {
-    const color = ['#00ADEF', '#FF9B05', '#ED1B24']
-    const count = [
-        {
-            id: uuidv4(),
-            name: 'Danh mục',
-            count: 10
-        },
-        {
-            id: uuidv4(),
-            name: 'Sản phẩm',
-            count: 20000
-        },
-        {
-            id: uuidv4(),
-            name: 'Khách hàng',
-            count: 5000
-        }
-    ]
     return (
-        <div className='bg-[url("/background/about/intro.png")] pr-[144px] bg-cover bg-center bg-no-repeat w-full flex flex-col items-end justify-center h-[calc(100vh_-_112px)]'>
-            <div className="flex flex-col gap-6 w-1/2">
-                <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold text-[60px]`}>Về chúng tôi</h1>
-                <div className="max-w-[90%] flex flex-col gap-8 ">
-                    <h2 className='texxt-[#1A1B20CC]/80 font-normal 2xl:text-base text-sm'>
+        <div className='
+        lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] lg:pr-[144px] bg-center bg-cover bg-no-repeat w-full 
+        flex flex-col items-end lg:justify-center justify-end lg:pb-0 md:pb-[250px] pb-[80px]
+        lg:h-screen h-[calc(100vh_+_112px)]'
+        >
+            <div className="flex flex-col gap-6 lg:w-1/2 w-full custom-padding-left-right">
+                <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold lg:text-[60px] text-[40px]`}>Về chúng tôi</h1>
+                <div className="lg:max-w-[90%] flex flex-col gap-8 ">
+                    <h2 className='texxt-[#1A1B20CC]/80 font-normal text-content-common'>
                         Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.
                     </h2>
-                    <div className={`flex justify-between items-center gap-11`}>
+                    <div className={`flex lg:flex-nowrap flex-wrap justify-between items-center lg:gap-11 md:gap-5`}>
                         {count.map((e, index: number) => {
                             return (
-                                <div className="flex flex-col gap-1">
+                                <div key={e.id} className="flex flex-col gap-1 lg:py-0 pt-2 lg:w-auto md:w-auto w-1/2">
                                     <div className="flex items-center gap-2">
                                         <span
                                             key={e.id}
                                             style={{
                                                 color: color[index]
                                             }}
-                                            className={` 3xl:text-6xl text-[55px] font-bold`}
+                                            className={` 3xl:text-6xl lg:text-[55px] text-[45px] font-bold`}
                                         >
                                             <AnimatedCountUp
                                                 className=''
@@ -51,12 +54,12 @@ const SectionIntroAbout = () => {
                                             style={{
                                                 color: color[index]
                                             }}
-                                            className='3xl:text-5xl text-[42px] font-bold'
+                                            className='3xl:text-5xl lg:text-[42px] text-[36px] font-bold'
                                         >
                                             +
                                         </span>
                                     </div>
-                                    <h1 className='text-[#0000009E]/60 text-xl font-normal'>{e?.name}</h1>
+                                    <h1 className='text-[#0000009E]/60 xl:text-xl lg:text-lg text-xl font-normal'>{e?.name}</h1>
                                 </div>
                             )
                         })}

@@ -17,12 +17,12 @@ const TitleHighlight: React.FC<Props> = ({
     return (
         <div className={cn("text-center", containerClassName)}>
             <h2 className={cn(
-                "xxl:text-[40px] text-3xl font-bold text-center text-[#000000] relative z-[1] inline-block w-fit",
+                "xxl:text-[40px] lg:text-3xl md:text-2xl text-2xl font-bold text-center text-[#000000] relative z-[1] inline-block w-fit",
                 titleClassName
             )}>
                 {title}
                 <div className={cn(
-                    " h-5 absolute md:-bottom-1 -bottom-2 z-[-1]",
+                    " h-5 absolute md:-bottom-2 -bottom-2 z-[-1]",
                     highlightClassName
                 )} />
             </h2>
