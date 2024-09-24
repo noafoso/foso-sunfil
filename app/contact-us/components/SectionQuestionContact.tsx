@@ -1,4 +1,6 @@
 'use client'
+import TitleDash from '@/components/title/TitleDash'
+import TitleHighlight from '@/components/title/TitleHighlight'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
 import Image from 'next/image'
 import Link from 'next/link'
@@ -68,16 +70,9 @@ const SectionQuestionContact = () => {
 
     return (
         <div className="xl:mx-[223px] lg:mx-[120px] md:mx-[36px] mx-4 flex flex-col xxl:gap-6 gap-4">
-            <div className="text-center">
-                <h2 className="xxl:text-[40px] text-3xl font-bold text-center text-[#000000] relative z-[1] inline-block w-fit">Câu hỏi thường gặp
-                    <div className="bg-[#6AD6EEA6]/65 h-5 md:w-[164px] w-[100px] md:-left-2 right-0 absolute md:-bottom-1 -bottom-2 z-[-1]"></div>
-                </h2>
-            </div>
+            <TitleHighlight title='Câu hỏi thường gặp' highlightClassName='md:-left-2 right-0  md:w-[164px] w-[100px] bg-[#6AD6EEA6]/65' />
             <div className="flex flex-col 2xl:gap-[64px] xxl:gap-[48px] gap-6">
-                <div className="flex md:items-center items-start justify-center">
-                    <hr className="flex-grow md:max-w-[85px] md:min-w-[84px] min-w-[40px] max-w-[40px] border-[#000000] md:mt-0 mt-4" />
-                    <p className=" text-base font-normal mx-4">It is a long established fact that a reader will be distracted by the service.</p>
-                </div>
+                <TitleDash text='It is a long established fact that a reader will be distracted by the service.' />
                 <div className="flex flex-col gap-8">
                     <Accordion onValueChange={(value: string) => queryState({ idOpen: value })} type="single" collapsible>
                         {questions.map((item) => (
