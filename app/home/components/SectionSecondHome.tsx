@@ -4,7 +4,6 @@ type Props = {}
 
 import { uuidv4 } from '@/lib/uuid'
 import Marquee from 'react-fast-marquee'
-import Link from 'next/link'
 import Image from 'next/image'
 import AnimatedCountUp from '@/components/animation/AnimatedCountUp'
 import BlogCardHorizontalSmall from '@/components/card/home/BlogCardHorizontalSmall'
@@ -47,10 +46,11 @@ const listBlogs = [
 ]
 
 const SectionSecondHome = (props: Props) => {
+
     return (
         <div className="relative">
             <div className='custom-container-no-right grid grid-cols-8 justify-center 3xl:gap-8 gap-6 relative z-10'>
-                <div className='col-span-2 grid grid-cols-2'>
+                <div className='xl:col-span-2 md:col-span-3 col-span-8 grid grid-cols-2'>
                     {
                         dataDashboard && dataDashboard?.map((item: any) => (
                             <div
@@ -74,13 +74,13 @@ const SectionSecondHome = (props: Props) => {
                             </div>
                         ))}
                 </div>
-                <div className='col-span-6 flex flex-col'>
+                <div className='xl:col-span-6 md:col-span-5 col-span-8 flex flex-col'>
                     <div className='3xl:text-[36px] text-[28px] text-[#000000] font-medium '>
                         Tin tức
                     </div>
 
                     <Marquee
-                        speed={10}
+                        speed={30}
                         pauseOnHover
                         autoFill={true}
                         gradient={false}
@@ -98,7 +98,7 @@ const SectionSecondHome = (props: Props) => {
                 </div>
             </div>
 
-            <div className='absolute -top-0 -left-0 aspect-video 3xl:w-[400px] w-[320px]'>
+            <div className='absolute xl:-top-0 top-4 -left-0 aspect-video 3xl:w-[400px] xl:w-[320px] w-[280px]'>
                 <Image
                     src={"/background/home/bg-viethung.png"}
                     alt='oil'

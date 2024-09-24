@@ -82,17 +82,17 @@ const SectionIntroHome = () => {
 
     return (
         <div className='grid grid-cols-12'>
-            <div className='col-span-6 flex flex-col 3xl:gap-6 gap-4'>
+            <div className='xl:col-span-6 md:col-span-8 col-span-12 flex flex-col 3xl:gap-6 gap-4'>
                 <div className='grid grid-cols-6'>
-                    <div className='col-span-1 flex flex-col items-center bg-white'>
+                    <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
                         {
                             listCategory && listCategory.map((category) => (
                                 <div
                                     key={category.id}
-                                    className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer border-l-4 custom-transition group`}
+                                    className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
                                     onClick={() => queryKeyIsStateHome({ idTabActive: category })}
                                 >
-                                    <div className='flex flex-col justify-center items-center py-4 w-full'>
+                                    <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
                                         <Image
                                             src={category.icon}
                                             alt={category.name}
@@ -111,12 +111,12 @@ const SectionIntroHome = () => {
                         }
                     </div>
 
-                    <div className='col-span-5 flex flex-col justify-center 3xl:gap-8 gap-4 3xl:ml-20 ml-16'>
+                    <div className='md:col-span-5 col-span-6 flex flex-col justify-center 3xl:gap-8 gap-4 3xl:ml-20 xl:ml-16 md:ml-10 md:mr-0 mx-4'>
                         <div className='flex flex-col 3xl:gap-4 gap-2'>
-                            <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] text-[68px] 3xl:leading-[100px] leading-[100px] 3xl:max-w-[70%] max-w-[80%] font-extrabold`}>
+                            <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
                                 Bộ lọc dầu xe ôtô
                             </div>
-                            <div className='3xl:text-[26px] text-[22px]'>
+                            <div className='3xl:text-[26px] lg:text-[22px] text-[20px]'>
                                 Bộ lọc xe chất lượng cao
                             </div>
                         </div>
@@ -145,8 +145,8 @@ const SectionIntroHome = () => {
                 </div>
             </div>
 
-            <div className='col-span-6 relative'>
-                <div className='absolute 3xl:-top-24 -top-16 3xl:-left-[60px] -left-[40px] z-10 aspect-0.88/1 3xl:w-[580px] 2xl:w-[450px] w-[550px]'>
+            <div className='xl:col-span-6 md:col-span-4 col-span-12 relative'>
+                <div className='absolute 3xl:-top-24 2xl:-top-16 lg:-top-[72px] md:-top-[40px] top-[20px] 3xl:-left-[60px] xl:-left-[40px] lg:-left-[180px] md:-left-[130px] -left-[40px] z-10 aspect-0.88/1 3xl:w-[580px] 2xl:w-[450px] xl:w-[460px] lg:w-[440px] md:w-[380px] w-[350px]'>
                     <Image
                         src={"/background/home/bg-splash-oil.png"}
                         alt='oil'
@@ -165,7 +165,7 @@ const SectionIntroHome = () => {
                         rest: { scale: 1, transition: { duration: 0.2 } },
                         hover: { scale: 1.04, transition: { duration: 0.2 } },
                     }}
-                    className='absolute 3xl:-top-8 -top-4 left-0 z-20 aspect-1.1/1 3xl:w-[630px] 2xl:w-[500px] w-[650px] cursor-pointer'
+                    className='absolute 3xl:-top-8 2xl:-top-4 xl:-top-8 lg:-top-4 md:top-10 top-[60px] 2xl:left-0 xl:left-4 lg:-left-40 md:-left-24 left-0 z-20 aspect-1.1/1 3xl:w-[630px] 2xl:w-[500px] xl:w-[510px] lg:w-[470px] w-[360px] cursor-pointer'
                 >
                     <Image
                         src={`${isStateHome?.idTabActive?.image}`}
