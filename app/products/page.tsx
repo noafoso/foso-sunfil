@@ -1,31 +1,70 @@
 'use client'
 
 import React from 'react'
-import SectionIntroHome from './components/SectionIntroHome'
-import SectionSecondHome from './components/SectionSecondHome'
 import { useResizeStore } from '@/stores/useResizeStore'
+import SectionIntroCommon from './components/SectionIntroCommon'
+import SectionCategoryCommon from './components/SectionCategoryCommon'
+import { uuidv4 } from '@/lib/uuid'
 
-const Home = () => {
+const dataListProducts = [
+    {
+        id: uuidv4(),
+        name: "Bộ lọc không khí",
+        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+        backgroundImage: "/example/products/product5.png"
+    },
+    {
+        id: uuidv4(),
+        name: "Bộ lọc dầu",
+        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+        backgroundImage: "/example/products/product2.png"
+    },
+    {
+        id: uuidv4(),
+        name: "Bộ lọc dầu trong cabin",
+        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+        backgroundImage: "/example/products/product3.png"
+    },
+    {
+        id: uuidv4(),
+        name: "Bộ lọc không khí",
+        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+        backgroundImage: "/example/products/product4.png"
+    },
+    {
+        id: uuidv4(),
+        name: "Bộ lọc dầu trong cabin",
+        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+        backgroundImage: "/example/products/product1.png"
+    },
+]
+
+const Products = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
-        <div className='w-full relative lg:h-screen md:h-dvh'>
-            <div className='pt-[112px] flex flex-col justify-between md:gap-0 gap-16 3xl:pb-8 2xl:pb-6 pb-3 h-full relative z-10'>
-                <SectionIntroHome />
-                {
-                    isVisibleMobile &&
-                    <div className='w-full h-[400px] grid grid-cols-12 bg-white'>
-                        <div className="col-span-12 bg-[url('/background/home/bg-home.png')] bg-cover bg-center bg-no-repeat" />
-                    </div>
-                }
-                <SectionSecondHome />
-            </div>
-
-            <div className='w-full h-screen md:grid grid-cols-12 bg-white md:absolute hidden top-0 left-0 z-0'>
-                <div className='xl:col-span-7 col-span-8' />
-                <div className="xl:col-span-5 col-span-4 bg-[url('/background/home/bg-home.png')] bg-cover bg-center bg-no-repeat" />
-            </div>
+        <div className=''>
+            <SectionIntroCommon
+                title="Sản phẩm"
+                description="Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng."
+            />
+            {
+                dataListProducts && dataListProducts.map((item, index) => (
+                    <React.Fragment key={`product-${item.id}`}>
+                        <SectionCategoryCommon
+                            backgroundImage={item.backgroundImage}
+                            index={index % 2 === 0}
+                            title={item.name}
+                            description={item.description}
+                        />
+                    </React.Fragment>
+                ))
+            }
+            {/* <SectionCategoryCommon
+                backgroundImage='/example/products/product2.png'
+                type="right"
+            /> */}
         </div>
     )
 }
 
-export default Home
+export default Products
