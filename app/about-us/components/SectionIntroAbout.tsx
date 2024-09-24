@@ -23,10 +23,10 @@ const SectionIntroAbout = () => {
         }
     ]
     return (
-        <div className='bg-[url("/about/intro.png")] pr-[144px] bg-cover bg-center bg-no-repeat w-full flex flex-col items-end justify-center h-[calc(100vh_-_112px)]'>
+        <div className='bg-[url("/background/about/intro.png")] pr-[144px] bg-cover bg-center bg-no-repeat w-full flex flex-col items-end justify-center h-[calc(100vh_-_112px)]'>
             <div className="flex flex-col gap-6 w-1/2">
                 <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold text-[60px]`}>Về chúng tôi</h1>
-                <div className=" max-w-[90%] flex flex-col gap-8 ">
+                <div className="max-w-[90%] flex flex-col gap-8 ">
                     <h2 className='texxt-[#1A1B20CC]/80 font-normal 2xl:text-base text-sm'>
                         Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.
                     </h2>

@@ -5,7 +5,7 @@ import Image from 'next/image'
 
 const Sectionintroduce = () => {
     const data = {
-        image: '/about/left-no.png',
+        image: '/example/about/left-no.png',
         content: ` Đối mặt với sự cạnh tranh ngày càng gay gắt trên thị trường quốc tế, chúng tôi đang tìm kiếm một bước đột phá cho khách hàng. Năm 2007, 
         chúng tôi thành lập trụ sở bán hàng của mình—CÔNG TY CỔ PHẦN SẢN XUẤT THƯƠNG MẠI Ô TÔ VIỆT HƯNG tại Việt Nam,  nơi nổi tiếng là cơ sở của ngành công nghiệp ô tô. Các sản phẩm của chúng tôi như sau: bộ lọc, cảm biến, 
         bộ tản nhiệt, má phanh từ ô tô đến xe tải hạng nặng. Để phát huy lợi thế về giá cả và chất lượng, chúng tôi đã thành lập nhà máy lọc khí.`,
@@ -14,25 +14,25 @@ const Sectionintroduce = () => {
                 id: uuidv4(),
                 name: 'Asaka',
                 code: 'JX-0814C',
-                image: '/about/thum1.png'
+                image: '/example/about/thum1.png'
             },
             {
                 id: uuidv4(),
                 name: 'Asaka',
                 code: 'JX-0814C',
-                image: '/about/thum2.png'
+                image: '/example/about/thum2.png'
             },
             {
                 id: uuidv4(),
                 name: 'Asaka',
                 code: 'JX-0814C',
-                image: '/about/thum3.png'
+                image: '/example/about/thum3.png'
             },
             {
                 id: uuidv4(),
                 name: 'Asaka',
                 code: 'JX-0814C',
-                image: '/about/thum4.png'
+                image: '/example/about/thum4.png'
             }
         ]
     }
