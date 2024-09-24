@@ -126,7 +126,7 @@ menu {
   }
 
   .custom-padding-right {
-    @apply 3xl:pr-10 2xl:pr-8 xl:pr-6 pr-4;
+    @apply 3xl:pr-10 2xl:pr-8 xl:pr-6 lg:pr-4 pr-4;
   }
 
   .custom-category-text {

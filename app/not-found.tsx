@@ -2,8 +2,8 @@ import Image from "next/image";
 
 export default function NotFound() {
     return (
-        <div className={`w-full h-screen flex flex-col gap-8 items-center justify-center`} >
-            {/* <div className={`w-full h-[calc(100vh_-_96px)] flex flex-col gap-8 items-center justify-center`} > */}
+        // 3xl:pt-[calc(96px_+_32px)] 2xl:pt-[calc(96px_+_24px)] pt-[calc(96px_+_12px)]
+        <div className={`w-full 3xl:h-[calc(100vh_-_96px_+_32px)] 2xl:h-[calc(100vh_-_96px_+_24px)] h-[calc(100dvh_-_104px)] flex flex-col gap-8 items-center justify-center`} >
             <div className="h-auto">
                 <Image
                     src={'/system/404-error.svg'}

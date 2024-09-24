@@ -11,6 +11,8 @@ import { IoCloseSharp } from "react-icons/io5"
 // import { Button } from '../ui/button'
 import { IMenuHeader } from '@/types/menu/IMenu'
 
+import { motion } from 'framer-motion'
+
 interface TabletHeaderProps {
     dataHeader: IMenuHeader[]
     showActive: boolean
@@ -26,11 +28,11 @@ const TabletHeader: React.FC<TabletHeaderProps> = ({ dataHeader, showActive, han
 
     return (
         <>
-            <div className={`h-full`}>
-                <div className='custom-container grid grid-cols-7 items-center justify-center'>
+            <div className='grid grid-cols-7 items-center justify-center'>
+                <div className='col-span-5 w-full'>
                     <Link
                         href="/"
-                        className='col-span-5 flex items-center justify-start w-full h-[80px] p-4'
+                        className='flex items-center justify-start w-fit h-[72px] py-4'
                         prefetch={false}
                         onClick={() => handleToggleMenu("off")}
                     >
@@ -39,48 +41,62 @@ const TabletHeader: React.FC<TabletHeaderProps> = ({ dataHeader, showActive, han
                             height={800}
                             alt="logo"
                             src="/logo/logo.png"
-                            className="w-fit h-[80px] object-contain cursor-pointer"
+                            className="w-fit h-[72px] object-contain cursor-pointer"
                             priority
                         />
                     </Link>
-                    <div className="col-span-2 flex items-center justify-end gap-6">
-                        <div className="col-span-1 flex items-center justify-center">
+                </div>
+                <div className="col-span-2 flex items-center justify-end gap-6">
+                    {/* <div className="col-span-1 flex items-center justify-center">
                             <button onClick={() => handleToggleMenu('on')} className='lg:hidden'>
-                                {/* <button onClick={() => _ToogleIsShow()} className='lg:hidden'> */}
                                 <Menu className='scale-110 text-white' />
                             </button>
-                        </div>
-                    </div>
+                        </div> */}
+                    <motion.div
+                        initial={false}
+                        animate="rest"
+                        whileTap="press"
+                        variants={{
+                            rest: { scale: 1 },
+                            press: { scale: 1.03, transition: { duration: 0.2 } },
+                        }}
+                        className="flex items-center justify-center bg-black p-3 rounded-[6px] cursor-pointer"
+                        onClick={() => handleToggleMenu('on')}
+                    >
+                        <Menu className='xl:size-6 size-5 scale-110 text-white' />
+                    </motion.div>
                 </div>
             </div>
 
             {
                 showActive &&
-                <div className={`${showActive ? "translate-x-0" : "translate-x-[100%] hidden"} z-[999] custom-transition absolute bg-[#161515] w-screen h-dvh top-0 left-0`}>
-                    <div className='custom-container'>
-                        <div className='h-[88px] grid grid-cols-5 items-center'>
-                            <Link
-                                href="/"
-                                className='col-span-4 flex items-center justify-start h-[76px] w-full text-[#081735] p-4'
-                                prefetch={false}
-                                onClick={() => handleToggleMenu("off")}
-                            >
-                                <Image
-                                    width={800}
-                                    height={800}
-                                    alt="logo"
-                                    src="/logo/logo.svg"
-                                    className="w-fit h-[46px] object-contain cursor-pointer"
-                                    priority
-                                />
-                            </Link>
+                <div className={`${showActive ? "translate-x-0" : "translate-x-[100%] hidden"} z-[999] custom-transition absolute bg-white w-screen h-dvh top-0 left-0`}>
+                    <div className='custom-container space-y-8'>
+                        <div className='h-[72px] grid grid-cols-5 items-center w-full'>
+                            <div className='col-span-4 pt-4'>
+                                <Link
+                                    href="/"
+                                    className='flex items-center justify-start h-[72px] w-fit text-[#081735]'
+                                    prefetch={false}
+                                    onClick={() => handleToggleMenu("off")}
+                                >
+                                    <Image
+                                        width={800}
+                                        height={800}
+                                        alt="logo"
+                                        src="/logo/logo.png"
+                                        className="w-fit h-[72px] object-contain cursor-pointer"
+                                        priority
+                                    />
+                                </Link>
+                            </div>
 
                             <button onClick={() => handleToggleMenu('off')} className='col-span-1 flex items-center justify-end'>
-                                <IoCloseSharp className='text-xl text-white' />
+                                <IoCloseSharp className='text-xl text-[#081735]' />
                             </button>
                         </div>
 
-                        <div className='custom-container relative flex flex-col h-[calc(100dvh_-_88px)] overflow-y-auto'>
+                        <div className='relative flex flex-col h-[calc(100dvh_-_88px)] overflow-y-auto'>
                             {/* <div className='flex gap-2 mt-6'>
                                 <motion.div
                                     initial={false}
