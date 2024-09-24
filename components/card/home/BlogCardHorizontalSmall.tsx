@@ -33,7 +33,7 @@ const BlogCardHorizontalSmall = ({ key, item }: BlogCardHorizontalProps) => {
                         {item?.type ?? ""}
                     </div>
 
-                    <div className='3xl:text-lg text-base text-[#141619] group-hover:text-[#141618]/80 custom-transition font-medium line-clamp-2'>
+                    <div className='text-content-common text-[#141619] group-hover:text-[#141618]/80 custom-transition font-medium line-clamp-2'>
                         {item?.name ?? ""}
                     </div>
 

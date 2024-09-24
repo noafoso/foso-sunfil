@@ -24,7 +24,7 @@ const TitleHighlight: React.FC<Props> = ({
                 <div className={cn(
                     " h-5 absolute md:-bottom-1 -bottom-2 z-[-1]",
                     highlightClassName
-                )}></div>
+                )} />
             </h2>
         </div>
     )

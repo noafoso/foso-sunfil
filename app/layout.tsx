@@ -9,7 +9,7 @@ export default function RootLayout({
 }>) {
     return (
         <html lang="en">
-            <body className={`${space_grotesk_sans.className} antialiased custom-tailwind`}>
+            <body className={`${space_grotesk_sans.className} antialiased custom-tailwind text-responsive`}>
                 <LayoutMain>
                     {children}
                 </LayoutMain>
