@@ -101,7 +101,7 @@ const Header = () => {
     const selectedOption = contryCodeOptions.find(option => option.code === selectedCode);
 
     return (
-        <header className='fixed bg-transparent w-full z-50 py-4'>
+        <header className='fixed bg-transparent w-full z-50 pt-4'>
             <div className='custom-container'>
                 {
                     isVisibleTablet ?
