@@ -126,7 +126,7 @@ const SectionIntroHome = () => {
                                 listStyleContent.map((content) => (
                                     <div
                                         key={`content-${content.id}`}
-                                        className='3xl:text-lg text-base flex items-center gap-2'
+                                        className='text-content-common flex items-center gap-2'
                                     >
                                         <div className='3xl:size-6 size-5'>
                                             <TickCircle
@@ -134,7 +134,7 @@ const SectionIntroHome = () => {
                                                 variant="Bold"
                                             />
                                         </div>
-                                        <div className='3xl:text-lg text-base text-[#1A1B20]'>
+                                        <div className='text-content-common text-[#1A1B20]'>
                                             {content.title}
                                         </div>
                                     </div>
