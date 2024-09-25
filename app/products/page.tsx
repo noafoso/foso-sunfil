@@ -74,9 +74,10 @@ const Products = () => {
                 dataListProducts && dataListProducts.map((item, index) => (
                     <React.Fragment key={`product-${item.id}`}>
                         <SectionCategoryCommon
+                            item={item}
                             backgroundImage={item.backgroundImage}
                             index={index % 2 !== 0}
-                            title={item.name}
+                            // title={item.name}
                             description={item.description}
                             highlightClassName={dataStyle[index].highlightClassName}
                         />

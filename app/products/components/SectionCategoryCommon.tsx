@@ -1,22 +1,27 @@
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { Button } from '@/components/ui/button'
 import { useResizeStore } from '@/stores/useResizeStore';
+import ConvertToSlug from '@/utils/convertToSlug/ConvertToSlug';
 import Image from 'next/image'
+import Link from 'next/link';
 import React from 'react'
 import { HiOutlineArrowLongRight } from "react-icons/hi2";
 
 type Props = {
     backgroundImage: string
     index: boolean
-    title: string
+    item: any
     description: string
     highlightClassName: string
 }
 
-const SectionCategoryCommon = ({ backgroundImage, index, title, description, highlightClassName }: Props) => {
+const SectionCategoryCommon = ({ backgroundImage, index, item, description, highlightClassName }: Props) => {
     const { isVisibleTablet } = useResizeStore()
     return (
-        <div className='3xl:min-h-[500px] xxl:min-h-[400px] md:min-h-[365px] min-h-[300px] grid grid-cols-12 group cursor-pointer'>
+        <Link
+            href={`/products/${item.id}?${ConvertToSlug(item?.name ?? "")}`}
+            className='3xl:min-h-[500px] xxl:min-h-[400px] md:min-h-[365px] min-h-[300px] grid grid-cols-12 group'
+        >
             <div className={`${index && "lg:order-2"} lg:col-span-6 col-span-12 overflow-hidden 3xl:h-[500px] xxl:h-[400px] md:h-[365px] h-[300px]`}>
                 <Image
                     width={1920}
@@ -31,7 +36,7 @@ const SectionCategoryCommon = ({ backgroundImage, index, title, description, hig
                 <div className={`${index ? "lg:order-1 xxl:pl-40 xl:pl-36 lg:pl-32 lg:max-w-[95%] max-w-full" : "xxl:pl-20 xl:pl-16 lg:pl-14 3xl:max-w-[85%] xxl:max-w-[80%] lg:max-w-[78%] max-w-full"} lg:mx-0 mx-4 flex flex-col 3xl:gap-10 gap-8`}>
                     <div className='3xl:space-y-8 space-y-6'>
                         <TitleHighlight
-                            title={title}
+                            title={item.name}
                             containerClassName='text-start w-full md:group-hover:translate-x-2 custom-transition'
                             titleClassName='text-start'
                             highlightClassName={highlightClassName}
@@ -58,7 +63,7 @@ const SectionCategoryCommon = ({ backgroundImage, index, title, description, hig
                     }
                 </div>
             </div>
-        </div >
+        </Link >
     )
 }
 
