@@ -5,6 +5,7 @@ import { useStateHome } from '../_state/useStateHome';
 import { montserrat_sans } from '@/utils/fonts/fonts';
 import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
+import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 
 interface ICategory {
     id: string;
@@ -82,26 +83,28 @@ const SectionIntroHome = () => {
                 <div className='grid grid-cols-6'>
                     <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
                         {
-                            listCategory && listCategory.map((category) => (
+                            listCategory && listCategory.map((category, index) => (
                                 <div
-                                    key={category.id}
+                                    key={`category-${category.id}`}
                                     className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
                                     onClick={() => queryKeyIsStateHome({ idTabActive: category })}
                                 >
-                                    <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
-                                        <Image
-                                            src={category.icon}
-                                            alt={category.name}
-                                            width={1080}
-                                            height={768}
-                                            className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
+                                    <AnimateOnScroll index={index}>
+                                        <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
+                                            <Image
+                                                src={category.icon}
+                                                alt={category.name}
+                                                width={1080}
+                                                height={768}
+                                                className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
                                                 3xl:size-12 size-8 object-contain custom-transition`}
-                                        />
+                                            />
 
-                                        <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} 3xl:text-base text-sm custom-transition`}>
-                                            {category?.name ?? ""}
+                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} 3xl:text-base text-sm custom-transition`}>
+                                                {category?.name ?? ""}
+                                            </div>
                                         </div>
-                                    </div>
+                                    </AnimateOnScroll>
                                 </div>
                             ))
                         }
@@ -109,31 +112,34 @@ const SectionIntroHome = () => {
 
                     <div className='md:col-span-5 col-span-6 flex flex-col justify-center 3xl:gap-8 gap-4 3xl:ml-20 xl:ml-16 md:ml-10 md:mr-0 mx-4'>
                         <div className='flex flex-col 3xl:gap-4 gap-2'>
-                            <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
-                                Bộ lọc dầu xe ôtô
-                            </div>
-                            <div className='3xl:text-[26px] lg:text-[22px] text-[20px]'>
-                                Bộ lọc xe chất lượng cao
-                            </div>
+                            <AnimateOnScroll>
+                                <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
+                                    Bộ lọc dầu xe ôtô
+                                </div>
+                            </AnimateOnScroll>
+                            <AnimateOnScroll>
+                                <div className='3xl:text-[26px] lg:text-[22px] text-[20px]'>
+                                    Bộ lọc xe chất lượng cao
+                                </div>
+                            </AnimateOnScroll>
                         </div>
 
                         <div className="flex flex-col 3xl:gap-4 gap-2">
                             {
-                                listStyleContent.map((content) => (
-                                    <div
-                                        key={`content-${content.id}`}
-                                        className='text-content-common flex items-center gap-2'
-                                    >
-                                        <div className='3xl:size-6 size-5'>
-                                            <TickCircle
-                                                className='size-full text-[#57A4FE]'
-                                                variant="Bold"
-                                            />
+                                listStyleContent.map((content, index) => (
+                                    <AnimateOnScroll key={`content-${content.id}`} index={index}>
+                                        <div className='text-content-common flex items-center gap-2'>
+                                            <div className='3xl:size-6 size-5'>
+                                                <TickCircle
+                                                    className='size-full text-[#57A4FE]'
+                                                    variant="Bold"
+                                                />
+                                            </div>
+                                            <div className='text-content-common text-[#1A1B20]'>
+                                                {content.title}
+                                            </div>
                                         </div>
-                                        <div className='text-content-common text-[#1A1B20]'>
-                                            {content.title}
-                                        </div>
-                                    </div>
+                                    </AnimateOnScroll>
                                 ))
                             }
                         </div>
@@ -173,7 +179,7 @@ const SectionIntroHome = () => {
                     />
                 </motion.div>
             </div>
-        </div>
+        </div >
     )
 }
 
