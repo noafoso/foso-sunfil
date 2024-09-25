@@ -96,7 +96,7 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
         <Suspense>
             <QueryClientProvider client={queryClient}>
                 <Toaster position="top-right" reverseOrder={false} />
-                <div className='w-screen min-h-screen text-responsive custom-swiper bg-white'>
+                <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
                     <Header />
                     <main className={`overflow-hidden size-full`}>
                         {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
