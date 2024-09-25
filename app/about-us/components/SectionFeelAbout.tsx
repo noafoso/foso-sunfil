@@ -3,13 +3,11 @@ import AboutCardFeel from '@/components/card/about/AboutCardFeel'
 import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { uuidv4 } from '@/lib/uuid'
-import Image from 'next/image'
-import React, { useRef, useState } from 'react'
+import { useResizeStore } from '@/stores/useResizeStore'
+import { useRef } from 'react'
+import { GrNext, GrPrevious } from "react-icons/gr"
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
-import { GrNext } from "react-icons/gr";
-import { GrPrevious } from "react-icons/gr";
-import { useResizeStore } from '@/stores/useResizeStore'
 
 const data = [
     {
@@ -50,12 +48,12 @@ const SectionFeelAbout = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
         <div className='bg-[url("/background/about/bg-slider.png")] lg:h-screen h-full bg-cover bg-center bg-no-repeat 
-        flex flex-col gap-12 justify-center lg:py-0 pt-[64px] pb-[96px] lg:px-[80px] px-4'>
+        flex flex-col gap-12 justify-center lg:py-0 pt-[64px] pb-[96px] custom-padding-left-right'>
             <div className="flex flex-col items-start gap-6">
                 <TitleHighlight
                     title='Cảm nhận của khách hàng'
                     highlightClassName='hidden'
-                    titleClassName='text-white'
+                    titleClassName='text-white md:text-2xl text-3xl'
                 />
                 <TitleDash
                     textClassName='text-[#FFFFFFCC]/80'
@@ -96,7 +94,7 @@ const SectionFeelAbout = () => {
                         ))
                     }
                 </Swiper>
-                <div className='absolute z-[1] lg:flex flex  lg:top-1/2 top-full lg:-translate-y-1/2 md:translate-y-[100%] translate-y-[10%] left-1/2 -translate-x-[50%] lg:justify-between lg:w-full'>
+                <div className='absolute z-[1] lg:flex flex  lg:top-1/2 top-full lg:-translate-y-1/2 md:translate-y-[50%] translate-y-[40%] left-1/2 -translate-x-[50%] lg:justify-between lg:w-full'>
                     <div className="w-full relative flex justify-start xl:left-[-1.8%] lg:left-[-3%]">
                         <button
                             className="hover:scale-105 transition-all duration-150 ease-linear z-30 3xl:size-14 size-12 backdrop-blur-sm lg:bg-[#37373780]/50 lg:hover:bg-[#37373780]/80 rounded-full flex items-center justify-center outline-none"

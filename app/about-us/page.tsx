@@ -1,9 +1,8 @@
-import React from 'react'
+import SectionFeelAbout from './components/SectionFeelAbout'
 import SectionIntroAbout from './components/SectionIntroAbout'
 import SectionIntroduceAbout from './components/SectionIntroduceAbout'
-import SectionStepsAbout from './components/SectionStepsAbout'
 import SectionProductAbout from './components/SectionProductAbout'
-import SectionFeelAbout from './components/SectionFeelAbout'
+import SectionStepsAbout from './components/SectionStepsAbout'
 
 const Page = () => {
     return (

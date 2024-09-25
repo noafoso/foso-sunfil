@@ -1,10 +1,10 @@
 'use client'
+import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import AboutCardFilter from '@/components/card/about/AboutCardFilter'
 import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { uuidv4 } from '@/lib/uuid'
 import { useResizeStore } from '@/stores/useResizeStore'
-import { Fragment } from 'react'
 import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 const data = [
@@ -36,12 +36,12 @@ const data = [
 const SectionProductAbout = () => {
     const { isVisibleMobile, isVisibleTablet } = useResizeStore()
     return (
-        <div className='flex flex-col gap-12 lg:px-0 px-4'>
-            <div className="flex flex-col items-start gap-6 lg:px-[80px]">
+        <div className='flex flex-col gap-12 '>
+            <div className="flex flex-col items-start gap-6 custom-padding-left-right">
                 <TitleHighlight
                     title='Chúng tôi luôn mang đến những sản phẩm tốt nhất'
                     titleClassName='text-start md:text-2xl text-3xl'
-                    highlightClassName='xxl:w-[360px] xl:w-[270px] lg:w-[270px] md:w-[215px] w-[275px] lg:-right-0  right-5 bg-[#FF182269]/40'
+                    highlightClassName='xxl:w-[360px] xl:w-[270px] lg:w-[270px] md:w-[215px] w-[275px] lg:-right-0  md:right-0 right-5 bg-[#FF182269]/40'
                 />
                 <TitleDash
                     dashClassName='md:max-w-[85px] md:min-w-[85px]'
@@ -49,17 +49,16 @@ const SectionProductAbout = () => {
                 />
             </div>
             {isVisibleMobile ?
-                <div className='flex flex-col gap-9'>
+                <div className='flex flex-col gap-9 lg:px-0 px-4'>
                     {data.map((e, index) => {
                         return (
-                            <Fragment key={e.id}>
+                            <AnimateOnScroll index={index} key={e.id}>
                                 <AboutCardFilter index={index}  {...e} />
-                            </Fragment>
+                            </AnimateOnScroll>
                         )
                     })}
                 </div>
                 :
-
                 <div className="h-full lg:ml-[80px] ml-10">
                     <Swiper
                         spaceBetween={35}
@@ -85,7 +84,7 @@ const SectionProductAbout = () => {
                                     key={item.id}
                                     className='py-2 pl-1'
                                 >
-                                    <AboutCardFilter  {...item} index={index} />
+                                    <AboutCardFilter  {...item} index={0} />
                                 </SwiperSlide>
                             ))
                         }

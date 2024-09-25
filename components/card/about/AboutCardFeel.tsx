@@ -1,8 +1,5 @@
-import Image from 'next/image'
-import React from 'react'
-import { RiDoubleQuotesL } from "react-icons/ri";
-import { RiDoubleQuotesR } from "react-icons/ri";
-import { Rating, RoundedStar, Star } from '@smastrom/react-rating';
+import { Rating, Star } from '@smastrom/react-rating';
+import Image from 'next/image';
 type Props = {
     id: string,
     name: string,
