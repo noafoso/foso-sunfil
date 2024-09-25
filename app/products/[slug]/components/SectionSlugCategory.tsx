@@ -34,18 +34,18 @@ const category = [
 const SectionSlugCategory = () => {
     const { isStateProductSlug, queryKeyIsStateProductSlug } = useStateProductSlug()
     return (
-        <AnimateOnScroll className='border-t-[#ED1B24] border-t-4 flex flex-col gap-6 px-6 2xl:py-10 xxl:py-9 xl:py-8 lg:py-7 bg-white select-none'>
+        <AnimateOnScroll className='border-t-[#ED1B24] border-t-4 flex flex-col gap-6 p-6 bg-white select-none'>
             <div className="">
                 <h1 className='text-base text-center underline underline-offset-4 text-[#1A1B20CC]/80 uppercase'>Danh mục sản phẩm</h1>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid lg:grid-cols-2 md:grid-cols-4 grid-cols-3 gap-2">
                 {category.map(e => {
                     return (
                         <div
                             onClick={() => queryKeyIsStateProductSlug({ idTabActive: e.id })}
                             key={e.id}
                             className={`${isStateProductSlug.idTabActive === e.id ? "bg-[#FFF8B3]" : "bg-transparent hover:bg-[#C0D2E424]"} 
-                            flex flex-col justify-center cursor-pointer gap-2.5 px-4 2xl:py-10 xxl:py-9 xl:py-8 lg:py-7 size-full transition-all duration-150 ease-linear`}
+                            flex flex-col justify-center cursor-pointer gap-2.5 md:px-4 px-3 3xl:py-14 2xl:py-10 xxl:py-9 xl:py-8 lg:py-7 md:py-10 py-4 size-full transition-all duration-150 ease-linear`}
                         >
                             <div className="mx-auto">
                                 <Image

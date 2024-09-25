@@ -32,11 +32,11 @@ const SectionStepsAbout = () => {
             <div className="flex flex-col lg:items-center items-start gap-6 ">
                 <TitleHighlight
                     title='Lịch sử hình thành công ty'
-                    titleClassName='text-start md:text-2xl text-3xl'
-                    highlightClassName='xxl:w-[160px] xl:w-[120px] lg:w-[120px] md:w-[90px] w-[110px] lg:-left-4 md:-left-2 -left-1 bg-[#FFBC059E]/85'
+                    titleClassName='text-start'
+                    highlightClassName='lg:w-[31%] w-[29%] lg:-left-4 md:-left-2 -left-1 bg-[#FFBC059E]/85'
                 />
                 <TitleDash
-                    dashClassName='md:max-w-[85px] md:min-w-[85px]'
+                    dashClassName='md:max-w-[85px] md:min-w-[85px] md:mt-0 mt-3'
                     text='It is a long established fact that a reader will be distracted by the service.'
                 />
             </div>

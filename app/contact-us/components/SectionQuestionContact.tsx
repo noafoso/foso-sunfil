@@ -71,9 +71,15 @@ const SectionQuestionContact = () => {
 
     return (
         <div className="xl:mx-[223px] lg:mx-[120px] md:mx-[36px] mx-4 flex flex-col xxl:gap-6 gap-4">
-            <TitleHighlight title='Câu hỏi thường gặp' highlightClassName='md:-left-2 right-0  md:w-[164px] w-[100px] bg-[#6AD6EEA6]/65' />
+            <TitleHighlight
+                title='Câu hỏi thường gặp'
+                highlightClassName='md:-left-2 right-0 lg:w-[42%]  md:w-[41%] 
+                w-[38%] bg-[#6AD6EEA6]/65'
+            />
             <div className="flex flex-col 2xl:gap-[64px] xxl:gap-[48px] gap-6">
-                <TitleDash text='It is a long established fact that a reader will be distracted by the service.' />
+                <TitleDash
+                    text='It is a long established fact that a reader will be distracted by the service.'
+                />
                 <div className="flex flex-col gap-8">
                     <Accordion onValueChange={(value: string) => queryState({ idOpen: value })} type="single" collapsible>
                         {questions.map((item, index) => (
