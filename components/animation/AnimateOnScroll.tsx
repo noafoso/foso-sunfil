@@ -31,7 +31,7 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, 
             initial="hidden"
             animate={inView ? "visible" : "hidden"}
             variants={variants}
-            transition={{ duration: 0.5, delay: index * 0.2 }}
+            transition={{ duration: 0.6, delay: index * 0.2 }}
             className={className}
         >
             {children}
