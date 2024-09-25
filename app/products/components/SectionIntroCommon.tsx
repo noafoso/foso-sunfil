@@ -4,7 +4,7 @@ import React from 'react'
 type Props = {
     title: string,
     description: string
-    classNameTitle: string
+    classNameTitle?: string
 }
 
 const SectionIntroCommon = ({ title, description, classNameTitle }: Props) => {
