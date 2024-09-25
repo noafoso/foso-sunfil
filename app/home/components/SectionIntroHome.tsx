@@ -6,6 +6,7 @@ import { montserrat_sans } from '@/utils/fonts/fonts';
 import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
+import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/Variants-Animation';
 
 interface ICategory {
     id: string;
@@ -89,7 +90,10 @@ const SectionIntroHome = () => {
                                     className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
                                     onClick={() => queryKeyIsStateHome({ idTabActive: category })}
                                 >
-                                    <AnimateOnScroll index={index}>
+                                    <AnimateOnScroll
+                                        index={index}
+                                        variants={variantSlideLeft}
+                                    >
                                         <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
                                             <Image
                                                 src={category.icon}
@@ -112,12 +116,12 @@ const SectionIntroHome = () => {
 
                     <div className='md:col-span-5 col-span-6 flex flex-col justify-center 3xl:gap-8 gap-4 3xl:ml-20 xl:ml-16 md:ml-10 md:mr-0 mx-4'>
                         <div className='flex flex-col 3xl:gap-4 gap-2'>
-                            <AnimateOnScroll>
+                            <AnimateOnScroll index={0.8}>
                                 <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
                                     Bộ lọc dầu xe ôtô
                                 </div>
                             </AnimateOnScroll>
-                            <AnimateOnScroll>
+                            <AnimateOnScroll index={1}>
                                 <div className='3xl:text-[26px] lg:text-[22px] text-[20px]'>
                                     Bộ lọc xe chất lượng cao
                                 </div>
@@ -156,6 +160,7 @@ const SectionIntroHome = () => {
                         height={800}
                         className='size-full object-contain'
                         unoptimized
+                        priority
                     />
                 </div>
 
@@ -169,14 +174,16 @@ const SectionIntroHome = () => {
                     }}
                     className='absolute 3xl:-top-8 2xl:-top-4 xl:-top-8 lg:-top-4 md:top-10 top-[60px] 2xl:left-0 xl:left-4 lg:-left-40 md:-left-24 left-0 z-20 aspect-1.1/1 3xl:w-[630px] 2xl:w-[500px] xl:w-[510px] lg:w-[470px] w-[360px] cursor-pointer'
                 >
-                    <Image
-                        src={`${isStateHome?.idTabActive?.image}`}
-                        alt='oil'
-                        width={800}
-                        height={800}
-                        className='size-full object-contain'
-                        unoptimized
-                    />
+                    <AnimateOnScroll variants={variantSlideZoomOut}>
+                        <Image
+                            src={`${isStateHome?.idTabActive?.image}`}
+                            alt='oil'
+                            width={800}
+                            height={800}
+                            className='size-full object-contain'
+                            unoptimized
+                        />
+                    </AnimateOnScroll>
                 </motion.div>
             </div>
         </div >
