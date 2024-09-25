@@ -43,7 +43,7 @@ const SectionSlugContent = () => {
                     textClassName='uppercase text-[#1A1B20CC]/80 font-normal'
                     dashClassName='border-b-2 border-[#15BCE0]  md:mt-0 mt-2 md:max-w-[64px] md:min-w-[64px] min-w-[60px] max-w-[60px]'
                 />
-                <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold lg:text-[60px] text-title-top`}>Bộ lọc khí</h1>
+                <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold text-title-top`}>Bộ lọc khí</h1>
                 <div className="lg:hidden flex flex-col gap-8">
                     <h2 className="text-sm text-[#1A1B20CC] font-normal">
                         Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.

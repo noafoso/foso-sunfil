@@ -40,11 +40,11 @@ const SectionProductAbout = () => {
             <div className="flex flex-col items-start gap-6 custom-padding-left-right">
                 <TitleHighlight
                     title='Chúng tôi luôn mang đến những sản phẩm tốt nhất'
-                    titleClassName='text-start md:text-2xl text-3xl'
-                    highlightClassName='xxl:w-[360px] xl:w-[270px] lg:w-[270px] md:w-[215px] w-[275px] lg:-right-0  md:right-0 right-5 bg-[#FF182269]/40'
+                    titleClassName='text-start'
+                    highlightClassName='lg:w-[37%] md:w-[36%] w-[70%] lg:-right-0  md:right-0 right-5 bg-[#FF182269]/40'
                 />
                 <TitleDash
-                    dashClassName='md:max-w-[85px] md:min-w-[85px]'
+                    dashClassName='md:max-w-[85px] md:min-w-[85px] md:mt-0 mt-3'
                     text='It is a long established fact that a reader will be distracted by the service.'
                 />
             </div>

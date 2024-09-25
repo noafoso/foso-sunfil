@@ -43,10 +43,10 @@ const Sectionintroduce = () => {
                 <TitleHighlight
                     title='Giới thiệu chung về VietHung Auto'
                     titleClassName='text-start'
-                    highlightClassName='xxl:w-[275px] xl:w-[210px] lg:w-[210px] md:w-[170px] w-[220px] lg:right-0 md:-right-1 bg-[#6AD6EEA6]/65'
+                    highlightClassName='lg:w-[42%] md:w-[43%] w-[55%] lg:right-0 md:-right-1 bg-[#6AD6EEA6]/65'
                 />
                 <TitleDash
-                    dashClassName='md:max-w-[76px] md:min-w-[76px]'
+                    dashClassName='md:max-w-[76px] md:min-w-[76px] md:mt-0 mt-3'
                     text='It’s short title here'
                 />
             </div>

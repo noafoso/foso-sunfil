@@ -53,11 +53,11 @@ const SectionFeelAbout = () => {
                 <TitleHighlight
                     title='Cảm nhận của khách hàng'
                     highlightClassName='hidden'
-                    titleClassName='text-white md:text-2xl text-3xl'
+                    titleClassName='text-white'
                 />
                 <TitleDash
                     textClassName='text-[#FFFFFFCC]/80'
-                    dashClassName='md:max-w-[76px] md:min-w-[76px] border-white'
+                    dashClassName='md:max-w-[76px] md:min-w-[76px] border-white md:mt-0 mt-3'
                     text='It is a long established fact that a reader will be distracted by the service.'
                 />
             </div>
