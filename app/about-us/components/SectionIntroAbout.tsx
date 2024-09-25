@@ -23,9 +23,9 @@ const count = [
 const SectionIntroAbout = () => {
     return (
         <div className='
-        lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] custom-padding-left-right bg-center bg-cover bg-no-repeat w-full 
-        flex flex-col items-end lg:justify-center justify-end lg:pb-0 md:pb-[250px] pb-[80px]
-        lg:h-screen h-[calc(100vh_+_112px)]'
+        lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] custom-padding-left-right bg-top lg:bg-center bg-cover bg-no-repeat w-full 
+        flex flex-col items-end lg:justify-center justify-end lg:pb-0 md:pb-16 pb-28
+        lg:h-[calc(100vh_-_112px)] h-[calc(100vh_+_112px)]'
         >
             <div className="flex flex-col gap-6 xl:w-1/2 lg:w-[70%] w-full">
                 <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold lg:text-[60px] text-[40px]`}>Về chúng tôi</h1>
