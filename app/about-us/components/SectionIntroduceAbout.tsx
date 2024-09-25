@@ -42,7 +42,7 @@ const Sectionintroduce = () => {
             <div className="flex flex-col items-start gap-6 custom-padding-left-right">
                 <TitleHighlight
                     title='Giới thiệu chung về VietHung Auto'
-                    titleClassName='text-start md:text-2xl text-3xl'
+                    titleClassName='text-start'
                     highlightClassName='xxl:w-[275px] xl:w-[210px] lg:w-[210px] md:w-[170px] w-[220px] lg:right-0 md:-right-1 bg-[#6AD6EEA6]/65'
                 />
                 <TitleDash
