@@ -2,24 +2,27 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
+import { variantSlideUp } from '@/utils/variants-animation/Variants-Animation'
 
 interface AnimateOnScrollProps {
     children: React.ReactNode
+    variants?: any
     className?: string
     index?: number
     style?: React.CSSProperties
 }
 
-const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, index = 0, style }) => {
+// const initialVariants = {
+//     hidden: { opacity: 0, y: 50 },
+//     visible: { opacity: 1, y: 0 },
+// }
+
+const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, variants = variantSlideUp, index = 0, style }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
     })
 
-    const variants = {
-        hidden: { opacity: 0, y: 50 },
-        visible: { opacity: 1, y: 0 },
-    }
 
     return (
         <motion.div
