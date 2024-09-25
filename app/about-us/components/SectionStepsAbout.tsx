@@ -1,7 +1,7 @@
+import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { montserrat_sans } from '@/utils/fonts/fonts'
-import React from 'react'
 
 const timelineData = [
     {
@@ -28,8 +28,8 @@ const timelineData = [
 
 const SectionStepsAbout = () => {
     return (
-        <div className='lg:px-[54px] px-4 lg:py-[80px] py-[64px] bg-[url("/background/about/bg.jpg")] bg-center bg-no-repeat  flex flex-col lg:gap-[80px] gap-10'>
-            <div className="flex flex-col lg:items-center items-start gap-6 lg:px-[80px]">
+        <div className='lg:px-[54px] px-4 lg:py-[80px] py-[64px] bg-[url("/background/about/bg.jpg")] 3xl:bg-left bg-center bg-no-repeat  flex flex-col lg:gap-[80px] gap-10'>
+            <div className="flex flex-col lg:items-center items-start gap-6 ">
                 <TitleHighlight
                     title='Lịch sử hình thành công ty'
                     titleClassName='text-start md:text-2xl text-3xl'
@@ -40,7 +40,7 @@ const SectionStepsAbout = () => {
                     text='It is a long established fact that a reader will be distracted by the service.'
                 />
             </div>
-            <div className="relative">
+            <div className="relative ">
                 {/* Timeline line with arrow */}
                 <div className="absolute lg:top-0 lg:left-1 lg:right-0 lg:h-0.5 lg:w-auto top-0 left-1 bottom-0 w-0.5 h-auto bg-[#0081F8] flex items-center">
                     <div className="absolute lg:-right-3 -right-[7px] lg:top-1/2 top-0 -translate-y-1/2 lg:w-0 lg:h-0 -bottom-1 w-0 h-0 z-10
@@ -50,14 +50,9 @@ const SectionStepsAbout = () => {
                                     lg:border-l-[#0081F8] 
                                     lg:border-b-[8px]
                                     lg:border-b-transparent 
-
-
                                     border-b-[14px] border-b-[#0081F8] 
-
                                     border-l-[8px] border-l-transparent 
-
                                     border-r-[8px] border-r-transparent 
-
                                     border-t-[8px] border-t-transparent
                                   "
                     >
@@ -74,13 +69,14 @@ const SectionStepsAbout = () => {
                         <div key={index} className="flex flex-col items-start gap-6 lg:w-1/5 w-full">
                             <div className="relative">
                                 {/* Outer glow circle */}
-                                <div className="w-8 h-8 bg-[#57A4FE52]/30 rounded-full absolute top-1/2 lg:left-1/2 left-0 transform lg:-translate-x-[30%] -translate-x-[130%] lg:-translate-y-1/2 translate-y-[60%]"></div>
+                                <div className="w-8 h-8 bg-[#57A4FE52]/30 animate-pulse rounded-full absolute top-1/2 lg:left-1/2 left-0 transform lg:-translate-x-[30%] -translate-x-[130%] lg:-translate-y-1/2 translate-y-[60%]"></div>
+
                                 {/* Inner dot */}
                                 {/* shadow-[0_0_10px_4px_rgba(59,130,246,0.5)] */}
                                 <div className="w-5 h-5 bg-[#57A4FE] rounded-full absolute lg:top-1/2 top-0 lg:left-1/2 left-0 transform lg:-translate-x-[20%] -translate-x-[180%] lg:-translate-y-1/2 translate-y-[130%] z-10"></div>
                             </div>
-                            <h3 className={`${montserrat_sans.className} 3xl:text-[36px] xxl:text-[30px] lg:text-2xl text-2xl font-extrabold text-[#181818] leading-6`}>{item.year}</h3>
-                            <p className="text-[#1A1B20CC] font-normal 3xl:text-lg xl:text-base text-base text-start max-w-[90%]">{item.content}</p>
+                            <AnimateOnScroll index={index} className={`${montserrat_sans.className} 3xl:text-[36px] xxl:text-[30px] lg:text-2xl text-2xl font-extrabold text-[#181818] leading-6`}>{item.year}</AnimateOnScroll>
+                            <AnimateOnScroll index={index} className="text-[#1A1B20CC] font-normal 3xl:text-lg xl:text-base text-base text-start max-w-[90%]">{item.content}</AnimateOnScroll>
                         </div>
                     ))}
                 </div>

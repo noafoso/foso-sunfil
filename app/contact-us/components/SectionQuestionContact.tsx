@@ -1,4 +1,5 @@
 'use client'
+import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion'
@@ -75,10 +76,10 @@ const SectionQuestionContact = () => {
                 <TitleDash text='It is a long established fact that a reader will be distracted by the service.' />
                 <div className="flex flex-col gap-8">
                     <Accordion onValueChange={(value: string) => queryState({ idOpen: value })} type="single" collapsible>
-                        {questions.map((item) => (
+                        {questions.map((item, index) => (
                             <AccordionItem key={item.value as string} value={item.value}>
                                 <AccordionTrigger className="focus-visible:outline-none w-full xxl:py-8 py-6 hover:no-underline">
-                                    <div className='flex items-center gap-4 justify-between w-full group transition-all duration-150 ease-linear'>
+                                    <AnimateOnScroll index={index} className='flex items-center gap-4 justify-between w-full group transition-all duration-150 ease-linear'>
                                         <div className={`2xl:text-xl text-base text-[#272727]   transition-all duration-150 ease-linear  font-bold text-start`}
                                         >
                                             {item.question}
@@ -91,7 +92,7 @@ const SectionQuestionContact = () => {
                                                     <IoMdAdd className={`3xl:text-3xl text-2xl accordionChevron text-[#06282D] shrink-0 transition-transform duration-200`} />
                                             }
                                         </div>
-                                    </div>
+                                    </AnimateOnScroll>
                                 </AccordionTrigger>
                                 <AccordionContent className='xxl:pb-8 pb-6 text-[#1A1B20CC]/80 text-base font-normal xl:max-w-[65%] lg:max-w-[80%] max-w-full'>
                                     <p>{item.answer}</p>

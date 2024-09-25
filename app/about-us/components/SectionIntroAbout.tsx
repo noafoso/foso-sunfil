@@ -23,13 +23,13 @@ const count = [
 const SectionIntroAbout = () => {
     return (
         <div className='
-        lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] lg:pr-[144px] bg-center bg-cover bg-no-repeat w-full 
+        lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] custom-padding-left-right bg-center bg-cover bg-no-repeat w-full 
         flex flex-col items-end lg:justify-center justify-end lg:pb-0 md:pb-[250px] pb-[80px]
         lg:h-screen h-[calc(100vh_+_112px)]'
         >
-            <div className="flex flex-col gap-6 lg:w-1/2 w-full custom-padding-left-right">
+            <div className="flex flex-col gap-6 xl:w-1/2 lg:w-[70%] w-full">
                 <h1 className={`${montserrat_sans.className} text-[#000000] font-extrabold lg:text-[60px] text-[40px]`}>Về chúng tôi</h1>
-                <div className="lg:max-w-[90%] flex flex-col gap-8 ">
+                <div className=" flex flex-col gap-8 ">
                     <h2 className='texxt-[#1A1B20CC]/80 font-normal text-content-common'>
                         Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.
                     </h2>
@@ -59,7 +59,7 @@ const SectionIntroAbout = () => {
                                             +
                                         </span>
                                     </div>
-                                    <h1 className='text-[#0000009E]/60 xl:text-xl lg:text-lg text-xl font-normal'>{e?.name}</h1>
+                                    <h1 data-aos="fade-up" className='text-[#0000009E]/60 2xl:text-xl xl:text-lg lg:text-lg text-xl font-normal'>{e?.name}</h1>
                                 </div>
                             )
                         })}

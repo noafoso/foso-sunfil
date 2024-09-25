@@ -242,14 +242,6 @@ const SectionFormContact = () => {
                         alt=''
                         className='xl:aspect-3/2 lg:aspect-3/2' />
                 </div>
-                {/* <div className="absolute md:left-0 left-1/2 md:top-1/2  xxl:-translate-y-[45%] md:-translate-y-[45%] size-full z-0">
-                    <Image
-                        src={isVisibleMobile ? "/contact/elip-mobi.png" : '/contact/elip.png'} width={1280}
-                        height={1024}
-
-                        alt=''
-                        className='w-full xxl:h-[100%] md:h-[90%] h-full md:object-center object-cover' />
-                </div> */}
             </div>
         </div>
     )
