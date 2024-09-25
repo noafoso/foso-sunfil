@@ -145,6 +145,14 @@ menu {
 }
 
 .text-responsive {
+    .text-title-top {
+        @apply xl:text-[60px] lg:text-[50px] text-[40px] xl:leading-[70px] lg:leading-[60px] leading-[50px];
+    }
+
+    .text-title-section {
+        @apply xxl:text-[40px] md:text-[30px] text-[24px] xxl:leading-[50px] leading-[40px];
+    }
+
     .text-content-common {
         @apply 3xl:text-lg text-base;
     }

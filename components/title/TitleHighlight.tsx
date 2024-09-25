@@ -17,7 +17,7 @@ const TitleHighlight: React.FC<Props> = ({
     return (
         <div className={cn("text-center", containerClassName)}>
             <h2 className={cn(
-                "xxl:text-[40px] lg:text-3xl md:text-3xl text-2xl font-bold text-center text-[#000000] relative z-[1] inline-block w-fit",
+                "text-title-section font-bold text-center text-[#000000] relative z-[1] inline-block w-fit",
                 titleClassName
             )}>
                 {title}
