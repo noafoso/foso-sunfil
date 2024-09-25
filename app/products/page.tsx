@@ -39,6 +39,29 @@ const dataListProducts = [
     },
 ]
 
+const dataStyle = [
+    {
+        id: uuidv4(),
+        highlightClassName: "w-[65%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
+    },
+    {
+        id: uuidv4(),
+        highlightClassName: "w-[45%] xxl:top-7 top-6 -right-3 bg-[#FFBC05]/65",
+    },
+    {
+        id: uuidv4(),
+        highlightClassName: "w-[74%] xxl:top-7 top-6 -right-3 bg-[#FF1822]/[41%]",
+    },
+    {
+        id: uuidv4(),
+        highlightClassName: "w-[65%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
+    },
+    {
+        id: uuidv4(),
+        highlightClassName: "w-[74%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
+    },
+]
+
 const Products = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
@@ -52,17 +75,14 @@ const Products = () => {
                     <React.Fragment key={`product-${item.id}`}>
                         <SectionCategoryCommon
                             backgroundImage={item.backgroundImage}
-                            index={index % 2 === 0}
+                            index={index % 2 !== 0}
                             title={item.name}
                             description={item.description}
+                            highlightClassName={dataStyle[index].highlightClassName}
                         />
                     </React.Fragment>
                 ))
             }
-            {/* <SectionCategoryCommon
-                backgroundImage='/example/products/product2.png'
-                type="right"
-            /> */}
         </div>
     )
 }

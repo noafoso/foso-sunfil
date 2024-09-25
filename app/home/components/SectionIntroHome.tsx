@@ -5,10 +5,6 @@ import { useStateHome } from '../_state/useStateHome';
 import { montserrat_sans } from '@/utils/fonts/fonts';
 import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
-import AnimatedCountUp from '@/components/animation/AnimatedCountUp';
-
-import Marquee from "react-fast-marquee";
-import Link from 'next/link';
 
 interface ICategory {
     id: string;
