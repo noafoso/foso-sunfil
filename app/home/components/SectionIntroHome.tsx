@@ -69,14 +69,11 @@ const listStyleContent = [
 ]
 
 const SectionIntroHome = () => {
-    console.log(listCategory)
     const { isStateHome, queryKeyIsStateHome } = useStateHome()
 
     useEffect(() => {
         queryKeyIsStateHome({ idTabActive: listCategory[0] })
     }, [])
-
-    console.log("isStateHome :", isStateHome)
 
     return (
         <div className='grid grid-cols-12'>

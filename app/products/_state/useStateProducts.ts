@@ -7,7 +7,7 @@ interface InitialStateStore {
     queryKeyIsStateHome: (key: any) => void;
 }
 
-export const useStateHome = create<InitialStateStore>((set) => ({
+export const useStateProducts = create<InitialStateStore>((set) => ({
     isStateHome: {
         idTabActive: undefined,
     },

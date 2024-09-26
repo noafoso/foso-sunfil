@@ -3,14 +3,12 @@ import Link from 'next/link'
 import React from 'react'
 
 type BlogCardHorizontalProps = {
-    key: string,
     item: any
 }
 
-const BlogCardHorizontalSmall = ({ key, item }: BlogCardHorizontalProps) => {
+const BlogCardHorizontalSmall = ({ item }: BlogCardHorizontalProps) => {
     return (
         <Link
-            key={`blog-${key}`}
             className='flex items-center gap-4 rounded-[8px] w-[500px] lg:mr-10 mr-6 bg-white group pr-2'
             style={{
                 boxShadow: "0px 0px 0.5px 0px #0D0F111A, 0px 0px 10px 0px #25385121"
