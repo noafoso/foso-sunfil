@@ -9,30 +9,35 @@ import { Autoplay } from 'swiper/modules'
 import { Swiper, SwiperSlide } from 'swiper/react'
 const data = [
     {
-        id: uuidv4(),
+        id: "1",
         name: 'Bộ lọc dầu',
         description: 'Sử dụng lò xo tấm và gấp nếp chữ M của phương tiện gấp giúp tận dụng diện tích lọc cho các bộ lọc nhỏ gọn theo yêu cầu của các NSX xe mới.',
-        icon: '/icons/about/product1.png'
+        icon: '/icons/about/product1.png',
+        bg: '#15BCE01A'
     },
     {
-        id: uuidv4(),
+        id: "2",
         name: 'Bộ lọc không khí',
         description: 'Không khí tạo ra khi giao thông đông đúc chứa khí thải, chất ô nhiễm và chất gây dị ứng nhiều gấp năm lần so với không khí bạn hít thở',
-        icon: '/icons/about/product2.png'
+        icon: '/icons/about/product2.png',
+        bg: '#7393D21A'
     },
     {
-        id: uuidv4(),
+        id: "3",
         name: 'Bộ lọc nước',
         description: 'Bộ lọc cho phép không khí truyền theo đường dẫn tuyến tính, đi qua xuyên suốt bộ lọc để hạn chế việc lưu lượng không khí bị thấp.',
-        icon: '/icons/about/product3.png'
+        icon: '/icons/about/product3.png',
+        bg: '#FF8C051A'
     },
     {
-        id: uuidv4(),
+        id: "4",
         name: 'Bộ lọc không khí',
         description: 'It is a long established fact that a reader will be the service.',
-        icon: '/icons/about/product4.png'
+        icon: '/icons/about/product4.png',
+        bg: '#F8659A1A'
     }
 ]
+
 const SectionProductAbout = () => {
     const { isVisibleMobile, isVisibleTablet } = useResizeStore()
     return (
