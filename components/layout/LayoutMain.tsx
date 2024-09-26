@@ -105,7 +105,7 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
     if (!isMounted) return null;
 
     return (
-        <Suspense>
+        <Suspense fallback={<>Loading...</>}>
             <QueryClientProvider client={queryClient}>
                 <Toaster position="top-right" reverseOrder={false} />
                 <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
