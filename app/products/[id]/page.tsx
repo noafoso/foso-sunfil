@@ -1,10 +1,10 @@
 'use client'
 
-import SectionSlugCategory from './components/SectionSlugCategory'
-import SectionSlugContent from './components/SectionSlugContent'
+import SectionDetailCategory from './components/SectionDetailCategory'
+import SectionDetailContent from './components/SectionDetailContent'
 
 
-const Page = () => {
+const DetailProduct = () => {
     return (
         <div
             className='pt-[162px] custom-padding-left-right 
@@ -12,13 +12,13 @@ const Page = () => {
         flex items-start lg:gap-12 gap-8 lg:bg-bottom bg-top bg-cover bg-no-repeat h-full lg:pb-[127px] pb-[61px]'
         >
             <div className="xl:w-[68%] lg:w-[60%] w-full">
-                <SectionSlugContent />
+                <SectionDetailContent />
             </div>
             <div className="xl:w-[32%] lg:w-[40%] lg:block hidden">
-                <SectionSlugCategory />
+                <SectionDetailCategory />
             </div>
         </div>
     )
 }
 
-export default Page
+export default DetailProduct

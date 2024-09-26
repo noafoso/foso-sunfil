@@ -3,7 +3,7 @@ import { montserrat_sans } from '@/utils/fonts/fonts'
 import React from 'react'
 import Image from 'next/image'
 import { uuidv4 } from '@/lib/uuid'
-import SectionSlugCategory from './SectionSlugCategory'
+import SectionSlugCategory from './SectionDetailCategory'
 
 const products = [
     {
@@ -32,7 +32,7 @@ const products = [
         } as any
     }
 ]
-const SectionSlugContent = () => {
+const SectionDetailContent = () => {
 
     return (
         <div className='flex flex-col xxl:gap-14 gap-10'>
@@ -95,4 +95,4 @@ const SectionSlugContent = () => {
     )
 }
 
-export default SectionSlugContent
+export default SectionDetailContent
