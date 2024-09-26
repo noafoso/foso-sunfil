@@ -8,7 +8,7 @@ const data = [
     {
         id: uuidv4(),
         name: 'Đầu phun sprinkler là gì? Cấu tạo, ứng dụng và nguyên lý hoạt động',
-        image: '/example/blogs/blog1.jpg',
+        image: '/example/blogs/b1.png',
         tag: [
             {
                 id: 1,
@@ -26,7 +26,7 @@ const data = [
     {
         id: uuidv4(),
         name: 'Check Valve là gì? 4 loại Check Valve phổ biến nhất hiện nay',
-        image: '/example/blogs/blog2.jpg',
+        image: '/example/blogs/b2.png',
         tag: [
             {
                 id: 2,
@@ -44,7 +44,7 @@ const data = [
     {
         id: uuidv4(),
         name: 'Bảng đơn vị đo áp suất thông dụng nhất hiện nay',
-        image: '/example/blogs/blog3.jpg',
+        image: '/example/blogs/b3.png',
         tag: [
             {
                 id: 1,

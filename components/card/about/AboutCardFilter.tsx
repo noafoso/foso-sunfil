@@ -5,9 +5,9 @@ type Props = {
     description: string,
     icon: string,
     index: number
+    bg: string
 }
-const color = ['rgba(21, 188, 224, 0.10)', 'rgba(115, 147, 210, 0.10)', 'rgba(255, 140, 5, 0.10)', 'rgba(248, 101, 154, 0.10)']
-const AboutCardFilter = ({ description, icon, id, name, index }: Props) => {
+const AboutCardFilter = ({ description, icon, id, name, index, bg }: Props) => {
     return (
         <div
             style={{
@@ -17,7 +17,7 @@ const AboutCardFilter = ({ description, icon, id, name, index }: Props) => {
         >
             <div
                 style={{
-                    backgroundColor: color[index],
+                    backgroundColor: bg,
                 }}
                 className="size-[75px] p-4 rounded-[5px]">
                 <Image src={icon} width={1280} height={1024} alt='' className='size-full object-contain' />
