@@ -6,8 +6,8 @@ import { uuidv4 } from '@/lib/uuid'
 import Marquee from 'react-fast-marquee'
 import Image from 'next/image'
 import AnimatedCountUp from '@/components/animation/AnimatedCountUp'
-import BlogCardHorizontalSmall from '@/components/card/home/BlogCardHorizontalSmall'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
+import BlogCardHorizontalSmall from '@/components/card/blog/BlogCardHorizontalSmall'
 
 const dataDashboard = [
     {
@@ -42,7 +42,7 @@ const listBlogs = [
         type: "Lọc dầu",
         name: "Hướng dẫn thay bộ lọc không khí mới nhất 2026, Hướng dẫn thay bộ lọc không khí mới nhất 2024",
         date_created: "12/12/2024",
-        image: "/example/blogs/blog1.png"
+        image: "/example/blogs/blog3.png"
     },
 ]
 

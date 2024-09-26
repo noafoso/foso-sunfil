@@ -31,7 +31,7 @@ const category = [
         image: '/icons/product/slug/category5.svg'
     }
 ]
-const SectionDetailCategory = () => {
+const SectionCategoryDetailProduct = () => {
     const { isStateProductDetail, queryKeyIsStateProductDetail } = useStateProductDetail()
     return (
         <AnimateOnScroll className='border-t-[#ED1B24] border-t-4 flex flex-col gap-6 p-6 bg-white select-none'>
@@ -66,4 +66,4 @@ const SectionDetailCategory = () => {
     )
 }
 
-export default SectionDetailCategory
+export default SectionCategoryDetailProduct
