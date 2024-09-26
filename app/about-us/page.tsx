@@ -1,3 +1,5 @@
+'use client'
+
 import SectionFeelAbout from './components/SectionFeelAbout'
 import SectionIntroAbout from './components/SectionIntroAbout'
 import SectionIntroduceAbout from './components/SectionIntroduceAbout'
@@ -6,7 +8,8 @@ import SectionStepsAbout from './components/SectionStepsAbout'
 
 const Page = () => {
     return (
-        <div className='flex flex-col 2xl:gap-[124px] gap-[84px] lg:pt-[112px] pt-[104px]'>
+        <div className='lg:pt-[112px] pt-[104px]'>
+            {/* <div className='flex flex-col 2xl:gap-[124px] gap-[84px] lg:pt-[112px] pt-[104px]'> */}
             <SectionIntroAbout />
             <SectionIntroduceAbout />
             <SectionStepsAbout />

@@ -8,7 +8,9 @@ import SystemDeveloping from '@/components/system/SystemDeveloping'
 const Blogs = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
-        <SystemDeveloping />
+        <div id='blogs'>
+            <SystemDeveloping />
+        </div>
     )
 }
 
