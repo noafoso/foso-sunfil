@@ -105,23 +105,22 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
     if (!isMounted) return null;
 
     return (
-        <Suspense fallback={<>Loading...</>}>
-            <QueryClientProvider client={queryClient}>
-                <Toaster position="top-right" reverseOrder={false} />
-                <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
-                    <Header />
-                    <main className={`overflow-hidden size-full`}>
-                        {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
-                        <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                            {children}
-                        </AnimatePresence>
-                        <ButtonToTop />
-                        {!['/home', '/'].includes(pathname) && <Footer />}
-                    </main>
-                </div>
-                <ReactQueryDevtools initialIsOpen={true} />
-            </QueryClientProvider>
-        </Suspense>
+
+        <QueryClientProvider client={queryClient}>
+            <Toaster position="top-right" reverseOrder={false} />
+            <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
+                <Header />
+                <main className={`overflow-hidden size-full`}>
+                    {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
+                    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                        {children}
+                    </AnimatePresence>
+                    <ButtonToTop />
+                    {!['/home', '/'].includes(pathname) && <Footer />}
+                </main>
+            </div>
+            <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
     )
 }
 

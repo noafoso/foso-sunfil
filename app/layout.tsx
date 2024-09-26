@@ -1,6 +1,7 @@
 import "@/styles/globals.scss";
 import LayoutMain from "@/components/layout/LayoutMain";
 import { space_grotesk_sans } from "@/utils/fonts/fonts";
+import { Suspense } from "react";
 
 export default function RootLayout({
     children,
@@ -10,9 +11,11 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body className={`${space_grotesk_sans.className} antialiased custom-tailwind text-responsive`}>
-                <LayoutMain>
-                    {children}
-                </LayoutMain>
+                <Suspense>
+                    <LayoutMain>
+                        {children}
+                    </LayoutMain>
+                </Suspense>
             </body>
         </html>
     );
