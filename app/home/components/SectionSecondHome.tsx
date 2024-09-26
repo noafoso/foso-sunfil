@@ -92,10 +92,9 @@ const SectionSecondHome = (props: Props) => {
                         >
                             {
                                 listBlogs && listBlogs.map((item, index) => (
-                                    <BlogCardHorizontalSmall
-                                        key={item.id}
-                                        item={item}
-                                    />
+                                    <React.Fragment key={`blog-small-${item.id}`}>
+                                        <BlogCardHorizontalSmall item={item} />
+                                    </React.Fragment>
                                 ))
                             }
                         </Marquee>

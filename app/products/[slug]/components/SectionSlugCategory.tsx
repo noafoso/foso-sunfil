@@ -2,7 +2,7 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import { uuidv4 } from '@/lib/uuid'
 import Image from 'next/image'
-import { useStateProductSlug } from '../../_state/slug/useStateProductSlug'
+import { useStateProductSlug } from '../../_state/useStateProductSlug'
 
 const category = [
     {
