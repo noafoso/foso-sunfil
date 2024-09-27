@@ -2,7 +2,6 @@
 
 import { TabsCustom } from "@/components/tabs/TabsCustom"
 import TitleDash from "@/components/title/TitleDash"
-import { TabsContent } from "@/components/ui/tabs"
 import { useStateCategories } from "./_state/useStateCategories"
 import SectionCategoriesTabApplication from "./components/tab/SectionCategoriesTabApplication"
 import SectionCategoriesTabChassis from "./components/tab/SectionCategoriesTabChassis"
@@ -66,13 +65,6 @@ const Categories = () => {
                     classNameTabsList='justify-start h-auto '
                     classNameTrigger='py-3'
                 />
-                {/* {
-                        TabContent.map((item, index) => (
-                            <TabsContent key={index} value={item.id} className='mt-0'>
-                                {item.content}
-                            </TabsContent>
-                        ))
-                    } */}
                 {TabContent.find((item: any) => item?.id === isStateCategories?.idTabActive)?.content ?? ""}
             </div>
         </div >

@@ -9,6 +9,10 @@ const nextConfig = {
                 hostname: 'swiperjs.com',
             },
             {
+                protocol: 'https',
+                hostname: 'sunfil.fmrp.vn',
+            },
+            {
                 protocol: 'http',
                 hostname: '192.168.1.178',
             },

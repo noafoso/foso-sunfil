@@ -1,13 +1,11 @@
 'use client'
-import React, { FormEvent } from 'react'
-import { useStateCategories } from '../../_state/useStateCategories'
-import { Input } from '@/components/ui/input'
-import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form'
-import { useForm } from 'react-hook-form'
-import { Button } from '@/components/ui/button'
-import { MdClear } from "react-icons/md";
-import { toastCore } from '@/lib/toast'
 import { SelectCustomSearch } from '@/components/select/SelectCustomSearch'
+import { Button } from '@/components/ui/button'
+import { Form, FormControl, FormField, FormItem, FormMessage } from '@/components/ui/form'
+import { toastCore } from '@/lib/toast'
+import { FormEvent } from 'react'
+import { useForm } from 'react-hook-form'
+import { useStateCategories } from '../../_state/useStateCategories'
 
 const SectionCategoriesFilterApplication = () => {
 
@@ -258,7 +256,7 @@ const SectionCategoriesFilterApplication = () => {
 
                     <Button
                         type='submit'
-                        className="text-white col-span-1 capitalize rounded-none h-fit font-medium text-base bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-3"
+                        className="text-white col-span-1 capitalize rounded-none h-fit font-medium text-base bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 3xl:py-4 py-3"
                     >
                         Tìm kiếm
                     </Button>

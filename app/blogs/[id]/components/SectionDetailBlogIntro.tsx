@@ -1,7 +1,7 @@
 import { montserrat_sans } from '@/utils/fonts/fonts'
 import React from 'react'
 
-const SectionIdBlogIntro = () => {
+const SectionDetailBlogIntro = () => {
     return (
         <div className='flex flex-col justify-center items-center gap-2 custom-padding-left-right'>
             <h2 className='text-[#1A1B20A3] font-normal text-base'>25 tháng ba 2022 </h2>
@@ -13,4 +13,4 @@ const SectionIdBlogIntro = () => {
     )
 }
 
-export default SectionIdBlogIntro
+export default SectionDetailBlogIntro

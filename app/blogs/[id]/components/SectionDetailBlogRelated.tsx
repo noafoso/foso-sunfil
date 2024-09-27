@@ -59,7 +59,7 @@ const data = [
         user: 'Porter Daniel',
     },
 ]
-const SectionIdBlogRelated = () => {
+const SectionDetailBlogRelated = () => {
     return (
         <div className='flex flex-col lg:gap-12 gap-8 custom-padding-left-right'>
             <TitleHighlight
@@ -80,4 +80,4 @@ const SectionIdBlogRelated = () => {
     )
 }
 
-export default SectionIdBlogRelated
+export default SectionDetailBlogRelated
