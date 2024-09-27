@@ -1,17 +1,16 @@
 "use client";
-
 import Cookies from "js-cookie";
 interface IUseCookie {
-    key: "token_hyperspace" | string;
+    key: "token_viethung" | string;
     initialValue?: string;
 }
 
-const useCookieStore = (key: IUseCookie["key"] = "token_hyperspace", initialValue?: IUseCookie["initialValue"]) => {
+const useCookieStore = (key: IUseCookie["key"] = "token_viethung", initialValue?: IUseCookie["initialValue"]) => {
     const setCookie = (value: string, options?: Cookies.CookieAttributes) => {
         Cookies.set(key, value, options);
     };
 
-    const removeCookie = (key: IUseCookie["key"] = "token_hyperspace", options?: Cookies.CookieAttributes) => {
+    const removeCookie = (key: IUseCookie["key"] = "token_viethung", options?: Cookies.CookieAttributes) => {
         Cookies.remove(key, options);
     };
 

@@ -22,7 +22,7 @@ const TabContent = [
         id: '3',
         content: <SectionCategoriesTabChassis />
     },
-]
+] as any
 
 const TabList = [
     {
@@ -45,7 +45,7 @@ const Categories = () => {
         <div
             id="categories"
             className='pt-[162px] lg:bg-[url("/background/product/slug/bg.svg")] bg-[url("/background/product/slug/bg-mobi.svg")] 
-        flex flex-col items-start lg:gap-12 gap-8 bg-top bg-cover bg-no-repeat h-full lg:pb-[127px] pb-[61px] custom-padding-left-right'
+             flex flex-col items-start lg:gap-12 gap-8 bg-top bg-cover bg-no-repeat h-full lg:pb-[127px] pb-[61px] custom-padding-left-right'
         >
             <div className="">
                 <TitleDash
@@ -62,19 +62,20 @@ const Categories = () => {
                     setTabActive={(value) => {
                         queryKeyIsStateHome({ idTabActive: value })
                     }}
-                    classNameTabsList='justify-start'
-                    classNameSwiper='!flex !item-center !justify-start !w-full'
-                >
-                    {
+
+                    classNameTabsList='justify-start h-auto '
+                    classNameTrigger='py-3'
+                />
+                {/* {
                         TabContent.map((item, index) => (
-                            <TabsContent key={index} value={item.id} className=''>
+                            <TabsContent key={index} value={item.id} className='mt-0'>
                                 {item.content}
                             </TabsContent>
                         ))
-                    }
-                </TabsCustom>
+                    } */}
+                {TabContent.find((item: any) => item?.id === isStateCategories?.idTabActive)?.content ?? ""}
             </div>
-        </div>
+        </div >
     )
 }
 
