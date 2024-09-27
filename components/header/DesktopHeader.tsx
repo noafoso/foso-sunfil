@@ -245,9 +245,9 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                 {
                     isStateHeader?.isShowMenuScreen &&
                     <motion.div
-                        initial={{ x: '100%' }} // Bắt đầu từ ngoài bên phải
-                        animate={{ x: 0 }}      // Trượt vào vị trí hiển thị
-                        exit={{ x: '100%' }}    // Trượt ra khi đóng
+                        initial={{ y: '-100%' }} // Bắt đầu từ ngoài bên phải
+                        animate={{ y: 0 }}      // Trượt vào vị trí hiển thị
+                        exit={{ y: '-100%' }}    // Trượt ra khi đóng
                         transition={{ duration: 0.5 }} // Tốc độ trượt
                         className="z-[999] absolute bg-[url(/background/menu/bg-menu.png)] bg-center bg-cover bg-no-repeat w-screen lg:h-screen md:h-dvh top-0 left-0"
                     >

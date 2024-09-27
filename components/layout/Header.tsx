@@ -99,9 +99,6 @@ const Header = () => {
         })
     };
 
-    console.log('isStateHeader: ', isStateHeader);
-
-
     return (
         <header className='absolute top-0 md:bg-transparent bg-white w-full z-50 py-4'>
             <div className='custom-container'>
