@@ -66,7 +66,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Brand'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`w-[10%] max-w-[10%] ${isStateCategories.filterAppication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.branch?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
@@ -102,7 +102,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Class'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`w-[10%] max-w-[10%] ${isStateCategories.filterAppication.class?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.class?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.class?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
@@ -138,7 +138,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Model'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`w-[10%] max-w-[10%] ${isStateCategories.filterAppication.model?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.model?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.model?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
@@ -173,7 +173,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Year'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.year?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[35%] lg:min-w-[35%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.year?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.year?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
@@ -209,7 +209,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Engine'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`w-[10%] max-w-[10%] ${isStateCategories.filterAppication.engine?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.engine?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.engine?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
@@ -245,7 +245,7 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Body'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`w-[10%] max-w-[10%] ${isStateCategories.filterAppication.body?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.body?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.body?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
