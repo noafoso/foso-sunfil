@@ -70,7 +70,7 @@ const SectionQuestionContact = () => {
     const queryState = (key: Partial<IState>) => setIsState((prev: IState) => ({ ...prev, ...key }))
 
     return (
-        <div className="xl:mx-[223px] lg:mx-[120px] md:mx-[36px] mx-4 flex flex-col xxl:gap-6 gap-4">
+        <div className="xl:mx-[223px] lg:mx-[120px] md:mx-[36px] mx-4 flex flex-col xxl:gap-6 gap-4 custom-py-section">
             <TitleHighlight
                 title='Câu hỏi thường gặp'
                 highlightClassName='md:-left-2 right-0 lg:w-[42%]  md:w-[41%] 

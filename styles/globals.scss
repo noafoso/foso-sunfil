@@ -142,6 +142,10 @@ menu {
     .custom-padding-left {
         @apply xl:pr-[112px] lg:pr-[82px] pr-4;
     }
+
+    .custom-py-section {
+        @apply 2xl:py-[124px] py-[84px];
+    }
 }
 
 .text-responsive {

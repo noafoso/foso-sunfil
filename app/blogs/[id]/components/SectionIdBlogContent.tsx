@@ -9,7 +9,13 @@ const SectionIdBlogContent = () => {
     return (
         <div className='flex flex-col items-center xl:gap-[60px] lg:gap-12 gap-8 '>
             <div className="xxl:px-[112px] xl:px-[92px] lg:px-[72px] px-0">
-                <Image src={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'} alt='' className='aspect-auto object-cover lg:h-[700px] md:h-[450px] h-[278px]' width={1280} height={1024} />
+                <Image
+                    src={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
+                    alt={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
+                    className='aspect-5/3 object-cover lg:h-[700px] md:h-[450px] h-[278px]'
+                    width={1280}
+                    height={1024}
+                />
             </div>
             <div className="flex flex-col items-center xl:gap-12 lg:gap-10 gap-8 xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
                 <div className="flex flex-col gap-4">
