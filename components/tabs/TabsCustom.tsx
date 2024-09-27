@@ -25,7 +25,7 @@ export const TabsCustom = ({ data, children, tabActive, setTabActive, classNameT
                         <TabsTrigger
                             value={tab.id}
                             className={`space-x-1 3xl:text-lg py-3 transition-all duration-150 ease-in-out text-base lg:px-9 px-3 md:w-fit w-full rounded-none font-semibold 
-                                    hover:text-transparent/80 data-[state=active]:border-t-4 bg-[#F2F2F2] data-[state=active]:border-[#ED1B24]  data-[state=active]:font-bold 
+                                    hover:text-transparent/80 data-[state=active]:border-t-4 border-t-4 border-transparent bg-[#F2F2F2] data-[state=active]:border-[#ED1B24]  data-[state=active]:font-bold 
                                     data-[state=active]:text-[#000000] data-[state=active]:bg-[#FFFFFF] data-[state=active]:shadow-none text-[#000000A8]`}
                         >
                             {tab.name}
