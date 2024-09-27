@@ -7,6 +7,7 @@ import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/Variants-Animation';
+import { useGetListCategories } from '@/hooks/categories/useGetListCategories';
 
 interface ICategory {
     id: string;
@@ -69,11 +70,14 @@ const listStyleContent = [
 ]
 
 const SectionIntroHome = () => {
+    const { data } = useGetListCategories()
+
     const { isStateHome, queryKeyIsStateHome } = useStateHome()
 
     useEffect(() => {
-        queryKeyIsStateHome({ idTabActive: listCategory[0] })
-    }, [])
+        if (!data?.data) return
+        queryKeyIsStateHome({ idTabActive: data?.data[0] })
+    }, [data])
 
     return (
         <div className='grid grid-cols-12'>
@@ -81,9 +85,9 @@ const SectionIntroHome = () => {
                 <div className='grid grid-cols-6'>
                     <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
                         {
-                            listCategory && listCategory.map((category, index) => (
+                            data?.data && data?.data?.map((category, index) => (
                                 <div
-                                    key={`category-${category.id}`}
+                                    key={`category-${category?.id}`}
                                     className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
                                     onClick={() => queryKeyIsStateHome({ idTabActive: category })}
                                 >
@@ -93,8 +97,8 @@ const SectionIntroHome = () => {
                                     >
                                         <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
                                             <Image
-                                                src={category.icon}
-                                                alt={category.name}
+                                                src={category?.images}
+                                                alt={category?.name}
                                                 width={1080}
                                                 height={768}
                                                 className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
@@ -115,7 +119,7 @@ const SectionIntroHome = () => {
                         <div className='flex flex-col 3xl:gap-4 gap-2'>
                             <AnimateOnScroll index={0.8}>
                                 <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
-                                    Bộ lọc dầu xe ôtô
+                                    {isStateHome?.idTabActive?.title ?? ""}
                                 </div>
                             </AnimateOnScroll>
                             <AnimateOnScroll index={1}>
@@ -173,7 +177,7 @@ const SectionIntroHome = () => {
                 >
                     <AnimateOnScroll variants={variantSlideZoomOut}>
                         <Image
-                            src={`${isStateHome?.idTabActive?.image}`}
+                            src={`${isStateHome?.idTabActive?.images_items}`}
                             alt='oil'
                             width={800}
                             height={800}

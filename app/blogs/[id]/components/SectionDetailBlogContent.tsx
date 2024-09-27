@@ -1,10 +1,8 @@
 'use client'
-import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import { useResizeStore } from '@/stores/useResizeStore'
 import Image from 'next/image'
-import React from 'react'
 
-const SectionIdBlogContent = () => {
+const SectionDetailBlogContent = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
         <div className='flex flex-col items-center xl:gap-[60px] lg:gap-12 gap-8 '>
@@ -129,4 +127,4 @@ const SectionIdBlogContent = () => {
     )
 }
 
-export default SectionIdBlogContent
+export default SectionDetailBlogContent
