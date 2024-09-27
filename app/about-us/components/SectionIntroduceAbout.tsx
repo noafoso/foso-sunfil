@@ -39,7 +39,7 @@ const data = {
 const Sectionintroduce = () => {
     return (
         <div
-            className='flex flex-col gap-12 2xl:py-[124px] py-[84px]'
+            className='flex flex-col gap-12 custom-py-section'
             id="intro-about-us"
         >
             <div className="flex flex-col items-start gap-6 custom-padding-left-right">
@@ -54,7 +54,7 @@ const Sectionintroduce = () => {
                 />
             </div>
             <div className="grid lg:grid-cols-2 grid-cols-1 2xl:gap-[80px] xl:gap-16 lg:gap-5 gap-8 xxl:pr-[112px] xl:pr-[92px] lg:pr-[72px] lg:pl-0 px-4">
-                <div className="col-span-1 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px] overflow-hidden group">
+                <div className="col-span-1 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px] group">
                     <Image
                         src={data.image}
                         width={1280}

@@ -27,11 +27,19 @@ const SectionFormContact = () => {
     return (
         <div className='grid md:grid-cols-15 col-span-1 w-full lg:h-screen h-full'>
             <div className="md:col-span-5 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px]">
-                <Image src={'/example/contact/left-no.png'} width={1280} height={1024} alt='' className='size-full object-contain aspect-square drop-shadow-xl' />
+                <div className="aspect-square">
+                    <Image
+                        src={'/example/contact/left-no.png'}
+                        width={1280}
+                        height={1024}
+                        alt='contact'
+                        className='size-full object-contain drop-shadow-xl'
+                    />
+                </div>
             </div>
             <div className="md:col-span-10 bg-[#9EDAF4] relative flex flex-col 
             3xl:py-[104px] 2xl:py-[74px] xxl:py-[64px] xl:py-[64px] lg:py-[48px] md:py-[48px] py-[80px]  2xl:px-[145px] xxl:px-[104px] xl:px-[94px] lg:px-[88px] md:px-[64px] px-4
-            xxl:gap-[64px] xl:gap-[44px] gap-12 overflow-hidden">
+            xxl:gap-[64px] xl:gap-[44px] gap-12">
                 <h1 className='text-[#1D1D1D] 2xl:text-[40px] xxl:text-[40px] xl:text-4xl lg:text-4xl text-3xl font-bold text-center'>Thông tin <span className='text-[#007790]'>Liên hệ</span></h1>
                 <Form {...form}>
                     <form className="relative z-10 flex flex-col xl:gap-12 gap-10" onSubmit={(e: FormEvent<HTMLFormElement>) => {
@@ -234,7 +242,7 @@ const SectionFormContact = () => {
                     </form>
                 </Form>
 
-                <div className="absolute left-0 top-1/2  xxl:-translate-y-[42%] lg:-translate-y-[40%] md:-translate-y-[35%] -translate-y-[8%] size-full z-0">
+                <div className="absolute left-0 top-1/2  xxl:-translate-y-[42%] lg:-translate-y-[40%] md:-translate-y-[35%] -translate-y-[11.5%] size-full z-0">
                     <Image
                         src={isVisibleMobile ? "/background/contact/elip-mobi.png" : '/background/contact/elip.png'}
                         width={1280}

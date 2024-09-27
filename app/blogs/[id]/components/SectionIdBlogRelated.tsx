@@ -1,9 +1,8 @@
 'use client'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
-import BlogCard from '@/components/card/blog/BlogCard'
+import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig '
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { uuidv4 } from '@/lib/uuid'
-import React, { Fragment } from 'react'
 const data = [
     {
         id: uuidv4(),
@@ -72,7 +71,7 @@ const SectionIdBlogRelated = () => {
                 {data.map((e, index: number) => {
                     return (
                         <AnimateOnScroll index={index} key={e.id}>
-                            <BlogCard {...e} />
+                            <BlogCardVerticalBig {...e} />
                         </AnimateOnScroll>
                     )
                 })}
