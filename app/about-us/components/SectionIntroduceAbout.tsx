@@ -38,7 +38,10 @@ const data = {
 }
 const Sectionintroduce = () => {
     return (
-        <div className='flex flex-col gap-12'>
+        <div
+            className='flex flex-col gap-12 2xl:py-[124px] py-[84px]'
+            id="intro-about-us"
+        >
             <div className="flex flex-col items-start gap-6 custom-padding-left-right">
                 <TitleHighlight
                     title='Giới thiệu chung về VietHung Auto'

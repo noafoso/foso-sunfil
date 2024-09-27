@@ -47,8 +47,11 @@ const SectionFeelAbout = () => {
     const swiperRef = useRef<any>();
     const { isVisibleMobile } = useResizeStore()
     return (
-        <div className='bg-[url("/background/about/bg-slider.png")] lg:h-screen h-full bg-cover bg-center bg-no-repeat 
-        flex flex-col gap-12 justify-center lg:py-0 pt-[64px] pb-[96px] custom-padding-left-right'>
+        <div
+            className='bg-[url("/background/about/bg-slider.png")] lg:h-screen h-full bg-cover bg-center bg-no-repeat 
+        flex flex-col gap-12 justify-center lg:py-0 pt-[64px] pb-[96px] custom-padding-left-right'
+            id="feel-customer-about-us"
+        >
             <div className="flex flex-col items-start gap-6">
                 <TitleHighlight
                     title='Cảm nhận của khách hàng'

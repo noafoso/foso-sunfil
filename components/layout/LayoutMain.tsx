@@ -25,7 +25,9 @@ import '@smastrom/react-rating/style.css';
 
 import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
-import { usePathname } from 'next/navigation'
+import { usePathname, useSearchParams } from 'next/navigation'
+import { scrollToSection } from '@/utils/scroll/ScrollFunction'
+
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -36,6 +38,8 @@ const queryClient = new QueryClient({
 })
 
 const LayoutMain = ({ children }: { children: React.ReactNode }) => {
+    const sectionId = useSearchParams().get('sectionId')
+
     const pathname = usePathname()
 
     const [isMounted, setIsMounted] = useState<boolean>(false)
@@ -90,26 +94,33 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
         onResizeTablet,
     ]);
 
+    useEffect(() => {
+        if (sectionId) {
+            setTimeout(() => {
+                scrollToSection(sectionId)
+            }, 100);
+        }
+    }, [sectionId]);
+
     if (!isMounted) return null;
 
     return (
-        <Suspense>
-            <QueryClientProvider client={queryClient}>
-                <Toaster position="top-right" reverseOrder={false} />
-                <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
-                    <Header />
-                    <main className={`overflow-hidden size-full`}>
-                        {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
-                        <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                            {children}
-                        </AnimatePresence>
-                        <ButtonToTop />
-                        {!['/home', '/'].includes(pathname) && <Footer />}
-                    </main>
-                </div>
-                <ReactQueryDevtools initialIsOpen={true} />
-            </QueryClientProvider>
-        </Suspense>
+
+        <QueryClientProvider client={queryClient}>
+            <Toaster position="top-right" reverseOrder={false} />
+            <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
+                <Header />
+                <main className={`overflow-hidden size-full`}>
+                    {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
+                    <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                        {children}
+                    </AnimatePresence>
+                    <ButtonToTop />
+                    {!['/home', '/'].includes(pathname) && <Footer />}
+                </main>
+            </div>
+            <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
     )
 }
 

@@ -4,7 +4,7 @@ import SectionQuestionContact from './components/SectionQuestionContact'
 
 const Page = () => {
     return (
-        <div className='flex flex-col xl:pb-[104px] pb-[72px]'>
+        <div className='flex flex-col xl:pb-[104px] pb-[72px]' id="contact-us">
             <SectionIntroCommon
                 classNameTitle='md:max-w-full max-w-[60%]'
                 title='Liên hệ với chúng tôi'

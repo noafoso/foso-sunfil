@@ -153,6 +153,9 @@ menu {
         @apply xxl:text-[40px] md:text-[24px] text-[30px] xxl:leading-[50px] md:leading-[30px] leading-[40px];
     }
 
+    .text-title-common {
+        @apply 3xl:text-xl text-lg;
+    }
     .text-content-common {
         @apply 3xl:text-lg text-base;
     }

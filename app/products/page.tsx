@@ -31,12 +31,12 @@ const dataListProducts = [
         description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
         backgroundImage: "/example/products/product4.png"
     },
-    {
-        id: uuidv4(),
-        name: "Bộ lọc dầu trong cabin",
-        description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
-        backgroundImage: "/example/products/product1.png"
-    },
+    // {
+    //     id: uuidv4(),
+    //     name: "Bộ lọc dầu trong cabin",
+    //     description: "Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng.",
+    //     backgroundImage: "/example/products/product1.png"
+    // },
 ]
 
 const dataStyle = [
@@ -56,16 +56,16 @@ const dataStyle = [
         id: uuidv4(),
         highlightClassName: "w-[65%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
     },
-    {
-        id: uuidv4(),
-        highlightClassName: "w-[74%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
-    },
+    // {
+    //     id: uuidv4(),
+    //     highlightClassName: "w-[74%] xxl:top-7 top-6 -right-3 bg-[#6AD6EE]/65",
+    // },
 ]
 
 const Products = () => {
     const { isVisibleMobile } = useResizeStore()
     return (
-        <div className=''>
+        <div className='' id="page-product">
             <SectionIntroCommon
                 title="Sản phẩm"
                 description="Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng."

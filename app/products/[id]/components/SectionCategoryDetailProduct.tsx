@@ -2,7 +2,7 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import { uuidv4 } from '@/lib/uuid'
 import Image from 'next/image'
-import { useStateProductSlug } from '../../_state/useStateProductSlug'
+import { useStateProductDetail } from '../../_state/useStateProductDetail'
 
 const category = [
     {
@@ -31,8 +31,8 @@ const category = [
         image: '/icons/product/slug/category5.svg'
     }
 ]
-const SectionSlugCategory = () => {
-    const { isStateProductSlug, queryKeyIsStateProductSlug } = useStateProductSlug()
+const SectionCategoryDetailProduct = () => {
+    const { isStateProductDetail, queryKeyIsStateProductDetail } = useStateProductDetail()
     return (
         <AnimateOnScroll className='border-t-[#ED1B24] border-t-4 flex flex-col gap-6 p-6 bg-white select-none'>
             <div className="">
@@ -42,9 +42,9 @@ const SectionSlugCategory = () => {
                 {category.map(e => {
                     return (
                         <div
-                            onClick={() => queryKeyIsStateProductSlug({ idTabActive: e.id })}
+                            onClick={() => queryKeyIsStateProductDetail({ idTabActive: e.id })}
                             key={e.id}
-                            className={`${isStateProductSlug.idTabActive === e.id ? "bg-[#FFF8B3]" : "bg-transparent hover:bg-[#C0D2E424]"} 
+                            className={`${isStateProductDetail.idTabActive === e.id ? "bg-[#FFF8B3]" : "bg-transparent hover:bg-[#C0D2E424]"} 
                             flex flex-col justify-center cursor-pointer gap-2.5 md:px-4 px-3 3xl:py-14 2xl:py-10 xxl:py-9 xl:py-8 lg:py-7 md:py-10 py-4 size-full transition-all duration-150 ease-linear`}
                         >
                             <div className="mx-auto">
@@ -66,4 +66,4 @@ const SectionSlugCategory = () => {
     )
 }
 
-export default SectionSlugCategory
+export default SectionCategoryDetailProduct

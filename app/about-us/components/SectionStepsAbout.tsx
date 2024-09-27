@@ -28,7 +28,10 @@ const timelineData = [
 
 const SectionStepsAbout = () => {
     return (
-        <div className='lg:px-[54px] px-4 lg:py-[80px] py-[64px] bg-[url("/background/about/bg.jpg")] 3xl:bg-left bg-center bg-no-repeat  flex flex-col lg:gap-[80px] gap-10'>
+        <div
+            className='lg:px-[54px] px-4 lg:py-[80px] py-[64px] bg-[url("/background/about/bg.jpg")] 3xl:bg-left bg-center bg-no-repeat  flex flex-col lg:gap-[80px] gap-10'
+            id="history-about-us"
+        >
             <div className="flex flex-col lg:items-center items-start gap-6 ">
                 <TitleHighlight
                     title='Lịch sử hình thành công ty'
