@@ -1,16 +1,8 @@
+import { IResizeStore } from "@/types/resize/IResize";
 import { create } from "zustand";
 
 // resize responsive
-interface ResizeStore {
-    isVisibleMobile: boolean;
-    isVisibleTablet: boolean;
-    onResizeMobile: () => void;
-    onResizeTablet: () => void;
-    onCloseResizeMobile: () => void;
-    onCloseResizeTablet: () => void;
-}
-
-export const useResizeStore = create<ResizeStore>((set) => ({
+export const useResizeStore = create<IResizeStore>((set) => ({
     isVisibleMobile: false,
     isVisibleTablet: false,
     onResizeMobile: () => set({ isVisibleMobile: true }),

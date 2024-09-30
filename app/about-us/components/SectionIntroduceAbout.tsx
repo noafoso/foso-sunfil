@@ -1,6 +1,7 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
+import { Button } from '@/components/ui/button'
 import { uuidv4 } from '@/lib/uuid'
 import Image from 'next/image'
 
@@ -68,8 +69,13 @@ const Sectionintroduce = () => {
                         <h2 className='text-[#1A1B20CC]/80 text-content-common font-normal'>
                             {data.content}
                         </h2>
-                        <div className="uppercase text-[#1D1D1D] text-lg font-bold px-[14px] py-[12px] border-[2px] border-[#1D1D1D] rounded w-fit cursor-pointer">
-                            Liên hệ ngay
+                        <div className='w-full text-start'>
+                            <Button
+                                type="button"
+                                className='3xl:text-lg text-base h-full uppercase font-bold bg-white hover:bg-[#1D1D1D]/[8%] text-[#1D1D1D] border-2 border-[#1D1D1D] rounded-[4px] md:group-hover:translate-x-2 transition-all duration-300 ease-in-out'
+                            >
+                                Liên hệ ngay
+                            </Button>
                         </div>
                     </AnimateOnScroll>
                     <div className="flex lg:flex-nowrap flex-wrap items-center xxl:gap-12 xl:gap-8 lg:gap-4 gap-5 xl:justify-start lg:justify-start md:justify-between justify-start">

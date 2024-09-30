@@ -1,11 +1,5 @@
+import { IAuthState, IAuthStore } from "@/types/auth/IAuth";
 import { create } from "zustand";
-
-interface IAuthState {
-    otp: number;
-    setOtp: (key: number) => void;
-    form: any;
-    setForm: (key: any) => void;
-}
 
 export const useAuthState = create<IAuthState>((set) => ({
     otp: 0,
@@ -14,11 +8,6 @@ export const useAuthState = create<IAuthState>((set) => ({
     setTimeOtp: (time: number) => set({ otp: time }),
     setForm: (key: any) => set((state) => ({ form: key })),
 }));
-
-interface IAuthStore {
-    informationUser?: any;
-    setInformationUser: (key: any) => void;
-}
 
 export const useAuthStore = create<IAuthStore>((set) => ({
     informationUser: undefined,

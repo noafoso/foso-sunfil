@@ -109,6 +109,8 @@ menu {
 }
 
 .custom-tailwind {
+    input:-webkit-autofill {
+    }
     .custom-transition {
         @apply duration-300 transition-all ease-in-out;
     }

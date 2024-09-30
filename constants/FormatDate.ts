@@ -13,5 +13,7 @@ export const FORMAT_DATE = {
     DATE_TIME_SLASH_SHORT_FULL: "DD/MM/YYYY HH:mm A",
     TIME_SHORT: "HH:mm",
     YYYY: "HH:mm",
+    MMM_D_YYYY: "MMM D, YYYY",
     HH_MM_DD_MM_YY: "HH:mm DD-MM-YY",
+    DD_MM_YYYY_TEXT: "DD [tháng] MM YYYY",
 };
