@@ -1,6 +1,6 @@
 'use client'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
-import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig '
+import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { Skeleton } from '@/components/ui/skeleton'
 import { useBlogDetail } from '@/hooks/blog/useBlogDetail'

@@ -1,6 +1,6 @@
 'use client'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
-import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig ';
+import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig';
 import { Skeleton } from '@/components/ui/skeleton';
 import { useBlogList } from '@/hooks/blog/useBlogList';
 import { uuidv4 } from '@/lib/uuid';
