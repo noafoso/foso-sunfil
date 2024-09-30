@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { FORMAT_DATE } from '@/constants/FormatDate'
-import { useBlogHot } from '@/hooks/blog/useBlogHot'
+import { useBlogOutStanding } from '@/hooks/blog/useBlogOutStanding'
 import { momentCore } from '@/lib/moment'
 import ConvertToSlug from '@/utils/convertToSlug/ConvertToSlug'
 import Image from 'next/image'
@@ -13,7 +13,7 @@ const SectionBlogItem = () => {
 
     const { push } = useRouter()
 
-    const { data: blogHot, isLoading } = useBlogHot({ outstanding: "1", page: "1", limit: "1" })
+    const { data: blogHot, isLoading } = useBlogOutStanding({ outstanding: "1", page: "1", limit: "1" })
 
     if (isLoading) {
 
