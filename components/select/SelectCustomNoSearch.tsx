@@ -15,9 +15,10 @@ import { cn } from "@/lib/utils"
 interface Data {
     id: string
     name: string
-    value: string // Added value property to match usage
-    label?: string // Added optional label property to match usage
-    title?: string // Added optional title property to match usage
+    value: string
+    label?: string
+    title?: string
+    sub?: boolean
 }
 
 type SelectCustomProps = {
@@ -35,16 +36,13 @@ const SelectCustomNoSearch: React.FC<SelectCustomProps> = ({ classNameTrigger, d
             value={value}
             onValueChange={(value: string) => { handleSelectChange(value) }} // Fixed type of value
         >
-            <SelectTrigger className={`${classNameTrigger} h-auto text-responsive min-w-[200px] focus:ring-0 placeholder-[#000000]  focus:ring-offset-0`}>
+            <SelectTrigger className={`${classNameTrigger} ${selectedItem ? "py-4" : ""} h-auto text-responsive min-w-[200px] focus:ring-0 placeholder-[#000000]  focus:ring-offset-0`}>
                 {
-                    selectedItem?.label ?
-                        <>
-                            {selectedItem?.label}
-                        </>
+                    selectedItem?.label
+                        ?
+                        selectedItem?.label
                         :
-                        <div className='text-[#000000] py-2 font-medium'>
-                            {placeholder}
-                        </div>
+                        <div className='text-[#000000] py-2 font-medium'>{placeholder} </div>
                 }
             </SelectTrigger>
             <SelectContent>
@@ -61,9 +59,11 @@ const SelectCustomNoSearch: React.FC<SelectCustomProps> = ({ classNameTrigger, d
                                         {item?.label}
                                     </div>
                                     <div className={cn("flex items-center gap-2")}>
-                                        <h1 className="text-wrap">
-                                            {item?.title}
-                                        </h1>
+                                        {item?.sub &&
+                                            <h1 className="text-wrap">
+                                                {item?.title}
+                                            </h1>
+                                        }
                                         <Check className={cn("size-4 text-[#0D8B9E]", item.value === value ? "block" : "hidden")} />
                                     </div>
                                 </div>

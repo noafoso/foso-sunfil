@@ -1,21 +1,40 @@
 'use client'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useBlogDetail } from '@/hooks/blog/useBlogDetail'
 import { useResizeStore } from '@/stores/useResizeStore'
 import Image from 'next/image'
+import { useParams } from 'next/navigation'
 
 const SectionDetailBlogContent = () => {
+    const { id } = useParams()
+
     const { isVisibleMobile } = useResizeStore()
+
+    const { data, isLoading } = useBlogDetail(id as string)
+
     return (
         <div className='flex flex-col items-center xl:gap-[60px] lg:gap-12 gap-8 '>
             <div className="xxl:px-[112px] xl:px-[92px] lg:px-[72px] px-0">
-                <Image
-                    src={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
-                    alt={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
-                    className='aspect-5/3 object-cover lg:h-[700px] md:h-[450px] h-[278px]'
-                    width={1280}
-                    height={1024}
-                />
+                {
+                    isLoading
+                        ?
+                        <Skeleton className='aspect-5/3 object-cover lg:h-[700px] md:h-[450px] h-[278px] w-full' />
+                        :
+                        <Image
+                            // src={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
+                            // alt={isVisibleMobile ? '/example/blogs/slug/1mobi.svg' : '/example/blogs/slug/1.svg'}
+                            src={data?.data?.featured_image}
+                            alt={data?.data?.title}
+                            className='aspect-5/3 object-cover lg:h-[700px] md:h-[450px] h-[278px]'
+                            width={1280}
+                            height={1024}
+                        />
+                }
             </div>
-            <div className="flex flex-col items-center xl:gap-12 lg:gap-10 gap-8 xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
+            <div className="xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
+                <span dangerouslySetInnerHTML={{ __html: data?.data?.content ?? '' }}></span>
+            </div>
+            {/* <div className="flex flex-col items-center xl:gap-12 lg:gap-10 gap-8 xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
                 <div className="flex flex-col gap-4">
                     <h1 className='text-[#23262F] font-bold text-2xl'>Kính gửi Quý Đối tác,</h1>
                     <div className="text-[#1A1B20CC] font-normal text-base flex flex-col gap-4">
@@ -122,7 +141,7 @@ const SectionDetailBlogContent = () => {
                     </div>
                 </div>
 
-            </div>
+            </div> */}
         </div>
     )
 }

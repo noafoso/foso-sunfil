@@ -1,9 +1,6 @@
 "use client";
+import { IUseCookie } from "@/types/auth/IAuth";
 import Cookies from "js-cookie";
-interface IUseCookie {
-    key: "token_viethung" | string;
-    initialValue?: string;
-}
 
 const useCookieStore = (key: IUseCookie["key"] = "token_viethung", initialValue?: IUseCookie["initialValue"]) => {
     const setCookie = (value: string, options?: Cookies.CookieAttributes) => {

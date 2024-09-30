@@ -2,7 +2,11 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig '
 import TitleHighlight from '@/components/title/TitleHighlight'
+import { Skeleton } from '@/components/ui/skeleton'
+import { useBlogDetail } from '@/hooks/blog/useBlogDetail'
+import { useBlogList } from '@/hooks/blog/useBlogList'
 import { uuidv4 } from '@/lib/uuid'
+import { useParams } from 'next/navigation'
 const data = [
     {
         id: uuidv4(),
@@ -60,6 +64,21 @@ const data = [
     },
 ]
 const SectionDetailBlogRelated = () => {
+    const { id } = useParams()
+
+    const { data } = useBlogDetail(id as string)
+
+    const { data: dataRelated, isLoading: isLoadingRelated } = useBlogList(
+        {
+            id_detail: id,
+            post_category_id: data?.data?.post_category_id,
+            page: "1",
+            limit: "3"
+        },
+        !!data?.data?.post_category_id && !!id
+    )
+
+    const flatDataRelated = dataRelated?.pages?.flatMap((page) => page?.new) ?? []
     return (
         <div className='flex flex-col lg:gap-12 gap-8 custom-padding-left-right'>
             <TitleHighlight
@@ -68,13 +87,37 @@ const SectionDetailBlogRelated = () => {
                 w-[55%] bg-[#6AD6EEA6]/65'
             />
             <div className="grid lg:grid-cols-3 grid-cols-1 xxl:gap-8 gap-6">
-                {data.map((e, index: number) => {
-                    return (
-                        <AnimateOnScroll index={index} key={e.id}>
-                            <BlogCardVerticalBig {...e} />
-                        </AnimateOnScroll>
-                    )
-                })}
+                {isLoadingRelated ?
+                    [...Array(3)].map((_, index) => {
+                        return (
+                            <div key={index} className="border border-[#DCDFE4] col-span-1 w-full rounded-2xl p-4 flex flex-col lg:gap-8 gap-6 h-full">
+                                <div className="overflow-hidden rounded-xl w-full aspect-4/3">
+                                    <Skeleton className="w-[380px] h-full rounded-xl" />
+                                </div>
+                                <div className="flex flex-col justify-between gap-4 3xl:h-[32%] 2xl:h-[40%] lg:h-[38%]">
+                                    <div className="flex flex-col gap-4">
+                                        <div className="flex items-center gap-2">
+                                            <Skeleton className="h-6 w-16 rounded-md" />
+                                        </div>
+                                        <Skeleton className="h-8 w-3/4 rounded-md" />
+                                    </div>
+
+                                    <div className="flex justify-start items-center gap-3">
+                                        <Skeleton className="w-8 h-8 rounded-full" />
+                                        <Skeleton className="h-6 w-20 rounded-md" />
+                                    </div>
+                                </div>
+                            </div>
+                        )
+                    })
+                    :
+                    flatDataRelated.map((e, index: number) => {
+                        return (
+                            <AnimateOnScroll index={index} key={e.id}>
+                                <BlogCardVerticalBig {...e} />
+                            </AnimateOnScroll>
+                        )
+                    })}
             </div>
         </div>
     )

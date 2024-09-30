@@ -6,6 +6,7 @@ export interface IListCategories {
     description: string | null;
     content: string | null;
     images_items: string | null;
+    images_items_detail: string | null;
     title: string;
 }
 export interface IResponCategoriesHome {
