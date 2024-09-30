@@ -1,4 +1,4 @@
-export interface ILiscCategoriesHome {
+export interface IListCategories {
     id: string;
     name: string;
     key_items: string;
@@ -9,6 +9,6 @@ export interface ILiscCategoriesHome {
     title: string;
 }
 export interface IResponCategoriesHome {
-    data: ILiscCategoriesHome[];
+    data: IListCategories[];
     result: boolean;
 }
