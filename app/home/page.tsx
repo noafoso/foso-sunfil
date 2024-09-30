@@ -1,12 +1,31 @@
 'use client'
 
-import React from 'react'
+import React, { useEffect } from 'react'
 import SectionIntroHome from './components/SectionIntroHome'
 import SectionSecondHome from './components/SectionSecondHome'
 import { useResizeStore } from '@/stores/useResizeStore'
+import { useGetListCategories } from '@/hooks/categories/useGetListCategories'
+import { useStateHome } from './_state/useStateHome'
 
 const Home = () => {
+    const { isStateHome, queryKeyIsStateHome } = useStateHome()
+
     const { isVisibleMobile } = useResizeStore()
+
+    const { data: listCategories } = useGetListCategories()
+
+    useEffect(() => {
+        console.log('check');
+        if (listCategories) {
+            console.log('check');
+
+            queryKeyIsStateHome({ idTabActive: listCategories[0] })
+        }
+    }, [listCategories])
+
+    console.log('isStateHome', isStateHome);
+    console.log('listCategories z', listCategories);
+
     return (
         <div className='w-full relative lg:h-screen md:h-dvh'>
             <div className='pt-[112px] flex flex-col justify-between md:gap-0 gap-16 3xl:pb-8 2xl:pb-6 pb-3 h-full relative z-10'>

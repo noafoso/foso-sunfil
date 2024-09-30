@@ -1,13 +1,18 @@
 import apiCategories from "@/services/categories/categories.services";
-import { IResponCategoriesHome } from "@/types/categories/ICategoryes";
+import { IListCategories, IResponCategoriesHome } from "@/types/categories/ICategoryes";
 import { useQuery } from "@tanstack/react-query";
 
 export const useGetListCategories = () => {
-    return useQuery<IResponCategoriesHome, Error>({
-        queryKey: ["getCategory"],
-        queryFn: async () => {
-            const { data } = await apiCategories.getCategory();
-            return data;
-        },
+    const fetchListCategories = async () => {
+        const { data } = await apiCategories.getListCategories();
+
+        if (data && data.result) {
+            return data.data;
+        }
+    }
+
+    return useQuery<IListCategories[], Error>({
+        queryKey: ["getListCategories"],
+        queryFn: fetchListCategories,
     });
 };

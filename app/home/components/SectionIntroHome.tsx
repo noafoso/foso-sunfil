@@ -8,6 +8,8 @@ import { motion } from 'framer-motion'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/Variants-Animation';
 import { useGetListCategories } from '@/hooks/categories/useGetListCategories';
+import { useQueryClient } from '@tanstack/react-query';
+import { IListCategories } from '@/types/categories/ICategoryes';
 
 interface ICategory {
     id: string;
@@ -70,14 +72,11 @@ const listStyleContent = [
 ]
 
 const SectionIntroHome = () => {
-    const { data } = useGetListCategories()
+    const queryClient = useQueryClient()
 
     const { isStateHome, queryKeyIsStateHome } = useStateHome()
 
-    useEffect(() => {
-        if (!data?.data) return
-        queryKeyIsStateHome({ idTabActive: data?.data[0] })
-    }, [data])
+    const dataListCategory = queryClient.getQueryData(["getListCategories"]) as IListCategories[]
 
     return (
         <div className='grid grid-cols-12'>
@@ -85,40 +84,45 @@ const SectionIntroHome = () => {
                 <div className='grid grid-cols-6'>
                     <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
                         {
-                            data?.data && data?.data?.map((category, index) => (
-                                <div
-                                    key={`category-${category?.id}`}
-                                    className={`${isStateHome?.idTabActive?.id === category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
-                                    onClick={() => queryKeyIsStateHome({ idTabActive: category })}
-                                >
-                                    <AnimateOnScroll
-                                        index={index}
-                                        variants={variantSlideLeft}
-                                    >
-                                        <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
-                                            <Image
-                                                src={category?.images}
-                                                alt={category?.name}
-                                                width={1080}
-                                                height={768}
-                                                className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
-                                                3xl:size-12 size-8 object-contain custom-transition`}
-                                            />
+                            dataListCategory && dataListCategory?.map((category, index) => {
+                                console.log('category :', category);
+                                console.log('isStateHome?.idTabActive?.id :', isStateHome?.idTabActive?.id);
 
-                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} 3xl:text-base text-sm custom-transition`}>
-                                                {category?.name ?? ""}
+                                return (
+                                    <div
+                                        key={`category-${category?.id}`}
+                                        className={`${isStateHome?.idTabActive?.id == category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
+                                        onClick={() => queryKeyIsStateHome({ idTabActive: category })}
+                                    >
+                                        <AnimateOnScroll
+                                            index={index}
+                                            variants={variantSlideLeft}
+                                        >
+                                            <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
+                                                <Image
+                                                    src={category?.images}
+                                                    alt={category?.name}
+                                                    width={1080}
+                                                    height={768}
+                                                    className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
+                                                3xl:size-12 size-8 object-contain custom-transition`}
+                                                />
+
+                                                <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} 3xl:text-base text-sm custom-transition`}>
+                                                    {category?.name ?? ""}
+                                                </div>
                                             </div>
-                                        </div>
-                                    </AnimateOnScroll>
-                                </div>
-                            ))
+                                        </AnimateOnScroll>
+                                    </div>
+                                )
+                            })
                         }
                     </div>
 
                     <div className='md:col-span-5 col-span-6 flex flex-col justify-center 3xl:gap-8 gap-4 3xl:ml-20 xl:ml-16 md:ml-10 md:mr-0 mx-4'>
                         <div className='flex flex-col 3xl:gap-4 gap-2'>
                             <AnimateOnScroll index={0.8}>
-                                <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[70%] 2xl:max-w-[80%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
+                                <div className={`${montserrat_sans.className} 3xl:text-[88px] 2xl:text-[82px] xl:text-[76px] lg:text-[68px] text-[60px] 2xl:leading-[100px] xl:leading-[90px] lg:leading-[80px] leading-[70px] 3xl:max-w-[80%] 2xl:max-w-[90%] xl:max-w-full lg:max-w-[85%] max-w-full font-extrabold`}>
                                     {isStateHome?.idTabActive?.title ?? ""}
                                 </div>
                             </AnimateOnScroll>
