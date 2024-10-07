@@ -5,7 +5,7 @@ interface IInput {
     selected: Record<string, any>;
     open: boolean;
 }
-interface IFilterAppication {
+interface IFilterApplication {
     branch?: IInput;
     class?: IInput;
     model?: IInput;
@@ -15,15 +15,16 @@ interface IFilterAppication {
 }
 interface InitialStateStore {
     isStateCategories: {
+        idOpenAccordion: string[] | null;
         idTabActive: string; // Specify type
         filterProduct: {
             value: {
                 text: string;
             };
         };
-        filterAppication: IFilterAppication;
+        filterApplication: IFilterApplication;
     };
-    queryKeyIsStateHome: (key: Partial<InitialStateStore["isStateCategories"]>) => void;
+    queryKeyIsStateCategories: (key: Partial<InitialStateStore["isStateCategories"]>) => void;
 }
 
 // Factory function to create IInput defaults to avoid repetition
@@ -35,13 +36,14 @@ const createDefaultInput = (): IInput => ({
 
 export const useStateCategories = create<InitialStateStore>((set) => ({
     isStateCategories: {
+        idOpenAccordion: null,
         idTabActive: "1",
         filterProduct: {
             value: {
                 text: "",
             },
         },
-        filterAppication: {
+        filterApplication: {
             branch: createDefaultInput(),
             category: createDefaultInput(),
             model: createDefaultInput(),
@@ -50,7 +52,7 @@ export const useStateCategories = create<InitialStateStore>((set) => ({
             body: createDefaultInput(),
         },
     },
-    queryKeyIsStateHome: (key: any) =>
+    queryKeyIsStateCategories: (key: any) =>
         set((state) => ({
             ...state,
             isStateCategories: {

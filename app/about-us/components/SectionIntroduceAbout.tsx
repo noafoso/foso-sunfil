@@ -43,7 +43,7 @@ const Sectionintroduce = () => {
             className='flex flex-col gap-12 custom-py-section'
             id="intro-about-us"
         >
-            <div className="flex flex-col items-start gap-6 custom-padding-left-right">
+            <div className="flex flex-col items-start gap-6 custom-px-responsive">
                 <TitleHighlight
                     title='Giới thiệu chung về VietHung Auto'
                     titleClassName='text-start'

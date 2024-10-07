@@ -80,7 +80,7 @@ const SectionDetailBlogRelated = () => {
 
     const flatDataRelated = dataRelated?.pages?.flatMap((page) => page?.new) ?? []
     return (
-        <div className='flex flex-col lg:gap-12 gap-8 custom-padding-left-right'>
+        <div className='flex flex-col lg:gap-12 gap-8 custom-px-responsive'>
             <TitleHighlight
                 title='Bài viết liên quan'
                 highlightClassName='md:-right-2 right-0 lg:w-[57%]  md:w-[58%] 

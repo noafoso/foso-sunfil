@@ -84,38 +84,33 @@ const SectionIntroHome = () => {
                 <div className='grid grid-cols-6'>
                     <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
                         {
-                            dataListCategory && dataListCategory?.map((category, index) => {
-                                console.log('category :', category);
-                                console.log('isStateHome?.idTabActive?.id :', isStateHome?.idTabActive?.id);
-
-                                return (
-                                    <div
-                                        key={`category-${category?.id}`}
-                                        className={`${isStateHome?.idTabActive?.id == category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
-                                        onClick={() => queryKeyIsStateHome({ idTabActive: category })}
+                            dataListCategory && dataListCategory?.map((category, index) => (
+                                <div
+                                    key={`category-${category?.id}`}
+                                    className={`${isStateHome?.idTabActive?.id == category?.id ? "border-[#ED1B24]" : "border-white hover:border-[#ED1B24]"} w-full cursor-pointer md:border-l-4 md:border-t-0 border-t-4 custom-transition group`}
+                                    onClick={() => queryKeyIsStateHome({ idTabActive: category })}
+                                >
+                                    <AnimateOnScroll
+                                        index={index}
+                                        variants={variantSlideLeft}
                                     >
-                                        <AnimateOnScroll
-                                            index={index}
-                                            variants={variantSlideLeft}
-                                        >
-                                            <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
-                                                <Image
-                                                    src={category?.images}
-                                                    alt={category?.name}
-                                                    width={1080}
-                                                    height={768}
-                                                    className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
+                                        <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
+                                            <Image
+                                                src={category?.images}
+                                                alt={category?.name}
+                                                width={1080}
+                                                height={768}
+                                                className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
                                                 3xl:size-12 size-8 object-contain custom-transition`}
-                                                />
+                                            />
 
-                                                <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} 3xl:text-base text-sm custom-transition`}>
-                                                    {category?.name ?? ""}
-                                                </div>
+                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} text-sm custom-transition`}>
+                                                {category?.name ?? ""}
                                             </div>
-                                        </AnimateOnScroll>
-                                    </div>
-                                )
-                            })
+                                        </div>
+                                    </AnimateOnScroll>
+                                </div>
+                            ))
                         }
                     </div>
 

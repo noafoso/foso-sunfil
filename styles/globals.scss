@@ -104,6 +104,7 @@ menu {
         @apply border-border;
     }
     body {
+        font-family: "Space Grotesk", "Arial", sans-serif;
         @apply bg-background text-foreground;
     }
 }
@@ -135,7 +136,7 @@ menu {
         @apply 3xl:text-4xl xl:text-3xl text-2xl font-bold;
     }
 
-    .custom-padding-left-right {
+    .custom-px-responsive {
         @apply xxl:px-[112px] xl:px-[92px] lg:px-[72px] px-4;
     }
     // .custom-padding-right {
@@ -160,9 +161,17 @@ menu {
     }
 
     .text-title-common {
-        @apply 3xl:text-xl text-lg;
+        @apply 3xl:text-xl xl:text-lg md:text-base text-lg;
     }
     .text-content-common {
-        @apply 3xl:text-lg text-base;
+        @apply 3xl:text-lg xl:text-base md:text-sm text-base;
+    }
+
+    .text-title-detail-product {
+        @apply 3xl:text-[32px] xl:text-[28px] md:text-[24px] text-[32px] 3xl:leading-[48px] xl:leading-[44px] md:leading-[30px] leading-[48px];
+    }
+
+    .text-title-common-product {
+        @apply 3xl:text-[26px] xl:text-[24px] md:text-[22px] text-[26px];
     }
 }

@@ -65,41 +65,49 @@ const dataStyle = [
 
 const Products = () => {
     const { data: dataListProducts, isLoading } = useGetListCategories()
+
     return (
         <div className='' id="page-product">
             <SectionIntroCommon
                 title="Sản phẩm"
                 description="Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng."
             />
-            {isLoading ?
-                [...Array(4)].map((_, index) => {
-                    return (
-                        <div key={index} className="grid grid-cols-12 animate-pulse">
-                            <div className={`${index % 2 !== 0 ? "lg:order-2" : ""} lg:col-span-6 col-span-12 overflow-hidden 3xl:h-[500px] xxl:h-[400px] md:h-[365px] h-[300px]`}>
-                                <Skeleton className="w-full h-full rounded-none" />
-                            </div>
-                            <div className={`lg:col-span-6 col-span-12 flex flex-col justify-center relative lg:h-full md:h-[365px] h-[300px]`}>
-                                <div className="space-y-4 px-4">
-                                    <Skeleton className="h-8 w-3/4" />
-                                    <Skeleton className="h-4 w-full" />
-                                    <Skeleton className="h-4 w-full" />
-                                    <Skeleton className="h-4 w-1/2" />
+            {
+                isLoading ?
+                    (
+                        [...Array(4)].map((_, index) => {
+                            return (
+                                <div key={index} className="grid grid-cols-12 animate-pulse">
+                                    <div className={`${index % 2 !== 0 ? "lg:order-2" : ""} lg:col-span-6 col-span-12 overflow-hidden 3xl:h-[500px] xxl:h-[400px] md:h-[365px] h-[300px]`}>
+                                        <Skeleton className="w-full h-full rounded-none" />
+                                    </div>
+                                    <div className={`lg:col-span-6 col-span-12 flex flex-col justify-center relative lg:h-full md:h-[365px] h-[300px]`}>
+                                        <div className="space-y-4 px-4">
+                                            <Skeleton className="h-8 w-3/4" />
+                                            <Skeleton className="h-4 w-full" />
+                                            <Skeleton className="h-4 w-full" />
+                                            <Skeleton className="h-4 w-1/2" />
+                                        </div>
+                                    </div>
                                 </div>
-                            </div>
-                        </div>
+                            )
+                        })
                     )
-                })
-                : dataListProducts?.map((item, index) => (
-                    <React.Fragment key={`product-${item.id}`}>
-                        <SectionCategoryCommon
-                            item={item}
-                            backgroundImage={item.images_items_detail ?? ''}
-                            index={index % 2 !== 0}
-                            description={item.description ?? ''}
-                            highlightClassName={dataStyle[index]?.highlightClassName}
-                        />
-                    </React.Fragment>
-                ))}
+                    :
+                    (
+                        dataListProducts && dataListProducts?.map((item, index) => (
+                            <React.Fragment key={`product-${item.id}`}>
+                                <SectionCategoryCommon
+                                    item={item}
+                                    backgroundImage={item.images_items_detail ?? ''}
+                                    index={index % 2 !== 0}
+                                    description={item.description ?? ''}
+                                    highlightClassName={dataStyle[index]?.highlightClassName}
+                                />
+                            </React.Fragment>
+                        ))
+                    )
+            }
         </div>
     )
 }

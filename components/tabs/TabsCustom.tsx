@@ -1,10 +1,11 @@
 import { Tabs, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
 import React from "react";
 type Props = {
     data: any[],
     tabActive: string,
-    children?: React.ReactNode,
     setTabActive: (value: string) => void,
+    children?: React.ReactNode,
     classNameTabsList?: string,
     classNameTrigger?: string
 }
@@ -23,10 +24,10 @@ export const TabsCustom = ({ data, children, tabActive, setTabActive, classNameT
                 {
                     data && data?.length > 0 && data?.map((tab) => (
                         <TabsTrigger
+                            key={`tab-${tab.id}`}
                             value={tab.id}
-                            className={`space-x-1 3xl:text-lg py-3 transition-all duration-150 ease-in-out text-base lg:px-9 px-3 md:w-fit w-full rounded-none font-semibold 
-                                    hover:text-transparent/80 data-[state=active]:border-t-4 border-t-4 border-transparent bg-[#F2F2F2] data-[state=active]:border-[#ED1B24]  data-[state=active]:font-bold 
-                                    data-[state=active]:text-[#000000] data-[state=active]:bg-[#FFFFFF] data-[state=active]:shadow-none text-[#000000A8]`}
+                            className={`${cn(classNameTrigger)} space-x-1 3xl:text-lg text-base lg:px-9 px-3 py-3 md:w-fit w-full bg-[#F2F2F2] transition-all duration-300 ease-in-out border-t-4 border-transparent rounded-none hover:text-transparent/80 hover:border-[#ED1B24]
+                                    data-[state=active]:border-t-4 data-[state=active]:border-[#ED1B24] data-[state=active]:text-[#000000] data-[state=active]:bg-[#FFFFFF] data-[state=active]:shadow-none text-[#000000A8]`}
                         >
                             {tab.name}
                         </TabsTrigger>

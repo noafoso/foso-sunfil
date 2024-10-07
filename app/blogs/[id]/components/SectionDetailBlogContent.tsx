@@ -31,10 +31,10 @@ const SectionDetailBlogContent = () => {
                         />
                 }
             </div>
-            <div className="xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
+            <div className="xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-px-responsive">
                 <span dangerouslySetInnerHTML={{ __html: data?.data?.content ?? '' }}></span>
             </div>
-            {/* <div className="flex flex-col items-center xl:gap-12 lg:gap-10 gap-8 xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-padding-left-right">
+            {/* <div className="flex flex-col items-center xl:gap-12 lg:gap-10 gap-8 xxl:max-w-[73%] xl:max-w-[80%] lg:max-w-[93%] max-w-[100%] custom-px-responsive">
                 <div className="flex flex-col gap-4">
                     <h1 className='text-[#23262F] font-bold text-2xl'>Kính gửi Quý Đối tác,</h1>
                     <div className="text-[#1A1B20CC] font-normal text-base flex flex-col gap-4">

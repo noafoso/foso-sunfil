@@ -20,10 +20,10 @@ const SectionCategoriesFilterApplication = () => {
         }
     })
 
-    const { queryKeyIsStateHome, isStateCategories } = useStateCategories()
+    const { queryKeyIsStateCategories, isStateCategories } = useStateCategories()
 
     const onSubmit = (data: any) => {
-        // queryKeyIsStateHome({
+        // queryKeyIsStateCategories({
         //     filterProduct: {
         //         value: {
         //             text: data?.search
@@ -34,12 +34,15 @@ const SectionCategoriesFilterApplication = () => {
     }
 
     return (
-        <div className='bg-white xxl:p-9 p-4'>
+        <div className='bg-white xxl:p-9 p-6'>
             <Form {...form}>
-                <form className="grid xl:grid-cols-12 lg:grid-cols-6 grid-cols-1 xxl:gap-4 gap-2" onSubmit={(e: FormEvent<HTMLFormElement>) => {
-                    e.preventDefault()
-                    form.handleSubmit((data) => onSubmit(data))()
-                }}>
+                <form
+                    className="grid xl:grid-cols-12 lg:grid-cols-6 grid-cols-1 xxl:gap-4 gap-2"
+                    onSubmit={(e: FormEvent<HTMLFormElement>) => {
+                        e.preventDefault()
+                        form.handleSubmit((data) => onSubmit(data))()
+                    }}
+                >
                     <FormField
                         control={form.control}
                         name="brand"
@@ -52,8 +55,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     branch: {
                                                         value: "",
                                                         selected: {},
@@ -64,8 +67,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Brand'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.branch?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.branch?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
@@ -74,7 +77,6 @@ const SectionCategoriesFilterApplication = () => {
                             );
                         }}
                     />
-
 
                     <FormField
                         control={form.control}
@@ -88,8 +90,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     class: {
                                                         value: "",
                                                         selected: {},
@@ -100,8 +102,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Class'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.class?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.class?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.class?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.class?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
@@ -110,7 +112,6 @@ const SectionCategoriesFilterApplication = () => {
                             );
                         }}
                     />
-
 
                     <FormField
                         control={form.control}
@@ -124,8 +125,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     model: {
                                                         value: "",
                                                         selected: {},
@@ -136,8 +137,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Model'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.model?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.model?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.model?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.model?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
@@ -159,8 +160,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     year: {
                                                         value: "",
                                                         selected: {},
@@ -171,8 +172,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Year'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[35%] lg:min-w-[35%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.year?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.year?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[35%] lg:min-w-[35%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.year?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.year?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
@@ -181,7 +182,6 @@ const SectionCategoriesFilterApplication = () => {
                             );
                         }}
                     />
-
 
                     <FormField
                         control={form.control}
@@ -195,8 +195,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     engine: {
                                                         value: "",
                                                         selected: {},
@@ -207,8 +207,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Engine'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.engine?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.engine?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.engine?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.engine?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
@@ -217,7 +217,6 @@ const SectionCategoriesFilterApplication = () => {
                             );
                         }}
                     />
-
 
                     <FormField
                         control={form.control}
@@ -231,8 +230,8 @@ const SectionCategoriesFilterApplication = () => {
                                             onValueChange={() => { }}
                                             selected={field.value}
                                             options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateHome({
-                                                filterAppication: {
+                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
+                                                filterApplication: {
                                                     body: {
                                                         value: "",
                                                         selected: {},
@@ -243,8 +242,8 @@ const SectionCategoriesFilterApplication = () => {
                                             title='Body'
                                             placeholder='Search'
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterAppication.body?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterAppication.body?.open ? 'border-[#57A4FE]' : ''}`}
+                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.body?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
+                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.body?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>
