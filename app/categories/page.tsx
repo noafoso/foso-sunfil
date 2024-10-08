@@ -9,6 +9,8 @@ import SectionInfoProduct from "./components/product/SectionInfoProduct"
 import SectionCategoriesFilterProduct from "./components/tab/SectionCategoriesFilterProduct"
 import SectionCategoriesFilterChassis from "./components/tab/SectionCategoriesFilterChassis"
 import SectionCategoriesFilterApplication from "./components/tab/SectionCategoriesFilterApplication"
+import { useGetCodeProductAbsolute } from "@/hooks/categories/useGetCodeProductAbsolute"
+import { useSearchParams } from "next/navigation"
 
 const tabContent = [
     {
@@ -41,13 +43,23 @@ const tabList = [
 ]
 
 const Categories = () => {
+    const codeParam = useSearchParams().get('code')
+
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
+
+    const {
+        data: dataCodeProduct,
+        isFetching: isFetchingDataCodeProduct
+    } = useGetCodeProductAbsolute(codeParam ?? "")
+
+    console.log('codeParam', codeParam);
+    console.log('dataCodeProduct', dataCodeProduct);
 
     return (
         <div
             id="categories"
             className='custom-px-responsive pt-[140px] lg:pb-[127px] pb-[61px] lg:bg-[url("/background/product/slug/bg.svg")] bg-[url("/background/product/slug/bg-mobi.svg")] bg-top bg-cover bg-no-repeat
-            flex flex-col items-start 3xl:gap-12 gap-10 w-full h-full'
+            flex flex-col items-start 3xl:gap-12 gap-10 w-full h-full min-h-screen'
         >
             <div className='3xl:space-y-8 space-y-6 w-full'>
                 <TitleDash
@@ -71,8 +83,32 @@ const Categories = () => {
                     {tabContent.find((item: any) => item?.id === isStateCategories?.idTabActive)?.content ?? ""}
                 </div>
             </div>
-
-            <SectionInfoProduct />
+            {
+                isFetchingDataCodeProduct ?
+                    (<>Loading...</>)
+                    :
+                    (
+                        dataCodeProduct && codeParam ?
+                            (
+                                <SectionInfoProduct />
+                            )
+                            :
+                            (
+                                <>
+                                    {
+                                        codeParam ?
+                                            <div className='bg-white md:p-6 p-4 w-full'>
+                                                <div className='text-content-common text-[#000000]/[66%] font-normal'>
+                                                    No Product found for seach term <span className='font-bold'>{codeParam}</span>
+                                                </div>
+                                            </div>
+                                            :
+                                            <div className='' />
+                                    }
+                                </>
+                            )
+                    )
+            }
         </div >
     )
 }

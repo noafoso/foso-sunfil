@@ -20,9 +20,7 @@ const SectionCategoriesFilterChassis = () => {
     const onSubmit = (data: any) => {
         queryKeyIsStateCategories({
             filterProduct: {
-                value: {
-                    text: data?.search
-                }
+                value: data?.search
             }
         })
         toastCore.error('Tính năng đang phát triển!')
@@ -60,9 +58,7 @@ const SectionCategoriesFilterChassis = () => {
                                                         onClick={() => {
                                                             queryKeyIsStateCategories({
                                                                 filterProduct: {
-                                                                    value: {
-                                                                        text: ''
-                                                                    }
+                                                                    value: ''
                                                                 }
                                                             })
                                                             form.reset()

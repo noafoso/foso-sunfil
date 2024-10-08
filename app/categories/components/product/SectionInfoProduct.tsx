@@ -7,11 +7,13 @@ import { Separator } from '@/components/ui/separator';
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 import { Accordion, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 
-import { dataDetailProduct } from '../../_data/dataDetailProduct';
 import { useStateCategories } from '../../_state/useStateCategories';
 
 import { IoIosArrowDown } from 'react-icons/io';
 import { useResizeStore } from '@/stores/useResizeStore';
+import { useSearchParams } from 'next/navigation';
+import { useQueryClient } from '@tanstack/react-query';
+import { IDetailCodeProduct } from '@/types/products/IProducts';
 
 type Props = {}
 
@@ -64,7 +66,11 @@ const dataHeader = [
 ]
 
 const SectionInfoProduct = (props: Props) => {
-    console.log('dataDetailProduct', dataDetailProduct);
+    const queryClient = useQueryClient()
+    const codeParam = useSearchParams().get('code')
+
+
+    const dataCodeProduct = queryClient.getQueryData(["getCodeProductAbsolute", codeParam]) as IDetailCodeProduct
 
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
     const { isVisibleMobile } = useResizeStore()
@@ -79,16 +85,23 @@ const SectionInfoProduct = (props: Props) => {
         open: { height: 'auto', opacity: 1 }
     };
 
+    const handleLinkCodeProduct = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, product: any) => {
+        if (!product.id_product_lead) {
+            event.preventDefault()
+        }
+    }
+
     return (
         <div className='flex flex-col md:gap-6 gap-8 w-full'>
             <div className='text-title-detail-product font-bold w-fit'>
-                {dataDetailProduct?.name ?? ""}
+                {dataCodeProduct?.name ?? ""}
             </div>
 
             <div className='bg-white 3xl:p-12 md:p-10 p-4 grid grid-cols-12 md:gap-0 gap-6'>
                 <div className='md:col-span-3 col-span-12 w-full h-auto relative'>
                     <Image
-                        src={dataDetailProduct?.images ?? "/default/default.png"}
+                        // src={"/default/default.png"}
+                        src={dataCodeProduct?.images ?? "/default/default.png"}
                         width={600}
                         height={400}
                         alt="image"
@@ -101,9 +114,9 @@ const SectionInfoProduct = (props: Props) => {
                             Thông số kỹ thuật
                         </div>
 
-                        <div className='grid grid-cols-2 gap-y-4'>
+                        <div className='grid grid-cols-2 gap-y-4 gap-x-2'>
                             {
-                                dataDetailProduct && dataDetailProduct?.specification?.map((item, index) => (
+                                dataCodeProduct && dataCodeProduct?.specification?.map((item, index) => (
                                     <div
                                         key={`specification-${index}`}
                                         className='flex items-center md:justify-start justify-between gap-4 md:col-span-1 col-span-2'
@@ -133,7 +146,7 @@ const SectionInfoProduct = (props: Props) => {
 
                         <div className='flex flex-wrap items-center gap-3'>
                             {
-                                dataDetailProduct && dataDetailProduct?.couple_filter?.map((item) => (
+                                dataCodeProduct && dataCodeProduct?.couple_filter?.map((item) => (
                                     <div
                                         key={`couple-filter-${item.id}`}
                                         className='text-content-common py-2 px-4 border border-[#57A4FE] text-[#57A4FE] font-medium cursor-default'
@@ -154,11 +167,11 @@ const SectionInfoProduct = (props: Props) => {
 
                 <div className='grid lg:grid-cols-3 grid-cols-2 w-full'>
                     {
-                        dataDetailProduct && dataDetailProduct?.reference?.map((item, index) => (
+                        dataCodeProduct && dataCodeProduct?.reference?.map((item, index) => (
                             <div
                                 key={`reference-${index}`}
                                 className={`flex items-center md:justify-start justify-between gap-4 py-2 md:col-span-1 col-span-2
-                                    ${(index + 1) % 3 !== 0 && index !== dataDetailProduct.reference.length - 1 ? 'lg:border-r lg:border-gray-300' : ''}
+                                    ${(index + 1) % 3 !== 0 && index !== dataCodeProduct.reference.length - 1 ? 'lg:border-r lg:border-gray-300' : ''}
                                     ${(index + 1) % 3 !== 1 ? '2xl:px-10 xl:px-8 lg:px-6' : ''}`}
                             >
                                 <div className='text-content-common text-[#1A1B20]/[64%] font-normal 3xl:w-[35%] 2xl:w-[40%] xl:w-[48%] lg:w-[45%] w-[50%]'>
@@ -211,23 +224,21 @@ const SectionInfoProduct = (props: Props) => {
                     onValueChange={(value: string[]) => handleToggle(value)}
                 >
                     {
-                        dataDetailProduct && dataDetailProduct?.parameter?.map((item, index) => (
+                        dataCodeProduct && dataCodeProduct?.parameter?.map((item, index) => (
                             <AccordionItem
                                 key={item.id}
                                 value={item.id ?? ""}
                             >
                                 <AccordionTrigger className="focus-visible:outline-none w-full py-0 hover:no-underline group">
-                                    <AnimateOnScroll
-                                        index={index}
-                                        className={`${isStateCategories?.idOpenAccordion?.includes(item.id ?? "") ? "bg-[#F6DD00]" : "bg-[#FFF2D1]"} p-4 flex items-center gap-4 justify-between w-full group transition-all duration-300 ease-linear`}
-                                    >
+                                    <div className={`${isStateCategories?.idOpenAccordion?.includes(item.id ?? "") ? "bg-[#F6DD00]" : "bg-[#FFF2D1]"} p-4 flex items-center gap-4 justify-between w-full group transition-all duration-300 ease-linear`}>
                                         <div className={`${isStateCategories?.idOpenAccordion?.includes(item.id ?? "") ? "rotate-180 custom-transition" : "custom-transition rotate-0"} size-5`}>
                                             <IoIosArrowDown className='size-full text-[#ED1B24] group-hover:text-[#ED1B24]/80 custom-transition' />
                                         </div>
+
                                         <div className={`text-content-common text-[#272727] custom-transition font-normal text-start w-full`}>
                                             {item.name}
                                         </div>
-                                    </AnimateOnScroll>
+                                    </div>
                                 </AccordionTrigger>
 
                                 <motion.div
@@ -292,9 +303,10 @@ const SectionInfoProduct = (props: Props) => {
                                                         {
                                                             product?.oil && product?.oil?.map((oil) => (
                                                                 <Link
-                                                                    href="#"
+                                                                    href={oil?.id_product_lead ? `/categories?code=${oil.code_lead}` : "#"}
                                                                     target='_blank'
-                                                                    className='text-content-common text-[#57A4FE] hover:text-[#57A4FE]/80 font-medium md:text-center text-end md:w-full w-[60%]'
+                                                                    className={`${oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, oil)}
                                                                 >
                                                                     {oil?.code_lead ?? ""}
                                                                 </Link>
@@ -312,9 +324,10 @@ const SectionInfoProduct = (props: Props) => {
                                                         {
                                                             product?.air && product?.air?.map((air) => (
                                                                 <Link
-                                                                    href="#"
+                                                                    href={air?.id_product_lead ? `/categories?code=${air.code_lead}` : "#"}
                                                                     target='_blank'
-                                                                    className='text-content-common text-[#57A4FE] hover:text-[#57A4FE]/80 font-medium md:text-center text-end md:w-full w-[60%]'
+                                                                    className={`${air?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, air)}
                                                                 >
                                                                     {air?.code_lead ?? ""}
                                                                 </Link>
@@ -332,9 +345,10 @@ const SectionInfoProduct = (props: Props) => {
                                                         {
                                                             product?.diesel && product?.diesel?.map((diesel) => (
                                                                 <Link
-                                                                    href="#"
+                                                                    href={diesel?.id_product_lead ? `/categories?code=${diesel.code_lead}` : "#"}
                                                                     target='_blank'
-                                                                    className='text-content-common text-[#57A4FE] hover:text-[#57A4FE]/80 font-medium md:text-center text-end md:w-full w-[60%]'
+                                                                    className={`${diesel?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, diesel)}
                                                                 >
                                                                     {diesel?.code_lead ?? ""}
                                                                 </Link>
@@ -352,9 +366,10 @@ const SectionInfoProduct = (props: Props) => {
                                                         {
                                                             product?.cabin && product?.cabin?.map((cabin) => (
                                                                 <Link
-                                                                    href="#"
+                                                                    href={cabin?.id_product_lead ? `/categories?code=${cabin.code_lead}` : "#"}
                                                                     target='_blank'
-                                                                    className='text-content-common text-[#57A4FE] hover:text-[#57A4FE]/80 font-medium md:text-center text-end md:w-full w-[60%]'
+                                                                    className={`${cabin?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, cabin)}
                                                                 >
                                                                     {cabin?.code_lead ?? ""}
                                                                 </Link>
@@ -372,9 +387,10 @@ const SectionInfoProduct = (props: Props) => {
                                                         {
                                                             product?.transmission && product?.transmission?.map((transmission) => (
                                                                 <Link
-                                                                    href="#"
+                                                                    href={transmission?.id_product_lead ? `/categories?code=${transmission.code_lead}` : "#"}
                                                                     target='_blank'
-                                                                    className='text-content-common text-[#57A4FE] hover:text-[#57A4FE]/80 font-medium md:text-center text-end md:w-full w-[60%]'
+                                                                    className={`${transmission?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, transmission)}
                                                                 >
                                                                     {transmission?.code_lead ?? ""}
                                                                 </Link>

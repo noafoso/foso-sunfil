@@ -7,7 +7,7 @@ interface IDetailProductParameter {
     type_view: string | null
 }
 
-interface IDetailProduct {
+interface IDetailCodeProduct {
     id: string | null,
     code: string | null,
     name: string | null,
@@ -53,5 +53,5 @@ interface IDetailProduct {
 }
 
 export type {
-    IDetailProduct
+    IDetailCodeProduct
 }

@@ -18,9 +18,7 @@ interface InitialStateStore {
         idOpenAccordion: string[] | null;
         idTabActive: string; // Specify type
         filterProduct: {
-            value: {
-                text: string;
-            };
+            value: string;
         };
         filterApplication: IFilterApplication;
     };
@@ -39,9 +37,7 @@ export const useStateCategories = create<InitialStateStore>((set) => ({
         idOpenAccordion: null,
         idTabActive: "1",
         filterProduct: {
-            value: {
-                text: "",
-            },
+            value: "",
         },
         filterApplication: {
             branch: createDefaultInput(),
