@@ -11,6 +11,7 @@ import SectionCategoriesFilterChassis from "./components/tab/SectionCategoriesFi
 import SectionCategoriesFilterApplication from "./components/tab/SectionCategoriesFilterApplication"
 import { useGetCodeProductAbsolute } from "@/hooks/categories/useGetCodeProductAbsolute"
 import { useSearchParams } from "next/navigation"
+import ProductDetailCodeSkeleton from "@/components/skeleton/categories/ProductDetailCodeSkeleton"
 
 const tabContent = [
     {
@@ -85,7 +86,9 @@ const Categories = () => {
             </div>
             {
                 isFetchingDataCodeProduct ?
-                    (<>Loading...</>)
+                    (
+                        <ProductDetailCodeSkeleton />
+                    )
                     :
                     (
                         dataCodeProduct && codeParam ?
