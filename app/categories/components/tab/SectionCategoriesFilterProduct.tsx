@@ -77,7 +77,7 @@ const SectionCategoriesFilterProduct = () => {
                                                 type="text"
                                                 className={`${fieldState?.invalid && fieldState?.error ? "border rounded-md border-[#F15A5A]" : "border-b rounded-md border-[#1F1F1F33]"} 
                                                     bg-white text-base focus:border-[#57A4FE] placeholder:text-[#0000004D] rounded-none placeholder:text-base focus-visible:ring-0 text-black focus-visible:ring-offset-0 py-3 h-auto`}
-                                                placeholder="OEM no or JS No"
+                                                placeholder="OEM no or Sunfil-filter no"
                                                 onKeyDown={(e) => {
                                                     if (e.key === 'Backspace' && field.value.length === 1) {
                                                         console.log('Ký tự cuối cùng đã bị xoá');
