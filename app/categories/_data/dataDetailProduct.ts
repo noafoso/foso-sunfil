@@ -1,7 +1,7 @@
 import { uuidv4 } from "@/lib/uuid";
 import { IDetailCodeProduct } from "@/types/products/IProducts";
 
-export const dataDetailProduct: IDetailCodeProduct = {
+export const dataDetailProduct: any = {
     "id": "29",
     "code": "OE0069",
     "name": "OIL FILTER (ELEMENT) »        OE0069",
