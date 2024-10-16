@@ -16,10 +16,9 @@ const apiCategories = {
     },
 
     // search sản phẩm theo code hoặc tên,... (tương đối)
-    getCodeProductRelative(data: any) {
+    postCodeProductRelative(data: any) {
         return axios.post(`/api_products/search_product`, data);
-    },
-
+    }
 };
 
 export default apiCategories;
