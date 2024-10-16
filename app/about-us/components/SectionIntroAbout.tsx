@@ -23,7 +23,7 @@ const count = [
 const SectionIntroAbout = () => {
     return (
         <div
-            className='lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] custom-padding-left-right bg-top lg:bg-center bg-cover bg-no-repeat w-full 
+            className='lg:bg-[url("/background/about/intro.png")] bg-[url("/background/about/intro-mobi.png")] custom-px-responsive bg-top lg:bg-center bg-cover bg-no-repeat w-full 
         flex flex-col items-end lg:justify-center justify-end lg:pb-0 md:pb-16 pb-11
         lg:h-[calc(100vh_-_112px)] h-[calc(100vh_+_112px)]'
             id="about-us"

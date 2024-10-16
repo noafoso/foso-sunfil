@@ -18,7 +18,7 @@ const TitleDash: React.FC<TitleDashProps> = ({
         <div className={cn("flex md:items-center items-start justify-center", className)}>
             <hr
                 className={cn(
-                    "flex-grow md:max-w-[85px] md:min-w-[84px] min-w-[40px] max-w-[40px]",
+                    "flex-grow md:max-w-[85px] md:min-w-[78px] min-w-[40px] max-w-[40px]",
                     "border-black md:mt-0 mt-4",
                     dashClassName
                 )}
