@@ -59,6 +59,12 @@ interface IDetailCodeProduct {
             diesel?: IDetailProductParameter[],
             cabin?: IDetailProductParameter[],
             transmission?: IDetailProductParameter[]
+            gasoline?: IDetailProductParameter[]
+            fuel_water?: IDetailProductParameter[]
+            hydraulic_oil?: IDetailProductParameter[]
+            air_purifier?: IDetailProductParameter[]
+            hvac?: IDetailProductParameter[]
+            other?: IDetailProductParameter[]
         }[] | []
     }[],
     couple_filter: {

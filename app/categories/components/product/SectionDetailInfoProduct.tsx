@@ -61,6 +61,36 @@ const dataHeader = [
         name: "Trans",
         icon: "/icons/home/icon5.svg",
     },
+    {
+        id: "gasoline_filter",
+        name: "Gasoline Filter",
+        icon: "",
+    },
+    {
+        id: "fuel_water_seperator",
+        name: "Fuel/Water Seperator",
+        icon: "",
+    },
+    {
+        id: "hydraulic",
+        name: "Hydraulic oil filter",
+        icon: "",
+    },
+    {
+        id: "air_purifier",
+        name: "Air Furifier",
+        icon: "",
+    },
+    {
+        id: "hvac_filter",
+        name: "Hvac filter",
+        icon: "",
+    },
+    {
+        id: "other",
+        name: "Other",
+        icon: "",
+    },
 ]
 
 const SectionDetailInfoProduct = ({ data }: Props) => {
@@ -90,7 +120,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
             </div>
 
             <div className='bg-white 3xl:p-12 md:p-10 p-4 grid grid-cols-12 md:gap-0 gap-6'>
-                <div className='md:col-span-3 col-span-12 w-full h-auto relative'>
+                <div className='md:col-span-3 col-span-12 w-full h-auto md:min-h-[200px] min-h-[230px] relative'>
                     <Image
                         src={data?.images ?? "/default/default.png"}
                         width={600}
@@ -178,19 +208,19 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                 </div>
             </div>
 
-            <div className='bg-white'>
+            <div className='bg-white min-w-screen max-w-screen overflow-x-auto'>
                 {
                     !isVisibleMobile &&
-                    <div className='grid grid-cols-9'>
+                    <div className='grid grid-cols-15 xl:gap-4 gap-2 xl:w-full md:w-max w-full'>
                         {
                             dataHeader && dataHeader.map((item) => (
                                 <div
                                     key={`header-${item.id}`}
-                                    className='col-span-1 flex items-center justify-center gap-2 w-full py-4'
+                                    className='col-span-1 w-full xl:max-w-full md:max-w-[80px] flex xl:flex-row flex-col items-center justify-center text-center xl:gap-1 py-4'
                                 >
                                     {
                                         item.icon &&
-                                        <div className='size-6'>
+                                        <div className='2xl:size-8 size-6 aspect-square'>
                                             <Image
                                                 width={100}
                                                 height={100}
@@ -201,7 +231,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                         </div>
                                     }
 
-                                    <div className='text-title-common text-[#000000] font-bold'>
+                                    <div className='3xl:text-lg 2xl:text-base md:text-sm text-lg xl:w-fit w-full text-[#000000] font-bold capitalize text-center'>
                                         {item?.name ?? ""}
                                     </div>
                                 </div>
@@ -213,6 +243,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                 <Accordion
                     type="multiple"
                     onValueChange={(value: string[]) => handleToggle(value)}
+                    className='xl:w-full md:w-max w-full'
                 >
                     {
                         data && data?.parameter?.map((item, index) => (
@@ -233,7 +264,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                 </AccordionTrigger>
 
                                 <motion.div
-                                    className="overflow-hidden"
+                                    className='overflow-hidden'
                                     initial="closed"
                                     animate={isStateCategories?.idOpenAccordion?.includes(item.id ?? "") ? "open" : "closed"}
                                     variants={contentVariants}
@@ -243,49 +274,49 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                         item?.detail && item?.detail?.map((product, i) => (
                                             <div
                                                 key={`code-product-${i}`}
-                                                className={`${item?.detail?.length - 1 !== i ? "border-b" : ""} grid grid-cols-9 md:py-4 text-[#1A1B20CC]/80 text-base font-normal max-w-full`}
+                                                className={`${item?.detail?.length - 1 !== i ? "border-b" : ""} grid grid-cols-15 xl:gap-4 gap-2 md:py-4 text-[#1A1B20CC]/80 text-base font-normal`}
                                             >
-                                                <div className='md:col-span-1 col-span-9 flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Year</span>
                                                     }
-                                                    <span className='text-content-common text-[#000000] font-bold md:w-full w-[60%] md:text-center text-end'>
+                                                    <span className='text-content-common text-[#000000]/90 font-medium md:w-full w-[60%] md:text-center text-end'>
                                                         {product?.year ?? ""}
                                                     </span>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng vol</span>
                                                     }
-                                                    <span className='text-content-common text-[#000000] font-bold md:w-full w-[60%] md:text-center text-end'>
+                                                    <span className='text-content-common text-[#000000]/90 font-medium md:w-full w-[60%] md:text-center text-end'>
                                                         {product?.engine_vol ?? ""}
                                                     </span>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng no</span>
                                                     }
-                                                    <span className='text-content-common text-[#000000] font-bold md:w-full w-[60%] md:text-center text-end'>
+                                                    <span className='text-content-common text-[#000000]/90 font-medium md:w-full w-[60%] md:text-center text-end'>
                                                         {product?.engine_no ?? ""}
                                                     </span>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Body no</span>
                                                     }
-                                                    <span className='text-content-common text-[#000000] font-bold md:w-full w-[60%] md:text-center text-end'>
+                                                    <span className='text-content-common text-[#000000]/90 font-medium md:w-full w-[60%] md:text-center text-end'>
                                                         {product?.td_body ?? ""}
                                                     </span>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 w-full md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Oil</span>
@@ -307,7 +338,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 w-full md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air</span>
@@ -329,7 +360,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 w-full md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel</span>
@@ -351,7 +382,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 w-full md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Cabin</span>
@@ -373,7 +404,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-9 flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 w-full border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Trans</span>
@@ -389,6 +420,138 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                                     onClick={(event) => handleLinkCodeProduct(event, transmission)}
                                                                 >
                                                                     {transmission?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Gasoline filter</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.gasoline && product?.gasoline?.map((gasoline, gasoline_index) => (
+                                                                <Link
+                                                                    key={`gasoline-${gasoline_index}`}
+                                                                    href={gasoline?.id_product_lead ? `/categories?code=${gasoline.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${gasoline?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, gasoline)}
+                                                                >
+                                                                    {gasoline?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel/Water Seperator</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.fuel_water && product?.fuel_water?.map((fuel_water, fuel_water_index) => (
+                                                                <Link
+                                                                    key={`fuel_water-${fuel_water_index}`}
+                                                                    href={fuel_water?.id_product_lead ? `/categories?code=${fuel_water.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${fuel_water?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, fuel_water)}
+                                                                >
+                                                                    {fuel_water?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hydrraulic Oil Filter</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.hydraulic_oil && product?.hydraulic_oil?.map((hydraulic_oil, hydraulic_oil_index) => (
+                                                                <Link
+                                                                    key={`hydraulic_oil-${hydraulic_oil_index}`}
+                                                                    href={hydraulic_oil?.id_product_lead ? `/categories?code=${hydraulic_oil.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${hydraulic_oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, hydraulic_oil)}
+                                                                >
+                                                                    {hydraulic_oil?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Furifier</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.air_purifier && product?.air_purifier?.map((air_purifier, air_purifier_index) => (
+                                                                <Link
+                                                                    key={`air_purifier-${air_purifier_index}`}
+                                                                    href={air_purifier?.id_product_lead ? `/categories?code=${air_purifier.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${air_purifier?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, air_purifier)}
+                                                                >
+                                                                    {air_purifier?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hvac Filter</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.hvac && product?.hvac?.map((hvac, hvac_index) => (
+                                                                <Link
+                                                                    key={`hvac-${hvac_index}`}
+                                                                    href={hvac?.id_product_lead ? `/categories?code=${hvac.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${hvac?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, hvac)}
+                                                                >
+                                                                    {hvac?.code_lead ?? ""}
+                                                                </Link>
+                                                            ))
+                                                        }
+                                                    </div>
+                                                </div>
+
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                    {
+                                                        isVisibleMobile &&
+                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Other</span>
+                                                    }
+                                                    <div className='flex flex-col'>
+                                                        {
+                                                            product?.other && product?.other?.map((other, transmission_index) => (
+                                                                <Link
+                                                                    key={`other-${transmission_index}`}
+                                                                    href={other?.id_product_lead ? `/categories?code=${other.code_lead}` : "#"}
+                                                                    target='_blank'
+                                                                    className={`${other?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                    onClick={(event) => handleLinkCodeProduct(event, other)}
+                                                                >
+                                                                    {other?.code_lead ?? ""}
                                                                 </Link>
                                                             ))
                                                         }
