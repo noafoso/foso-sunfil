@@ -37,7 +37,7 @@ const SectionCategoriesFilterApplication = () => {
         <div className='bg-white xxl:p-9 p-6'>
             <Form {...form}>
                 <form
-                    className="grid xl:grid-cols-12 lg:grid-cols-6 grid-cols-1 xxl:gap-4 gap-2"
+                    className="grid xl:grid-cols-10 lg:grid-cols-6 grid-cols-1 xxl:gap-4 gap-2"
                     onSubmit={(e: FormEvent<HTMLFormElement>) => {
                         e.preventDefault()
                         form.handleSubmit((data) => onSubmit(data))()
@@ -69,41 +69,6 @@ const SectionCategoriesFilterApplication = () => {
                                             classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
                                             classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                             classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.branch?.open ? 'border-[#57A4FE]' : ''}`}
-                                            classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
-                                        />
-                                    </FormControl>
-                                    {fieldState?.invalid && fieldState?.error && <FormMessage>{fieldState?.error?.message}</FormMessage>}
-                                </FormItem>
-                            );
-                        }}
-                    />
-
-                    <FormField
-                        control={form.control}
-                        name="class"
-                        render={({ field, fieldState }) => {
-                            return (
-                                <FormItem className='lg:col-span-2'>
-                                    <FormControl>
-                                        <SelectCustomSearch
-                                            onChange={field.onChange}
-                                            onValueChange={() => { }}
-                                            selected={field.value}
-                                            options={[]}
-                                            onOpen={(e: boolean) => queryKeyIsStateCategories({
-                                                filterApplication: {
-                                                    class: {
-                                                        value: "",
-                                                        selected: {},
-                                                        open: e,
-                                                    }
-                                                }
-                                            })}
-                                            title='Class'
-                                            placeholder='Search'
-                                            classNameContent="rounded-none p-0 lg:w-72 md:w-[705px] w-[365px]"
-                                            classNameArrow={`lg:w-[30%] lg:min-w-[30%] lg:max-w-[30%] w-[10%] max-w-[10%] ${isStateCategories.filterApplication.class?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
-                                            classNameButtonTrigger={`bg-white text-base rounded-none 3xl:py-4 py-3 h-auto w-full ${isStateCategories.filterApplication.class?.open ? 'border-[#57A4FE]' : ''}`}
                                             classNameInputSearch='bg-white rounded-none border-t-0 border-x-0 border-b'
                                         />
                                     </FormControl>

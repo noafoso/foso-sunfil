@@ -404,7 +404,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Trans</span>
@@ -426,7 +426,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Gasoline filter</span>
@@ -448,7 +448,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel/Water Seperator</span>
@@ -470,7 +470,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hydrraulic Oil Filter</span>
@@ -492,7 +492,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Furifier</span>
@@ -514,7 +514,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                                     </div>
                                                 </div>
 
-                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                <div className='md:col-span-1 col-span-15 xl:w-full md:w-[80px] w-full xl:max-w-full md:max-w-[80px] max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                                     {
                                                         isVisibleMobile &&
                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hvac Filter</span>
