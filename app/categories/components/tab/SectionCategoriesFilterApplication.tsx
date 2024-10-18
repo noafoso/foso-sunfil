@@ -79,8 +79,10 @@ const SectionCategoriesFilterApplication = () => {
         if (data?.brand && data?.model) {
             onSubmit(data)
 
-        } else {
-            toastCore.error('Tính năng đang phát triển!')
+        } else if (!data?.brand) {
+            toastCore.error('Vui lòng chọn brand!')
+        } else if (!data?.model) {
+            toastCore.error('Vui lòng chọn model!')
         }
 
     }
