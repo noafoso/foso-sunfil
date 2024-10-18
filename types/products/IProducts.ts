@@ -73,6 +73,29 @@ interface IDetailCodeProduct {
     }[]
 }
 
+interface IDetailCodeApplication {
+    id: string,
+    year: string,
+    year_start: string,
+    year_end: string,
+    engine_vol: string,
+    engine_no: string,
+    td_body: string,
+    manufacturer: string,
+    model: string,
+    oil?: IDetailProductParameter[],
+    air?: IDetailProductParameter[],
+    diesel?: IDetailProductParameter[],
+    cabin?: IDetailProductParameter[],
+    transmission?: IDetailProductParameter[]
+    gasoline?: IDetailProductParameter[]
+    fuel_water?: IDetailProductParameter[]
+    hydraulic_oil?: IDetailProductParameter[]
+    air_purifier?: IDetailProductParameter[]
+    hvac?: IDetailProductParameter[]
+    other?: IDetailProductParameter[]
+}
+
 interface IFullCodeProduct {
     data: ICodeProduct[]
     data_active: IDetailCodeProduct,
@@ -81,5 +104,6 @@ interface IFullCodeProduct {
 
 export type {
     IDetailCodeProduct,
+    IDetailCodeApplication,
     IFullCodeProduct
 }

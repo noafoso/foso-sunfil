@@ -1,9 +1,7 @@
 import apiCategories from "@/services/categories/categories.services";
-import { IDetailCodeProduct } from "@/types/products/IProducts";
 import { useQuery } from "@tanstack/react-query";
 
 export const usePostCodeProductRelative = (code: string, type: string) => {
-    console.log('type type', type);
 
     const fetchCodeProductRelative = async () => {
         try {

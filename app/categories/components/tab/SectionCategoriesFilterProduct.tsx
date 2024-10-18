@@ -88,7 +88,7 @@ const SectionCategoriesFilterProduct = () => {
                                 return (
                                     <FormItem>
                                         <FormControl>
-                                            <div className="relative">
+                                            <div className="relative md:min-w-[250px] min-w-full">
                                                 <Input
                                                     type="text"
                                                     className={`${fieldState?.invalid && fieldState?.error ? "border rounded-md border-[#F15A5A]" : "border-b rounded-md border-[#1F1F1F33]"} 

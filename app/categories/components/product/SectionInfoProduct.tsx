@@ -40,10 +40,6 @@ const SectionInfoProduct = (props: Props) => {
     const dataCodeProduct = queryClient.getQueryData(["postCodeProductRelative", codeParam]) as IFullCodeProduct
     const dataDetailCodeProduct = queryClient.getQueryData(["getCodeProductAbsolute", codeParam]) as IDetailCodeProduct
 
-    console.log('dataCodeProduct', dataCodeProduct);
-    console.log('dataDetailCodeProduct', dataDetailCodeProduct);
-
-
     return (
         <>
             {
