@@ -27,6 +27,8 @@ interface MultiSelectProps {
     onChange: (e: any) => void;
     onOpen: (e: any) => void;
     onValueChange: (value: any) => void;
+    handleSelectAll?: (data: any[]) => void
+    handleDeleteAll?: () => void
     title?: string;
     typeSearch?: string;
     placeholder?: string;
@@ -43,20 +45,22 @@ interface MultiSelectProps {
 function SelectCustomSearch({
     options = [],
     selected,
-    onChange,
-    onOpen,
-    onValueChange,
+    onChange, // handle chọn item
+    onOpen, // handle mở select
+    onValueChange, // handle change search
+    handleSelectAll, // handle chọn toàn bộ selected
+    handleDeleteAll, // handle xoá toàn bộ selected
     title,
     placeholder,
-    typeSearch = "no-search",
+    typeSearch = "no-search", // type để phân biệt 
     classNameButtonTrigger,
     classNameMenuDown,
     classNameArrow,
     classNameContent,
     classNameInputSearch,
-    mutiValue = true,
-    disabled = true,
-    loading = false,
+    mutiValue = true, // multiple
+    disabled = true, // disable select
+    loading = false, // loading data
     ...props
 }: MultiSelectProps) {
     const [open, setOpen] = React.useState(false);
@@ -95,7 +99,7 @@ function SelectCustomSearch({
                                             {
                                                 selected.map((item: any, index: number) => (
                                                     <span
-                                                        key={item}
+                                                        key={item.value}
                                                         className="3xl:text-base text-sm capitalize font-medium w-full"
                                                     >
                                                         {item.label}{selected?.length - 1 !== index && ","}
@@ -142,6 +146,13 @@ function SelectCustomSearch({
                             <Search className="size-5 absolute top-1/2 -translate-y-1/2 left-2 text-[#0000004D]" />
                         </div>
                     }
+                    {/* {
+                        mutiValue &&
+                        <div className="flex justify-between px-4 py-2">
+                            <Button variant="outline" onClick={() => { handleSelectAll ? handleSelectAll(options) : {} }}>Chọn toàn bộ</Button>
+                            <Button variant="outline" onClick={() => { handleDeleteAll ? handleDeleteAll() : {} }}>Xoá toàn bộ</Button>
+                        </div>
+                    } */}
                     <CommandList >
                         {(!loading) && <CommandEmpty>Không có dữ liệu</CommandEmpty>}
                         {

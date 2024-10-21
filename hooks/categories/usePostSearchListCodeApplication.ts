@@ -1,18 +1,20 @@
-import { toastCore } from "@/lib/toast";
 import apiCategories from "@/services/categories/categories.services";
-import { useMutation, useQuery } from "@tanstack/react-query";
+import { useMutation } from "@tanstack/react-query";
 
 export const usePostSearchListCodeApplication = () => {
 
     const searchListCodeApplication = useMutation({
         mutationFn: async (dataForm: FormData) => {
             const { data } = await apiCategories.postSearchCodeApplication(dataForm);
+            console.log('data data:', data);
+
+
             if (data && data.success) {
                 const newDataCustom = data.data.map((e: any, index: number) => {
                     return {
                         detail: e,
                         id: index + 1,
-                        name: `${e[0].manufacturer} >> ${e[0].model}`
+                        name: `${e[0].manufacturer} >> ${e[0].model}`,
                     }
                 })
 
@@ -25,7 +27,6 @@ export const usePostSearchListCodeApplication = () => {
         onError: (error: any) => {
             throw new Error(error);
         },
-        mutationKey: ["listCodeApplication"]
     });
 
     const onSubmit = async (data: any) => {
@@ -58,6 +59,6 @@ export const usePostSearchListCodeApplication = () => {
     return {
         onSubmit,
         isLoading: searchListCodeApplication.isPending,
-        dataListCodeApplication: searchListCodeApplication?.data
+        dataListCodeApplication: searchListCodeApplication?.data,
     };
 };

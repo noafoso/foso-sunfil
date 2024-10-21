@@ -105,5 +105,6 @@ interface IFullCodeProduct {
 export type {
     IDetailCodeProduct,
     IDetailCodeApplication,
-    IFullCodeProduct
+    ICodeProduct,
+    IFullCodeProduct,
 }

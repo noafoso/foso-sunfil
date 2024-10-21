@@ -12,6 +12,7 @@ import { useGetListYears } from '@/hooks/categories/useGetListYears'
 import { useGetListEngineAndBody } from '@/hooks/categories/useGetListEngineAndBody'
 import { usePostSearchListCodeApplication } from '@/hooks/categories/usePostSearchListCodeApplication'
 import TableDetailCodeProduct from '../product/TableDetailCodeProduct'
+import { Skeleton } from '@/components/ui/skeleton'
 
 interface ISelected {
     value: string; // hoặc kiểu dữ liệu phù hợp
@@ -74,17 +75,14 @@ const SectionCategoriesFilterApplication = () => {
         resetFields(['engine', 'body']);
     }, [yearValue, form]);
 
-    const onSubmitSearch = (data: any) => {
-        console.log('data', data);
+    const onSubmitSearch = async (data: any) => {
         if (data?.brand && data?.model) {
-            onSubmit(data)
-
+            await onSubmit(data)
         } else if (!data?.brand) {
             toastCore.error('Vui lòng chọn brand!')
         } else if (!data?.model) {
             toastCore.error('Vui lòng chọn model!')
         }
-
     }
 
     // Hàm Chọn nhiều item
@@ -185,6 +183,13 @@ const SectionCategoriesFilterApplication = () => {
                                         <FormControl>
                                             <SelectCustomSearch
                                                 onChange={(option) => handleMultiSelect(field.value || [], option, field.onChange)}
+                                                handleSelectAll={(options) => {
+                                                    field.onChange(options.map((option) => ({
+                                                        ...option,
+                                                        active: true
+                                                    })))
+                                                }}
+                                                handleDeleteAll={() => { field.onChange(undefined) }}
                                                 onValueChange={() => { }}
                                                 selected={field.value}
                                                 options={dataListModels || []}
@@ -342,8 +347,9 @@ const SectionCategoriesFilterApplication = () => {
                 </Form>
             </div>
             {
-                dataListCodeApplication &&
-                <TableDetailCodeProduct data={dataListCodeApplication} />
+                (
+                    dataListCodeApplication &&
+                    <TableDetailCodeProduct data={dataListCodeApplication} />)
             }
         </div>
     )
