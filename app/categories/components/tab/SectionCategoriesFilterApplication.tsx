@@ -120,9 +120,6 @@ const SectionCategoriesFilterApplication = () => {
         })
     };
 
-    console.log('dataListCodeApplication', dataListCodeApplication);
-
-
     return (
         <div className='3xl:space-y-12 space-y-10'>
             <div className='bg-white xxl:p-9 p-6'>
@@ -339,7 +336,7 @@ const SectionCategoriesFilterApplication = () => {
 
                         <Button
                             type='submit'
-                            className="text-white xl:col-span-1 lg:col-span-2 col-span-1 capitalize rounded-none 3xl:h-14 h-12 font-medium text-base bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-0"
+                            className="text-white xl:col-span-1 lg:col-span-2 col-span-1 capitalize rounded-none 3xl:h-14 h-12 caret-transparent font-medium text-base bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-0"
                         >
                             Tìm kiếm
                         </Button>

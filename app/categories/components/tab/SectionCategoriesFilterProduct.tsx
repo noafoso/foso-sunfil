@@ -121,7 +121,7 @@ const SectionCategoriesFilterProduct = () => {
 
                         <ButtonAnimation
                             title_button="Tìm kiếm"
-                            className="text-white capitalize rounded-none h-fit font-medium text-base border border-[#57A4FE] bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-3"
+                            className="text-white capitalize rounded-none h-fit font-medium text-base caret-transparent border border-[#57A4FE] bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-3"
                         />
                     </form>
                 </Form>

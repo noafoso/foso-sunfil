@@ -297,12 +297,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                     item.detail && item?.detail?.map((product: IDetailCodeApplication, i: number) => (
                                                         <div
                                                             key={`code-product-${product.id}`}
-                                                            className={`${item?.detail?.length - 1 !== i ? "md:border-b" : ""} grid xl:gap-4 md:gap-2 md:py-4 text-[#1A1B20CC]/80 text-base font-normal`}
+                                                            className={`${item?.detail?.length - 1 !== i ? "border-b" : ""} grid xl:gap-4 md:gap-2 md:py-4 text-[#1A1B20CC]/80 text-base font-normal`}
                                                             style={{
                                                                 gridTemplateColumns: `repeat(${gridHeaderColumns}, minmax(0, 1fr))`
                                                             }}
                                                         >
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Year</span>
@@ -312,7 +312,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng vol</span>
@@ -322,7 +322,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng no</span>
@@ -332,7 +332,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Body no</span>
@@ -344,7 +344,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_oil &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Oil</span>
@@ -369,7 +369,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_air &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air</span>
@@ -394,7 +394,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_diesel &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel</span>
@@ -419,7 +419,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_cabin &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Cabin</span>
@@ -444,7 +444,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_transmission &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Trans</span>
@@ -469,7 +469,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_gasoline &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Gasoline filter</span>
@@ -494,7 +494,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_fuel_water &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel/Water Seperator</span>
@@ -519,7 +519,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_hydraulic_oil &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hydrraulic Oil Filter</span>
@@ -544,7 +544,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_air_purifier &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Furifier</span>
@@ -569,7 +569,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_hvac &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hvac Filter</span>
@@ -594,7 +594,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_other &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 border-none md:px-0 px-2 md:py-0 py-4'>
+                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Other</span>
