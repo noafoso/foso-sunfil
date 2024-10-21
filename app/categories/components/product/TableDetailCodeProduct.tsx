@@ -265,7 +265,6 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                         <Accordion
                             type="multiple"
                             onValueChange={(value: string[]) => handleToggle(value)}
-                            // className='xl:w-full md:w-max w-full'
                             className={`${+gridHeaderColumns > 8 ? "xl:w-full md:w-max" : "w-full"}`}
                         >
                             {
@@ -619,7 +618,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             }
 
                                                             {
-                                                                isVisibleMobile && data?.parameter?.length > 1 && data?.parameter?.length - 1 !== i &&
+                                                                isVisibleMobile && item?.detail?.length > 1 && item?.detail?.length - 1 !== i &&
                                                                 <div
                                                                     className='col-span-15 w-full'
                                                                 // className='w-full'
@@ -629,7 +628,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 >
                                                                     <LineVerticalLinear
                                                                         backgroundColorLinear="linear-gradient(90deg, #FFF2D1 0%, #F6DD00 50%, #FFF2D1 100%)"
-                                                                        classNameLinear={"h-[2px]"}
+                                                                        classNameLinear={"h-[3px]"}
                                                                     />
                                                                 </div>
                                                             }

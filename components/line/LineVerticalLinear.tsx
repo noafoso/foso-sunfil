@@ -1,13 +1,14 @@
 import React from 'react'
 
 type Props = {
-    backgroundColorLinear: string
+    backgroundColorLinear: string,
+    classNameLinear?: string
 }
 
-const LineVerticalLinear = ({ backgroundColorLinear }: Props) => {
+const LineVerticalLinear = ({ backgroundColorLinear, classNameLinear }: Props) => {
     return (
         <div
-            className={`w-full 2xl:h-[1px] h-[1px]`}
+            className={`${classNameLinear} w-full h-[1px]`}
             style={{
                 background: backgroundColorLinear
             }}
