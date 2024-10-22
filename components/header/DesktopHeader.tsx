@@ -186,7 +186,7 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                 </div>
 
                 <div className='flex items-center justify-end w-full gap-2 max-w-[20%] select-none'>
-                    <div className="flex items-center">
+                    {/* <div className="flex items-center">
                         <Select onValueChange={handleCodeChange}>
                             <SelectTrigger className="flex items-center gap-2 h-full border-none shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0">
                                 {
@@ -223,7 +223,7 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                                 }
                             </SelectContent>
                         </Select>
-                    </div>
+                    </div> */}
 
                     <motion.div
                         initial={false}
