@@ -1,23 +1,30 @@
-import Link from 'next/link';
 import Image from 'next/image';
-import React from 'react'
-import { motion } from 'framer-motion'
+import React, { useState } from 'react'
 
-import { Accordion, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
-
-import { useStateCategories } from '../../_state/useStateCategories';
-
-import { IoIosArrowDown } from 'react-icons/io';
-import { useResizeStore } from '@/stores/useResizeStore';
 import { IDetailCodeProduct } from '@/types/products/IProducts';
-import LineVerticalLinear from '@/components/line/LineVerticalLinear';
 import TableDetailCodeProduct from './TableDetailCodeProduct';
+import { X } from 'lucide-react';
 
 type Props = {
     data: IDetailCodeProduct
 }
 
 const SectionDetailInfoProduct = ({ data }: Props) => {
+    const [previewImage, setPreviewImage] = useState<string | null>(null);
+
+    // Hàm đóng modal
+    const handleTogglePreview = (type: string, data?: any) => {
+        const body = document.body;
+
+        if (type === "on") {
+            setPreviewImage(data?.images ?? "/default/default.png")
+            body.style.overflow = 'hidden'; // Chặn cuộn
+        } else {
+            setPreviewImage(null)
+            body.style.overflow = 'auto'; // Cho phép cuộn
+        }
+    };
+
     return (
         <div className='flex flex-col md:gap-6 gap-8 w-full'>
             <div className='text-title-detail-product font-bold w-fit'>
@@ -25,7 +32,10 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
             </div>
 
             <div className='bg-white 3xl:p-12 md:p-10 p-4 grid grid-cols-12 md:gap-0 gap-6'>
-                <div className='md:col-span-3 col-span-12 w-full h-auto md:min-h-[200px] min-h-[230px] relative'>
+                <div
+                    className='md:col-span-3 col-span-12 w-full h-auto md:min-h-[200px] min-h-[230px] relative cursor-pointer'
+                    onClick={() => handleTogglePreview('on', data)}
+                >
                     <Image
                         src={data?.images ?? "/default/default.png"}
                         width={600}
@@ -50,11 +60,11 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                             order: item.order_by ?? "initial"
                                         }}
                                     >
-                                        <div className='text-content-common text-[#1A1B20]/[64%] font-normal 3xl:w-[35%] 2xl:w-[40%] xl:w-[48%] lg:w-[45%] w-[50%]'>
+                                        <div className='text-content-common text-[#1A1B20]/[64%] font-normal 2xl:w-[40%] xl:w-[48%] lg:w-[45%] w-[50%]'>
                                             {item?.name ?? ""}
                                         </div>
 
-                                        <div className='text-title-common text-[#272727] font-bold md:text-start text-end md:w-auto w-[50%]'>
+                                        <div className='text-title-common text-[#272727] font-bold md:text-start text-end 2xl:w-[60%] xl:w-[52%] lg:w-[55%] w-[50%]'>
                                             {item?.is_value ?? ""}
                                         </div>
                                     </div>
@@ -112,6 +122,37 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                     }
                 </div>
             </div>
+
+            {/* Modal Preview Image */}
+            {
+                previewImage && (
+                    <div className='fixed inset-0 flex justify-center items-center z-50'>
+                        <div
+                            className='absolute top-0 left-0 size-full bg-black bg-opacity-50'
+                            onClick={() => handleTogglePreview('off')}
+                        />
+
+                        <button
+                            className='absolute top-8 right-8 text-white size-10 border rounded-full p-1.5 hover:text-white/60 hover:border-white/60 custom-transition'
+                            onClick={() => handleTogglePreview('off')}
+                        >
+                            <X className='size-full' />
+                        </button>
+
+                        <div className='relative flex items-center justify-center'>
+                            <div className='3xl:h-[833px] h-[630px] w-auto'>
+                                <Image
+                                    src={previewImage}
+                                    width={1440}
+                                    height={833}
+                                    alt="Preview"
+                                    className='size-full object-contain'
+                                />
+                            </div>
+                        </div>
+                    </div>
+                )
+            }
 
             <TableDetailCodeProduct data={data} />
         </div >

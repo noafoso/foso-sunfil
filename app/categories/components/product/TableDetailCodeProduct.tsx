@@ -107,6 +107,12 @@ const keysToCheck = [
     'transmission',
 ];
 
+// animation đóng mở collapsed
+const contentVariants = {
+    closed: { height: 0, opacity: 0 },
+    open: { height: 'auto', opacity: 1 }
+};
+
 const TableDetailCodeProduct = ({ data }: Props) => {
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
     const { isVisibleMobile } = useResizeStore()
@@ -138,8 +144,15 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                     // Kiểm tra nếu tất cả giá trị của key trong mảng `detail` đều là null
                     const allNull = data.parameter.every((item: any) =>
                         item.detail.every((detail: any) => {
+                            // kiểm tra trong mảng detail nếu trong key tổng bằng null thì trả về true để ẩn cột
                             const value = detail[key as keyof IDetailCodeApplication];
-                            return value === null; // Nếu tất cả đều null, trả về true
+
+                            // kiểm tra trong mảng detail nếu id_product_lead bằng null thì trả về true để ẩn cột
+                            const valueIdProductLead = Array.isArray(value) && value.every((detailIdProductLead: any) => {
+                                return detailIdProductLead.id_product_lead === null;
+                            });
+
+                            return value === null || valueIdProductLead; // Nếu tất cả đều null, trả về true
                         })
                     );
 
@@ -163,11 +176,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
         queryKeyIsStateCategories({ idOpenAccordion: value });
     };
 
-    const contentVariants = {
-        closed: { height: 0, opacity: 0 },
-        open: { height: 'auto', opacity: 1 }
-    };
-
+    // nếu không có id_product_lead thì không cho chuyển trang
     const handleLinkCodeProduct = (event: React.MouseEvent<HTMLAnchorElement, MouseEvent>, product: any) => {
         if (!product.id_product_lead) {
             event.preventDefault()
@@ -356,7 +365,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`oil-${oil_index}`}
                                                                                     href={oil?.id_product_lead ? `/categories?code=${oil.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, oil)}
                                                                                 >
                                                                                     {oil?.code_lead ?? ""}
@@ -381,7 +390,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`air-${air_index}`}
                                                                                     href={air?.id_product_lead ? `/categories?code=${air.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${air?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${air?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, air)}
                                                                                 >
                                                                                     {air?.code_lead ?? ""}
@@ -406,7 +415,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`diesel-${diesel_index}`}
                                                                                     href={diesel?.id_product_lead ? `/categories?code=${diesel.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${diesel?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${diesel?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, diesel)}
                                                                                 >
                                                                                     {diesel?.code_lead ?? ""}
@@ -431,7 +440,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`cabin-${cabin_index}`}
                                                                                     href={cabin?.id_product_lead ? `/categories?code=${cabin.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${cabin?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${cabin?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, cabin)}
                                                                                 >
                                                                                     {cabin?.code_lead ?? ""}
@@ -456,7 +465,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`transmission-${transmission_index}`}
                                                                                     href={transmission?.id_product_lead ? `/categories?code=${transmission.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${transmission?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${transmission?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, transmission)}
                                                                                 >
                                                                                     {transmission?.code_lead ?? ""}
@@ -481,7 +490,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`gasoline-${gasoline_index}`}
                                                                                     href={gasoline?.id_product_lead ? `/categories?code=${gasoline.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${gasoline?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${gasoline?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, gasoline)}
                                                                                 >
                                                                                     {gasoline?.code_lead ?? ""}
@@ -506,7 +515,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`fuel_water-${fuel_water_index}`}
                                                                                     href={fuel_water?.id_product_lead ? `/categories?code=${fuel_water.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${fuel_water?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${fuel_water?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, fuel_water)}
                                                                                 >
                                                                                     {fuel_water?.code_lead ?? ""}
@@ -531,7 +540,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`hydraulic_oil-${hydraulic_oil_index} `}
                                                                                     href={hydraulic_oil?.id_product_lead ? `/categories?code=${hydraulic_oil.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${hydraulic_oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${hydraulic_oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, hydraulic_oil)}
                                                                                 >
                                                                                     {hydraulic_oil?.code_lead ?? ""}
@@ -556,7 +565,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`air_purifier-${air_purifier_index} `}
                                                                                     href={air_purifier?.id_product_lead ? `/categories?code=${air_purifier.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${air_purifier?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${air_purifier?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, air_purifier)}
                                                                                 >
                                                                                     {air_purifier?.code_lead ?? ""}
@@ -581,7 +590,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`hvac-${hvac_index} `}
                                                                                     href={hvac?.id_product_lead ? `/categories?code=${hvac.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${hvac?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${hvac?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, hvac)}
                                                                                 >
                                                                                     {hvac?.code_lead ?? ""}
@@ -606,7 +615,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                                     key={`other-${transmission_index} `}
                                                                                     href={other?.id_product_lead ? `/categories?code=${other.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${other?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
+                                                                                    className={`${other?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%]`}
                                                                                     onClick={(event) => handleLinkCodeProduct(event, other)}
                                                                                 >
                                                                                     {other?.code_lead ?? ""}

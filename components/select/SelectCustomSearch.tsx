@@ -113,7 +113,7 @@ function SelectCustomSearch({
                                 )
                                 :
                                 (
-                                    <span className='3xl:text-base text-sm font-normal'>
+                                    <span className='3xl:text-base text-sm font-normal caret-transparent'>
                                         {title}
                                     </span>
                                 )
