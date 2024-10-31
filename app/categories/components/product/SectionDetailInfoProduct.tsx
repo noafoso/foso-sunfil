@@ -5,6 +5,8 @@ import { IDetailCodeProduct } from '@/types/products/IProducts';
 import TableDetailCodeProduct from './TableDetailCodeProduct';
 import { X } from 'lucide-react';
 
+import { motion } from 'framer-motion'
+
 type Props = {
     data: IDetailCodeProduct
 }
@@ -127,6 +129,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
             {
                 previewImage && (
                     <div className='fixed inset-0 flex justify-center items-center z-50'>
+                        {/* <div className='fixed inset-0 flex justify-center items-center z-50'> */}
                         <div
                             className='absolute top-0 left-0 size-full bg-black bg-opacity-50'
                             onClick={() => handleTogglePreview('off')}
@@ -140,7 +143,22 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                         </button>
 
                         <div className='relative flex items-center justify-center'>
-                            <div className='3xl:h-[833px] h-[630px] w-auto'>
+                            <motion.div
+                                exit={{
+                                    y: -20,
+                                    opacity: 0,
+                                    filter: "blur(5px)",
+                                    transition: { ease: "easeIn", duration: 0.22 }
+                                }}
+                                initial={{ opacity: 0, y: -15 }}
+                                animate={{
+                                    opacity: 1,
+                                    y: 0,
+                                    filter: "blur(0px)",
+                                    transition: { type: "spring", duration: 0.7 }
+                                }}
+                                className='3xl:h-[833px] h-[630px] w-auto'
+                            >
                                 <Image
                                     src={previewImage}
                                     width={1440}
@@ -148,12 +166,14 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                                     alt="Preview"
                                     className='size-full object-contain'
                                 />
-                            </div>
+                            </motion.div>
+
+                            {/* <div className='3xl:h-[833px] h-[630px] w-auto'>
+                            </div> */}
                         </div>
                     </div>
                 )
             }
-
             <TableDetailCodeProduct data={data} />
         </div >
     )
