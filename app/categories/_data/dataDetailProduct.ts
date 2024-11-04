@@ -1,7 +1,7 @@
 import { uuidv4 } from "@/lib/uuid";
 import { IDetailCodeProduct } from "@/types/products/IProducts";
 
-export const dataDetailProduct: IDetailCodeProduct = {
+export const dataDetailProduct: any = {
     "id": "29",
     "code": "OE0069",
     "name": "OIL FILTER (ELEMENT) »        OE0069",
@@ -1084,3 +1084,116 @@ export const dataDetailProduct: IDetailCodeProduct = {
         }
     ]
 }
+
+// [
+//     {
+//         "detail": [
+//             {
+//                 "id": "163",
+//                 "year": "1999~2003",
+//                 "year_start": "1999",
+//                 "year_end": "2003",
+//                 "engine_vol": "2200",
+//                 "engine_no": "R2",
+//                 "td_body": "SK22T",
+//                 "manufacturer": "MAZDA",
+//                 "model": "BONGO",
+//                 "oil": [
+//                     {
+//                         "id": "24033",
+//                         "id_parameter_detail": "163",
+//                         "id_product": "2",
+//                         "code_lead": "C109J",
+//                         "id_product_lead": "2",
+//                         "type_view": "oil"
+//                     }
+//                 ],
+//                 "air": [
+//                     {
+//                         "id": "24034",
+//                         "id_parameter_detail": "163",
+//                         "id_product": "2",
+//                         "code_lead": "A464J",
+//                         "id_product_lead": null,
+//                         "type_view": "air"
+//                     }
+//                 ],
+//                 "diesel": [
+//                     {
+//                         "id": "24035",
+//                         "id_parameter_detail": "163",
+//                         "id_product": "2",
+//                         "code_lead": "FC184J",
+//                         "id_product_lead": null,
+//                         "type_view": "diesel"
+//                     }
+//                 ],
+//                 "cabin": null,
+//                 "transmission": null,
+//                 "gasoline": null,
+//                 "fuel_water": null,
+//                 "hydraulic_oil": null,
+//                 "air_purifier": null,
+//                 "hvac": null,
+//                 "other": null
+//             },
+//         ],
+//         "id": 1,
+//         "name": "MAZDA >> BONGO"
+//     },
+//     {
+//         "detail": [
+//             {
+//                 "id": "178",
+//                 "year": "1997~1999",
+//                 "year_start": "1997",
+//                 "year_end": "1999",
+//                 "engine_vol": "2500",
+//                 "engine_no": "WL",
+//                 "td_body": "SR59V",
+//                 "manufacturer": "MAZDA",
+//                 "model": "BONGO BRAWNY",
+//                 "oil": [
+//                     {
+//                         "id": "24019",
+//                         "id_parameter_detail": "178",
+//                         "id_product": "2",
+//                         "code_lead": "C109J",
+//                         "id_product_lead": "2",
+//                         "type_view": "oil"
+//                     }
+//                 ],
+//                 "air": [
+//                     {
+//                         "id": "24020",
+//                         "id_parameter_detail": "178",
+//                         "id_product": "2",
+//                         "code_lead": "A465J",
+//                         "id_product_lead": null,
+//                         "type_view": "air"
+//                     }
+//                 ],
+//                 "diesel": [
+//                     {
+//                         "id": "24021",
+//                         "id_parameter_detail": "178",
+//                         "id_product": "2",
+//                         "code_lead": "FC184J",
+//                         "id_product_lead": null,
+//                         "type_view": "diesel"
+//                     }
+//                 ],
+//                 "cabin": null,
+//                 "transmission": null,
+//                 "gasoline": null,
+//                 "fuel_water": null,
+//                 "hydraulic_oil": null,
+//                 "air_purifier": null,
+//                 "hvac": null,
+//                 "other": null
+//             },
+//         ],
+//         "id": 2,
+//         "name": "MAZDA >> BONGO BRAWNY"
+//     }
+// ]

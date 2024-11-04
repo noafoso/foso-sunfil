@@ -10,6 +10,7 @@ import { useStateHeader } from '@/states/Header/useStateHeader'
 
 import { uuidv4 } from '@/lib/uuid'
 import { IMenuHeader } from '@/types/menu/IMenu'
+import { useLanguage } from '@/context/LanguageProvider'
 
 const dataHeader: IMenuHeader[] = [
     {
@@ -65,6 +66,7 @@ const dataCountryOptions = [
 const Header = () => {
     const { isVisibleTablet } = useResizeStore()
     const { isStateHeader, queryKeyIsStateHeader } = useStateHeader()
+    const { language, setLanguage } = useLanguage();
 
     useEffect(() => {
         const body = document.body;
@@ -79,6 +81,7 @@ const Header = () => {
         queryKeyIsStateHeader({
             selectedCodeCountry: dataCountryOptions[0].code
         })
+        setLanguage(dataCountryOptions[0].code)
     }, [])
 
     const handleToggleMenu = (action: string): void => {
@@ -97,6 +100,7 @@ const Header = () => {
         queryKeyIsStateHeader({
             selectedCodeCountry: value
         })
+        setLanguage(value)
     };
 
     return (

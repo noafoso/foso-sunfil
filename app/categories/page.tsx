@@ -4,14 +4,9 @@ import { TabsCustom } from "@/components/tabs/TabsCustom"
 import TitleDash from "@/components/title/TitleDash"
 import { useStateCategories } from "./_state/useStateCategories"
 
-import SectionInfoProduct from "./components/product/SectionInfoProduct"
-
 import SectionCategoriesFilterProduct from "./components/tab/SectionCategoriesFilterProduct"
 import SectionCategoriesFilterChassis from "./components/tab/SectionCategoriesFilterChassis"
 import SectionCategoriesFilterApplication from "./components/tab/SectionCategoriesFilterApplication"
-import { useGetCodeProductAbsolute } from "@/hooks/categories/useGetCodeProductAbsolute"
-import { useSearchParams } from "next/navigation"
-import ProductDetailCodeSkeleton from "@/components/skeleton/categories/ProductDetailCodeSkeleton"
 
 const tabContent = [
     {
@@ -22,10 +17,10 @@ const tabContent = [
         id: '2',
         content: <SectionCategoriesFilterApplication />
     },
-    {
-        id: '3',
-        content: <SectionCategoriesFilterChassis />
-    },
+    // {
+    //     id: '3',
+    //     content: <SectionCategoriesFilterChassis />
+    // },
 ] as any
 
 const tabList = [
@@ -37,24 +32,14 @@ const tabList = [
         id: "2",
         name: 'Application',
     },
-    {
-        id: "3",
-        name: 'VIN/Chassis',
-    }
+    // {
+    //     id: "3",
+    //     name: 'VIN/Chassis',
+    // }
 ]
 
 const Categories = () => {
-    const codeParam = useSearchParams().get('code')
-
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
-
-    const {
-        data: dataCodeProduct,
-        isFetching: isFetchingDataCodeProduct
-    } = useGetCodeProductAbsolute(codeParam ?? "")
-
-    console.log('codeParam', codeParam);
-    console.log('dataCodeProduct', dataCodeProduct);
 
     return (
         <div
@@ -84,34 +69,6 @@ const Categories = () => {
                     {tabContent.find((item: any) => item?.id === isStateCategories?.idTabActive)?.content ?? ""}
                 </div>
             </div>
-            {
-                isFetchingDataCodeProduct ?
-                    (
-                        <ProductDetailCodeSkeleton />
-                    )
-                    :
-                    (
-                        dataCodeProduct && codeParam ?
-                            (
-                                <SectionInfoProduct />
-                            )
-                            :
-                            (
-                                <>
-                                    {
-                                        codeParam ?
-                                            <div className='bg-white md:p-6 p-4 w-full'>
-                                                <div className='text-content-common text-[#000000]/[66%] font-normal'>
-                                                    No Product found for seach term <span className='font-bold'>{codeParam}</span>
-                                                </div>
-                                            </div>
-                                            :
-                                            <div className='' />
-                                    }
-                                </>
-                            )
-                    )
-            }
         </div >
     )
 }

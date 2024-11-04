@@ -2,7 +2,7 @@ import apiCategories from "@/services/categories/categories.services";
 import { IDetailCodeProduct } from "@/types/products/IProducts";
 import { useQuery } from "@tanstack/react-query";
 
-export const useGetCodeProductAbsolute = (code: string) => {
+export const useGetCodeProductAbsolute = (code: string, type: string) => {
     const fetchCodeProductAbsolute = async () => {
         const { data } = await apiCategories.getCodeProductAbsolute(code);
 
@@ -16,6 +16,6 @@ export const useGetCodeProductAbsolute = (code: string) => {
     return useQuery<any>({
         queryKey: ["getCodeProductAbsolute", code],
         queryFn: fetchCodeProductAbsolute,
-        enabled: !!code,
+        enabled: !!code && !!(type !== "list"),
     });
 };

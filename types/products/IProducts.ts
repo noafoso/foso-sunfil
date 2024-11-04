@@ -7,6 +7,20 @@ interface IDetailProductParameter {
     type_view: string | null
 }
 
+interface ICodeProduct {
+    id: string | null,
+    code: string | null,
+    code_leads: string | null,
+    name: string | null,
+    images: string | null,
+    type_items: string | null,
+    create_by: string | null,
+    date_create: string | null,
+    is_website: string | null,
+    tag_code: string
+    type_code: string,
+    filter_type: string
+}
 interface IDetailCodeProduct {
     id: string | null,
     code: string | null,
@@ -15,6 +29,7 @@ interface IDetailCodeProduct {
     type_items: string | null,
     create_by: string | null,
     date_create: string | null,
+    tag_code: string[] | []
     specification: {
         name: string | null,
         is_value: string | null,
@@ -24,7 +39,7 @@ interface IDetailCodeProduct {
         name: string | null,
         is_value: string | null,
         order_by: string | null
-    }[],
+    }[] | [],
     parameter: {
         id: string | null,
         name: string | null,
@@ -44,6 +59,12 @@ interface IDetailCodeProduct {
             diesel?: IDetailProductParameter[],
             cabin?: IDetailProductParameter[],
             transmission?: IDetailProductParameter[]
+            gasoline?: IDetailProductParameter[]
+            fuel_water?: IDetailProductParameter[]
+            hydraulic_oil?: IDetailProductParameter[]
+            air_purifier?: IDetailProductParameter[]
+            hvac?: IDetailProductParameter[]
+            other?: IDetailProductParameter[]
         }[] | []
     }[],
     couple_filter: {
@@ -52,6 +73,38 @@ interface IDetailCodeProduct {
     }[]
 }
 
+interface IDetailCodeApplication {
+    id: string,
+    year: string,
+    year_start: string,
+    year_end: string,
+    engine_vol: string,
+    engine_no: string,
+    td_body: string,
+    manufacturer: string,
+    model: string,
+    oil?: IDetailProductParameter[],
+    air?: IDetailProductParameter[],
+    diesel?: IDetailProductParameter[],
+    cabin?: IDetailProductParameter[],
+    transmission?: IDetailProductParameter[]
+    gasoline?: IDetailProductParameter[]
+    fuel_water?: IDetailProductParameter[]
+    hydraulic_oil?: IDetailProductParameter[]
+    air_purifier?: IDetailProductParameter[]
+    hvac?: IDetailProductParameter[]
+    other?: IDetailProductParameter[]
+}
+
+interface IFullCodeProduct {
+    data: ICodeProduct[]
+    data_active: IDetailCodeProduct,
+    success: boolean
+}
+
 export type {
-    IDetailCodeProduct
+    IDetailCodeProduct,
+    IDetailCodeApplication,
+    ICodeProduct,
+    IFullCodeProduct,
 }
