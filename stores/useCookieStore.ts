@@ -2,8 +2,8 @@
 import { IUseCookie } from "@/types/auth/IAuth";
 import Cookies from "js-cookie";
 
-const useCookieStore = (key: IUseCookie["key"] = "token_viethung", initialValue?: IUseCookie["initialValue"]) => {
-    const setCookie = (value: string, options?: Cookies.CookieAttributes) => {
+const useCookieStore = (initialValue?: IUseCookie["initialValue"]) => {
+    const setCookie = (key: IUseCookie["key"] = "token_viethung", value: string, options?: Cookies.CookieAttributes) => {
         Cookies.set(key, value, options);
     };
 
@@ -11,7 +11,7 @@ const useCookieStore = (key: IUseCookie["key"] = "token_viethung", initialValue?
         Cookies.remove(key, options);
     };
 
-    const getCookie = () => {
+    const getCookie = (key: IUseCookie["key"] = "token_viethung") => {
         return Cookies.get(key);
     };
 

@@ -11,6 +11,7 @@ import { useStateHeader } from '@/states/Header/useStateHeader'
 import { uuidv4 } from '@/lib/uuid'
 import { IMenuHeader } from '@/types/menu/IMenu'
 import { useLanguage } from '@/context/LanguageProvider'
+import useCookieStore from '@/stores/useCookieStore'
 
 const dataHeader: IMenuHeader[] = [
     {
@@ -52,18 +53,19 @@ const dataHeader: IMenuHeader[] = [
 
 const dataCountryOptions = [
     {
+        code: 'en',
+        country: 'English',
+        flag: '/flag/en.png'
+    },
+    {
         code: 'vi',
         country: 'Việt Nam',
         flag: '/flag/vi.png'
     },
-    {
-        code: 'en',
-        country: 'English',
-        flag: '/flag/en.png'
-    }
 ]
 
 const Header = () => {
+    const { getCookie, setCookie, removeCookie } = useCookieStore()
     const { isVisibleTablet } = useResizeStore()
     const { isStateHeader, queryKeyIsStateHeader } = useStateHeader()
     const { language, setLanguage } = useLanguage();
@@ -81,6 +83,7 @@ const Header = () => {
         queryKeyIsStateHeader({
             selectedCodeCountry: dataCountryOptions[0].code
         })
+
         setLanguage(dataCountryOptions[0].code)
     }, [])
 
@@ -97,10 +100,17 @@ const Header = () => {
     }
 
     const handleCodeChange = (value: string) => {
+        console.log('value', value);
         queryKeyIsStateHeader({
             selectedCodeCountry: value
         })
         setLanguage(value)
+
+        if (dataCountryOptions[0].code !== value) {
+            setCookie('googletranslate', value)
+        } else {
+            removeCookie('googletranslate')
+        }
     };
 
     return (

@@ -1,29 +1,49 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useRef, useEffect, useState, useLayoutEffect } from 'react';
 import { useLanguage } from '@/context/LanguageProvider';
 import { useTextNodes } from '@/custom/hooks/useTextNodes';
 
-export const TranslationWrapper: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+type TranslationWrapperProps = {
+    children: React.ReactNode;
+    isDataLoaded: boolean;
+};
+
+export const TranslationWrapper: React.FC<TranslationWrapperProps> = ({ children, isDataLoaded }) => {
     const wrapperRef = useRef<HTMLDivElement>(null);
-    const textNodes = useTextNodes(wrapperRef);
+    const originalTextNodes = useTextNodes(wrapperRef);
     const { language, translate } = useLanguage();
+
+    console.log('language', language);
+    console.log('isDataLoaded', isDataLoaded);
+
 
     useEffect(() => {
         const translateNodes = async () => {
-            if (textNodes.length > 0) {
-                const textsToTranslate = textNodes.map(node => node.textContent || '');
+            if (isDataLoaded && originalTextNodes.length > 0) {
+                const textsToTranslate = originalTextNodes.map(node => node.textContent || '');
+
+                console.log('textsToTranslate', textsToTranslate);
+
 
                 const translatedTexts = await translate(textsToTranslate);
 
-                textNodes.forEach((node, index) => {
+                console.log('translatedTexts', translatedTexts);
+
+                originalTextNodes.forEach((node, index) => {
                     if (node.textContent) {
-                        node.textContent = translatedTexts[index];
+                        node.textContent = translatedTexts[0][index];
                     }
                 });
             }
         };
 
-        translateNodes();
-    }, [language, textNodes, translate]);
+        if (isDataLoaded) {
+            translateNodes();
+        }
+    }, [language, isDataLoaded, originalTextNodes, translate]);
 
-    return <div ref={wrapperRef}>{children}</div>;
+    return (
+        <div ref={wrapperRef}>
+            {children}
+        </div>
+    );
 };

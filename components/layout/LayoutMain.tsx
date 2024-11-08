@@ -27,9 +27,10 @@ import Header from '@/components/layout/Header'
 import Footer from '@/components/layout/Footer'
 import { usePathname, useSearchParams } from 'next/navigation'
 import { scrollToSection } from '@/utils/scroll/ScrollFunction'
-import { LanguageProvider } from '@/context/LanguageProvider'
-import { TranslationWrapper } from '../translate/TranslationWrapper'
+// import LayoutTranslate from './LayoutTranslate'
+import dynamic from 'next/dynamic'
 
+const LayoutTranslate = dynamic(() => import('./LayoutTranslate'), { ssr: false })
 
 const queryClient = new QueryClient({
     defaultOptions: {
@@ -109,25 +110,27 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
 
     return (
 
-        <LanguageProvider>
-            <TranslationWrapper>
-                <QueryClientProvider client={queryClient}>
-                    <Toaster position="top-right" reverseOrder={false} />
-                    <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
-                        <Header />
-                        <main className={`overflow-hidden size-full`}>
-                            {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
-                            <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
-                                {children}
-                            </AnimatePresence>
-                            <ButtonToTop />
-                            {!['/home', '/'].includes(pathname) && <Footer />}
-                        </main>
-                    </div>
-                    <ReactQueryDevtools initialIsOpen={true} />
-                </QueryClientProvider>
-            </TranslationWrapper>
-        </LanguageProvider>
+        // <LanguageProvider>
+        //     <TranslationWrapper>
+        <QueryClientProvider client={queryClient}>
+            <LayoutTranslate>
+                <Toaster position="top-right" reverseOrder={false} />
+                <div className='w-screen min-h-screen text-responsive custom-swiper bg-white relative'>
+                    <Header />
+                    <main className={`overflow-hidden size-full`}>
+                        {/* <main className={`${!['/home', '/'].includes(pathname) && "pt-[112px]"} overflow-hidden size-full`}> */}
+                        <AnimatePresence mode="wait" onExitComplete={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
+                            {children}
+                        </AnimatePresence>
+                        <ButtonToTop />
+                        {!['/home', '/'].includes(pathname) && <Footer />}
+                    </main>
+                </div>
+            </LayoutTranslate>
+            <ReactQueryDevtools initialIsOpen={true} />
+        </QueryClientProvider>
+        //     </TranslationWrapper>
+        // </LanguageProvider>
     )
 }
 

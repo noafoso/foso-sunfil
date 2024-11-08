@@ -1,3 +1,4 @@
+import { useLanguage } from '@/context/LanguageProvider';
 import { usePathname } from 'next/navigation';
 import { useEffect, useState } from 'react';
 
@@ -22,13 +23,14 @@ function getTextNodes(element: Element): Text[] {
 export function useTextNodes(ref: React.RefObject<HTMLElement>) {
     const pathname = usePathname()
     const [textNodes, setTextNodes] = useState<Text[]>([]);
+    const { language, translate } = useLanguage();
 
     useEffect(() => {
         if (ref.current) {
             const nodes = getTextNodes(ref.current);
             setTextNodes(nodes);
         }
-    }, [ref, pathname]);
+    }, [ref, pathname, language]);
 
     return textNodes;
 }
