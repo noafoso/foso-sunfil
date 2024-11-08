@@ -1,13 +1,15 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import apiCategories from "@/services/categories/categories.services";
 import { useMutation } from "@tanstack/react-query";
 
 export const usePostSearchListCodeApplication = () => {
+    const { setLoadingLang } = useLanguage();
 
     const searchListCodeApplication = useMutation({
         mutationFn: async (dataForm: FormData) => {
+            setLoadingLang(true);
             const { data } = await apiCategories.postSearchCodeApplication(dataForm);
-            console.log('data data:', data);
-
+            setLoadingLang(false);
 
             if (data && data.success) {
                 const newDataCustom = data.data.map((e: any, index: number) => {
@@ -15,14 +17,14 @@ export const usePostSearchListCodeApplication = () => {
                         detail: e,
                         id: index + 1,
                         name: `${e[0].manufacturer} >> ${e[0].model}`,
-                    }
-                })
+                    };
+                });
 
                 return { parameter: newDataCustom };
             }
         },
         onSuccess: (data) => {
-            console.log('data', data);
+            console.log("data", data);
         },
         onError: (error: any) => {
             throw new Error(error);
@@ -31,8 +33,8 @@ export const usePostSearchListCodeApplication = () => {
 
     const onSubmit = async (data: any) => {
         try {
-            const dataSubmit = new FormData()
-            dataSubmit.append("id_manufacturer", data?.brand?.value)
+            const dataSubmit = new FormData();
+            dataSubmit.append("id_manufacturer", data?.brand?.value);
 
             if (data?.model?.length > 0) {
                 data?.model?.forEach((idModel: any) => dataSubmit.append(`id_model[]`, idModel.value));
@@ -52,7 +54,7 @@ export const usePostSearchListCodeApplication = () => {
 
             searchListCodeApplication.mutate(dataSubmit);
         } catch (err) {
-            throw err
+            throw err;
         }
     };
 

@@ -1,14 +1,18 @@
+import { useLanguage } from "@/context/LanguageProvider";
 import apiBlog from "@/services/blog/blog.services";
 import { useInfiniteQuery } from "@tanstack/react-query";
 
 export const useBlogList = (params: any, enabled: boolean = true) => {
+    const { setLoadingLang } = useLanguage();
     return useInfiniteQuery({
         queryKey: ["getListBlog", { ...params }],
         queryFn: async ({ pageParam = 1 }) => {
+            setLoadingLang(true);
             const { data } = await apiBlog.getListBlog({
                 ...params,
                 page: pageParam,
             });
+            setLoadingLang(false);
             return data;
         },
         staleTime: 10000,

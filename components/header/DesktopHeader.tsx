@@ -159,6 +159,7 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                                                     onClick={() => {
 
                                                     }}
+                                                    prefetch={false}
                                                     className={`${(item.link === '/' && pathname === '/') || (pathname.includes(item.link) && item.link !== '/') ? 'text-[#00A5BD] hover:text-[#00A5BD]/80' : 'text-[#272727] hover:text-[#00A5BD]'}
                                 flex gap-2 items-center col-span-1 font-medium hover:text-[#272727]/90 3xl:text-lg xl:text-base lg:text-sm xl:px-4 px-2 cursor-pointer custom-transition`}
                                                 >
@@ -187,7 +188,7 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
 
                 <div className='flex items-center justify-end w-full gap-2 max-w-[20%] select-none'>
                     <div className="flex items-center">
-                        <Select onValueChange={handleCodeChange}>
+                        <Select value={selectedOption?.code} onValueChange={handleCodeChange}>
                             <SelectTrigger className="flex items-center gap-2 h-full border-none shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0">
                                 {
                                     selectedOption && (
