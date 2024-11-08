@@ -100,17 +100,17 @@ const Header = () => {
     }
 
     const handleCodeChange = (value: string) => {
-        console.log('value', value);
         queryKeyIsStateHeader({
             selectedCodeCountry: value
         })
         setLanguage(value)
-
-        if (dataCountryOptions[0].code !== value) {
-            setCookie('googletranslate', value)
-        } else {
-            removeCookie('googletranslate')
-        }
+        setCookie('googletranslate', value)
+        // if (dataCountryOptions[0].code !== value) {
+        //     setCookie('googletranslate', value)
+        // }
+        //  else {
+        //     removeCookie('googletranslate')
+        // }
     };
 
     return (
