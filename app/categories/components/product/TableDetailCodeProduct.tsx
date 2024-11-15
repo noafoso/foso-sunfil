@@ -62,18 +62,13 @@ const dataHeader = [
         icon: "/icons/home/icon5.svg",
     },
     {
-        id: "gasoline",
-        name: "Gasoline Filter",
+        id: "air_dryer",
+        name: "Air Dryer",
         icon: "",
     },
     {
-        id: "fuel_water",
-        name: "Fuel/Water Seperator",
-        icon: "",
-    },
-    {
-        id: "hydraulic_oil",
-        name: "Hydraulic oil filter",
+        id: "air_oil_separator",
+        name: "Air Oil Separator",
         icon: "",
     },
     {
@@ -82,10 +77,51 @@ const dataHeader = [
         icon: "",
     },
     {
+        id: "coolant_filter",
+        name: "Coolant Filter",
+        icon: "",
+    },
+    {
+        id: "filter_bag",
+        name: "Filter Bag",
+        icon: "",
+    },
+    {
+        id: "filter_cartridges",
+        name: "Filter Cartridges",
+        icon: "",
+    },
+    {
+        id: "fuel_pump",
+        name: "Fuel Pump",
+        icon: "",
+    },
+    {
+        id: "fuel_water",
+        name: "Fuel/Water Seperator",
+        icon: "",
+    },
+    {
+        id: "gas_filter",
+        name: "Gas Filter",
+        icon: "",
+    },
+    {
         id: "hvac",
         name: "Hvac filter",
         icon: "",
     },
+    {
+        id: "hydraulic_oil",
+        name: "Hydraulic oil filter",
+        icon: "",
+    },
+    {
+        id: "urea_filter",
+        name: "Urea Filter",
+        icon: "",
+    },
+
     {
         id: "other",
         name: "Other",
@@ -95,17 +131,37 @@ const dataHeader = [
 
 const keysToCheck = [
     'air',
+    'oil',
+    'air_dryer', //
+    'air_oil_separator', //
     'air_purifier',
     'cabin',
+    'coolant_filter', //
     'diesel',
+    'filter_bag', //
+    'filter_cartridges', //
+    'fuel_pump', //
     'fuel_water',
-    'gasoline',
+    'gas_filter', //
     'hvac',
     'hydraulic_oil',
-    'oil',
-    'other',
     'transmission',
+    'urea_filter', //
+    'other',
 ];
+// const keysToCheck = [
+//     'air',
+//     'air_purifier',
+//     'cabin',
+//     'diesel',
+//     'fuel_water',
+//     'gasoline',
+//     'hvac',
+//     'hydraulic_oil',
+//     'oil',
+//     'other',
+//     'transmission',
+// ];
 
 // animation đóng mở collapsed
 const contentVariants = {
@@ -115,20 +171,27 @@ const contentVariants = {
 
 const TableDetailCodeProduct = ({ data }: Props) => {
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
-    const { isVisibleMobile } = useResizeStore()
+    const { isVisibleMobile, isVisibleTablet } = useResizeStore()
 
     // state để kiểm tra các cột trong table
     const [stateColTable, setStateColTable] = useState({
         col_air: false,
+        col_air_dryer: false,
+        col_air_oil_separator: false,
         col_air_purifier: false,
         col_cabin: false,
+        col_coolant_filter: false,
         col_diesel: false,
+        col_filter_bag: false,
+        col_filter_cartridges: false,
+        col_fuel_pump: false,
         col_fuel_water: false,
-        col_gasoline: false,
+        col_gas_filter: false,
         col_hvac: false,
         col_hydraulic_oil: false,
         col_oil: false,
         col_transmission: false,
+        col_urea_filter: false,
         col_other: false
     });
     const [loadingTable, setLoadingTable] = useState(true);
@@ -192,6 +255,9 @@ const TableDetailCodeProduct = ({ data }: Props) => {
     // Cập nhật số lượng cột trong grid dựa trên số lượng header thực tế hiển thị
     const gridHeaderColumns = `${visibleHeaders.length}`;
 
+    console.log('gridHeaderColumns', gridHeaderColumns);
+
+
     return (
         <div className='bg-white min-w-screen max-w-screen overflow-x-auto gap-10'>
             {
@@ -200,7 +266,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                     loadingTable ?
                         (
                             <div
-                                className={`grid xl:gap-4 gap-2 xl:w-full md:w-max w-full px-2`}
+                                className={`grid xl:gap-4 gap-2 md:w-max w-full px-2`}
                                 style={{
                                     gridTemplateColumns: `repeat(${15}, minmax(0, 1fr))`
                                 }}
@@ -220,7 +286,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                         :
                         (
                             <div
-                                className={`${+gridHeaderColumns > 8 ? "xl:w-full md:w-max" : "w-full"} grid xl:gap-4 gap-2`}
+                                className={`${+gridHeaderColumns > 13 ? "md:w-max" : "w-full"} grid xl:gap-4 gap-2`}
                                 style={{
                                     gridTemplateColumns: `repeat(${gridHeaderColumns}, minmax(0, 1fr))`
                                 }}
@@ -229,7 +295,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                     visibleHeaders && visibleHeaders.map((item) => (
                                         <div
                                             key={`header-${item.id}`}
-                                            className={`${+gridHeaderColumns > 8 ? "xl:max-w-full md:max-w-[76px]" : "xl:max-w-full lg:max-w-full md:max-w-[76px]"} col-span-1 w-full flex xl:flex-row flex-col items-center justify-center text-center xl:gap-1 py-4`}
+                                            className={`${+gridHeaderColumns > 13 ? "3xl:max-w-[111.31px] 2xl:max-w-[98.94px] xl:max-w-[86.58px]" : "xl:max-w-full lg:max-w-full md:max-w-[76px]"} col-span-1 w-full flex xl:flex-row flex-col items-center justify-center text-center xl:gap-1 py-4`}
                                         >
                                             {
                                                 item.icon &&
@@ -274,7 +340,7 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                         <Accordion
                             type="multiple"
                             onValueChange={(value: string[]) => handleToggle(value)}
-                            className={`${+gridHeaderColumns > 8 ? "xl:w-full md:w-max" : "w-full"}`}
+                            className={`${+gridHeaderColumns > 13 ? "md:w-max" : "w-full"}`}
                         >
                             {
                                 data && data?.parameter?.map((item: any, index: number) => {
@@ -311,7 +377,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 gridTemplateColumns: `repeat(${gridHeaderColumns}, minmax(0, 1fr))`
                                                             }}
                                                         >
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                            <div
+                                                                className='w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                style={{
+                                                                    gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                }}
+                                                            >
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Year</span>
@@ -321,7 +392,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                            <div
+                                                                className='w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                style={{
+                                                                    gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                }}
+                                                            >
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng vol</span>
@@ -331,7 +407,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                            <div
+                                                                className='w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                style={{
+                                                                    gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                }}
+                                                            >
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Eng no</span>
@@ -341,7 +422,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                                 </span>
                                                             </div>
 
-                                                            <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                            <div
+                                                                className='w-full max-w-full flex md:justify-center justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                style={{
+                                                                    gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                }}
+                                                            >
                                                                 {
                                                                     isVisibleMobile &&
                                                                     <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Body no</span>
@@ -353,7 +439,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_oil &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Oil</span>
@@ -378,7 +469,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_air &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air</span>
@@ -403,7 +499,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_diesel &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel</span>
@@ -428,7 +529,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_cabin &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Cabin</span>
@@ -453,7 +559,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_transmission &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Trans</span>
@@ -477,23 +588,28 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             }
 
                                                             {
-                                                                !stateColTable.col_gasoline &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                !stateColTable.col_air_dryer &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
-                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Gasoline filter</span>
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Dryer</span>
                                                                     }
                                                                     <div className='flex flex-col'>
                                                                         {
-                                                                            product?.gasoline && product?.gasoline?.map((gasoline, gasoline_index) => (
+                                                                            product?.air_dryer && product?.air_dryer?.map((air_dryer, air_dryer_index) => (
                                                                                 <Link
-                                                                                    key={`gasoline-${gasoline_index}`}
-                                                                                    href={gasoline?.id_product_lead ? `/categories?code=${gasoline.code_lead}` : "#"}
+                                                                                    key={`air_dryer-${air_dryer_index}`}
+                                                                                    href={air_dryer?.id_product_lead ? `/categories?code=${air_dryer.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${gasoline?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
-                                                                                    onClick={(event) => handleLinkCodeProduct(event, gasoline)}
+                                                                                    className={`${air_dryer?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, air_dryer)}
                                                                                 >
-                                                                                    {gasoline?.code_lead ?? ""}
+                                                                                    {air_dryer?.code_lead ?? ""}
                                                                                 </Link>
                                                                             ))
                                                                         }
@@ -502,48 +618,28 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             }
 
                                                             {
-                                                                !stateColTable.col_fuel_water &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                !stateColTable.col_air_oil_separator &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
-                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel/Water Seperator</span>
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Oil Separator</span>
                                                                     }
                                                                     <div className='flex flex-col'>
                                                                         {
-                                                                            product?.fuel_water && product?.fuel_water?.map((fuel_water, fuel_water_index) => (
+                                                                            product?.air_oil_separator && product?.air_oil_separator?.map((air_oil_separator, air_oil_separator_index) => (
                                                                                 <Link
-                                                                                    key={`fuel_water-${fuel_water_index}`}
-                                                                                    href={fuel_water?.id_product_lead ? `/categories?code=${fuel_water.code_lead}` : "#"}
+                                                                                    key={`air_oil_separator-${air_oil_separator_index}`}
+                                                                                    href={air_oil_separator?.id_product_lead ? `/categories?code=${air_oil_separator.code_lead}` : "#"}
                                                                                     target='_blank'
-                                                                                    className={`${fuel_water?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
-                                                                                    onClick={(event) => handleLinkCodeProduct(event, fuel_water)}
+                                                                                    className={`${air_oil_separator?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, air_oil_separator)}
                                                                                 >
-                                                                                    {fuel_water?.code_lead ?? ""}
-                                                                                </Link>
-                                                                            ))
-                                                                        }
-                                                                    </div>
-                                                                </div>
-                                                            }
-
-                                                            {
-                                                                !stateColTable.col_hydraulic_oil &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
-                                                                    {
-                                                                        isVisibleMobile &&
-                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hydrraulic Oil Filter</span>
-                                                                    }
-                                                                    <div className='flex flex-col'>
-                                                                        {
-                                                                            product?.hydraulic_oil && product?.hydraulic_oil?.map((hydraulic_oil, hydraulic_oil_index) => (
-                                                                                <Link
-                                                                                    key={`hydraulic_oil-${hydraulic_oil_index} `}
-                                                                                    href={hydraulic_oil?.id_product_lead ? `/categories?code=${hydraulic_oil.code_lead}` : "#"}
-                                                                                    target='_blank'
-                                                                                    className={`${hydraulic_oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
-                                                                                    onClick={(event) => handleLinkCodeProduct(event, hydraulic_oil)}
-                                                                                >
-                                                                                    {hydraulic_oil?.code_lead ?? ""}
+                                                                                    {air_oil_separator?.code_lead ?? ""}
                                                                                 </Link>
                                                                             ))
                                                                         }
@@ -553,7 +649,12 @@ const TableDetailCodeProduct = ({ data }: Props) => {
 
                                                             {
                                                                 !stateColTable.col_air_purifier &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Air Furifier</span>
@@ -577,9 +678,193 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             }
 
                                                             {
-                                                                !stateColTable.col_hvac &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                !stateColTable.col_coolant_filter &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Coolant Filter</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.coolant_filter && product?.coolant_filter?.map((coolant_filter, coolant_filter_index) => (
+                                                                                <Link
+                                                                                    key={`coolant_filter-${coolant_filter_index}`}
+                                                                                    href={coolant_filter?.id_product_lead ? `/categories?code=${coolant_filter.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${coolant_filter?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, coolant_filter)}
+                                                                                >
+                                                                                    {coolant_filter?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_filter_bag &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Filter Bag</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.filter_bag && product?.filter_bag?.map((filter_bag, filter_bag_index) => (
+                                                                                <Link
+                                                                                    key={`filter_bag-${filter_bag_index}`}
+                                                                                    href={filter_bag?.id_product_lead ? `/categories?code=${filter_bag.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${filter_bag?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, filter_bag)}
+                                                                                >
+                                                                                    {filter_bag?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_filter_cartridges &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Filter Cartridges</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.filter_cartridges && product?.filter_cartridges?.map((filter_cartridges, filter_cartridges_index) => (
+                                                                                <Link
+                                                                                    key={`filter_cartridges-${filter_cartridges_index}`}
+                                                                                    href={filter_cartridges?.id_product_lead ? `/categories?code=${filter_cartridges.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${filter_cartridges?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, filter_cartridges)}
+                                                                                >
+                                                                                    {filter_cartridges?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_fuel_pump &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel Pump</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.fuel_pump && product?.fuel_pump?.map((fuel_pump, fuel_pump_index) => (
+                                                                                <Link
+                                                                                    key={`fuel_pump-${fuel_pump_index}`}
+                                                                                    href={fuel_pump?.id_product_lead ? `/categories?code=${fuel_pump.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${fuel_pump?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, fuel_pump)}
+                                                                                >
+                                                                                    {fuel_pump?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_fuel_water &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Fuel/Water Seperator</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.fuel_water && product?.fuel_water?.map((fuel_water, fuel_water_index) => (
+                                                                                <Link
+                                                                                    key={`fuel_water-${fuel_water_index}`}
+                                                                                    href={fuel_water?.id_product_lead ? `/categories?code=${fuel_water.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${fuel_water?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, fuel_water)}
+                                                                                >
+                                                                                    {fuel_water?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_gas_filter &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Gas Filter</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.gas_filter && product?.gas_filter?.map((gas_filter, gas_filter_index) => (
+                                                                                <Link
+                                                                                    key={`gas_filter-${gas_filter_index}`}
+                                                                                    href={gas_filter?.id_product_lead ? `/categories?code=${gas_filter.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${gas_filter?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, gas_filter)}
+                                                                                >
+                                                                                    {gas_filter?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_hvac &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >                                                                    {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hvac Filter</span>
                                                                     }
@@ -602,8 +887,73 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             }
 
                                                             {
+                                                                !stateColTable.col_hydraulic_oil &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Hydraulic Oil Filter</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.hydraulic_oil && product?.hydraulic_oil?.map((hydraulic_oil, hydraulic_oil_index) => (
+                                                                                <Link
+                                                                                    key={`hydraulic_oil-${hydraulic_oil_index} `}
+                                                                                    href={hydraulic_oil?.id_product_lead ? `/categories?code=${hydraulic_oil.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${hydraulic_oil?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, hydraulic_oil)}
+                                                                                >
+                                                                                    {hydraulic_oil?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
+                                                                !stateColTable.col_urea_filter &&
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
+                                                                    {
+                                                                        isVisibleMobile &&
+                                                                        <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Urea Filter</span>
+                                                                    }
+                                                                    <div className='flex flex-col'>
+                                                                        {
+                                                                            product?.urea_filter && product?.urea_filter?.map((urea_filter, urea_filter_index) => (
+                                                                                <Link
+                                                                                    key={`urea_filter-${urea_filter_index} `}
+                                                                                    href={urea_filter?.id_product_lead ? `/categories?code=${urea_filter.code_lead}` : "#"}
+                                                                                    target='_blank'
+                                                                                    className={`${urea_filter?.id_product_lead ? "text-[#57A4FE] hover:text-[#57A4FE]/80" : "text-[#ED1D24] hover:text-[#ED1D24]/80 cursor-default hidden"} text-content-common font-medium md:text-center text-end md:w-full w-[60%] text-nowrap`}
+                                                                                    onClick={(event) => handleLinkCodeProduct(event, urea_filter)}
+                                                                                >
+                                                                                    {urea_filter?.code_lead ?? ""}
+                                                                                </Link>
+                                                                            ))
+                                                                        }
+                                                                    </div>
+                                                                </div>
+                                                            }
+
+                                                            {
                                                                 !stateColTable.col_other &&
-                                                                <div className='md:col-span-1 col-span-15 w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'>
+                                                                <div
+                                                                    className='w-full max-w-full flex md:flex-col flex-row md:items-center md:justify-start justify-between gap-2 md:px-0 px-2 md:py-0 py-4'
+                                                                    style={{
+                                                                        gridColumn: !isVisibleMobile ? `span 1 / span 1` : `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
+                                                                >
                                                                     {
                                                                         isVisibleMobile &&
                                                                         <span className='text-content-common uppercase text-[#1A1B20]/[64%]'>Other</span>
@@ -629,11 +979,10 @@ const TableDetailCodeProduct = ({ data }: Props) => {
                                                             {
                                                                 isVisibleMobile && item?.detail?.length > 1 && item?.detail?.length - 1 !== i &&
                                                                 <div
-                                                                    className='col-span-15 w-full'
-                                                                // className='w-full'
-                                                                // style={{
-                                                                //     gridColumn: `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
-                                                                // }}
+                                                                    className='w-full'
+                                                                    style={{
+                                                                        gridColumn: `span ${gridHeaderColumns} / span ${gridHeaderColumns}`
+                                                                    }}
                                                                 >
                                                                     <LineVerticalLinear
                                                                         backgroundColorLinear="linear-gradient(90deg, #FFF2D1 0%, #F6DD00 50%, #FFF2D1 100%)"

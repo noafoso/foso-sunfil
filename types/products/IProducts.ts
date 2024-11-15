@@ -85,14 +85,21 @@ interface IDetailCodeApplication {
     model: string,
     oil?: IDetailProductParameter[],
     air?: IDetailProductParameter[],
+    air_dryer?: IDetailProductParameter[], //
+    air_oil_separator?: IDetailProductParameter[], //
+    air_purifier?: IDetailProductParameter[]
+    coolant_filter?: IDetailProductParameter[], //
+    filter_bag?: IDetailProductParameter[], //
+    filter_cartridges?: IDetailProductParameter[], //
+    fuel_pump?: IDetailProductParameter[], //
+    fuel_water?: IDetailProductParameter[],
+    gas_filter?: IDetailProductParameter[], //
+    hvac?: IDetailProductParameter[],
+    hydraulic_oil?: IDetailProductParameter[]
+    urea_filter?: IDetailProductParameter[], //
     diesel?: IDetailProductParameter[],
     cabin?: IDetailProductParameter[],
     transmission?: IDetailProductParameter[]
-    gasoline?: IDetailProductParameter[]
-    fuel_water?: IDetailProductParameter[]
-    hydraulic_oil?: IDetailProductParameter[]
-    air_purifier?: IDetailProductParameter[]
-    hvac?: IDetailProductParameter[]
     other?: IDetailProductParameter[]
 }
 
