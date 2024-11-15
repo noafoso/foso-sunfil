@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'sunfil.fmrp.vn',
+                hostname: 'system.sunfil1.vn',
             },
             {
                 protocol: 'http',
