@@ -1,8 +1,11 @@
 {
-  "extends": [
-    "next/core-web-vitals",
-    "next/typescript",
-    "plugin:@tanstack/eslint-plugin-query/recommended",
-    
-  ]
+    "extends": [
+        "next/core-web-vitals",
+        "next/typescript",
+        "plugin:@tanstack/eslint-plugin-query/recommended",
+    ],
+    "rules": {
+        "react/no-unescaped-entities": "off",
+        "react/display-name": "off"
+    }
 }

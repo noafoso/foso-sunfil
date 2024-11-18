@@ -10,7 +10,7 @@ const nextConfig = {
             },
             {
                 protocol: 'https',
-                hostname: 'system.sunfil1.vn',
+                hostname: 'system.sunfil1.com',
             },
             {
                 protocol: 'http',
