@@ -15,6 +15,6 @@ const Page = () => {
             <SectionQuestionContact />
         </div>
     )
-}
+}   
 
 export default Page

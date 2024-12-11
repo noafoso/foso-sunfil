@@ -1,3 +1,5 @@
+type CountryCode = 'VN' | 'US' | 'JP' | 'KR' | 'default';
+
 const formatNumber = (num: number): string => {
     // Làm tròn số và chuyển thành chuỗi
     let roundedNumber = Math.round(num).toString();
@@ -124,19 +126,53 @@ const FormatNumberHundred = (number: number, max_number: number): string => {
 };
 
 // format số điện thoại
-const FormatPhoneNumber = (number: number | string, decimalPlaces?: number): string => {
+const FormatPhoneNumber = (number: number | string, countryCode: CountryCode = 'default'): string => {
     // Chuyển đổi số điện thoại thành chuỗi và loại bỏ tất cả các ký tự không phải là số
-    const numberString = number.toString().replace(/\D/g, "");
+    const numberString = number?.toString()?.replace(/\D/g, "");
 
-    // Kiểm tra xem chuỗi số điện thoại có đủ độ dài không để áp dụng định dạng
-    if (numberString.length < 10) {
-        return numberString; // Trả về số điện thoại không định dạng nếu ngắn hơn 10 ký tự
+    if (!numberString) return '';
+
+    switch (countryCode) {
+        case 'VN':
+            if (numberString.length === 9) {
+                return numberString.replace(/(\d{3})(\d{3})(\d{3})/, "$1 $2 $3");
+            } else if (numberString.length === 10) {
+                return numberString.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+            }
+            break;
+        case 'US':
+            if (numberString.length === 10) {
+                return numberString.replace(/(\d{3})(\d{3})(\d{4})/, "($1) $2-$3");
+            } else if (numberString.length === 11) {
+                return numberString.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "+$1 ($2) $3-$4");
+            }
+            break;
+        case 'JP':
+            if (numberString.length === 10) {
+                return numberString.replace(/(\d{2})(\d{4})(\d{4})/, "$1-$2-$3");
+            } else if (numberString.length === 11) {
+                return numberString.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+            }
+            break;
+        case 'KR':
+            if (numberString.length === 10) {
+                return numberString.replace(/(\d{3})(\d{3})(\d{4})/, "$1-$2-$3");
+            } else if (numberString.length === 11) {
+                return numberString.replace(/(\d{3})(\d{4})(\d{4})/, "$1-$2-$3");
+            }
+            break;
+        default:
+            if (numberString.length === 8) {
+                return numberString.replace(/(\d{4})(\d{4})/, "$1 $2");
+            } else if (numberString.length === 10) {
+                return numberString.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
+            } else if (numberString.length >= 11) {
+                return numberString.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "+$1 $2 $3 $4");
+            }
     }
 
-    // Tạo chuỗi số điện thoại với định dạng
-    const formattedNumber = numberString.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
-
-    return formattedNumber;
+    // Trả về số điện thoại gốc nếu không phù hợp với bất kỳ định dạng nào
+    return numberString;
 };
 
 // formart trang my trip
