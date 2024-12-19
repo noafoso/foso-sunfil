@@ -1,7 +1,7 @@
 'use client'
 import TitleDash from '@/components/title/TitleDash'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useGetDetailCategories } from '@/hooks/categories/useGetDetailCategories'
+import { useGetDetailCategories } from '@/hooks/api/categories/useGetDetailCategories'
 import { uuidv4 } from '@/lib/uuid'
 import { montserrat_sans } from '@/utils/fonts/fonts'
 import { useParams } from 'next/navigation'

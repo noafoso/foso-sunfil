@@ -12,6 +12,7 @@ import { uuidv4 } from '@/lib/uuid'
 import { IMenuHeader } from '@/types/menu/IMenu'
 import { useLanguage } from '@/context/LanguageProvider'
 import useCookieStore from '@/stores/useCookieStore'
+import { useDialogStore } from '@/stores/useDialogStore'
 
 const dataHeader: IMenuHeader[] = [
     {
@@ -68,6 +69,7 @@ const Header = () => {
     const { getCookie, setCookie, removeCookie } = useCookieStore()
     const { isVisibleTablet } = useResizeStore()
     const { isStateHeader, queryKeyIsStateHeader } = useStateHeader()
+    const { setOpenDialogCustom, setStatusDialog } = useDialogStore()
     const { language, setLanguage } = useLanguage();
 
     useEffect(() => {
@@ -113,6 +115,26 @@ const Header = () => {
         // }
     };
 
+    const handleOpenDialog = (status: string, type_device: string) => {
+        if (type_device === "desktop") {
+            setOpenDialogCustom(true)
+            setStatusDialog(status)
+        } else {
+            // queryKeyIsStateLayoutClient({
+            //     header: {
+            //         ...isStateLayoutClient?.header,
+            //         isShowMenuScreen: false,
+            //     }
+            // })
+
+            setTimeout(() => {
+                setOpenDialogCustom(true)
+                setStatusDialog(status)
+            }, 500);
+
+        }
+    }
+
     return (
         <header className='absolute top-0 md:bg-transparent bg-white w-full z-50 py-4'>
             <div className='custom-container'>
@@ -130,6 +152,7 @@ const Header = () => {
                             dataCountryOptions={dataCountryOptions}
                             handleToggleMenu={handleToggleMenu}
                             handleCodeChange={handleCodeChange}
+                            handleOpenDialog={handleOpenDialog}
                         />
                 }
             </div>

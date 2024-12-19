@@ -2,7 +2,7 @@
 import { Button } from '@/components/ui/button'
 import { Skeleton } from '@/components/ui/skeleton'
 import { FORMAT_DATE } from '@/constants/FormatDate'
-import { useBlogOutStanding } from '@/hooks/blog/useBlogOutStanding'
+import { useBlogOutStanding } from '@/hooks/api/blog/useBlogOutStanding'
 import { momentCore } from '@/lib/moment'
 import ConvertToSlug from '@/utils/convertToSlug/ConvertToSlug'
 import Image from 'next/image'

@@ -1,6 +1,6 @@
 'use client'
 
-import { useGetListCategories } from '@/hooks/categories/useGetListCategories'
+import { useGetListCategories } from '@/hooks/api/categories/useGetListCategories'
 import { uuidv4 } from '@/lib/uuid'
 import React from 'react'
 import SectionCategoryCommon from './components/SectionCategoryCommon'

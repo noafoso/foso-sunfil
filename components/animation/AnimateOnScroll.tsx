@@ -2,7 +2,7 @@
 import React from 'react'
 import { motion } from 'framer-motion'
 import { useInView } from 'react-intersection-observer'
-import { variantSlideUp } from '@/utils/variants-animation/Variants-Animation'
+import { variantSlideUp } from '@/utils/variants-animation/VariantsAnimation'
 
 interface AnimateOnScrollProps {
     children: React.ReactNode

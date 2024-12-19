@@ -6,8 +6,8 @@ import { montserrat_sans } from '@/utils/fonts/fonts';
 import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
-import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/Variants-Animation';
-import { useGetListCategories } from '@/hooks/categories/useGetListCategories';
+import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/VariantsAnimation';
+import { useGetListCategories } from '@/hooks/api/categories/useGetListCategories';
 import { useQueryClient } from '@tanstack/react-query';
 import { IListCategories } from '@/types/categories/ICategoryes';
 
@@ -104,7 +104,7 @@ const SectionIntroHome = () => {
                                                 3xl:size-12 size-8 object-contain custom-transition`}
                                             />
 
-                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} text-sm custom-transition`}>
+                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} text-sm text-center custom-transition`}>
                                                 {category?.name ?? ""}
                                             </div>
                                         </div>

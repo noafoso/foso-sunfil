@@ -1,7 +1,7 @@
 "use client"
 import { Skeleton } from '@/components/ui/skeleton'
 import { FORMAT_DATE } from '@/constants/FormatDate'
-import { useBlogDetail } from '@/hooks/blog/useBlogDetail'
+import { useBlogDetail } from '@/hooks/api/blog/useBlogDetail'
 import { momentCore } from '@/lib/moment'
 import { montserrat_sans } from '@/utils/fonts/fonts'
 import { useParams } from 'next/navigation'

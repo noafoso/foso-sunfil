@@ -29,6 +29,9 @@ import { usePathname, useSearchParams } from 'next/navigation'
 import { scrollToSection } from '@/utils/scroll/ScrollFunction'
 // import LayoutTranslate from './LayoutTranslate'
 import dynamic from 'next/dynamic'
+import { useDialogStore } from '@/stores/useDialogStore'
+import { useAlertDialogStore } from '@/stores/useAlertDialogStore'
+import { DialogCustom } from '../dialog/DialogCustom'
 
 const LayoutTranslate = dynamic(() => import('./LayoutTranslate'), { ssr: false })
 
@@ -41,7 +44,8 @@ const queryClient = new QueryClient({
 })
 
 const LayoutMain = ({ children }: { children: React.ReactNode }) => {
-
+    const { openDialogCustom } = useDialogStore()
+    const { openAlertDialog } = useAlertDialogStore()
     const sectionId = useSearchParams().get('sectionId')
 
     const pathname = usePathname()
@@ -109,9 +113,6 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
     if (!isMounted) return null;
 
     return (
-
-        // <LanguageProvider>
-        //     <TranslationWrapper>
         <QueryClientProvider client={queryClient}>
             <LayoutTranslate>
                 <Toaster position="top-right" reverseOrder={false} />
@@ -125,12 +126,12 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
                         <ButtonToTop />
                         {!['/home', '/'].includes(pathname) && <Footer />}
                     </main>
+
+                    {openDialogCustom && <DialogCustom />}
                 </div>
             </LayoutTranslate>
             <ReactQueryDevtools initialIsOpen={true} />
         </QueryClientProvider>
-        //     </TranslationWrapper>
-        // </LanguageProvider>
     )
 }
 

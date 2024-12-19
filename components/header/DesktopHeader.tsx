@@ -13,12 +13,15 @@ import { useStateHeader } from '@/states/Header/useStateHeader'
 import { scrollToSection } from '@/utils/scroll/ScrollFunction'
 import PhoneLink from '../contact/PhoneLink'
 import EmailLink from '../contact/EmailLink'
+import BackgroundPosition from '../background/BackgroundPosition'
+import ButtonAnimation from '../button/ButtonAnimation'
 
 interface DesktopHeaderProps {
     dataCountryOptions: any[]
     dataHeader: IMenuHeader[]
     handleToggleMenu: (action: string) => void
     handleCodeChange: (value: string) => void
+    handleOpenDialog: (value: string, type_device: string) => void
 }
 
 const dataAboutUs = [
@@ -95,11 +98,12 @@ const dataOther = [
     },
 ]
 
-const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCountryOptions }: DesktopHeaderProps) => {
+const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handleCodeChange, handleOpenDialog }: DesktopHeaderProps) => {
     const router = useRouter(); // Sử dụng useRouter từ 'next/navigation'
     const pathname = usePathname()
 
     const { isStateHeader } = useStateHeader()
+    const [isBackgroundReady, setIsBackgroundReady] = useState<boolean>(false); // Theo dõi trạng thái
 
     const selectedOption = dataCountryOptions.find(option => option.code === isStateHeader.selectedCodeCountry);
 
@@ -226,6 +230,12 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                         </Select>
                     </div>
 
+                    <ButtonAnimation
+                        onClick={() => handleOpenDialog('login', 'desktop')}
+                        title_button={"Đăng nhập"}
+                        className='xxl:text-base text-sm px-6 py-3 text-nowrap whitespace-nowrap rounded-lg bg-black text-white !font-medium !tracking-[1%] h-auto'
+                    />
+
                     <motion.div
                         initial={false}
                         animate="rest"
@@ -250,133 +260,140 @@ const DesktopHeader = ({ dataHeader, handleToggleMenu, handleCodeChange, dataCou
                         animate={{ y: 0 }}      // Trượt vào vị trí hiển thị
                         exit={{ y: '-100%' }}    // Trượt ra khi đóng
                         transition={{ duration: 0.5 }} // Tốc độ trượt
-                        className="z-[999] absolute bg-[url(/background/menu/bg-menu.png)] bg-center bg-cover bg-no-repeat w-screen lg:h-screen md:h-dvh top-0 left-0"
+                        className="z-[999] absolute  bg-center bg-cover bg-no-repeat w-screen lg:h-screen md:h-dvh top-0 left-0"
+                    // className="z-[999] absolute bg-[url(/background/menu/bg-menu.png)] bg-center bg-cover bg-no-repeat w-screen lg:h-screen md:h-dvh top-0 left-0"
                     >
-                        <div className='custom-container py-4 relative h-full'>
-                            <div className='relative 3xl:space-y-12 space-y-10 z-10'>
-                                <div className='flex items-center justify-between'>
-                                    <div className='w-[12%] max-w-[12%] h-[80px]'>
-                                        <Link
-                                            href="/"
-                                            className='w-fit h-full flex justify-start items-center'
-                                            prefetch={false}
-                                        >
+                        <BackgroundPosition image='/background/menu/bg-menu.png' onComplete={() => setIsBackgroundReady(true)} />
+
+                        {
+                            isBackgroundReady && (
+                                <div className='custom-container py-4 relative h-full'>
+                                    <div className='relative 3xl:space-y-12 space-y-10 z-10'>
+                                        <div className='flex items-center justify-between'>
+                                            <div className='w-[12%] max-w-[12%] h-[80px]'>
+                                                <Link
+                                                    href="/"
+                                                    className='w-fit h-full flex justify-start items-center'
+                                                    prefetch={false}
+                                                >
+                                                    <Image
+                                                        alt='logo'
+                                                        src="/logo/logo.png"
+                                                        width={1920}
+                                                        height={1080}
+                                                        priority
+                                                        className='size-full object-contain'
+                                                    />
+                                                </Link>
+                                            </div>
+
+                                            <motion.div
+                                                initial={false}
+                                                animate="rest"
+                                                whileTap="press"
+                                                variants={{
+                                                    rest: { scale: 1 },
+                                                    press: { scale: 1.03, transition: { duration: 0.2 } },
+                                                }}
+                                                className="flex items-center justify-center bg-black p-3 rounded-[6px] cursor-pointer"
+                                                onClick={() => handleToggleMenu('off')}
+                                            >
+                                                <X className='xl:size-6 size-5 scale-110 text-white' />
+                                            </motion.div>
+                                        </div>
+
+                                        <div className='grid grid-cols-4 px-6 py-8 w-full border-t border-[#D2D9E0]'>
+                                            <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
+                                                {
+                                                    dataAboutUs && dataAboutUs.map((item, index) => (
+                                                        <div
+                                                            key={item.id}
+                                                            className={`${index === 0 ? "uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold" : "capitalize text-[#5C5C5C] hover:text-[#5C5C5C]/80 font-medium"} text-title-common cursor-pointer custom-transition w-fit`}
+                                                            onClick={() => handleMoveSectionId(item.id, item.link)}
+                                                        >
+                                                            {item.name}
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+
+                                            <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
+                                                {
+                                                    dataProduct && dataProduct.map((item, index) => (
+                                                        <div
+                                                            key={`${item.id}-${index}`}
+                                                            className={`${index === 0 ? "uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold" : "capitalize text-[#5C5C5C] hover:text-[#5C5C5C]/80 font-medium"} text-title-common cursor-pointer custom-transition w-fit`}
+                                                            onClick={() => handleMoveSectionId(item.id, item.link)}
+                                                        >
+                                                            {item.name}
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+
+                                            <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
+                                                {
+                                                    dataOther && dataOther.map((item, index) => (
+                                                        <div
+                                                            key={`${item.id}-${index}`}
+                                                            className={`uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}
+                                                            onClick={() => handleMoveSectionId(item.id, item.link)}
+                                                        >
+                                                            {item.name}
+                                                        </div>
+                                                    ))
+                                                }
+                                            </div>
+
+                                            <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
+                                                <div className={`uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-default custom-transition w-fit`}>
+                                                    VIETHUNG AUTO
+                                                </div>
+
+                                                <div className='flex flex-col'>
+                                                    <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
+                                                        Tel
+                                                    </div>
+                                                    <PhoneLink phoneNumber={'1921029182'} className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
+                                                        +192 102 9182
+                                                    </PhoneLink>
+                                                </div>
+
+                                                <div className='flex flex-col'>
+                                                    <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
+                                                        Fax
+                                                    </div>
+                                                    <PhoneLink phoneNumber={'1921029182'} className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
+                                                        +192 102 9182
+                                                    </PhoneLink>
+                                                </div>
+
+                                                <div className='flex flex-col'>
+                                                    <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
+                                                        Mail
+                                                    </div>
+                                                    <EmailLink email="Viethung@gmai.com" className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
+                                                        Viethung@gmai.com
+                                                    </EmailLink>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div className='absolute z-0 3xl:bottom-[15%] bottom-[10%]'>
+                                        <div className='aspect-3.83/1 3xl:w-[854px] xl:w-[620px] w-[620px] h-full'>
                                             <Image
-                                                alt='logo'
-                                                src="/logo/logo.png"
-                                                width={1920}
-                                                height={1080}
-                                                priority
-                                                className='size-full object-contain'
+                                                src={"/background/menu/bg-viethung-full.png"}
+                                                alt='oil'
+                                                width={1080}
+                                                height={300}
+                                                className='size-full object-cover'
                                             />
-                                        </Link>
-                                    </div>
-
-                                    <motion.div
-                                        initial={false}
-                                        animate="rest"
-                                        whileTap="press"
-                                        variants={{
-                                            rest: { scale: 1 },
-                                            press: { scale: 1.03, transition: { duration: 0.2 } },
-                                        }}
-                                        className="flex items-center justify-center bg-black p-3 rounded-[6px] cursor-pointer"
-                                        onClick={() => handleToggleMenu('off')}
-                                    >
-                                        <X className='xl:size-6 size-5 scale-110 text-white' />
-                                    </motion.div>
-                                </div>
-
-                                <div className='grid grid-cols-4 px-6 py-8 w-full border-t border-[#D2D9E0]'>
-                                    <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
-                                        {
-                                            dataAboutUs && dataAboutUs.map((item, index) => (
-                                                <div
-                                                    key={item.id}
-                                                    className={`${index === 0 ? "uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold" : "capitalize text-[#5C5C5C] hover:text-[#5C5C5C]/80 font-medium"} text-title-common cursor-pointer custom-transition w-fit`}
-                                                    onClick={() => handleMoveSectionId(item.id, item.link)}
-                                                >
-                                                    {item.name}
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-
-                                    <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
-                                        {
-                                            dataProduct && dataProduct.map((item, index) => (
-                                                <div
-                                                    key={`${item.id}-${index}`}
-                                                    className={`${index === 0 ? "uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold" : "capitalize text-[#5C5C5C] hover:text-[#5C5C5C]/80 font-medium"} text-title-common cursor-pointer custom-transition w-fit`}
-                                                    onClick={() => handleMoveSectionId(item.id, item.link)}
-                                                >
-                                                    {item.name}
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-
-                                    <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
-                                        {
-                                            dataOther && dataOther.map((item, index) => (
-                                                <div
-                                                    key={`${item.id}-${index}`}
-                                                    className={`uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}
-                                                    onClick={() => handleMoveSectionId(item.id, item.link)}
-                                                >
-                                                    {item.name}
-                                                </div>
-                                            ))
-                                        }
-                                    </div>
-
-                                    <div className='col-span-1 flex flex-col 3xl:gap-8 gap-6'>
-                                        <div className={`uppercase text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-default custom-transition w-fit`}>
-                                            VIETHUNG AUTO
-                                        </div>
-
-                                        <div className='flex flex-col'>
-                                            <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
-                                                Tel
-                                            </div>
-                                            <PhoneLink phoneNumber={'1921029182'} className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
-                                                +192 102 9182
-                                            </PhoneLink>
-                                        </div>
-
-                                        <div className='flex flex-col'>
-                                            <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
-                                                Fax
-                                            </div>
-                                            <PhoneLink phoneNumber={'1921029182'} className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
-                                                +192 102 9182
-                                            </PhoneLink>
-                                        </div>
-
-                                        <div className='flex flex-col'>
-                                            <div className={`text-[#000000]/[62%] font-normal text-content-common cursor-default w-fit`}>
-                                                Mail
-                                            </div>
-                                            <EmailLink email="Viethung@gmai.com" className={`text-[#1F1F1F] hover:text-[#1F1F1F]/80 font-bold text-title-common cursor-pointer custom-transition w-fit`}>
-                                                Viethung@gmai.com
-                                            </EmailLink>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-
-                            <div className='absolute z-0 3xl:bottom-[15%] bottom-[10%]'>
-                                <div className='aspect-3.83/1 3xl:w-[854px] xl:w-[620px] w-[620px] h-full'>
-                                    <Image
-                                        src={"/background/menu/bg-viethung-full.png"}
-                                        alt='oil'
-                                        width={1080}
-                                        height={300}
-                                        className='size-full object-cover'
-                                    />
-                                </div>
-                            </div>
-                        </div>
+                            )
+                        }
                     </motion.div>
                 }
             </AnimatePresence>

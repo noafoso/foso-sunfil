@@ -1,6 +1,6 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll'
 import { montserrat_sans } from '@/utils/fonts/fonts'
-import { variantSlideLeft } from '@/utils/variants-animation/Variants-Animation'
+import { variantSlideLeft } from '@/utils/variants-animation/VariantsAnimation'
 import React from 'react'
 
 type Props = {

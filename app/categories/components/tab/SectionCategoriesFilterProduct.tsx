@@ -11,10 +11,10 @@ import { useStateCategories } from '../../_state/useStateCategories'
 import { motion } from 'framer-motion'
 import ButtonAnimation from '@/components/button/ButtonAnimation'
 import { useRouter, useSearchParams } from 'next/navigation'
-import { useGetCodeProductAbsolute } from '@/hooks/categories/useGetCodeProductAbsolute'
+import { useGetCodeProductAbsolute } from '@/hooks/api/categories/useGetCodeProductAbsolute'
 import ProductDetailCodeSkeleton from '@/components/skeleton/categories/ProductDetailCodeSkeleton'
 import SectionInfoProduct from '../product/SectionInfoProduct'
-import { usePostCodeProductRelative } from '@/hooks/categories/usePostCodeProductRelative'
+import { usePostCodeProductRelative } from '@/hooks/api/categories/usePostCodeProductRelative'
 
 const SectionCategoriesFilterProduct = () => {
     const form = useForm({

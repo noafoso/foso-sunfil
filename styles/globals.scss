@@ -174,4 +174,23 @@ menu {
     .text-title-common-product {
         @apply 3xl:text-[26px] xl:text-[24px] md:text-[22px] text-[26px];
     }
+
+    //
+    .text-title-section-small {
+        @apply 3xl:text-[44px] 2xl:text-[40px] xxl:text-[36px] xl:text-[36px] md:text-[32px] text-[28px] 3xl:!leading-[54px] 2xl:!leading-[50px] xxl:!leading-[46px] xl:!leading-[46px] md:!leading-[42px] !leading-[38px] tracking-[-2%];
+    }
+
+    .text-title {
+        @apply 3xl:!text-2xl xl:!text-xl lg:!text-lg !text-xl !tracking-[2%];
+    }
+
+    .text-default {
+        @apply 3xl:!text-lg xl:!text-base lg:!text-sm !text-lg !tracking-[1%];
+    }
+    .text-sm-default {
+        @apply 3xl:!text-base xl:!text-sm lg:!text-xs !text-base !tracking-[1%];
+    }
+    .text-xs-default {
+        @apply 3xl:!text-sm xl:!text-xs lg:!text-xs !text-sm !tracking-[1%];
+    }
 }
