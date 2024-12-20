@@ -13,7 +13,7 @@ const Footer = () => {
                 </div>
                 <div className='flex items-start gap-1'>
                     <span className='font-normal text-nowrap'>Địa Chỉ:</span>
-                    <span className='font-medium'>B15/1 ấp 2, Xã Tân Quý Tây, Huyện Bình Chánh, Thành phố Hồ Chí Minh</span>
+                    <span className='font-medium'>13 Nghĩa Thục, Phường 05, Quận 5, Thành phố Hồ Chí Minh, VIỆT NAM</span>
                 </div>
                 <div className='flex items-start gap-1'>
                     <span className='font-normal text-nowrap'>Số điện thoại:</span>
