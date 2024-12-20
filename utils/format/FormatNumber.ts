@@ -167,7 +167,9 @@ const FormatPhoneNumber = (number: number | string, countryCode: CountryCode = '
             } else if (numberString.length === 10) {
                 return numberString.replace(/(\d{4})(\d{3})(\d{3})/, "$1 $2 $3");
             } else if (numberString.length >= 11) {
-                return numberString.replace(/(\d{1})(\d{3})(\d{3})(\d{4})/, "+$1 $2 $3 $4");
+                return numberString.replace(/(\d{4})(\d{3})(\d{4})/, "$1 $2 $3");
+            } else if (numberString.length > 11) {
+                return numberString.replace(/(\d{1})(\d{4})(\d{3})(\d{4})/, "$1 $2 $3 $4");
             }
     }
 

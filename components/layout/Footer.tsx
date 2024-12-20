@@ -17,8 +17,8 @@ const Footer = () => {
                 </div>
                 <div className='flex items-start gap-1'>
                     <span className='font-normal text-nowrap'>Số điện thoại:</span>
-                    <PhoneLink phoneNumber="0837607607" className='font-medium hover:text-[#07A6FF] custom-transition' >
-                        {FormatPhoneNumber("0837607607")}
+                    <PhoneLink phoneNumber="02837607607" className='font-medium hover:text-[#07A6FF] custom-transition' >
+                        {FormatPhoneNumber("02837607607")}
                     </PhoneLink>
                 </div>
             </div>
