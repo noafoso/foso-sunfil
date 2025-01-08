@@ -1,4 +1,4 @@
-import { useStateCategories } from "@/app/categories/_state/useStateCategories";
+import { useStateCategories } from "@/app/(client)/categories/_state/useStateCategories";
 import { useLanguage } from "@/context/LanguageProvider";
 import apiCategories from "@/services/categories/categories.services";
 import { IListCategories, IResponCategoriesHome } from "@/types/categories/ICategoryes";

@@ -28,6 +28,26 @@ const nextConfig = {
             },
         ]
     },
+
+    async redirects() {
+        return [
+            {
+                source: '/home',
+                destination: '/',
+                permanent: true
+            },
+            {
+                source: '/auth/information',
+                destination: '/auth/information/profile',
+                permanent: true
+            },
+            {
+                source: '/auth',
+                destination: '/auth/information/profile',
+                permanent: true
+            },
+        ]
+    },
 };
 
 export default nextConfig;

@@ -1,17 +1,20 @@
 "use client";
-import { IUseCookie } from "@/types/auth/IAuth";
+import { KEY_COOKIES } from "@/constants/Cookie";
 import Cookies from "js-cookie";
 
-const useCookieStore = (initialValue?: IUseCookie["initialValue"]) => {
-    const setCookie = (key: IUseCookie["key"] = "token_viethung", value: string, options?: Cookies.CookieAttributes) => {
-        Cookies.set(key, value, options);
+const useCookieStore = () => {
+    const setCookie = (key: string = KEY_COOKIES.WEBSITE, value: string, options?: Cookies.CookieAttributes) => {
+        // Nếu không có giá trị expires trong options, mặc định đặt thời hạn là 1 năm
+        const defaultOptions = { expires: 365 }; // 1 năm
+
+        Cookies.set(key, value, { ...defaultOptions, ...options });
     };
 
-    const removeCookie = (key: IUseCookie["key"] = "token_viethung", options?: Cookies.CookieAttributes) => {
+    const removeCookie = (key: string = KEY_COOKIES.WEBSITE, options?: Cookies.CookieAttributes) => {
         Cookies.remove(key, options);
     };
 
-    const getCookie = (key: IUseCookie["key"] = "token_viethung") => {
+    const getCookie = (key: string = KEY_COOKIES.WEBSITE) => {
         return Cookies.get(key);
     };
 

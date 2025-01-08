@@ -176,7 +176,7 @@ const LoginComponent = () => {
                         className='bg-[#333538] text-white rounded-full 2xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear'
                     />
 
-                    <div className='flex items-center justify-between gap-5'>
+                    {/* <div className='flex items-center justify-between gap-5'>
                         <div className='ml-10 w-[40%] h-[1px] bg-[#EBEDEE]' />
                         <div className='w-[10%] text-sm-default text-[#919BA0] font-light'>Hoặc</div>
                         <div className='mr-10 w-[40%] h-[1px] bg-[#EBEDEE]' />
@@ -214,7 +214,7 @@ const LoginComponent = () => {
                                 md:py-3 py-2.5 w-full flex gap-x-1.5 justify-center items-center'
                             variant={variantButtonPressZoom}
                         />
-                    </div>
+                    </div> */}
 
                     <div className="text-[#61666C] font-light text-base leading-5 text-center">
                         <h1>Bạn chưa là thành viên?

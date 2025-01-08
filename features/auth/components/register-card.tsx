@@ -63,7 +63,7 @@ const RegisterComponent = () => {
     return (
         <Form {...form}>
             <form
-                className={`flex flex-col 3xl:gap-6 gap-4`}
+                className={`flex flex-col 3xl:gap-6 gap-4 p-0.5`}
                 onSubmit={(e: FormEvent<HTMLFormElement>) => {
                     e.preventDefault()
 
@@ -164,7 +164,7 @@ const RegisterComponent = () => {
                     control={form.control}
                     name="email"
                     rules={{
-                        required: "Vui lòng nhập email!",
+                        required: false,
                         pattern: {
                             value: regexPatterns.email,
                             message: "Email không hợp lệ!",
@@ -176,7 +176,8 @@ const RegisterComponent = () => {
                                 htmlFor="email"
                                 className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
                             >
-                                Email <span className="text-[#FA3434]">*</span>
+                                Email
+                                {/* Email <span className="text-[#FA3434]">*</span> */}
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
