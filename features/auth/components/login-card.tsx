@@ -7,7 +7,7 @@ import Image from 'next/image'
 import { FormEvent } from 'react'
 import { useForm } from 'react-hook-form'
 import { IoEye, IoEyeOff } from 'react-icons/io5'
-import { useShowHiddenPassword } from '@/hooks/hooks/password/useShowPassword'
+import { useShowHiddenPassword } from '@/hooks/password/useShowPassword'
 import ButtonLoading from '@/components/button/ButtonLoading'
 import { regexPatterns } from '@/utils/regex/regex'
 

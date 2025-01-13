@@ -15,7 +15,7 @@ import { useAuthStore } from "@/stores/useAuthStores";
 import { IChangePassWordFormSetup } from "@/types/auth/IAuth";
 import { useToastStore } from "@/stores/useToastStore";
 import { useDialogStore } from "@/stores/useDialogStore";
-import { useShowPasswordMulti } from "@/hooks/hooks/password/useShowPasswordMulti";
+import { useShowPasswordMulti } from "@/hooks/password/useShowPasswordMulti";
 import apiAuth from "@/services/auth/auth.services";
 
 export const usePostChangePassword = (initialFormValue: IChangePassWordFormSetup | any) => {

@@ -1,6 +1,6 @@
 'use client'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useBlogDetail } from '@/hooks/api/blog/useBlogDetail'
+import { useBlogDetail } from '@/managers/api-management/blog/useBlogDetail'
 import { useResizeStore } from '@/stores/useResizeStore'
 import Image from 'next/image'
 import { useParams } from 'next/navigation'

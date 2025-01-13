@@ -6,7 +6,7 @@ import React, { FormEvent } from 'react'
 import { useForm } from 'react-hook-form'
 
 import { useDialogStore } from '@/stores/useDialogStore'
-import { useShowHiddenPassword } from '@/hooks/hooks/password/useShowPassword'
+import { useShowHiddenPassword } from '@/hooks/password/useShowPassword'
 import ButtonLoading from '@/components/button/ButtonLoading'
 import { regexPatterns } from '@/utils/regex/regex'
 
@@ -18,7 +18,7 @@ import { FcGoogle } from "react-icons/fc"
 import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import ButtonAnimation from '@/components/button/ButtonAnimation'
-import { useShowPasswordMulti } from '@/hooks/hooks/password/useShowPasswordMulti'
+import { useShowPasswordMulti } from '@/hooks/password/useShowPasswordMulti'
 import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister'
 // import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister'
 

@@ -2,7 +2,7 @@
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 import BlogCardVerticalBig from '@/components/card/blog/BlogCardVerticalBig';
 import { Skeleton } from '@/components/ui/skeleton';
-import { useBlogList } from '@/hooks/api/blog/useBlogList';
+import { useBlogList } from '@/managers/api-management/blog/useBlogList';
 import { uuidv4 } from '@/lib/uuid';
 import { FiLoader } from "react-icons/fi";
 

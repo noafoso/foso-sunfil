@@ -1,6 +1,6 @@
 'use client'
 import { Skeleton } from '@/components/ui/skeleton'
-import { useGetListCategories } from '@/hooks/api/categories/useGetListCategories'
+import { useGetListCategories } from '@/managers/api-management/categories/useGetListCategories'
 import { uuidv4 } from '@/lib/uuid'
 import ConvertToSlug from '@/utils/convertToSlug/ConvertToSlug'
 import Image from 'next/image'

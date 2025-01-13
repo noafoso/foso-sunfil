@@ -7,7 +7,7 @@ import { TickCircle } from 'iconsax-react'
 import { motion } from 'framer-motion'
 import AnimateOnScroll from '@/components/animation/AnimateOnScroll';
 import { variantSlideLeft, variantSlideRight, variantSlideZoomOut } from '@/utils/variants-animation/VariantsAnimation';
-import { useGetListCategories } from '@/hooks/api/categories/useGetListCategories';
+import { useGetListCategories } from '@/managers/api-management/categories/useGetListCategories';
 import { useQueryClient } from '@tanstack/react-query';
 import { IListCategories } from '@/types/categories/ICategoryes';
 

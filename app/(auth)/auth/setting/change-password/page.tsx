@@ -10,7 +10,7 @@ import {
     FormMessage
 } from '@/components/ui/form'
 import { Input } from '@/components/ui/input'
-import { useShowPasswordMulti } from '@/hooks/hooks/password/useShowPasswordMulti'
+import { useShowPasswordMulti } from '@/hooks/password/useShowPasswordMulti'
 import { usePostChangePassword } from '@/managers/api-management/auth/account/usePostChangePassword'
 import { IChangePassWordFormSetup } from '@/types/auth/IAuth'
 import { variantButtonPressZoom } from '@/utils/variants-animation/VariantsAnimation'

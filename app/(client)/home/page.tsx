@@ -1,6 +1,6 @@
 'use client'
 
-import { useGetListCategories } from '@/hooks/api/categories/useGetListCategories'
+import { useGetListCategories } from '@/managers/api-management/categories/useGetListCategories'
 import { useResizeStore } from '@/stores/useResizeStore'
 import { useEffect } from 'react'
 import { useStateHome } from './_state/useStateHome'
