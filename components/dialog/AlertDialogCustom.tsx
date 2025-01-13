@@ -14,6 +14,7 @@ import ButtonLoading from "../button/ButtonLoading";
 // import LogoutComponent from "@/features/auth/components/logout-card";
 // import ChangeStatusProgress from "@/features/ui/alert/change-status-progress";
 import { X } from "lucide-react";
+import LogoutComponent from "@/features/auth/components/logout-card";
 
 type Props = {}
 
@@ -34,8 +35,8 @@ const AlertDialogCustom = (props: Props) => {
                     <X className="size-full text-[#505458]" />
                     <span className="sr-only">Close</span>
                 </div>
-                {/* {type === 'logout' && <LogoutComponent />}
-                {type === 'changeStatusProgress' && <ChangeStatusProgress />} */}
+                {type === 'logout' && <LogoutComponent />}
+                {/* {type === 'changeStatusProgress' && <ChangeStatusProgress />} */}
             </AlertDialogContent>
 
         </AlertDialog >

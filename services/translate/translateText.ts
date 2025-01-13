@@ -29,7 +29,6 @@ async function translateText(textArray: any, targetLanguage: string): Promise<st
 
         const data = await response.json();
 
-        console.log('data', data);
         if (!response.ok) {
             console.error('Error response:', data);
             throw new Error(data?.error?.message || 'Translation failed');

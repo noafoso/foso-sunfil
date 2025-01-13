@@ -3,6 +3,7 @@ import ButtonAnimation from '@/components/button/ButtonAnimation';
 import ButtonLoading from '@/components/button/ButtonLoading';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { InputOTP, InputOTPGroup, InputOTPSlot, } from "@/components/ui/input-otp";
+import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister';
 import { useStateAuth } from '@/managers/state-management/auth/useStateAuth';
 // import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister';
 // import { useStateAuth } from '@/managers/state-management/auth/useStateAuth';
@@ -14,19 +15,11 @@ import { useForm } from 'react-hook-form';
 
 const AuthOtp = (props: any) => {
     const form = useForm({ defaultValues: { otp: '' } })
-    // const { isLoading, onSubmit } = usePostLoginOtpRegister()
+    const { onSubmit: onSubmitLogin, isLoading: isLoadingLogin } = usePostLoginOtpRegister()
     const { isStateAuth, queryKeyIsStateAuth } = useStateAuth()
 
     const [isOtpValid, setIsOtpValid] = useState<boolean>(false);
-    const [formattedTime, setFormattedTime] = useState<string>("03:00");
-
-    // useEffect(() => {
-    //     if (isStateAuth.otp_time <= 0) return;
-    //     const timer = setInterval(() => {
-    //         queryKeyIsStateAuth({ otp_time: isStateAuth.otp_time - 1 });
-    //     }, 1000);
-    //     return () => clearInterval(timer);
-    // }, [isStateAuth.otp_time]);
+    const [formattedTime, setFormattedTime] = useState<string>("");
 
     useEffect(() => {
         if (isStateAuth.otp_time < 0) return;
@@ -54,15 +47,10 @@ const AuthOtp = (props: any) => {
         setIsOtpValid(numericValue.length === 4); // Kiểm tra nếu đủ 4 số
     };
 
-    const onSubmit = (data: any, type_dialog: string) => {
-
-    }
-
     return (
         <Form {...form}>
             <form
-                onSubmit={form.handleSubmit((data) => onSubmit({ ...isStateAuth.form, ...data }, 'register'))}
-                // onSubmit={form.handleSubmit((data) => onSubmit({ ...isStateAuth.form, ...data }, 'register'))}
+                onSubmit={form.handleSubmit((data) => onSubmitLogin({ ...isStateAuth.form, ...data }, 'otp'))}
                 className='space-y-4'
             >
                 <FormField
@@ -112,9 +100,7 @@ const AuthOtp = (props: any) => {
                 <div className='flex flex-col justify-center items-center '>
                     <div className="text-[#FC0000] text-center">{formattedTime}</div>
                     <button
-                        onClick={() => {
-                            // onSubmit(isStateAuth.form, 'otp', 'forgot_otp')
-                        }}
+                        onClick={() => { onSubmitLogin(isStateAuth.form, 'forgotOtp') }}
                         type="button"
                         className="text-small-default bg-transparent text-red-500 hover:bg-transparent w-fit py-1 rounded-base"
                     >
@@ -123,9 +109,8 @@ const AuthOtp = (props: any) => {
                 </div>
 
                 <ButtonAnimation
-                    // isStateloading={isLoading}
-                    // disabled={!isOtpValid || isLoading}
-                    disabled={!isOtpValid}
+                    isStateloading={isLoadingLogin}
+                    disabled={!isOtpValid || isLoadingLogin}
                     type='submit'
                     title_button='Gửi'
                     variant={variantButtonPressZoom}

@@ -1,19 +1,19 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-    title: "VIETHUNG-AUTO - Chi tiết sản phẩm",
-    description: "VIETHUNG-AUTO chi tiết sản phẩm",
+    title: "SUNFIL1 - Chi tiết sản phẩm",
+    description: "SUNFIL1 chi tiết sản phẩm",
     metadataBase: new URL(`${process.env.NEXT_PUBLIC_URL_WEBSITE}`),
     icons: {
         icon: "/favicon.ico",
         shortcut: "/favicon.ico",
     },
     openGraph: {
-        title: "VIETHUNG-AUTO - Chi tiết sản phẩm",
-        description: "VIETHUNG-AUTO chi tiết sản phẩm",
+        title: "SUNFIL1 - Chi tiết sản phẩm",
+        description: "SUNFIL1 chi tiết sản phẩm",
         type: "website",
         url: `${process.env.NEXT_PUBLIC_URL_WEBSITE}`,
-        siteName: "VIETHUNG-AUTO",
+        siteName: "SUNFIL1",
         images: {
             url: '/opengraph-image.png',
             alt: "logo",

@@ -20,8 +20,6 @@ export const TranslationWrapper: React.FC<TranslationWrapperProps> = ({ children
     useEffect(() => {
         const translateNodes = async () => {
             if ((isDataLoaded || loadingLang) && originalTextNodes.length > 0) {
-                console.log("loadingLang", loadingLang);
-
                 const textsToTranslate = originalTextNodes.map(node => node.textContent || '');
 
                 const translatedTexts = await translate(textsToTranslate);

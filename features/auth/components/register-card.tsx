@@ -19,6 +19,7 @@ import { Label } from '@/components/ui/label'
 import { Checkbox } from '@/components/ui/checkbox'
 import ButtonAnimation from '@/components/button/ButtonAnimation'
 import { useShowPasswordMulti } from '@/hooks/hooks/password/useShowPasswordMulti'
+import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister'
 // import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister'
 
 const RegisterComponent = () => {
@@ -36,11 +37,7 @@ const RegisterComponent = () => {
 
     const { setStatusDialog } = useDialogStore()
 
-    // const { showPassword, togglePasswordVisibility } = useShowHiddenPassword()
-
-    // const { isLoading, onSubmit } = usePostLoginOtpRegister()
-
-    // const { onSubmit: onSubmitLogin, isLoading, loginGoogle, loginFacebook } = useLoginRegister()
+    const { onSubmit: onSubmitLogin, isLoading: isLoadingLogin } = usePostLoginOtpRegister()
     const password = form.watch("password", "");
 
     const IconEyes = ({ onClick, show }: any) => {
@@ -52,23 +49,13 @@ const RegisterComponent = () => {
         )
     }
 
-    console.log('showPassword', showPassword);
-
-    const onSubmit = (data: any, type_dialog: string) => {
-        console.log('data:', data);
-        console.log('type_dialog:', type_dialog);
-        setStatusDialog(type_dialog)
-    }
-
     return (
         <Form {...form}>
             <form
                 className={`flex flex-col 3xl:gap-6 gap-4 p-0.5`}
                 onSubmit={(e: FormEvent<HTMLFormElement>) => {
                     e.preventDefault()
-
-                    form.handleSubmit((data) => onSubmit(data, 'otp'))()
-                    // form.handleSubmit((data) => onSubmit(data, 'otp'))()
+                    form.handleSubmit((data) => onSubmitLogin(data, 'register'))()
                 }}
             >
                 <FormField
@@ -90,8 +77,8 @@ const RegisterComponent = () => {
                                     <Input
                                         id="fullname"
                                         type="text"
-                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"} 
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-[#F78F08]`}
+                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
+                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
                                         placeholder="Nhập họ và tên..."
                                         {...field}
                                     />
@@ -135,8 +122,8 @@ const RegisterComponent = () => {
                                             id="number_phone"
                                             name="phone"
                                             getInputRef={ref}
-                                            className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"}
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-none`}
+                                            className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"}
+                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
                                             placeholder="Số điện thoại"
                                             thousandSeparator={' '}
 
@@ -183,8 +170,8 @@ const RegisterComponent = () => {
                                 <div className="relative">
                                     <Input
                                         id="email"
-                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"} 
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-none`}
+                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
+                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
                                         placeholder="Email của bạn"
                                         type="text"
                                         {...field}
@@ -221,8 +208,8 @@ const RegisterComponent = () => {
                                 <div className="relative">
                                     <Input
                                         id="password"
-                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"} 
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-none`}
+                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
+                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
                                         placeholder="Mật khẩu"
                                         type={showPassword?.showNewPassword ? "text" : "password"}
                                         {...field}
@@ -264,8 +251,8 @@ const RegisterComponent = () => {
                                 <div className="relative">
                                     <Input
                                         id="confirmPassword"
-                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"} 
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-none`}
+                                        className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
+                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
                                         placeholder="Xác nhận mật khẩu"
                                         type={showPassword.showConfirmPassword ? "text" : "password"}
                                         {...field}
@@ -300,7 +287,7 @@ const RegisterComponent = () => {
                                     <div className="flex items-center space-x-2">
                                         <Checkbox
                                             id="check"
-                                            className="3xl:size-[18px] size-4 text-white border-[#9EA1AE] data-[state=checked]:bg-[#FDA612]/10 data-[state=checked]:border-[#FDA612] data-[state=checked]:text-[#FDA612] data-[state=checked]:font-semibold"
+                                            className="3xl:size-[18px] size-4 text-white border-[#9EA1AE] data-[state=checked]:bg-[#07A6FF]/10 data-[state=checked]:border-[#07A6FF] data-[state=checked]:text-[#07A6FF] data-[state=checked]:font-semibold"
                                             checked={field.value}
                                             onCheckedChange={(checked: boolean) => field.onChange(checked)}
                                         />
@@ -324,12 +311,11 @@ const RegisterComponent = () => {
 
                 <div className='3xl:space-y-6 space-y-4'>
                     <ButtonAnimation
-                        disabled={!form.getValues("policy")}
-                        // disabled={!form.getValues("policy") || isLoading}
-                        // isStateloading={isLoading}
+                        disabled={!form.getValues("policy") || isLoadingLogin}
+                        isStateloading={isLoadingLogin}
                         type='submit'
                         title_button='Đăng ký'
-                        className='bg-[#333538] text-white rounded-full 3xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear disabled:hover:opacity-100 disabled:bg-[#333538]/40 disabled:text-white disabled:cursor-not-allowed disabled:pointer-events-auto'
+                        className='flex items-center justify-center gap-2 bg-[#333538] text-white rounded-full 3xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear disabled:hover:opacity-100 disabled:bg-[#333538]/40 disabled:text-white disabled:cursor-not-allowed disabled:pointer-events-auto'
                     />
 
                     {/* <div className='flex items-center justify-between gap-5'>
@@ -376,7 +362,7 @@ const RegisterComponent = () => {
                         <h1>Bạn đã có tài khoản?
                             <span
                                 onClick={() => setStatusDialog('login')}
-                                className='font-semibold cursor-pointer pl-1 text-[#FDA612] hover:text-[#FDA612]/90 custom-transition'
+                                className='font-semibold cursor-pointer pl-1 text-[#07A6FF] hover:text-[#07A6FF]/90 custom-transition'
                             >
                                 Đăng Nhập
                             </span>

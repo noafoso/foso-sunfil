@@ -1,5 +1,5 @@
 import "@/styles/globals.scss";
-import LayoutMain from "@/components/layout/LayoutMain";
+import LayoutMain from "@/components/layout/layout/LayoutMain";
 import { space_grotesk_sans } from "@/utils/fonts/fonts";
 import { Suspense } from "react";
 

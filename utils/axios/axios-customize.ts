@@ -11,8 +11,8 @@ const instance = axios.create({
 // Add a request interceptor
 instance.interceptors.request.use(
     async function (config) {
-        if (CookieCore.get("token_viethung") !== undefined) {
-            config.headers["Authorization"] = "Bearer " + CookieCore.get("token_viethung");
+        if (CookieCore.get("token_sunfil") !== undefined) {
+            config.headers["Authorization"] = "Bearer " + CookieCore.get("token_sunfil");
         }
         return config;
     },
@@ -34,7 +34,7 @@ instance.interceptors.response.use(
             // authentication (token related issues)
             case 401: {
                 if (!error.response.data?.result && error.response.data?.code == 401) {
-                    CookieCore.remove("token_viethung");
+                    CookieCore.remove("token_sunfil");
                 }
                 return error.response.data;
             }

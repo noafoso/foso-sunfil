@@ -13,6 +13,9 @@ import { useGetListEngineAndBody } from '@/hooks/api/categories/useGetListEngine
 import { usePostSearchListCodeApplication } from '@/hooks/api/categories/usePostSearchListCodeApplication'
 import TableDetailCodeProduct from '../product/TableDetailCodeProduct'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useToastStore } from '@/stores/useToastStore'
+import { useDialogStore } from '@/stores/useDialogStore'
+import { useAuthStore } from '@/stores/useAuthStores'
 
 interface ISelected {
     value: string; // hoặc kiểu dữ liệu phù hợp
@@ -39,6 +42,10 @@ const SectionCategoriesFilterApplication = () => {
     });
 
     const { isStateCategories, queryKeyIsStateCategories } = useStateCategories()
+
+    const { informationUser } = useAuthStore()
+    const { setToast } = useToastStore()
+    const { setOpenDialogCustom, setStatusDialog } = useDialogStore()
 
     const brandValue = form.watch('brand')
     const modelValue = form.watch('model')
@@ -128,7 +135,13 @@ const SectionCategoriesFilterApplication = () => {
                         className="grid xl:grid-cols-10 lg:grid-cols-6 grid-cols-1 xxl:gap-4 gap-2"
                         onSubmit={(e: FormEvent<HTMLFormElement>) => {
                             e.preventDefault()
-                            form.handleSubmit((data) => onSubmitSearch(data))()
+                            if (informationUser) {
+                                form.handleSubmit((data) => onSubmitSearch(data))()
+                            } else {
+                                setToast(true, "warning", "Vui lòng đăng nhập để sử dụng chức năng!")
+                                setOpenDialogCustom(true)
+                                setStatusDialog("login")
+                            }
                         }}
                     >
                         <FormField

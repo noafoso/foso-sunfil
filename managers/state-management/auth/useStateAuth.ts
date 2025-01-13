@@ -15,6 +15,7 @@ export const useStateAuth = create<any>((set) => ({
             policy: false,
         },
         statusAuth: "login",
+        formFile: null
     },
     queryKeyIsStateAuth: (key: any) =>
         set((state: any) => ({

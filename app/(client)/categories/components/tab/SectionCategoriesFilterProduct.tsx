@@ -15,6 +15,9 @@ import { useGetCodeProductAbsolute } from '@/hooks/api/categories/useGetCodeProd
 import ProductDetailCodeSkeleton from '@/components/skeleton/categories/ProductDetailCodeSkeleton'
 import SectionInfoProduct from '../product/SectionInfoProduct'
 import { usePostCodeProductRelative } from '@/hooks/api/categories/usePostCodeProductRelative'
+import { useAuthStore } from '@/stores/useAuthStores'
+import { useToastStore } from '@/stores/useToastStore'
+import { useDialogStore } from '@/stores/useDialogStore'
 
 const SectionCategoriesFilterProduct = () => {
     const form = useForm({
@@ -27,6 +30,10 @@ const SectionCategoriesFilterProduct = () => {
 
     const codeParam = useSearchParams().get('code')
     const type = useSearchParams().get('type')
+
+    const { setToast } = useToastStore()
+    const { setOpenDialogCustom, setStatusDialog } = useDialogStore()
+    const { informationUser } = useAuthStore()
 
     const { queryKeyIsStateCategories } = useStateCategories()
 
@@ -78,7 +85,13 @@ const SectionCategoriesFilterProduct = () => {
                         className="flex md:flex-row flex-col gap-4"
                         onSubmit={(e: FormEvent<HTMLFormElement>) => {
                             e.preventDefault()
-                            form.handleSubmit((data) => onSubmit(data))()
+                            if (informationUser) {
+                                form.handleSubmit((data) => onSubmit(data))()
+                            } else {
+                                setToast(true, "warning", "Vui lòng đăng nhập để sử dụng chức năng!")
+                                setOpenDialogCustom(true)
+                                setStatusDialog("login")
+                            }
                         }}
                     >
                         <FormField

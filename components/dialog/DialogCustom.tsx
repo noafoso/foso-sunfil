@@ -135,14 +135,14 @@ export function DialogCustom({ }: Props) {
                                                                 onClick={() => setStatusDialog("login")}
                                                             >
                                                                 {TITLE_FORM_LOGIN}
-                                                                {statusDialog === "login" && <div className='absolute bottom-0 left-[40%] w-8 h-1 bg-[#FDA612] rounded-[3px]' />}
+                                                                {statusDialog === "login" && <div className='absolute bottom-0 left-[40%] w-8 h-1 bg-[#07A6FF] rounded-[3px]' />}
                                                             </DialogTitle>
                                                             <DialogTitle
                                                                 className={`${statusDialog === "register" ? "!text-[#333538]" : "!text-[#C4CACC] hover:!text-[#333538]"} relative px-4 pb-2 capitalize 3xl:text-[22px] text-[20px] font-semibold cursor-pointer transition-all duration-300`}
                                                                 onClick={() => setStatusDialog("register")}
                                                             >
                                                                 {TITLE_FORM_REGISTER}
-                                                                {statusDialog === "register" && <div className='absolute bottom-0 left-[40%] w-8 h-1 bg-[#FDA612] rounded-[3px]' />}
+                                                                {statusDialog === "register" && <div className='absolute bottom-0 left-[40%] w-8 h-1 bg-[#07A6FF] rounded-[3px]' />}
                                                             </DialogTitle>
                                                         </div>
                                                     }

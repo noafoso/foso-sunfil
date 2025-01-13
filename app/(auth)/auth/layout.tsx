@@ -1,4 +1,4 @@
-import LayoutAuth from "@/components/layout/LayoutAuth"
+import LayoutAuth from "@/components/layout/layout/LayoutAuth"
 import React from "react"
 
 interface AuthLayoutProps {
