@@ -153,14 +153,14 @@ const LoginComponent = () => {
                     )}
                 />
 
-                <div className='flex items-center justify-end'>
+                {/* <div className='flex items-center justify-end'>
                     <div
                         className="text-[#07A6FF] hover:text-[#07A6FF]/90 font-semibold text-sm-default w-fit custom-transition cursor-pointer"
                         onClick={() => setStatusDialog("forgot_password")}
                     >
                         Quên mật khẩu
                     </div>
-                </div>
+                </div> */}
 
                 <div className='3xl:space-y-6 space-y-4'>
                     <ButtonAnimation

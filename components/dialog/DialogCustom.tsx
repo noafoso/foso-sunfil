@@ -28,9 +28,10 @@ import {
 // import { useStateAuth } from "@/managers/state-management/auth/useStateAuth";
 import { useDialogStore } from "@/stores/useDialogStore";
 
-import OtpComponent from "@/features/auth/components/otp-card";
 import LoginComponent from "@/features/auth/components/login-card";
 import RegisterComponent from "@/features/auth/components/register-card";
+import RegisterOtp from "@/features/auth/components/otp-register";
+import UpdatePasswordOtp from "@/features/auth/components/otp-update-password";
 // import RegisterComponent from "@/features/auth/components/register-card";
 // import ForgotPasswordComponent from "@/features/auth/components/forgot-password-card";
 // import PromotionsComponent from "@/features/promotions/components/promotions";
@@ -57,7 +58,7 @@ export function DialogCustom({ }: Props) {
     }
 
     const isAuthTab = (statusDialog === "login" || statusDialog === "register")
-    const isAuthStatusDialog = ['login', 'register', 'otp', 'update_account', 'forgot_password', 'promotions', 'fake_information'].includes(statusDialog)
+    const isAuthStatusDialog = ['login', 'register', 'otp_register', 'otp_update_password', 'update_account', 'forgot_password', 'promotions', 'fake_information'].includes(statusDialog)
 
     const modalVariants = {
         hidden: { opacity: 0, scale: 0.5, y: 20 },
@@ -108,7 +109,7 @@ export function DialogCustom({ }: Props) {
                                         }}
                                     >
                                         <DialogContent
-                                            className={`${statusDialog === "otp" ? 'lg:max-w-[420px]' : `lg:max-w-[520px]`} bg-white !text-black p-0 border-none max-w-[95%] max-h-[98vh] overflow-hidden
+                                            className={`${(statusDialog === "otp_register" || statusDialog === "otp_update_password") ? 'lg:max-w-[420px]' : `lg:max-w-[520px]`} bg-white !text-black p-0 border-none max-w-[95%] max-h-[98vh] overflow-hidden
                                                     focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0
                                                     !rounded-2xl custom-size-text custom-tailwind
                                         `}
@@ -150,13 +151,13 @@ export function DialogCustom({ }: Props) {
                                                         !isAuthTab &&
                                                         <DialogHeader className="flex items-center justify-center gap-4 w-full">
                                                             <DialogTitle className={`text-[#333538] capitalize 3xl:text-[22px] text-[20px] font-semibold`}>
-                                                                {statusDialog === "otp" && TITLE_FORM_OTP}
+                                                                {statusDialog === "otp_register" && TITLE_FORM_OTP}
                                                                 {statusDialog === "forgot_password" && TITLE_FORM_FORGOT_PASSWORD}
                                                                 {statusDialog === "promotions" && TITLE_FORM_PROMOTION}
                                                                 {statusDialog === "fake_information" && TITLE_FORM_FAKE_INFORMATION}
                                                             </DialogTitle>
                                                             {
-                                                                statusDialog === "otp" &&
+                                                                (statusDialog === "otp_register" || statusDialog === "otp_update_password") &&
                                                                 <DialogDescription className='text-center text-[#808990] font-normal'>
                                                                     Please enter 4 digit verification code that have been sent to your email
                                                                     {/* Please enter 4 digit verification code that have been sent to your email: <span className='font-semibold'>{isStateAuth?.form?.email}</span> */}
@@ -178,7 +179,8 @@ export function DialogCustom({ }: Props) {
                                                 >
                                                     {statusDialog === "login" && <LoginComponent />}
                                                     {statusDialog === "register" && <RegisterComponent />}
-                                                    {statusDialog === "otp" && <OtpComponent />}
+                                                    {statusDialog === "otp_register" && <RegisterOtp />}
+                                                    {statusDialog === "otp_update_password" && <UpdatePasswordOtp />}
                                                     {/* {statusDialog === "forgot_password" && <ForgotPasswordComponent />}
                                                     {statusDialog === "promotions" && <PromotionsComponent />}
                                                     {statusDialog === "fake_information" && <FakeInformationComponent />} */}

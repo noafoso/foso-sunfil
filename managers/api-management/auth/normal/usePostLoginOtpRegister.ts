@@ -49,32 +49,13 @@ export const usePostLoginOtpRegister = () => {
         retryDelay: 3000,
     });
 
-    /// đăng ký thường (trước khi gửi otp thì type_request === "send_otp" -> sau khi gửi otp type_request === "register")
+    /// đăng ký thường (trước khi gửi otp thì type_request === "send_otp" -> sau khi gửi otp type_request === "register") (OTP)
     const postRegisterMutation = useMutation({
         mutationFn: async (payLoad: FormData) => {
             const { data } = await apiAuth.postRegister(payLoad);
             return data;
         },
         mutationKey: ["postRegisterDefault"],
-        gcTime: 3000,
-        retryDelay: 3000,
-    });
-
-    // lấy otp
-    const postOtpVerifyPhoneMutation = useMutation({
-        mutationFn: async (payLoad: { phone: string; client_app_id: string }) => {
-            const { data } = await apiAuth.postOtpVerifyPhone(payLoad);
-            return data;
-        },
-    });
-
-    // xác thực otp
-    const postVerifyPhoneMutation = useMutation({
-        mutationFn: async (payLoad: FormData) => {
-            const { data } = await apiAuth.postVerifyPhone(payLoad);
-            return data;
-        },
-        retry: 5,
         gcTime: 3000,
         retryDelay: 3000,
     });
@@ -90,13 +71,13 @@ export const usePostLoginOtpRegister = () => {
         retryDelay: 3000,
     });
 
-    // đổi mật khẩu
+    // đổi mật khẩu (có OTP)
     const postUpdatePassword = useMutation({
         mutationFn: async (payLoad: FormData) => {
-            const { data } = await apiAuth.postUpdatePassword(payLoad);
+            const { data } = await apiAuth.postChangePassword(payLoad);
             return data;
         },
-        retry: 3,
+        mutationKey: ["postChangePassword"],
         gcTime: 3000,
         retryDelay: 3000,
     });
@@ -142,7 +123,7 @@ export const usePostLoginOtpRegister = () => {
                                 otp_time: res?.data?.time,
                                 form: data,
                             });
-                            setStatusDialog("otp");
+                            setStatusDialog("otp_register");
                             return;
                         }
                         setToast(true, "error", res?.message, 2500);
@@ -156,7 +137,7 @@ export const usePostLoginOtpRegister = () => {
             }
         }
 
-        if (type == "otp") {
+        if (type == "otp_register") {
             formData.append("name", data?.fullname ?? "");
             formData.append("email", data?.email ?? "");
             formData.append("phonenumber", data?.phone ?? "");
@@ -210,7 +191,7 @@ export const usePostLoginOtpRegister = () => {
                                 otp_time: res?.data?.time,
                                 form: data,
                             });
-                            setStatusDialog("otp");
+                            setStatusDialog("otp_register");
                             return;
                         }
                         setToast(true, "error", res?.message, 2500);
@@ -222,6 +203,25 @@ export const usePostLoginOtpRegister = () => {
             } catch (e) {
                 throw e
             }
+        }
+
+        if (type == "otp_update_password") {
+            formData.append("type_request", "change_password");
+            formData.append("password", data?.password ?? "");
+            formData.append("otp", data?.otp ?? "");
+            postUpdatePassword.mutate(formData, {
+                onSuccess: (res) => {
+                    if (res?.result) {
+                        setToast(true, "success", res?.message, 2500);
+                        setOpenDialogCustom(false);
+                        setStatusDialog("");
+                        isStateAuth?.formFile?.reset();
+                        queryKeyIsStateAuth({ otp_time: 0 });
+                        return;
+                    }
+                    setToast(true, "error", res?.message, 2500);
+                },
+            });
         }
 
         // if (type == "loginGoogle") {
@@ -261,46 +261,6 @@ export const usePostLoginOtpRegister = () => {
         //         },
         //     });
         // }
-
-        // if (type == "update_password") {
-        //     formData.append("password", data?.password ?? "");
-        //     formData.append("otp", data?.otp ?? "");
-        //     postUpdatePassword.mutate(formData, {
-        //         onSuccess: (res) => {
-        //             if (res?.result) {
-        //                 setToast(true, "success", res?.message, 2500);
-        //                 setOpenDialogCustom(false);
-        //                 setStatusDialog("");
-        //                 isStateAuth?.formFile?.reset();
-        //                 queryKeyIsStateAuth({ otp_time: 0 });
-        //                 return;
-        //             }
-        //             setToast(true, "error", res?.message, 2500);
-        //         },
-        //     });
-        // }
-    };
-
-    const getOtpVerifyPhone = async (data: any, clientAppId: string) => {
-        const payLoad = {
-            phone: data?.phone ?? "",
-            client_app_id: clientAppId ?? "",
-        };
-        try {
-            const res = await postOtpVerifyPhoneMutation.mutateAsync(payLoad);
-
-            if (res?.result == 1) {
-                queryKeyIsStateAuth({ clientAppId, otp: res?.data?.time });
-                setToast(true, "success", res?.message, 2500);
-                return res;
-            }
-
-            setToast(true, "success", res?.message, 2500);
-            // toastCore.error(res?.message);
-            return res;
-        } catch (error: any) {
-            throw new Error(error);
-        }
     };
 
     return {
@@ -308,7 +268,7 @@ export const usePostLoginOtpRegister = () => {
         isLoading:
             postLoginDefaultMutation.isPending ||
             postRegisterMutation.isPending ||
-            postVerifyPhoneMutation.isPending ||
+            // postVerifyPhoneMutation.isPending ||
             postForgotPassword.isPending ||
             postUpdatePassword.isPending,
     };

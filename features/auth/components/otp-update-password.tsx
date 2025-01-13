@@ -3,6 +3,7 @@ import ButtonAnimation from '@/components/button/ButtonAnimation';
 import ButtonLoading from '@/components/button/ButtonLoading';
 import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from '@/components/ui/form';
 import { InputOTP, InputOTPGroup, InputOTPSlot, } from "@/components/ui/input-otp";
+import { usePostChangePassword } from '@/managers/api-management/auth/account/usePostChangePassword';
 import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister';
 import { useStateAuth } from '@/managers/state-management/auth/useStateAuth';
 // import { usePostLoginOtpRegister } from '@/managers/api-management/auth/normal/usePostLoginOtpRegister';
@@ -12,10 +13,16 @@ import { variantButtonPressZoom } from '@/utils/variants-animation/VariantsAnima
 import { useEffect, useState } from 'react';
 import { useForm } from 'react-hook-form';
 
+const initialFormValue: any = {
+    otp: '',
+}
 
-const AuthOtp = (props: any) => {
-    const form = useForm({ defaultValues: { otp: '' } })
-    const { onSubmit: onSubmitLogin, isLoading: isLoadingLogin } = usePostLoginOtpRegister()
+const UpdatePasswordOtp = (props: any) => {
+    // const form = useForm({ defaultValues: { otp: '' } })
+
+    const { form, newPassword, isLoading: isLoadingChangePassword, onSubmit: onSubmitChangePassword } = usePostChangePassword(initialFormValue)
+
+    // const { onSubmit: onSubmitLogin, isLoading: isLoadingLogin } = usePostLoginOtpRegister()
     const { isStateAuth, queryKeyIsStateAuth } = useStateAuth()
 
     const [isOtpValid, setIsOtpValid] = useState<boolean>(false);
@@ -50,7 +57,7 @@ const AuthOtp = (props: any) => {
     return (
         <Form {...form}>
             <form
-                onSubmit={form.handleSubmit((data) => onSubmitLogin({ ...isStateAuth.form, ...data }, 'otp'))}
+                onSubmit={form.handleSubmit((data) => onSubmitChangePassword({ ...isStateAuth.form, ...data }, 'update_password'))}
                 className='space-y-4'
             >
                 <FormField
@@ -99,18 +106,19 @@ const AuthOtp = (props: any) => {
 
                 <div className='flex flex-col justify-center items-center '>
                     <div className="text-[#FC0000] text-center">{formattedTime}</div>
-                    <button
-                        onClick={() => { onSubmitLogin(isStateAuth.form, 'forgotOtp') }}
+                    <ButtonAnimation
+                        isStateloading={isLoadingChangePassword}
+                        disabled={isLoadingChangePassword}
+                        onClick={() => { onSubmitChangePassword(isStateAuth.form, 'send_otp_password') }}
                         type="button"
-                        className="text-small-default bg-transparent text-red-500 hover:bg-transparent w-fit py-1 rounded-base"
-                    >
-                        Gửi lại mã OTP
-                    </button>
+                        className="flex items-center gap-2 text-small-default bg-transparent text-red-500 hover:bg-transparent w-fit py-1 px-2 rounded-base disabled:text-[#333538]/20 disabled:bg-transparent"
+                        title_button="Gửi lại mã OTP"
+                    />
                 </div>
 
                 <ButtonAnimation
-                    isStateloading={isLoadingLogin}
-                    disabled={!isOtpValid || isLoadingLogin}
+                    isStateloading={isLoadingChangePassword}
+                    disabled={!isOtpValid || isLoadingChangePassword}
                     type='submit'
                     title_button='Gửi'
                     variant={variantButtonPressZoom}
@@ -121,4 +129,4 @@ const AuthOtp = (props: any) => {
     )
 }
 
-export default AuthOtp
+export default UpdatePasswordOtp

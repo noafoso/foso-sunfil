@@ -52,7 +52,7 @@ const LogoutComponent = (props: Props) => {
                 <ButtonAnimation
                     onClick={() => handleLogout()}
                     // isStateloading={isLoading}
-                    className='3xl:text-base text-sm w-fit py-2.5 px-5 rounded-xl cursor-pointer bg-transparent border border-[#F78F08] text-[#F78F08] hover:text-white hover:bg-[#F78F08] font-semibold duration-300 h-auto'
+                    className='3xl:text-base text-sm w-fit py-2.5 px-5 rounded-xl cursor-pointer bg-transparent border border-[#07A6FF] text-[#07A6FF] hover:text-white hover:bg-[#07A6FF] font-semibold duration-300 h-auto'
                     type='button'
                     variant={variantButtonPressZoom}
                     title_button={"Logout"}

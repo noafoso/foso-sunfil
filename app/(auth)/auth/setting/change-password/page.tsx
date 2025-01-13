@@ -57,51 +57,9 @@ const ChangePasswordComponent = (props: Props) => {
                     className={`grid grid-cols-2 3xl:gap-6 gap-4`}
                     onSubmit={(e: FormEvent<HTMLFormElement>) => {
                         e.preventDefault()
-                        form.handleSubmit((data) => onSubmit(data))()
+                        form.handleSubmit((data) => onSubmit(data, "send_otp_password"))()
                     }}
                 >
-                    {/* <FormField
-                        control={form.control}
-                        name="oldPassword"
-                        rules={{
-                            required: dataLang?.h_auth_information_change_password_old_password_required ?? "h_auth_information_change_password_old_password_required",
-                            minLength: {
-                                value: 8,
-                                message: dataLang?.h_auth_information_change_password_min_length ?? "h_auth_information_change_password_min_length",
-                            },
-                        }}
-                        render={({ field, fieldState }) => (
-                            <FormItem className='col-span-2 flex flex-col w-full'>
-                                <FormLabel
-                                    htmlFor="oldPassword"
-                                    className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
-                                >
-                                    {dataLang?.h_auth_information_change_password_old_password ?? "h_auth_information_change_password_old_password"} <span className="text-[#FA3434]">*</span>
-                                </FormLabel>
-                                <FormControl>
-                                    <div className="relative">
-                                        <Input
-                                            id="oldPassword"
-                                            className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE]"} 
-                                            text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus:ring-none focus:outline-none`}
-                                            placeholder={dataLang?.h_auth_information_change_password_old_password ?? "h_auth_information_change_password_old_password"}
-                                            type={showPassword.showOldPassword ? "text" : "password"}
-                                            {...field}
-                                        />
-                                        <Lock1 className="text-[#808990] 3xl:size-6 size-5 absolute left-4 top-1/2 -translate-y-1/2" />
-                                        <IconEyes
-                                            onClick={() => togglePasswordVisibility("showOldPassword")}
-                                            show={showPassword.showOldPassword}
-                                        />
-                                    </div>
-                                </FormControl>
-                                {fieldState?.invalid && fieldState?.error && (
-                                    <FormMessage>{fieldState?.error?.message}</FormMessage>
-                                )}
-                            </FormItem>
-                        )}
-                    /> */}
-
                     <FormField
                         control={form.control}
                         name="newPassword"

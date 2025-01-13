@@ -15,6 +15,11 @@ const apiCategories = {
         return axios.get(`/api_products/get_product_code/${code}`);
     },
 
+    // Danh sách lịch sử tìm kiếm code sản phẩm (tuyệt đối)
+    getSearchHistoryList() {
+        return axios.get(`/Api_history_search_products/index`);
+    },
+
     // search sản phẩm theo code hoặc tên,... (tương đối)
     postCodeProductRelative(data: any) {
         return axios.post(`/api_products/search_product`, data);

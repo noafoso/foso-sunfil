@@ -24,6 +24,7 @@ interface IChangePassWordFormSetup {
     oldPassword: string;
     newPassword: string;
     confirmPassword: string;
+    // otp?: string;
 }
 
 // interface state password

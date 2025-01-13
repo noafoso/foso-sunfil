@@ -36,9 +36,14 @@ const apiAuth = {
         return await instance.post(`/Api_Auth/login`, data);
     },
 
-    // api đăng ký thường
+    // api đăng ký thường (lần thao tác 1 gửi "type_request": send_otp, lần thao tác 2 "type_request": register )
     async postRegister(data: FormData): Promise<any> {
         return await instance.post(`/Api_Auth/register`, data);
+    },
+
+    // api thay đổi mật khẩu lấy otp (lần thao tác 1 gửi "type_request": send_otp, lần thao tác 2 "type_request": change_password )
+    async postChangePassword(data: FormData) {
+        return await instance.post("/Api_Clients/change_password", data);
     },
 
     // api post lấy lại otp
@@ -69,11 +74,6 @@ const apiAuth = {
     // api post đổi mật khẩu
     async postUpdatePassword(data: FormData) {
         return await instance.post("/Api_Clients/change_password", data);
-    },
-
-    // post cập nhật mk để lấy otp đổi
-    async postChangePassword() {
-        return await instance.get("/Api_info/SenChangePasswordOtp");
     },
 
     // api post update account
