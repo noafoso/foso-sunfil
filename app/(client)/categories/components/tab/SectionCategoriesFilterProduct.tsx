@@ -22,7 +22,8 @@ import { useDialogStore } from '@/stores/useDialogStore'
 const SectionCategoriesFilterProduct = () => {
     const form = useForm({
         defaultValues: {
-            search: ''
+            search: '',
+            is_key: ""
         }
     })
 
@@ -30,6 +31,7 @@ const SectionCategoriesFilterProduct = () => {
 
     const codeParam = useSearchParams().get('code')
     const type = useSearchParams().get('type')
+    const isKey = useSearchParams().get('isKey')
 
     const { setToast } = useToastStore()
     const { setOpenDialogCustom, setStatusDialog } = useDialogStore()
@@ -40,7 +42,7 @@ const SectionCategoriesFilterProduct = () => {
     const {
         data: dataCodeProduct,
         isFetching: isFetchingDataCodeProduct
-    } = usePostCodeProductRelative(codeParam ?? "", type ?? "")
+    } = usePostCodeProductRelative(codeParam ?? "", type ?? "", isKey ?? "")
 
     const {
         data: dataDetailCodeProduct,
@@ -51,7 +53,11 @@ const SectionCategoriesFilterProduct = () => {
         if (codeParam) {
             form.setValue("search", codeParam)
         }
-    }, [codeParam])
+
+        if (isKey) {
+            form.setValue("is_key", isKey)
+        }
+    }, [codeParam, isKey])
 
 
     const onSubmit = (data: any) => {
@@ -61,7 +67,7 @@ const SectionCategoriesFilterProduct = () => {
                     value: data?.search
                 }
             })
-            router.push(`/categories?code=${data?.search}&type=list`)
+            router.push(`/categories?code=${data?.search}&type=list&isKey=1`)
         } else {
             toastCore.error('Vui lòng điền mã sản phẩm!')
         }

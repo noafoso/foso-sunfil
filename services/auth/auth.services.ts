@@ -83,7 +83,7 @@ const apiAuth = {
 
     // api post update avatar
     async postUpdateAvatar(data: FormData) {
-        return await instance.post("/api_info/UpdateInfoAvatar", data);
+        return await instance.post("/Api_Clients/update_image", data);
     },
 };
 

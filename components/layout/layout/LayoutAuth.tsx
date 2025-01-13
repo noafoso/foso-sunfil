@@ -18,6 +18,7 @@ import { useResizeStore } from '@/stores/useResizeStore'
 import { Camera, Gift, Heart, Location, Lock, Lock1, MessageQuestion, Note, SearchNormal, Tag, UserSquare } from 'iconsax-react'
 import { Separator } from '@/components/ui/separator'
 import { useAuthStore } from '@/stores/useAuthStores'
+import { usePostChangeAvatar } from '@/managers/api-management/auth/account/usePostChangeAvatar'
 
 const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter()
@@ -34,7 +35,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     const { setOpenAlertDialog } = useAlertDialogStore()
 
-    // const { isLoading: isLoadingChangeAvatar, onSubmit } = usePostChangeAvatar()
+    const { isLoading: isLoadingChangeAvatar, onSubmit:onSubmitChangeAvatar } = usePostChangeAvatar()
 
     // sidebar desktop
     const listNavbar = [
@@ -117,7 +118,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     return (
         <div className='w-full bg-white'>
-            <div className='custom-container 3xl:pt-[120px] pt-[110px] h-screen grid xl:grid-cols-12 lg:grid-cols-14 grid-cols-12 xxl:gap-6 xl:gap-4 gap-8'>
+            <div className='custom-container 3xl:pt-[120px] pt-[110px] lg:h-screen grid xl:grid-cols-12 lg:grid-cols-14 grid-cols-12 xxl:gap-6 xl:gap-4 gap-8'>
                 <div className='xl:col-span-2 lg:col-span-3 col-span-12'>
                     <div className='sticky 3xl:top-[110px] top-[102px] flex flex-col 3xl:gap-4 gap-3'>
                         <div className='flex flex-col 3xl:gap-3 gap-2 justify-center items-center caret-transparent'>
@@ -125,7 +126,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                 <Input
                                     onChange={(event: React.ChangeEvent<HTMLInputElement>) => {
                                         if (event.target.files && event.target.files?.length > 0) {
-                                            // onSubmit(event.target.files[0])
+                                            onSubmitChangeAvatar(event.target.files[0])
                                         }
                                     }}
                                     accept="image/*, application/pdf"
@@ -157,14 +158,14 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                 </div>
                             }
 
-                            <div className='w-fit space-x-1 text-sm-default'>
+                            {/* <div className='w-fit space-x-1 text-sm-default'>
                                 <span className='text-[#61666C] font-normal'>
-                                    {/* {dataLang?.h_auth_total_quotes ?? "h_auth_total_quotes"} */}
+                                    {dataLang?.h_auth_total_quotes ?? "h_auth_total_quotes"}
                                 </span>
-                                {/* <span className='text-[#333538] font-bold'>
+                                <span className='text-[#333538] font-bold'>
                                     {informationUser?.count_quotes ?? 0}
-                                </span> */}
-                            </div>
+                                </span>
+                            </div> */}
                         </div>
 
                         {
@@ -183,6 +184,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                             {
                                                 listSidebar && listSidebar.map((item) => {
                                                     const checkActive = pathname.startsWith(item.link) || pathname === item.link
+
                                                     return (
                                                         <SelectItem
                                                             key={item.id}
@@ -209,7 +211,6 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                                                     </div>
                                                                     :
                                                                     <div className={`3xl:text-lg lg:text-base text-lg text-[#FA3434] font-semibold w-fit cursor-pointer hover:text-[#FA3434]/80 duration-200 transition`}>
-                                                                        {/* {dataLang?.h_auth_logout ?? "h_auth_logout"} */}
                                                                         Đăng xuất
                                                                     </div>
                                                             }
@@ -222,8 +223,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                 </Select>
                                 :
                                 <React.Fragment>
-                                    {/* <DottedSeparator className='3xl:my-4 my-2' /> */}
-                                    <Separator className='3xl:my-4 my-2' />
+                                    <Separator className='my-2' />
                                     {
                                         listNavbar && listNavbar.map((e) => {
                                             return (
@@ -260,7 +260,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                                         }
                                                     </div>
                                                     {/* <DottedSeparator className='3xl:my-4 my-2' /> */}
-                                                    <Separator className='3xl:my-4 my-2' />
+                                                    <Separator className='my-2' />
                                                 </div>
                                             )
                                         })
@@ -271,7 +271,6 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                             className={`text-sm-default text-[#FA3434] hover:text-[#FA3434]/80 font-semibold w-fit cursor-pointer custom-transition`}
                                         >
                                             Đăng xuất
-                                            {/* {dataLang?.h_auth_logout ?? "h_auth_logout"} */}
                                         </div>
                                     </div>
                                 </React.Fragment>

@@ -2,7 +2,7 @@ import { useLanguage } from "@/context/LanguageProvider";
 import apiCategories from "@/services/categories/categories.services";
 import { useQuery } from "@tanstack/react-query";
 
-export const usePostCodeProductRelative = (code: string, type: string) => {
+export const usePostCodeProductRelative = (code: string, type: string, isKey: string) => {
     const { setLoadingLang } = useLanguage();
 
     const fetchCodeProductRelative = async () => {
@@ -10,6 +10,10 @@ export const usePostCodeProductRelative = (code: string, type: string) => {
         try {
             const dataSubmit = new FormData();
             dataSubmit.append("code", code);
+
+            if (isKey) {
+                dataSubmit.append("is_key", isKey);
+            }
 
             const { data } = await apiCategories.postCodeProductRelative(dataSubmit);
             setLoadingLang(false);

@@ -255,9 +255,6 @@ const TableDetailCodeProduct = ({ data }: Props) => {
     // Cập nhật số lượng cột trong grid dựa trên số lượng header thực tế hiển thị
     const gridHeaderColumns = `${visibleHeaders.length}`;
 
-    console.log('gridHeaderColumns', gridHeaderColumns);
-
-
     return (
         <div className='bg-white min-w-screen max-w-screen overflow-x-auto gap-10'>
             {
