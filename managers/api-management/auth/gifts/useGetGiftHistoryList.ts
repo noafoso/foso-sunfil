@@ -15,7 +15,7 @@ export const useGetGiftHistoryList = ({ pageIndex, pageSize, search }: GiftHisto
 
     const { keyGiftHistory } = useCommonListQueryKeys();
 
-    const { key } = keyGiftHistory.list({ pageIndex: pageIndex, pageSize: pageSize, search: search });
+    const { key } = keyGiftHistory.list({ pageIndex, pageSize, search });
 
     const fetchDataTransactionHistory = async () => {
         try {

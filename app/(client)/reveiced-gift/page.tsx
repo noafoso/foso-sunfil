@@ -1,17 +1,23 @@
 'use client'
 
-import { useGetListCategories } from '@/managers/api-management/categories/useGetListCategories'
 import { useResizeStore } from '@/stores/useResizeStore'
-import { useEffect } from 'react'
+
 import { useStatePageReveicedGift } from './_state/useStatePageReveicedGift'
-const Home = () => {
+import { useSearchParams } from 'next/navigation'
+
+const ReveicedGift = () => {
+    const code = useSearchParams().get('code')
+
     const { isVisibleMobile } = useResizeStore()
 
     const { queryKeyIsStatePageReveicedGift } = useStatePageReveicedGift()
 
+    console.log('code', code);
+
     return (
         <div className='w-full relative lg:h-screen md:h-dvh'>
-            <div className='pt-[112px] flex flex-col justify-between md:gap-0 gap-16 3xl:pb-8 2xl:pb-6 pb-3 h-full relative z-10'>
+            <div className='pt-[112px] flex flex-col justify-center items-center md:gap-0 gap-16 3xl:pb-8 2xl:pb-6 pb-3 h-full relative z-10'>
+             hello
                 {/* <SectionIntroHome />
                 {
                     isVisibleMobile &&
@@ -25,4 +31,4 @@ const Home = () => {
     )
 }
 
-export default Home
+export default ReveicedGift

@@ -9,7 +9,7 @@ export const useCommonListQueryKeys = () => {
         },
         keyGiftHistory: {
             list: (filter = {}) => ({
-                key: ["getGiftsHistoryList", ...Object.values(filter)],
+                key: ["getGiftsHistoryList", filter],
             }),
         }
     };

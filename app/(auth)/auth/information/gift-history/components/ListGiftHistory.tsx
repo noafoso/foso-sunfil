@@ -30,8 +30,6 @@ const ListGiftHistory = ({ }: Props = {}) => {
 
     const { data: dataGiftHistoryList, isFetching: isLoadingGiftHistoryList } = useGetGiftHistoryList({ pageIndex: isStateGiftHistory?.tableGiftList?.pageIndex, pageSize: isStateGiftHistory?.tableGiftList?.pageSize, search: valueSearchDebounce })
 
-    console.log('dataGiftHistoryList', dataGiftHistoryList);
-
     const columnsData: ColumnDef<any>[] = useMemo(() => [
         {
             id: "index",
@@ -267,7 +265,7 @@ const ListGiftHistory = ({ }: Props = {}) => {
             minSize: 140,
             maxSize: 140,
         },
-    ], [isStateGiftHistory])
+    ], [isStateGiftHistory?.tableGiftList, valueSearchDebounce])
 
     const tableInstance = useDataTable({
         data: dataGiftHistoryList?.gift || [],
