@@ -21,7 +21,7 @@ import { Skeleton } from '@/components/ui/skeleton'
 import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from '@/components/ui/dropdown-menu'
 import { useStateLayoutMain } from '@/managers/state-management/layout/useStateLayoutMain'
 import AvatarCustom from '@/components/avatar/AvatarCustom'
-import { ArrowDown2, Lock, Logout, UserSquare } from 'iconsax-react'
+import { ArrowDown2, Gift, Lock, Logout, SearchNormal, UserSquare } from 'iconsax-react'
 import { Separator } from '@/components/ui/separator'
 import { DottedSeparator } from '@/components/dotted-separator/dotted-separator'
 import { useAlertDialogStore } from '@/stores/useAlertDialogStore'
@@ -145,6 +145,18 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
             name: `My Account`,
             icon: UserSquare,
             link: "/auth/information/profile",
+        },
+        {
+            id: 54,
+            name: `Lịch sử tìm kiếm`,
+            icon: SearchNormal,
+            link: "/auth/information/search-history",
+        },
+        {
+            id: 542,
+            name: `Lịch sử quà tặng`,
+            icon: Gift,
+            link: "/auth/information/gift-history",
         },
         {
             id: 323,

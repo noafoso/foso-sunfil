@@ -18,6 +18,9 @@ const SystemNodata = ({ type, className, classNameTitle }: { type: string, class
             case 'search-history':
                 quertyState({ title: 'No history!', image: '/system/no-data.webp' })
                 break;
+            case 'gift-history':
+                quertyState({ title: 'No history!', image: '/system/no-data.webp' })
+                break;
             default:
                 quertyState({ title: '', image: '/system/no-data.webp' })
                 break;
@@ -34,6 +37,7 @@ const SystemNodata = ({ type, className, classNameTitle }: { type: string, class
                 height={1024}
                 className={`mx-auto w-full object-contain
                      ${['search-history'].includes(type) && '3xl:h-[560px] h-[420px] aspect-square'}
+                     ${['gift-history'].includes(type) && '3xl:h-[420px] h-[380px] aspect-square'}
                      ${['history',].includes(type) && 'h-[120px] aspect-square'}
                 `}
             />

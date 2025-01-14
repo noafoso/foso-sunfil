@@ -19,6 +19,8 @@ import { Camera, Gift, Heart, Location, Lock, Lock1, MessageQuestion, Note, Sear
 import { Separator } from '@/components/ui/separator'
 import { useAuthStore } from '@/stores/useAuthStores'
 import { usePostChangeAvatar } from '@/managers/api-management/auth/account/usePostChangeAvatar'
+import { useGetInfoByToken } from '@/managers/api-management/auth/info/useGetInfoByToken'
+import { useStateHeader } from '@/states/Header/useStateHeader'
 
 const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
     const router = useRouter()
@@ -27,7 +29,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     // const { dataLang } = useTranslate()
 
-    // const { isLoading } = useGetInfoByToken()
+    const { isLoading: isLoadingRefreshInfo } = useGetInfoByToken()
 
     const { isVisibleTablet, isVisibleMobile } = useResizeStore()
 
@@ -35,7 +37,8 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     const { setOpenAlertDialog } = useAlertDialogStore()
 
-    const { isLoading: isLoadingChangeAvatar, onSubmit:onSubmitChangeAvatar } = usePostChangeAvatar()
+    const { isLoading: isLoadingChangeAvatar, onSubmit: onSubmitChangeAvatar } = usePostChangeAvatar()
+    const { queryKeyIsStateHeader } = useStateHeader()
 
     // sidebar desktop
     const listNavbar = [
@@ -50,13 +53,13 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                     link: "/auth/information/profile",
                 },
                 {
-                    id: 54,
+                    id: 5231234,
                     name: `Lịch sử tìm kiếm`,
                     icon: SearchNormal,
                     link: "/auth/information/search-history",
                 },
                 {
-                    id: 542,
+                    id: 542322,
                     name: `Lịch sử quà tặng`,
                     icon: Gift,
                     link: "/auth/information/gift-history",
@@ -86,7 +89,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
             link: "/auth/information/profile",
         },
         {
-            id: 54,
+            id: 5232134,
             name: `Lịch sử đặt lịch`,
             icon: SearchNormal,
             link: "/auth/information/search-history",
@@ -107,9 +110,12 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     const handleChangeSidebar = (value: any) => {
         if (value == '/profile/logout') {
+            console.log('check1');
+
             setOpenAlertDialog(true)
         } else {
             router.push(value)
+            console.log('check2');
         }
     }
 
@@ -150,22 +156,13 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                             </div>
 
                             {
-                                // isLoading ?
-                                //     <Skeleton className='w-[60%] 3xl:h-7 h-6' />
-                                //     :
-                                <div className='w-fit text-default text-[#333538] font-bold'>
-                                    {informationUser?.company}
-                                </div>
+                                isLoadingRefreshInfo ?
+                                    <Skeleton className='w-[60%] 3xl:h-7 h-6' />
+                                    :
+                                    <div className='w-fit text-default text-[#333538] font-bold'>
+                                        {informationUser?.company}
+                                    </div>
                             }
-
-                            {/* <div className='w-fit space-x-1 text-sm-default'>
-                                <span className='text-[#61666C] font-normal'>
-                                    {dataLang?.h_auth_total_quotes ?? "h_auth_total_quotes"}
-                                </span>
-                                <span className='text-[#333538] font-bold'>
-                                    {informationUser?.count_quotes ?? 0}
-                                </span>
-                            </div> */}
                         </div>
 
                         {
@@ -177,17 +174,17 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                     }}
                                 >
                                     <SelectTrigger className="w-full focus:outline-none focus:ring-0 focus:ring-offset-0">
-                                        <SelectValue placeholder="Chọn giờ nhận xe" />
+                                        <SelectValue placeholder="..." />
                                     </SelectTrigger>
                                     <SelectContent>
-                                        <SelectGroup>
+                                        <SelectGroup className=''>
                                             {
                                                 listSidebar && listSidebar.map((item) => {
                                                     const checkActive = pathname.startsWith(item.link) || pathname === item.link
 
                                                     return (
                                                         <SelectItem
-                                                            key={item.id}
+                                                            key={`nav-${item.id}`}
                                                             value={`${item.link}`}
                                                             className='flex flex-row items-center'
                                                         >
@@ -218,12 +215,29 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                                     )
                                                 })
                                             }
+                                            <DottedSeparator className='my-2' />
+
+                                            <div className='flex items-center justify-center caret-transparent py-2'>
+                                                <div
+                                                    onClick={() => {
+                                                        setOpenAlertDialog(true, "logout")
+                                                        queryKeyIsStateHeader({
+                                                            isShowMenuScreen: false,
+                                                        })
+                                                    }}
+                                                    className={`text-sm-default text-[#FA3434] hover:text-[#FA3434]/80 font-semibold w-fit cursor-pointer custom-transition`}
+                                                >
+                                                    Đăng xuất
+                                                </div>
+                                            </div>
                                         </SelectGroup>
                                     </SelectContent>
                                 </Select>
                                 :
                                 <React.Fragment>
-                                    <Separator className='my-2' />
+                                    <DottedSeparator className='my-2' />
+                                    {/* <Separator className='my-2' /> */}
+                                    
                                     {
                                         listNavbar && listNavbar.map((e) => {
                                             return (
@@ -259,8 +273,8 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                                             })
                                                         }
                                                     </div>
-                                                    {/* <DottedSeparator className='3xl:my-4 my-2' /> */}
-                                                    <Separator className='my-2' />
+                                                    <DottedSeparator className='my-2' />
+                                                    {/* <Separator className='my-2' /> */}
                                                 </div>
                                             )
                                         })

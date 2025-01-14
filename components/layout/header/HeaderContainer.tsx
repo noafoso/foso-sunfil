@@ -120,12 +120,9 @@ const HeaderContainer = () => {
             setOpenDialogCustom(true)
             setStatusDialog(status)
         } else {
-            // queryKeyIsStateLayoutClient({
-            //     header: {
-            //         ...isStateLayoutClient?.header,
-            //         isShowMenuScreen: false,
-            //     }
-            // })
+            queryKeyIsStateHeader({
+                isShowMenuScreen: false,
+            })
 
             setTimeout(() => {
                 setOpenDialogCustom(true)
@@ -144,6 +141,7 @@ const HeaderContainer = () => {
                         <TabletHeader
                             dataHeader={dataHeader}
                             handleToggleMenu={handleToggleMenu}
+                            handleOpenDialog={handleOpenDialog}
                         />
                         :
                         // màn hình laptop
