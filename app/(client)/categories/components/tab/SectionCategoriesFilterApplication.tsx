@@ -138,7 +138,7 @@ const SectionCategoriesFilterApplication = () => {
                             if (informationUser) {
                                 form.handleSubmit((data) => onSubmitSearch(data))()
                             } else {
-                                setToast(true, "warning", "Vui lòng đăng nhập để sử dụng chức năng!")
+                                setToast(true, "warning", "Please log in use this feature!")
                                 setOpenDialogCustom(true)
                                 setStatusDialog("login")
                             }
@@ -170,7 +170,7 @@ const SectionCategoriesFilterApplication = () => {
                                                 typeSearch='search-client'
                                                 mutiValue={false}
                                                 title='Brand'
-                                                placeholder='Search'
+                                                placeholder='Search brand...'
                                                 classNameContent="rounded-none p-0 3xl:w-[312px] lg:w-[272px] md:w-[688px] w-[310px]"
                                                 classNameArrow={`${isStateCategories.filterApplication.branch?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                                 classNameButtonTrigger={`${isStateCategories.filterApplication.branch?.open ? 'border-[#57A4FE]' : ''} bg-white text-base rounded-none 3xl:h-14 h-12 w-full`}
@@ -216,7 +216,7 @@ const SectionCategoriesFilterApplication = () => {
                                                 loading={isFetchingListModels}
                                                 typeSearch='search-client'
                                                 title='Model'
-                                                placeholder='Search'
+                                                placeholder='Search model...'
                                                 classNameContent="rounded-none p-0 3xl:w-[312px] lg:w-[272px] md:w-[688px] w-[310px]"
                                                 classNameArrow={`${isStateCategories.filterApplication.model?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                                 classNameButtonTrigger={`${isStateCategories.filterApplication.model?.open ? 'border-[#57A4FE]' : ''} bg-white text-base rounded-none 3xl:h-14 h-12 w-full`}
@@ -255,7 +255,7 @@ const SectionCategoriesFilterApplication = () => {
                                                 loading={isFetchingListYears}
                                                 typeSearch='search-client'
                                                 title='Year'
-                                                placeholder='Search'
+                                                placeholder='Search year...'
                                                 classNameContent="rounded-none p-0 3xl:w-[148px] lg:w-72 md:w-[688px] w-[310px]"
                                                 classNameArrow={`${isStateCategories.filterApplication.year?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                                 classNameButtonTrigger={`bg-white text-base rounded-none 3xl:h-14 h-12 w-full ${isStateCategories.filterApplication.year?.open ? 'border-[#57A4FE]' : ''}`}
@@ -294,7 +294,7 @@ const SectionCategoriesFilterApplication = () => {
                                                 loading={isFetchingListEngineAndBody}
                                                 typeSearch='search-client'
                                                 title='Engine'
-                                                placeholder='Search'
+                                                placeholder='Search enige...'
                                                 classNameContent="rounded-none p-0 3xl:w-[312px] lg:w-[272px] md:w-[688px] w-[310px]"
                                                 classNameArrow={`${isStateCategories.filterApplication.engine?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                                 classNameButtonTrigger={`bg-white text-base rounded-none 3xl:h-14 h-12 w-full ${isStateCategories.filterApplication.engine?.open ? 'border-[#57A4FE]' : ''}`}
@@ -333,7 +333,7 @@ const SectionCategoriesFilterApplication = () => {
                                                 loading={isFetchingListEngineAndBody}
                                                 typeSearch='search-client'
                                                 title='Body'
-                                                placeholder='Search'
+                                                placeholder='Search body...'
                                                 classNameContent="rounded-none p-0 3xl:w-[312px] lg:w-[272px] md:w-[688px] w-[310px]"
                                                 classNameArrow={`${isStateCategories.filterApplication.body?.open ? 'rotate-180 text-[#07A6FF]' : ''}`}
                                                 classNameButtonTrigger={`bg-white text-base rounded-none 3xl:h-14 h-12 w-full ${isStateCategories.filterApplication.body?.open ? 'border-[#57A4FE]' : ''}`}
@@ -351,7 +351,7 @@ const SectionCategoriesFilterApplication = () => {
                             type='submit'
                             className="text-white xl:col-span-1 lg:col-span-2 col-span-1 capitalize rounded-none 3xl:h-14 h-12 caret-transparent font-medium text-base bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-0"
                         >
-                            Tìm kiếm
+                            Search
                         </Button>
                     </form>
                 </Form>

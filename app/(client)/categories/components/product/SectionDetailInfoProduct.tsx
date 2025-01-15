@@ -49,7 +49,7 @@ const SectionDetailInfoProduct = ({ data }: Props) => {
                 <div className='md:col-span-9 col-span-12 flex flex-col 3xl:gap-6 gap-4 md:pl-20 '>
                     <div className='flex flex-col gap-4'>
                         <div className='text-title-common-product font-bold'>
-                            Thông số kỹ thuật
+                            Technical Specifications
                         </div>
 
                         <div className='grid grid-cols-2 gap-y-4 gap-x-2'>

@@ -27,7 +27,7 @@ const StatusTag: React.FC<StatusTagProps> = ({ status, className }) => {
                     <XCircle className="w-4 h-4 mr-1.5" />
                 )
             } */}
-            {isReceived ? "Đã nhận" : "Chưa nhận"}
+            {isReceived ? "Received" : "Not Received"}
         </div>
     )
 }

@@ -69,7 +69,7 @@ const SectionCategoriesFilterProduct = () => {
             })
             router.push(`/categories?code=${data?.search}&type=list&isKey=1`)
         } else {
-            toastCore.error('Vui lòng điền mã sản phẩm!')
+            setToast(true, "error", "Please enter the product code!")
         }
     }
 
@@ -94,7 +94,7 @@ const SectionCategoriesFilterProduct = () => {
                             if (informationUser) {
                                 form.handleSubmit((data) => onSubmit(data))()
                             } else {
-                                setToast(true, "warning", "Vui lòng đăng nhập để sử dụng chức năng!")
+                                setToast(true, "warning", "Please log in use this feature!")
                                 setOpenDialogCustom(true)
                                 setStatusDialog("login")
                             }
@@ -115,7 +115,6 @@ const SectionCategoriesFilterProduct = () => {
                                                     placeholder="OEM no or Sunfil-filter no"
                                                     onKeyDown={(e) => {
                                                         if (e.key === 'Backspace' && field.value.length === 1) {
-                                                            console.log('Ký tự cuối cùng đã bị xoá');
                                                             // Thực hiện hành động khi ký tự cuối bị xoá
                                                             handleClearTextSearch()
                                                         }
@@ -139,7 +138,7 @@ const SectionCategoriesFilterProduct = () => {
                         />
 
                         <ButtonAnimation
-                            title_button="Tìm kiếm"
+                            title_button="Search"
                             className="text-white capitalize rounded-none h-fit font-medium text-base caret-transparent border border-[#57A4FE] bg-[#57A4FE] hover:bg-[#57A4FE]/80 px-8 py-3"
                         />
                     </form>

@@ -1,5 +1,5 @@
 
-import React, { useMemo, useRef } from 'react'
+import React, { useMemo, useRef, useState } from 'react'
 
 import { useDebounce } from 'use-debounce'
 import { useInView } from 'react-intersection-observer'
@@ -7,7 +7,7 @@ import { useStateGiftHistory } from '../_state/useStateGiftHistory'
 import CommonTable from '@/components/table/commonTable/CommonTable'
 import { HiChevronUpDown } from 'react-icons/hi2'
 import useDataTable from '@/hooks/table/useDataTable'
-import { ColumnDef } from '@tanstack/react-table'
+import { ColumnDef, ColumnResizeMode } from '@tanstack/react-table'
 import Image from 'next/image'
 import moment from 'moment'
 import { FORMAT_DATE } from '@/constants/FormatDate'
@@ -29,6 +29,8 @@ const ListGiftHistory = ({ }: Props = {}) => {
     const [valueSearchDebounce] = useDebounce(isStateGiftHistory?.search?.searchCode, 500); // search báo giá
 
     const { data: dataGiftHistoryList, isFetching: isLoadingGiftHistoryList } = useGetGiftHistoryList({ pageIndex: isStateGiftHistory?.tableGiftList?.pageIndex, pageSize: isStateGiftHistory?.tableGiftList?.pageSize, search: valueSearchDebounce })
+
+    const [columnResizeMode, setColumnResizeMode] = useState<ColumnResizeMode>('onChange')
 
     const columnsData: ColumnDef<any>[] = useMemo(() => [
         {
@@ -249,16 +251,6 @@ const ListGiftHistory = ({ }: Props = {}) => {
                     <div className='flex items-center justify-center'>
                         <StatusTag status={status_receive === "0" ? "not_received" : "received"} />
                     </div>
-                    // <div
-                    //     style={{
-                    //         color: row?.original?.status?.color,
-                    //         backgroundColor: `${row?.original?.status?.color}30`
-                    //     }}
-                    //     className="3xl:text-base text-sm w-fit text-start text-[#5F656A] py-1 px-2 rounded-md font-medium flex items-center gap-1.5"
-                    // >
-                    //     <div className="w-2 h-2 rounded-full" style={{ backgroundColor: row?.original?.status?.color }} />
-                    //     <p className='text-nowrap whitespace-nowrap'>{status_receive}</p>
-                    // </div >
                 );
             },
             size: 140,
@@ -273,6 +265,7 @@ const ListGiftHistory = ({ }: Props = {}) => {
         pageCount: +isStateGiftHistory?.tableGiftList?.pageCount,
         pageSizeState: +isStateGiftHistory?.tableGiftList?.pageSize,
         manualPagination: true,
+        columnResizeMode,
         onPaginationChange: ({ pageIndex, pageSize }) => {
             if (pageSize != +isStateGiftHistory?.tableGiftList?.pageSize && +isStateGiftHistory?.tableGiftList?.pageSize != 0) {
                 tableInstance.setPageIndex(0)
@@ -315,6 +308,8 @@ const ListGiftHistory = ({ }: Props = {}) => {
             onPaginationChange={handlePaginationChange}
             type='gift-history'
             isLoading={isLoadingGiftHistoryList}
+            enableColumnResizing={true}
+            columnResizeMode={columnResizeMode}
         />
     )
 }

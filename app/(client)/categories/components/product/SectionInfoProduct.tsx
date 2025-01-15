@@ -104,7 +104,6 @@ const SectionInfoProduct = (props: Props) => {
                                             </div>
                                         </div>
 
-
                                         <div className='md:col-span-1 col-span-3 flex md:justify-center justify-between gap-2 md:border-none border-b md:px-0 px-2 md:py-0 py-4'>
                                             {
                                                 isVisibleMobile &&

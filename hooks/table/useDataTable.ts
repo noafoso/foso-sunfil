@@ -16,6 +16,7 @@ interface UseDataTableProps<T> {
     columns: ColumnDef<T>[];
     pageCount: number;
     manualPagination?: boolean;
+    columnResizeMode?: any
     pageSizeState: number;
     onPaginationChange?: (pagination: { pageIndex: number; pageSize: number }) => void;
 }
@@ -25,6 +26,7 @@ const useDataTable = <T>({
     columns,
     pageCount,
     manualPagination = false,
+    columnResizeMode,
     pageSizeState,
     onPaginationChange,
 }: UseDataTableProps<T>) => {
@@ -79,6 +81,7 @@ const useDataTable = <T>({
         getPaginationRowModel: getPaginationRowModel(),
         getSortedRowModel: getSortedRowModel(),
         manualPagination,
+        columnResizeMode
     });
 
     return table;

@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 
 import {
     ColumnDef,
+    ColumnResizeMode,
     flexRender,
     Table as ReactTable
 } from "@tanstack/react-table";
@@ -48,9 +49,11 @@ interface TableProps<T> {
     onPaginationChange: (pageIndex: number) => void;
     type?: string
     isLoading?: boolean
+    enableColumnResizing?: boolean;
+    columnResizeMode?: ColumnResizeMode;
 }
 
-const CommonTable = <T,>({ table, columns, classNameTableHeader, pageCount, onPaginationChange, type = "", isLoading }: TableProps<T>) => {
+const CommonTable = <T,>({ table, columns, classNameTableHeader, pageCount, onPaginationChange, type = "", isLoading, enableColumnResizing, columnResizeMode }: TableProps<T>) => {
     const itemsPerPage = table.getState().pagination.pageSize;
 
     const totalPages = Math.max(1, Math.ceil(pageCount / itemsPerPage));
@@ -66,23 +69,38 @@ const CommonTable = <T,>({ table, columns, classNameTableHeader, pageCount, onPa
     return (
         <div className="min-h-[400px] mx-auto md:max-w-full max-w-[340px] sm:mx-0">
             <Table className="min-w-full max-w-full overflow-x-auto  table-auto whitespace-nowrap sm:whitespace-normal">
-                <TableHeader className={`${classNameTableHeader}`}>
+                <TableHeader className={`${classNameTableHeader}`}  {...(enableColumnResizing && { style: { width: table.getCenterTotalSize() } })}>
                     {/* <TableHeader className={`${classNameTableHeader} hidden sm:table-header-group`}> */}
                     {
                         table.getHeaderGroups().map((headerGroup) => (
                             <TableRow key={headerGroup.id}>
                                 {
                                     headerGroup.headers.map((header) => (
-                                        <TableHead key={header.id}>
+                                        <TableHead key={header.id} style={{ width: header.getSize() }}>
                                             {
                                                 header.isPlaceholder
                                                     ?
                                                     null
                                                     :
-                                                    flexRender(
-                                                        header.column.columnDef.header,
-                                                        header.getContext()
-                                                    )
+                                                    <>
+                                                        {
+                                                            flexRender(
+                                                                header.column.columnDef.header,
+                                                                header.getContext()
+                                                            )
+                                                        }
+
+                                                        {
+                                                            enableColumnResizing && (
+                                                                <div
+                                                                    onMouseDown={header.getResizeHandler()}
+                                                                    onTouchStart={header.getResizeHandler()}
+                                                                    className={`resizer ${header.column.getIsResizing() ? 'isResizing' : ''
+                                                                        }`}
+                                                                ></div>
+                                                            )
+                                                        }
+                                                    </>
                                             }
                                         </TableHead>
                                     ))
