@@ -63,14 +63,14 @@ const ReveicedGiftCodeOtp = (props: any) => {
                     control={form.control}
                     name="otp"
                     rules={{
-                        required: "Vui lòng nhập mã OTP",
+                        required: "Please enter the OTP code!",
                         minLength: {
                             value: 4,
-                            message: "Mã OTP phải có 4 số",
+                            message: "The OTP code must contain 4 digits!",
                         },
                         maxLength: {
                             value: 4,
-                            message: "Mã OTP chỉ được 4 số",
+                            message: "The OTP code can only contain 4 digits!",
                         },
                     }}
                     render={({ field, fieldState }) => {
@@ -111,7 +111,7 @@ const ReveicedGiftCodeOtp = (props: any) => {
                         onClick={() => { onSubmitGetOtp(isStatePageReveicedGift.form, code) }}
                         type="button"
                         className="flex items-center gap-2 text-small-default bg-transparent text-red-500 hover:bg-transparent w-fit py-1 px-2 rounded-base disabled:text-[#333538]/20 disabled:bg-transparent"
-                        title_button="Gửi lại mã OTP"
+                        title_button="Resend OTP code"
                     />
                 </div>
 
@@ -119,7 +119,7 @@ const ReveicedGiftCodeOtp = (props: any) => {
                     isStateloading={isLoadingReveicedGiftCode}
                     disabled={!isOtpValid || isLoadingReveicedGiftCode}
                     type='submit'
-                    title_button='Gửi'
+                    title_button='Send'
                     variant={variantButtonPressZoom}
                     className='space-x-2 bg-[#333538] text-white rounded-full 3xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear disabled:hover:opacity-100 disabled:bg-[#333538]/40 disabled:text-white disabled:cursor-not-allowed disabled:pointer-events-auto'
                 />

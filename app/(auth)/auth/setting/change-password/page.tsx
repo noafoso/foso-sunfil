@@ -84,7 +84,7 @@ const ChangePasswordComponent = (props: Props) => {
                                             id="newPassword"
                                             className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                            placeholder={"Confirm New Password"}
+                                            placeholder={"Enter new password..."}
                                             type={showPassword.showNewPassword ? "text" : "password"}
                                             {...field}
                                         />
@@ -127,7 +127,7 @@ const ChangePasswordComponent = (props: Props) => {
                                             id="confirmPassword"
                                             className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                            placeholder={"Confirm New Password"}
+                                            placeholder={"Enter confirm new password..."}
                                             type={showPassword.showConfirmPassword ? "text" : "password"}
                                             {...field}
                                         />

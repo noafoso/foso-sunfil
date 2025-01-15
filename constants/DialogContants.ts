@@ -1,10 +1,10 @@
-const TITLE_FORM_LOGIN = "Đăng nhập";
-const TITLE_FORM_REGISTER = "Đăng ký";
-const TITLE_FORM_OTP = "Nhập mã OTP";
-const TITLE_FORM_STAGE = "Sân khấu";
-const TITLE_FORM_FORGOT_PASSWORD = "Quên mật khẩu";
-const TITLE_FORM_PROMOTION = "Danh sách khuyến mãi";
-const TITLE_FORM_FAKE_INFORMATION = "Thông tin đặt hàng";
+const TITLE_FORM_LOGIN = "Login";
+const TITLE_FORM_REGISTER = "Register";
+const TITLE_FORM_OTP = "Enter Your OTP";
+const TITLE_FORM_STAGE = "Stage";
+const TITLE_FORM_FORGOT_PASSWORD = "Forgot Password";
+const TITLE_FORM_PROMOTION = "Promotion List";
+const TITLE_FORM_FAKE_INFORMATION = "Order Information";
 
 export {
     TITLE_FORM_LOGIN,

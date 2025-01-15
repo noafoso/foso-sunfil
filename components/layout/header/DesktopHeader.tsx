@@ -37,27 +37,27 @@ interface DesktopHeaderProps {
 const dataAboutUs = [
     {
         id: "about-us",
-        name: "Công ty",
+        name: "COMPANY",
         link: "/about-us",
     },
     {
         id: "intro-about-us",
-        name: "Giới thiệu",
+        name: "About Us",
         link: "/about-us",
     },
     {
         id: "history-about-us",
-        name: "Lịch sử",
+        name: "History",
         link: "/about-us",
     },
     {
         id: "service-about-us",
-        name: "Dịch vụ",
+        name: "Service",
         link: "/about-us",
     },
     {
         id: "feel-customer-about-us",
-        name: "Cảm nhận khách hàng",
+        name: "Feel Customer",
         link: "/about-us",
     },
 ]
@@ -65,12 +65,12 @@ const dataAboutUs = [
 const dataProduct = [
     {
         id: "page-product",
-        name: "Sản phẩm",
+        name: "Products",
         link: "/products",
     },
     {
         id: "page-product",
-        name: "Không khí",
+        name: "Air",
         link: "/products",
     },
     {
@@ -80,12 +80,12 @@ const dataProduct = [
     },
     {
         id: "page-product",
-        name: "Dầu",
+        name: "Oil",
         link: "/products",
     },
     {
         id: "page-product",
-        name: "Điều hoà",
+        name: "Air Conditioner",
         link: "/products",
     },
 ]
@@ -93,17 +93,17 @@ const dataProduct = [
 const dataOther = [
     {
         id: "categories",
-        name: "Danh mục",
+        name: "Category",
         link: "/categories",
     },
     {
         id: "blogs",
-        name: "Tin tức",
+        name: "News",
         link: "/blogs",
     },
     {
         id: "contact-us",
-        name: "Liên hệ",
+        name: "Contact",
         link: "/contact-us",
     },
 ]
@@ -148,13 +148,13 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
         },
         {
             id: 54,
-            name: `Lịch sử tìm kiếm`,
+            name: `Search History`,
             icon: SearchNormal,
             link: "/auth/information/search-history",
         },
         {
             id: 542,
-            name: `Lịch sử quà tặng`,
+            name: `Gift History`,
             icon: Gift,
             link: "/auth/information/gift-history",
         },
@@ -166,8 +166,6 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
         },
     ]
 
-    console.log('informationUser', informationUser);
-
     const handleDropdownChange = (value: boolean) => {
         queryKeyIsStateLayoutMain({
             header: {
@@ -177,9 +175,8 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
         })
     }
 
-
     return (
-        <>
+        <React.Fragment>
             <div className='flex items-center justify-between w-[100%]'>
                 <div className='flex items-center gap-4 w-full max-w-[80%]'>
                     <div className='w-[12%] max-w-[12%] h-[80px]'>
@@ -382,7 +379,7 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
                                     :
                                     <ButtonAnimation
                                         onClick={() => handleOpenDialog('login', 'desktop')}
-                                        title_button={"Đăng nhập"}
+                                        title_button={"Login"}
                                         className='xxl:text-base text-sm px-6 py-3 text-nowrap whitespace-nowrap rounded-lg bg-black text-white !font-medium !tracking-[1%] h-auto'
                                     />
                             )
@@ -549,7 +546,7 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
                     </motion.div>
                 }
             </AnimatePresence>
-        </>
+        </React.Fragment>
     )
 }
 

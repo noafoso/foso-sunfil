@@ -27,8 +27,6 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
 
     const pathname = usePathname()
 
-    // const { dataLang } = useTranslate()
-
     const { isLoading: isLoadingRefreshInfo } = useGetInfoByToken()
 
     const { isVisibleTablet, isVisibleMobile } = useResizeStore()
@@ -44,23 +42,23 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
     const listNavbar = [
         {
             id: 1,
-            lable: "Thông tin chung",
+            lable: "General Information",
             list: [
                 {
                     id: 144324,
-                    name: `Tài Khoản của tôi`,
+                    name: `My Account`,
                     icon: UserSquare,
                     link: "/auth/information/profile",
                 },
                 {
                     id: 5231234,
-                    name: `Lịch sử tìm kiếm`,
+                    name: `Search History`,
                     icon: SearchNormal,
                     link: "/auth/information/search-history",
                 },
                 {
                     id: 542322,
-                    name: `Lịch sử quà tặng`,
+                    name: `Gift History`,
                     icon: Gift,
                     link: "/auth/information/gift-history",
                 },
@@ -68,11 +66,11 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
         },
         {
             id: 2,
-            lable: "Cài đặt tài khoản",
+            lable: "Account Settings",
             list: [
                 {
                     id: 323,
-                    name: `Đổi mật khẩu`,
+                    name: `Change Password`,
                     icon: Lock,
                     link: "/auth/setting/change-password",
                 },
@@ -84,25 +82,25 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
     const listSidebar = [
         {
             id: 144324,
-            name: `Tài Khoản của tôi`,
+            name: `My Account`,
             icon: UserSquare,
             link: "/auth/information/profile",
         },
         {
             id: 5232134,
-            name: `Lịch sử đặt lịch`,
+            name: `Search History`,
             icon: SearchNormal,
             link: "/auth/information/search-history",
         },
         {
             id: 54,
-            name: `Lịch sử quà tặng`,
+            name: `Gift History`,
             icon: Gift,
             link: "/auth/information/gift-history",
         },
         {
             id: 323,
-            name: `Đổi mật khẩu`,
+            name: `Change Password`,
             icon: Lock,
             link: "/auth/setting/change-password",
         },
@@ -237,7 +235,7 @@ const LayoutAuth = ({ children }: { children: React.ReactNode }) => {
                                 <React.Fragment>
                                     <DottedSeparator className='my-2' />
                                     {/* <Separator className='my-2' /> */}
-                                    
+
                                     {
                                         listNavbar && listNavbar.map((e) => {
                                             return (

@@ -62,7 +62,7 @@ const RegisterComponent = () => {
                     control={form.control}
                     name="fullname"
                     rules={{
-                        required: "Vui lòng nhập tên của bạn!",
+                        required: "Please enter your name!",
                     }}
                     render={({ field, fieldState }) => (
                         <FormItem className='xl:col-span-1 col-span-2 flex flex-col w-full'>
@@ -70,7 +70,7 @@ const RegisterComponent = () => {
                                 htmlFor="fullname"
                                 className="3xl:text-base text-sm font-semibold text-[#505458] w-fit"
                             >
-                                Tên của bạn <span className="text-red-500">*</span>
+                                Your Name <span className="text-red-500">*</span>
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
@@ -79,7 +79,7 @@ const RegisterComponent = () => {
                                         type="text"
                                         className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                        placeholder="Nhập họ và tên..."
+                                        placeholder="Enter your name..."
                                         {...field}
                                     />
                                     <UserEdit className="text-[#808990] 3xl:size-6 size-5 absolute left-4 top-1/2 -translate-y-1/2" />
@@ -97,14 +97,14 @@ const RegisterComponent = () => {
                     control={form.control}
                     name="phone"
                     rules={{
-                        required: "Vui lòng nhập số điện thoại!",
+                        required: "Please enter your phone number!",
                         pattern: {
                             value: regexPatterns.lengthPhone,
-                            message: "Số điện thoại yêu cầu 10 số!",
+                            message: "The phone number must be 10 digits!",
                         },
                         validate: {
                             isValidPhone: (value) =>
-                                regexPatterns.phone.test(value) || "Số điện thoại không hợp lệ!",
+                                regexPatterns.phone.test(value) || "Invalid phone number!",
                         },
                     }}
                     render={({ field: { onChange, onBlur, ref }, fieldState }) => {
@@ -114,7 +114,7 @@ const RegisterComponent = () => {
                                     htmlFor="number_phone"
                                     className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
                                 >
-                                    Số điện thoại <span className="text-[#FA3434]">*</span>
+                                    Phone Number <span className="text-[#FA3434]">*</span>
                                 </FormLabel>
                                 <FormControl>
                                     <div className="relative">
@@ -124,7 +124,7 @@ const RegisterComponent = () => {
                                             getInputRef={ref}
                                             className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"}
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                            placeholder="Số điện thoại"
+                                            placeholder="Enter phone number..."
                                             thousandSeparator={' '}
 
                                             maxLength={12}
@@ -154,7 +154,7 @@ const RegisterComponent = () => {
                         required: false,
                         pattern: {
                             value: regexPatterns.email,
-                            message: "Email không hợp lệ!",
+                            message: "Invalid email address!",
                         },
                     }}
                     render={({ field, fieldState }) => (
@@ -164,7 +164,6 @@ const RegisterComponent = () => {
                                 className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
                             >
                                 Email
-                                {/* Email <span className="text-[#FA3434]">*</span> */}
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
@@ -172,7 +171,7 @@ const RegisterComponent = () => {
                                         id="email"
                                         className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                        placeholder="Email của bạn"
+                                        placeholder="Enter your email..."
                                         type="text"
                                         {...field}
                                     />
@@ -190,10 +189,10 @@ const RegisterComponent = () => {
                     control={form.control}
                     name="password"
                     rules={{
-                        required: "Vui lòng nhập mật khẩu!",
+                        required: "Please enter your password!",
                         minLength: {
-                            value: 6,
-                            message: "Mật khẩu phải có ít nhất 6 ký tự!",
+                            value: 8,
+                            message: "The password must be 8 digits!",
                         },
                     }}
                     render={({ field, fieldState }) => (
@@ -202,7 +201,7 @@ const RegisterComponent = () => {
                                 htmlFor="password"
                                 className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
                             >
-                                Mật khẩu <span className="text-[#FA3434]">*</span>
+                                Password <span className="text-[#FA3434]">*</span>
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
@@ -210,7 +209,7 @@ const RegisterComponent = () => {
                                         id="password"
                                         className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                        placeholder="Mật khẩu"
+                                        placeholder="Enter password..."
                                         type={showPassword?.showNewPassword ? "text" : "password"}
                                         {...field}
                                     />
@@ -235,9 +234,9 @@ const RegisterComponent = () => {
                         required: "Vui lòng nhập mật khẩu!",
                         minLength: {
                             value: 8,
-                            message: "Mật khẩu phải có ít nhất 8 ký tự!",
+                            message: "The password must be 8 digits!",
                         },
-                        validate: (value) => value === password || "Mật khẩu không khớp",
+                        validate: (value) => value === password || "Passwords do not match",
                     }}
                     render={({ field, fieldState }) => (
                         <FormItem className='lg:col-span-1 col-span-2 flex flex-col w-full'>
@@ -245,7 +244,7 @@ const RegisterComponent = () => {
                                 htmlFor="confirmPassword"
                                 className="3xl:text-sm text-xs font-semibold text-[#505458] w-fit"
                             >
-                                Xác nhận mật khẩu <span className="text-[#FA3434]">*</span>
+                                Confirm Password <span className="text-[#FA3434]">*</span>
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
@@ -253,7 +252,7 @@ const RegisterComponent = () => {
                                         id="confirmPassword"
                                         className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                        placeholder="Xác nhận mật khẩu"
+                                        placeholder="Enter confirm password..."
                                         type={showPassword.showConfirmPassword ? "text" : "password"}
                                         {...field}
                                     />
@@ -277,7 +276,7 @@ const RegisterComponent = () => {
                     rules={{
                         required: {
                             value: true,
-                            message: "Vui lòng đồng ý điều khoản"
+                            message: "Please agree to the terms and conditions!"
                         }
                     }}
                     render={({ field, fieldState }) => (
@@ -296,7 +295,7 @@ const RegisterComponent = () => {
                                             // onClick={() => field.onChange(checked)}
                                             className="text-[#090D20] text-sm-default cursor-pointer font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70 caret-transparent"
                                         >
-                                            Tôi đồng ý với điều khoản và chính sách
+                                            I agree to the terms and policies
                                             <span className="text-[#F15A5A]">*</span>
                                         </Label>
                                     </div>
@@ -314,7 +313,7 @@ const RegisterComponent = () => {
                         disabled={!form.getValues("policy") || isLoadingLogin}
                         isStateloading={isLoadingLogin}
                         type='submit'
-                        title_button='Đăng ký'
+                        title_button='Register'
                         className='flex items-center justify-center gap-2 bg-[#333538] text-white rounded-full 3xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear disabled:hover:opacity-100 disabled:bg-[#333538]/40 disabled:text-white disabled:cursor-not-allowed disabled:pointer-events-auto'
                     />
 
@@ -359,12 +358,12 @@ const RegisterComponent = () => {
                     </div> */}
 
                     <div className="text-[#61666C] font-light text-base leading-5 text-center">
-                        <h1>Bạn đã có tài khoản?
+                        <h1>You already have an account?
                             <span
                                 onClick={() => setStatusDialog('login')}
                                 className='font-semibold cursor-pointer pl-1 text-[#07A6FF] hover:text-[#07A6FF]/90 custom-transition'
                             >
-                                Đăng Nhập
+                                Login
                             </span>
                         </h1>
                     </div>

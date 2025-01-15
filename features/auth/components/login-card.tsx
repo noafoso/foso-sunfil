@@ -36,7 +36,7 @@ const LoginComponent = () => {
 
     // const { isLoading, onSubmit } = usePostLoginOtpRegister()
 
-    const { onSubmit: onSubmitLogin, isLoading:isLoadingLogin} = usePostLoginOtpRegister()
+    const { onSubmit: onSubmitLogin, isLoading: isLoadingLogin } = usePostLoginOtpRegister()
 
     return (
         <Form {...form}>
@@ -50,14 +50,14 @@ const LoginComponent = () => {
                     control={form.control}
                     name="phone"
                     rules={{
-                        required: "Vui lòng nhập số điện thoại!",
+                        required: "Please enter your phone number!",
                         pattern: {
                             value: regexPatterns.lengthPhone,
-                            message: "Số điện thoại yêu cầu 10 số!",
+                            message: "The phone number must contain 10 digits!",
                         },
                         validate: {
                             isValidPhone: (value) =>
-                                regexPatterns.phone.test(value) || "Số điện thoại không hợp lệ!",
+                                regexPatterns.phone.test(value) || "Invalid phone number!",
                         },
                     }}
                     render={({ field: { onChange, onBlur, ref }, fieldState }) => {
@@ -67,7 +67,7 @@ const LoginComponent = () => {
                                     htmlFor="number_phone"
                                     className="text-sm-default font-semibold text-[#505458] w-fit"
                                 >
-                                    Số điện thoại <span className="text-[#FA3434]">*</span>
+                                    Phone Number <span className="text-[#FA3434]">*</span>
                                 </FormLabel>
                                 <FormControl>
                                     <div className="relative">
@@ -77,7 +77,7 @@ const LoginComponent = () => {
                                             getInputRef={ref}
                                             className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"}
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 placeholder:text-[#B2BABD] placeholder:font-light focus:ring-0 focus:outline-none`}
-                                            placeholder="Số điện thoại"
+                                            placeholder="Enter phonenumber..."
                                             thousandSeparator={' '}
                                             maxLength={12}
                                             onValueChange={(values: any) => {
@@ -103,10 +103,10 @@ const LoginComponent = () => {
                     control={form.control}
                     name="password"
                     rules={{
-                        required: "Vui lòng nhập mật khẩu!",
+                        required: "Please enter your password!",
                         minLength: {
-                            value: 6,
-                            message: "Mật khẩu phải có ít nhất 6 ký tự!",
+                            value: 8,
+                            message: "The password must have at least 8 characters!",
                         },
                     }}
                     render={({ field, fieldState }) => (
@@ -115,7 +115,7 @@ const LoginComponent = () => {
                                 htmlFor="password"
                                 className="text-sm-default font-semibold text-[#505458] w-fit"
                             >
-                                Mật khẩu <span className="text-[#FA3434]">*</span>
+                                Password <span className="text-[#FA3434]">*</span>
                             </FormLabel>
                             <FormControl>
                                 <div className="relative">
@@ -123,7 +123,7 @@ const LoginComponent = () => {
                                         id="password"
                                         className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                             text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                        placeholder="Mật khẩu"
+                                        placeholder="Enter password..."
                                         type={showPassword ? "text" : "password"}
                                         {...field}
                                     />
@@ -153,71 +153,22 @@ const LoginComponent = () => {
                     )}
                 />
 
-                {/* <div className='flex items-center justify-end'>
-                    <div
-                        className="text-[#07A6FF] hover:text-[#07A6FF]/90 font-semibold text-sm-default w-fit custom-transition cursor-pointer"
-                        onClick={() => setStatusDialog("forgot_password")}
-                    >
-                        Quên mật khẩu
-                    </div>
-                </div> */}
-
                 <div className='3xl:space-y-6 space-y-4'>
                     <ButtonAnimation
                         isStateloading={isLoadingLogin}
                         disabled={isLoadingLogin}
                         type='submit'
-                        title_button='Đăng nhập'
+                        title_button='Login'
                         className='flex items-center justify-center gap-2 bg-[#333538] text-white rounded-full 2xl:text-lg text-base font-normal w-full md:py-3 py-2.5 h-auto hover:opacity-80 transition-all duration-150 ease-linear'
                     />
 
-                    {/* <div className='flex items-center justify-between gap-5'>
-                        <div className='ml-10 w-[40%] h-[1px] bg-[#EBEDEE]' />
-                        <div className='w-[10%] text-sm-default text-[#919BA0] font-light'>Hoặc</div>
-                        <div className='mr-10 w-[40%] h-[1px] bg-[#EBEDEE]' />
-                    </div>
-
-                    <div className="flex items-center gap-4">
-                        <ButtonAnimation
-                            // onClick={() => onSubmit({}, 'loginGoogle')}
-                            title_button={"Google"}
-                            icon={
-                                <div className="3xl:max-w-7 max-w-6">
-                                    <FcGoogle className='3xl:size-7 size-6 object-contain' />
-                                </div>
-                            }
-                            type='button'
-                            isStateloading={false}
-                            disabled={false}
-                            className='border-[#E6E8EC] border rounded-full bg-white cursor-pointer hover:bg-gray-100
-                                md:py-3 py-2.5 w-full flex gap-x-1.5 justify-center items-center'
-                            variant={variantButtonPressZoom}
-                        />
-
-                        <ButtonAnimation
-                            // onClick={() => onSubmit({}, 'loginFacebook')}
-                            title_button={"Facebook"}
-                            icon={
-                                <div className="3xl:max-w-7 max-w-6">
-                                    <FaFacebook className='3xl:size-7 size-6 object-contain text-[#1877FE]' />
-                                </div>
-                            }
-                            type='button'
-                            isStateloading={false}
-                            disabled={false}
-                            className='border-[#E6E8EC] border rounded-full bg-white cursor-pointer hover:bg-gray-100
-                                md:py-3 py-2.5 w-full flex gap-x-1.5 justify-center items-center'
-                            variant={variantButtonPressZoom}
-                        />
-                    </div> */}
-
                     <div className="text-[#61666C] font-light text-base leading-5 text-center">
-                        <h1>Bạn chưa là thành viên?
+                        <h1>You are not a member yet?
                             <span
                                 onClick={() => setStatusDialog('register')}
                                 className='font-semibold cursor-pointer pl-1 text-[#07A6FF] hover:text-[#07A6FF]/90 custom-transition'
                             >
-                                Đăng Ký Ngay
+                                Register Now
                             </span>
                         </h1>
                     </div>

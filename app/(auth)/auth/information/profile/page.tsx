@@ -153,7 +153,7 @@ const Profile = (props: Props) => {
                                             disabled={!isStateProfile?.flagEditInfo}
                                             className={`${fieldState?.invalid && fieldState?.error ? "border border-[#F15A5A]" : "border border-[#EBEDEE] focus:border-[#07A6FF]"} 
                                         text-[#272727] bg-transparent text-sm-default w-full rounded-[40px] 3xl:h-14 h-12 pl-12 shadow-none placeholder:text-[#B2BABD] placeholder:font-light focus-visible:ring-0 focus-visible:outline-none`}
-                                            placeholder={"Enter your full name..."}
+                                            placeholder={"Enter your your name..."}
                                             {...field}
                                         />
                                         <UserEdit className="text-[#808990] 3xl:size-6 size-5 absolute left-4 top-1/2 -translate-y-1/2" />

@@ -15,7 +15,7 @@ const HeaderSearchHistory = ({ handleValueChange }: Props) => {
         <div className='flex lg:flex-row flex-col lg:items-center lg:justify-between lg:gap-0 gap-4 w-full'>
             <div className='flex items-center gap-2'>
                 <span className="text-title text-[#3E424E] font-bold">
-                    Lịch sử tìm kiếm
+                    Search History
                 </span>
                 {/* <span className='text-xs-default px-1.5 min-w-5 min-h-5 bg-[#333538] text-white rounded-full font-semibold'>
                     0

@@ -46,9 +46,7 @@ const ListSearchHistory = ({ }: Props = {}) => {
         dataSearchHistoryList ? dataSearchHistoryList?.pages?.flatMap(page => page?.data?.history_search_products) : [],
         [dataSearchHistoryList]
     );
-
-    console.log('flatSearchHistoryList', flatSearchHistoryList);
-
+    
     return (
         <React.Fragment>
             <div ref={scrollContainerRef} className='grid grid-cols-2 xl:gap-6 gap-4 w-full h-full'>
@@ -114,7 +112,7 @@ const ListSearchHistory = ({ }: Props = {}) => {
                                                         <Eye className="size-full" />
                                                     </div>
                                                 }
-                                                title_button="Xem chi tiết"
+                                                title_button="View Details"
                                                 className='3xl:text-base text-sm flex items-center gap-2 border rounded-md px-3 py-1 group-hover:bg-[#07A6FF] group-hover:text-white group-hover:border-transparent duration-300'
                                             />
                                         </Link>
