@@ -190,7 +190,7 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
                         >
                             <Image
                                 alt='logo'
-                                src="/logo/logo.png"
+                                src="/logo/logo.webp"
                                 width={1920}
                                 height={1080}
                                 priority
@@ -430,7 +430,7 @@ const DesktopHeader = ({ dataHeader, dataCountryOptions, handleToggleMenu, handl
                                                 >
                                                     <Image
                                                         alt='logo'
-                                                        src="/logo/logo.png"
+                                                        src="/logo/logo.webp"
                                                         width={1920}
                                                         height={1080}
                                                         priority

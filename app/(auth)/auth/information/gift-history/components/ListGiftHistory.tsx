@@ -8,11 +8,11 @@ import CommonTable from '@/components/table/commonTable/CommonTable'
 import { HiChevronUpDown } from 'react-icons/hi2'
 import useDataTable from '@/hooks/table/useDataTable'
 import { ColumnDef } from '@tanstack/react-table'
-import { useGetGiftHistoryList } from '@/managers/api-management/auth/gifts/useGetGiftHistoryList'
 import Image from 'next/image'
 import moment from 'moment'
 import { FORMAT_DATE } from '@/constants/FormatDate'
 import StatusTag from '@/components/tags/StatusTag'
+import { useGetGiftHistoryList } from '@/managers/api-management/gifts/useGetGiftHistoryList'
 
 type Props = {
 

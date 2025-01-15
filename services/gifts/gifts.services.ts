@@ -8,14 +8,19 @@ const apiGifts = {
 
     // Kiểm tra mã code QR có tồn tại hay không
     getCheckGiftCode(code: string) {
-        return axios.post(`/gift_code?code=${code}`);
+        return axios.get(`/gift_code?code=${code}`);
     },
 
     // Lần đầu POST (phone, code, type_request=send_otp)
     // - Nếu result === true => tiếp theo POST (phone, code , code_otp)
     // - Nếu result === false => bắt buộc nhập tên (phone, code, name, type_request=addClients) => result === true tiếp theo POST (phone, code , code_otp)
-    getGetOtpGiftCode(data: any) {
+    postGetOtpGiftCode(data: any) {
         return axios.post(`/gift_code/GetOtp?csrf_protection=true`, data);
+    },
+
+    // POST (code_otp, phone, code)
+    postGetReveicedGiftCode(data: any) {
+        return axios.post(`/gift_code/GetGift?csrf_protection=true`, data);
     },
 };
 

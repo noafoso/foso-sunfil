@@ -32,6 +32,7 @@ import LoginComponent from "@/features/auth/components/login-card";
 import RegisterComponent from "@/features/auth/components/register-card";
 import RegisterOtp from "@/features/auth/components/otp-register";
 import UpdatePasswordOtp from "@/features/auth/components/otp-update-password";
+import ReveicedGiftCodeOtp from "@/features/auth/components/otp-reveiced-gift-code";
 // import RegisterComponent from "@/features/auth/components/register-card";
 // import ForgotPasswordComponent from "@/features/auth/components/forgot-password-card";
 // import PromotionsComponent from "@/features/promotions/components/promotions";
@@ -49,8 +50,18 @@ export function DialogCustom({ }: Props) {
     const { openDialogCustom, statusDialog, setOpenDialogCustom, setStatusDialog } = useDialogStore()
     // const { isStateAuth } = useStateAuth()
 
-    const handleCloseDialog = (value: boolean) => {
-        setOpenDialogCustom(value)
+    const handleCloseDialog = (value: boolean, type: string) => {
+        if (type === "overlay") {
+            let otp = ['otp_register', 'otp_update_password', 'otp_reveiced_gift',].includes(statusDialog)
+            console.log('otp', otp);
+
+
+            if (!otp) {
+                setOpenDialogCustom(value)
+            }
+        } else if (type === "close") {
+            setOpenDialogCustom(value)
+        }
     }
 
     if (!isMounted) {
@@ -58,7 +69,7 @@ export function DialogCustom({ }: Props) {
     }
 
     const isAuthTab = (statusDialog === "login" || statusDialog === "register")
-    const isAuthStatusDialog = ['login', 'register', 'otp_register', 'otp_update_password', 'update_account', 'forgot_password', 'promotions', 'fake_information'].includes(statusDialog)
+    const isAuthStatusDialog = ['login', 'register', 'otp_register', 'otp_update_password', 'otp_reveiced_gift', 'update_account', 'forgot_password', 'promotions', 'fake_information'].includes(statusDialog)
 
     const modalVariants = {
         hidden: { opacity: 0, scale: 0.5, y: 20 },
@@ -90,7 +101,7 @@ export function DialogCustom({ }: Props) {
                 openDialogCustom && (
                     <Dialog
                         open={openDialogCustom}
-                        onOpenChange={(value: boolean) => handleCloseDialog(value)}
+                        onOpenChange={(value: boolean) => handleCloseDialog(value, "overlay")}
                     >
                         <DialogPortal>
                             <DialogOverlay className="bg-[#09080D]/[48%]" />
@@ -109,7 +120,7 @@ export function DialogCustom({ }: Props) {
                                         }}
                                     >
                                         <DialogContent
-                                            className={`${(statusDialog === "otp_register" || statusDialog === "otp_update_password") ? 'lg:max-w-[420px]' : `lg:max-w-[520px]`} bg-white !text-black p-0 border-none max-w-[95%] max-h-[98vh] overflow-hidden
+                                            className={`${(statusDialog === "otp_register" || statusDialog === "otp_update_password" || statusDialog === "otp_reveiced_gift") ? 'lg:max-w-[420px]' : `lg:max-w-[520px]`} bg-white !text-black p-0 border-none max-w-[95%] max-h-[98vh] overflow-hidden
                                                     focus-visible:outline-none focus-visible:ring-0 focus-visible:ring-ring focus-visible:ring-offset-0
                                                     !rounded-2xl custom-size-text custom-tailwind
                                         `}
@@ -120,7 +131,7 @@ export function DialogCustom({ }: Props) {
                                             <div className="h-full md:p-6 p-4 md:pr-3 pr-1 rounded-2xl">
                                                 <div className="3xl:mb-8 mb-6">
                                                     <DialogClose
-                                                        onClick={() => handleCloseDialog(false)}
+                                                        onClick={() => handleCloseDialog(false, "close")}
                                                         className="3xl:size-6 size-5 z-20 flex items-center justify-center absolute right-4 top-4 opacity-70 ring-offset-background transition-opacity hover:opacity-100 focus:outline-none focus:ring-0 focus:ring-ring focus:ring-offset-0 disabled:pointer-events-none data-[state=open]:bg-accent data-[state=open]:text-muted-foreground"
                                                     >
                                                         <X className="size-full text-[#505458]" />
@@ -157,7 +168,7 @@ export function DialogCustom({ }: Props) {
                                                                 {statusDialog === "fake_information" && TITLE_FORM_FAKE_INFORMATION}
                                                             </DialogTitle>
                                                             {
-                                                                (statusDialog === "otp_register" || statusDialog === "otp_update_password") &&
+                                                                (statusDialog === "otp_register" || statusDialog === "otp_update_password" || statusDialog === "otp_reveiced_gift") &&
                                                                 <DialogDescription className='text-center text-[#808990] font-normal'>
                                                                     Please enter 4 digit verification code that have been sent to your email
                                                                     {/* Please enter 4 digit verification code that have been sent to your email: <span className='font-semibold'>{isStateAuth?.form?.email}</span> */}
@@ -181,6 +192,7 @@ export function DialogCustom({ }: Props) {
                                                     {statusDialog === "register" && <RegisterComponent />}
                                                     {statusDialog === "otp_register" && <RegisterOtp />}
                                                     {statusDialog === "otp_update_password" && <UpdatePasswordOtp />}
+                                                    {statusDialog === "otp_reveiced_gift" && <ReveicedGiftCodeOtp />}
                                                     {/* {statusDialog === "forgot_password" && <ForgotPasswordComponent />}
                                                     {statusDialog === "promotions" && <PromotionsComponent />}
                                                     {statusDialog === "fake_information" && <FakeInformationComponent />} */}

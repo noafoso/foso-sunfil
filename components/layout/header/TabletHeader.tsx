@@ -44,7 +44,7 @@ const TabletHeader: React.FC<TabletHeaderProps> = ({ dataHeader, handleToggleMen
                             width={800}
                             height={800}
                             alt="logo"
-                            src="/logo/logo.png"
+                            src="/logo/logo.webp"
                             className="w-fit h-[72px] object-contain cursor-pointer"
                             priority
                         />
@@ -89,7 +89,7 @@ const TabletHeader: React.FC<TabletHeaderProps> = ({ dataHeader, handleToggleMen
                                         width={800}
                                         height={800}
                                         alt="logo"
-                                        src="/logo/logo.png"
+                                        src="/logo/logo.webp"
                                         className="w-fit h-[72px] object-contain cursor-pointer"
                                         priority
                                     />
