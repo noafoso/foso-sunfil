@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import Image from 'next/image'
 import { uuidv4 } from '@/lib/uuid'
 import { useStateHome } from '../_state/useStateHome';
@@ -73,6 +73,7 @@ const listStyleContent = [
 
 const SectionIntroHome = () => {
     const queryClient = useQueryClient()
+    const [isImageLoaded, setIsImageLoaded] = useState<boolean>(false);
 
     const { isStateHome, queryKeyIsStateHome } = useStateHome()
 
@@ -82,7 +83,7 @@ const SectionIntroHome = () => {
         <div className='grid grid-cols-12'>
             <div className='xl:col-span-6 md:col-span-8 col-span-12 flex flex-col 3xl:gap-6 gap-4'>
                 <div className='grid grid-cols-6'>
-                    <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row items-center bg-white'>
+                    <div className='md:col-span-1 col-span-6 flex md:flex-col flex-row md:items-center bg-white'>
                         {
                             dataListCategory && dataListCategory?.map((category, index) => (
                                 <div
@@ -175,14 +176,25 @@ const SectionIntroHome = () => {
                     className='absolute 3xl:-top-8 2xl:-top-4 xl:-top-8 lg:-top-4 md:top-10 top-[60px] 2xl:left-0 xl:left-4 lg:-left-40 md:-left-24 left-0 z-20 aspect-1.1/1 3xl:w-[630px] 2xl:w-[500px] xl:w-[510px] lg:w-[470px] w-[360px] cursor-pointer'
                 >
                     <AnimateOnScroll variants={variantSlideZoomOut}>
-                        <Image
-                            src={`${isStateHome?.idTabActive?.images_items}`}
-                            alt='oil'
-                            width={800}
-                            height={800}
-                            className='size-full object-contain'
-                            unoptimized
-                        />
+                        <div className="relative size-full overflow-hidden">
+                            {/* Placeholder Animation */}
+                            {!isImageLoaded && (
+                                <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-50 animate-gradient-shimmer z-10"></div>
+                            )}
+
+                            {/* Image */}
+                            <Image
+                                src={`${isStateHome?.idTabActive?.images_items}`}
+                                alt='oil'
+                                width={800}
+                                height={800}
+                                className={`size-full object-contain transition-opacity duration-500 ease-in-out ${isImageLoaded ? 'opacity-100' : 'opacity-0'
+                                    }`}
+                                unoptimized
+                                priority
+                                onLoadingComplete={() => setIsImageLoaded(true)}
+                            />
+                        </div>
                     </AnimateOnScroll>
                 </motion.div>
             </div>

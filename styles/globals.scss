@@ -208,3 +208,23 @@ menu {
         @apply 3xl:!text-sm xl:!text-xs lg:!text-xs !text-sm !tracking-[1%];
     }
 }
+
+/* Gradient shimmer animation */
+@keyframes gradient-shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.animate-gradient-shimmer {
+    background-size: 400% 100%;
+    animation: gradient-shimmer 1.5s infinite linear;
+}
+
+/* Opacity transition for image fade-in */
+.transition-opacity {
+    transition: opacity 0.5s ease-in-out;
+}
