@@ -39,6 +39,12 @@ const RegisterOtp = (props: any) => {
         if (!/^\d$/.test(e.key) && e.key !== 'Backspace' && e.key !== 'Delete' && e.key !== 'ArrowLeft' && e.key !== 'ArrowRight') {
             e.preventDefault();
         }
+
+        // nhấn enter khi vừa nhập xong OTP
+        if (e.key === 'Enter') {
+            e.preventDefault();
+            form.handleSubmit((data) => onSubmitLogin({ ...isStateAuth.form, ...data }, 'otp_register'))()
+        }
     };
 
     const handleOtpInput = (value: string) => {
@@ -80,10 +86,10 @@ const RegisterOtp = (props: any) => {
                                         {...field}
                                     >
                                         <InputOTPGroup className="mx-auto gap-2 w-fit">
-                                            <InputOTPSlot className="size-16 3xl:text-lg text-base first:rounded-2xl rounded-2xl border ring-[#E9890C]" index={0} />
-                                            <InputOTPSlot className="size-16 3xl:text-lg text-base rounded-2xl border ring-[#E9890C]" index={1} />
-                                            <InputOTPSlot className="size-16 3xl:text-lg text-base rounded-2xl border ring-[#E9890C]" index={2} />
-                                            <InputOTPSlot className="size-16 3xl:text-lg text-base last:rounded-2xl rounded-2xl border ring-[#E9890C]" index={3} />
+                                            <InputOTPSlot className="size-16 3xl:text-lg text-base first:rounded-2xl rounded-2xl border ring-[#07A6FF]" index={0} />
+                                            <InputOTPSlot className="size-16 3xl:text-lg text-base rounded-2xl border ring-[#07A6FF]" index={1} />
+                                            <InputOTPSlot className="size-16 3xl:text-lg text-base rounded-2xl border ring-[#07A6FF]" index={2} />
+                                            <InputOTPSlot className="size-16 3xl:text-lg text-base last:rounded-2xl rounded-2xl border ring-[#07A6FF]" index={3} />
                                         </InputOTPGroup>
 
                                     </InputOTP>

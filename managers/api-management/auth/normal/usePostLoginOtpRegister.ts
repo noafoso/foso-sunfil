@@ -109,8 +109,11 @@ export const usePostLoginOtpRegister = () => {
         }
 
         if (type == "register") {
+            if (data?.email) {
+                formData.append("email", data?.email ?? "");
+            }
+            
             formData.append("name", data?.fullname ?? "");
-            formData.append("email", data?.email ?? "");
             formData.append("phonenumber", data?.phone ?? "");
             formData.append("password", data?.password ?? "");
             formData.append("type_request", "send_otp");

@@ -22,12 +22,12 @@ export const useGetCheckGiftCode = ({ code }: CheckCodeGiftListProps) => {
             const { data } = await apiGifts.getCheckGiftCode(code);
 
             if (data?.result) {
-                return data.result
+                return data
             }
 
-            router.push("/")
+            // router.push("/")
             setToast(true, "warning", data?.message, 2500);
-            return data.result
+            return data
         } catch (err) {
             throw err;
         }

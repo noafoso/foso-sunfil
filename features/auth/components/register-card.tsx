@@ -147,7 +147,7 @@ const RegisterComponent = () => {
                     }}
                 />
 
-                <FormField
+                {/* <FormField
                     control={form.control}
                     name="email"
                     rules={{
@@ -183,7 +183,7 @@ const RegisterComponent = () => {
                             )}
                         </FormItem>
                     )}
-                />
+                /> */}
 
                 <FormField
                     control={form.control}

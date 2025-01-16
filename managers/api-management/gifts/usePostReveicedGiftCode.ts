@@ -41,6 +41,8 @@ export const usePostReveicedGiftCode = (initialFormValue: any) => {
     });
 
     const onSubmit = async (values: any, code: string, formGetOtp?: any) => {
+        console.log('values', values);
+
         try {
             dataSubmit.append("code", code)
             dataSubmit.append("phone", values?.phone)

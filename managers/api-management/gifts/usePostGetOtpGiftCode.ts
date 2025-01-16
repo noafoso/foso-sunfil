@@ -80,10 +80,13 @@ export const usePostGetOtpGiftCode = ({ initialFormValue }: OtpGiftCodeProps) =>
                 return data;
             }
 
-            queryKeyIsStatePageReveicedGift({
-                disablePhoneInput: true,
-                showFullNameField: true
-            })
+            if (!data?.is_user) {
+                queryKeyIsStatePageReveicedGift({
+                    disablePhoneInput: true,
+                    showFullNameField: true
+                })
+            }
+            
             setToast(true, "error", data?.message, 2500);
             return data;
         } catch (error) {

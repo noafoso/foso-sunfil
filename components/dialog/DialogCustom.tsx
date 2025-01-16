@@ -33,6 +33,10 @@ import RegisterComponent from "@/features/auth/components/register-card";
 import RegisterOtp from "@/features/auth/components/otp-register";
 import UpdatePasswordOtp from "@/features/auth/components/otp-update-password";
 import ReveicedGiftCodeOtp from "@/features/auth/components/otp-reveiced-gift-code";
+import { useStateAuth } from "@/managers/state-management/auth/useStateAuth";
+import { FormatPhoneNumber } from "@/utils/format/FormatNumber";
+import { useAuthStore } from "@/stores/useAuthStores";
+import { useStatePageReveicedGift } from "@/app/(client)/reveiced-gift/_state/useStatePageReveicedGift";
 // import RegisterComponent from "@/features/auth/components/register-card";
 // import ForgotPasswordComponent from "@/features/auth/components/forgot-password-card";
 // import PromotionsComponent from "@/features/promotions/components/promotions";
@@ -47,8 +51,10 @@ export function DialogCustom({ }: Props) {
         setIsMounted(true)
     }, [])
 
+    const { isStateAuth } = useStateAuth()
+    const { informationUser } = useAuthStore()
+    const { isStatePageReveicedGift } = useStatePageReveicedGift()
     const { openDialogCustom, statusDialog, setOpenDialogCustom, setStatusDialog } = useDialogStore()
-    // const { isStateAuth } = useStateAuth()
 
     const handleCloseDialog = (value: boolean, type: string) => {
         if (type === "overlay") {
@@ -94,6 +100,9 @@ export function DialogCustom({ }: Props) {
             }
         },
     }
+
+    console.log('isStateAuth', isStateAuth);
+
 
     return (
         <AnimatePresence mode="wait">
@@ -170,8 +179,10 @@ export function DialogCustom({ }: Props) {
                                                             {
                                                                 (statusDialog === "otp_register" || statusDialog === "otp_update_password" || statusDialog === "otp_reveiced_gift") &&
                                                                 <DialogDescription className='text-center text-[#808990] font-normal'>
-                                                                    Please enter 4 digit verification code that have been sent to your email
-                                                                    {/* Please enter 4 digit verification code that have been sent to your email: <span className='font-semibold'>{isStateAuth?.form?.email}</span> */}
+                                                                    Please enter 4 digit verification code that have been sent to your phone number:
+                                                                    {statusDialog === "otp_register" && <span className='font-bold text-[#07A6FF]'> {FormatPhoneNumber(isStateAuth?.form?.phone)}</span>}
+                                                                    {statusDialog === "otp_update_password" && <span className='font-bold text-[#07A6FF]'> {FormatPhoneNumber(`${informationUser?.phonenumber}`)}</span>}
+                                                                    {statusDialog === "otp_reveiced_gift" && <span className='font-bold text-[#07A6FF]'> {FormatPhoneNumber(`${isStatePageReveicedGift?.form?.phone}`)}</span>}
                                                                 </DialogDescription>
                                                             }
                                                             {

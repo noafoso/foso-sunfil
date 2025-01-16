@@ -1,15 +1,6 @@
 import { useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 
-// import { useShowPasswordMulti } from "@/hooks/auth/useShowPasswordMulti";
-import { toastCore } from "@/lib/toast";
-
-// import apiAuth from "@/services/auth/auth.services";
-// import { IChangePassWordFormSetup } from "@/types/auth/IAuth";
-// import { toast } from "@/hooks/use-toast";
-// import { useTranslate } from "@/contexts/TranslateContext";
-// import { useToastStore } from "@/stores/useToastStore";
-// import { useDialogStore } from "@/stores/useDialogStores";
 import { useStateAuth } from "@/managers/state-management/auth/useStateAuth";
 import { useAuthStore } from "@/stores/useAuthStores";
 import { IChangePassWordFormSetup } from "@/types/auth/IAuth";
@@ -26,8 +17,6 @@ export const usePostChangePassword = (initialFormValue: IChangePassWordFormSetup
     const { isStateAuth, queryKeyIsStateAuth } = useStateAuth();
 
     const { resetPasswordVisibility } = useShowPasswordMulti();
-
-    // const { dataLang } = useTranslate();
 
     const { setToast } = useToastStore();
 
@@ -57,8 +46,6 @@ export const usePostChangePassword = (initialFormValue: IChangePassWordFormSetup
     });
 
     const onSubmit = async (values: IChangePassWordFormSetup | any, type: string) => {
-        console.log('isStateAuth', isStateAuth);
-
         try {
             if (type === "send_otp_password") {
                 if (isStateAuth?.otp_time > 0) {
@@ -86,8 +73,6 @@ export const usePostChangePassword = (initialFormValue: IChangePassWordFormSetup
             }
 
             if (type === "update_password") {
-                console.log('values', values);
-
                 dataSubmit.append("password_new", values?.newPassword ?? values?.password)
                 dataSubmit.append("type_request", "change_password")
                 dataSubmit.append("code_otp", values?.otp)
@@ -102,7 +87,9 @@ export const usePostChangePassword = (initialFormValue: IChangePassWordFormSetup
                 setToast(true, "success", res?.message, 2500);
                 setOpenDialogCustom(false);
                 setStatusDialog("");
-                isStateAuth?.formFile?.reset();
+                resetPasswordVisibility();
+                form.resetField("newPassword")
+                form.resetField("confirmPassword")
                 queryKeyIsStateAuth({ otp_time: 0 });
             }
         } catch (error) {
