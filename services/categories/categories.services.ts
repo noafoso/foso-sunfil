@@ -1,6 +1,7 @@
 import axios from "@/utils/axios/axios-customize";
 
 const apiCategories = {
+
     // danh sách danh mục ở trang chủ và sản phẩm
     getListCategories() {
         return axios.get(`/api_web/api_items/getCategory`);

@@ -6,6 +6,7 @@ import React from 'react'
 import SectionCategoryCommon from './components/SectionCategoryCommon'
 import SectionIntroCommon from './components/SectionIntroCommon'
 import { Skeleton } from '@/components/ui/skeleton'
+import { useGetDataPageAboutUs } from '@/managers/api-management/ui/about-us/useGetDataPageAboutUs'
 
 const dataListProducts = [
     {
@@ -125,13 +126,16 @@ const dataStyle = [
 
 const Products = () => {
     const { data: dataListProducts, isLoading } = useGetListCategories()
+    const { data: dataIntroduceProduct } = useGetDataPageAboutUs({ enebled: true })
+
+    console.log('dataIntroduceProduct', dataIntroduceProduct);
+
 
     return (
         <div className='' id="page-product">
             <SectionIntroCommon
-                title="Sản phẩm"
-                description="Sunfil-filter đại diện cho nhiều loại sản phẩm lọc dành cho dịch vụ hậu mãi ô tô của hầu hết các thương hiệu trên thế giới. Bộ lọc JS kết hợp hiệu suất làm sạch cao, độ tin cậy, độ bền và dễ thay thế và sử dụng."
-            />
+                title={`${dataIntroduceProduct?.content_product[0]?.title}`}
+                description={`${dataIntroduceProduct?.content_product[0]?.description}`} />
             {
                 isLoading ?
                     (
