@@ -4,7 +4,9 @@ import TitleHighlight from '@/components/title/TitleHighlight'
 import { Button } from '@/components/ui/button'
 import { uuidv4 } from '@/lib/uuid'
 import { useGetDataPageAboutUs } from '@/managers/api-management/ui/about-us/useGetDataPageAboutUs'
+import ConvertToSlug from '@/utils/convertToSlug/ConvertToSlug'
 import Image from 'next/image'
+import { useRouter } from 'next/navigation'
 
 const data = {
     image: '/example/about/left-no.png',
@@ -39,6 +41,7 @@ const data = {
     ]
 }
 const Sectionintroduce = () => {
+    const router = useRouter()
     const { data: dataPageAboutUs } = useGetDataPageAboutUs({ enebled: true })
 
     return (
@@ -85,7 +88,12 @@ const Sectionintroduce = () => {
                         {
                             dataPageAboutUs?.banner[0] && dataPageAboutUs?.banner[0]?.product?.map((e: any, index: number) => {
                                 return (
-                                    <AnimateOnScroll index={index} key={`banner-${e.id}`} className="col-span-1 flex flex-col gap-2.5 group overflow-hidden cursor-pointer">
+                                    <AnimateOnScroll
+                                        index={index}
+                                        key={`banner-${e.id}`}
+                                        className="col-span-1 flex flex-col gap-2.5 group overflow-hidden cursor-pointer"
+                                        onClick={() => { router.push(`/categories?code=${e.code}&type=list&isKey=1`) }}
+                                    >
                                         <div className='w-full h-auto aspect-square'>
                                             <Image
                                                 src={e.images ?? '/default/default.png'}
@@ -96,7 +104,10 @@ const Sectionintroduce = () => {
                                             />
                                         </div>
 
-                                        <h1 className='text-[#1A1B20CC]/80 3xl:text-base 2xl:text-sm xxl:text-sm xl:text-sm lg:text-xs text-lg text-center'>{e.name} <span className='border-b border-black'>{e.code}</span></h1>
+                                        <h1 className='text-[#1A1B20CC]/80 3xl:text-base 2xl:text-sm xxl:text-sm xl:text-sm lg:text-xs text-lg text-center'>
+                                            {e.name}
+                                            {/* <span className='border-b border-black'>{e.code}</span> */}
+                                        </h1>
                                     </AnimateOnScroll>
                                 )
                             })

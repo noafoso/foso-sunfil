@@ -10,6 +10,7 @@ interface AnimateOnScrollProps {
     className?: string
     index?: number
     style?: React.CSSProperties
+    onClick?: () => void
 }
 
 // const initialVariants = {
@@ -17,7 +18,7 @@ interface AnimateOnScrollProps {
 //     visible: { opacity: 1, y: 0 },
 // }
 
-const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, variants = variantSlideUp, index = 0, style }) => {
+const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, variants = variantSlideUp, index = 0, style, onClick = () => { } }) => {
     const [ref, inView] = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -33,6 +34,7 @@ const AnimateOnScroll: React.FC<AnimateOnScrollProps> = ({ children, className, 
             variants={variants}
             transition={{ duration: 0.6, delay: index * 0.2 }}
             className={className}
+            onClick={onClick}
         >
             {children}
         </motion.div>
