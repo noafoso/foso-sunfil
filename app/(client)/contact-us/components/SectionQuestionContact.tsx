@@ -87,16 +87,16 @@ const SectionQuestionContact = () => {
                             <AccordionItem key={item.id} value={item.id}>
                                 <AccordionTrigger className="focus-visible:outline-none w-full xxl:py-8 py-6 hover:no-underline">
                                     <AnimateOnScroll index={index} className='flex items-center gap-4 justify-between w-full group transition-all duration-150 ease-linear'>
-                                        <div className={`2xl:text-xl text-base text-[#272727]   transition-all duration-150 ease-linear  font-bold text-start`}
+                                        <div className={`2xl:text-xl text-base text-[#272727]  transition-all duration-150 ease-linear  font-bold text-start`}
                                         >
                                             {item.question}
                                         </div>
                                         <div className="3xl:min-w-[30px] min-w-[20px]">
                                             {
                                                 isState.idOpen === item.id ?
-                                                    <GoDash className={`3xl:text-3xl text-2xl accordionChevron text-[#06282D] shrink-0 transition-transform duration-200`} />
+                                                    <GoDash className={`3xl:text-3xl text-2xl text-[#06282D] shrink-0 transition-transform duration-200`} />
                                                     :
-                                                    <IoMdAdd className={`3xl:text-3xl text-2xl accordionChevron text-[#06282D] shrink-0 transition-transform duration-200`} />
+                                                    <IoMdAdd className={`3xl:text-3xl text-2xl text-[#06282D] shrink-0 transition-transform duration-200`} />
                                             }
                                         </div>
                                     </AnimateOnScroll>

@@ -94,20 +94,19 @@ const SectionIntroHome = () => {
                                     <AnimateOnScroll
                                         index={index}
                                         variants={variantSlideLeft}
+                                        className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'
                                     >
-                                        <div className='flex flex-col justify-center items-center xl:py-4 py-3 w-full'>
-                                            <Image
-                                                src={category?.images}
-                                                alt={category?.name}
-                                                width={1080}
-                                                height={768}
-                                                className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
+                                        <Image
+                                            src={category?.images}
+                                            alt={category?.name}
+                                            width={1080}
+                                            height={768}
+                                            className={`${isStateHome?.idTabActive?.id === category?.id ? "" : "filter grayscale-[1] brightness-[2] group-hover:filter-none group-hover:grayscale-[0] group-hover:brightness-[0]"} 
                                                 3xl:size-12 size-8 object-contain custom-transition`}
-                                            />
+                                        />
 
-                                            <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} text-sm text-center custom-transition`}>
-                                                {category?.name ?? ""}
-                                            </div>
+                                        <div className={`${isStateHome?.idTabActive?.id === category?.id ? "text-[#ED1B24]" : "text-[#000000]/60 group-hover:text-[#ED1B24]"} text-sm text-center custom-transition`}>
+                                            {category?.name ?? ""}
                                         </div>
                                     </AnimateOnScroll>
                                 </div>
@@ -124,15 +123,15 @@ const SectionIntroHome = () => {
                             </AnimateOnScroll>
                             <AnimateOnScroll index={1}>
                                 <div className='3xl:text-[26px] lg:text-[22px] text-[20px]'>
-                                    Bộ lọc xe chất lượng cao
+                                    {isStateHome?.idTabActive?.title_checklist ?? ""}
                                 </div>
                             </AnimateOnScroll>
                         </div>
 
                         <div className="flex flex-col 3xl:gap-4 gap-2">
                             {
-                                listStyleContent.map((content, index) => (
-                                    <AnimateOnScroll key={`content-${content.id}`} index={index}>
+                                isStateHome?.idTabActive && isStateHome?.idTabActive?.checklist?.map((content: any, index: number) => (
+                                    <AnimateOnScroll key={`content-${index}`} index={index}>
                                         <div className='text-content-common flex items-center gap-2'>
                                             <div className='3xl:size-6 size-5'>
                                                 <TickCircle
@@ -141,7 +140,7 @@ const SectionIntroHome = () => {
                                                 />
                                             </div>
                                             <div className='text-content-common text-[#1A1B20]'>
-                                                {content.title}
+                                                {content}
                                             </div>
                                         </div>
                                     </AnimateOnScroll>
@@ -178,9 +177,9 @@ const SectionIntroHome = () => {
                     <AnimateOnScroll variants={variantSlideZoomOut}>
                         <div className="relative size-full overflow-hidden">
                             {/* Placeholder Animation */}
-                            {!isImageLoaded && (
+                            {/* {!isImageLoaded && (
                                 <div className="absolute inset-0 bg-gradient-to-br from-gray-100 via-gray-200 to-gray-50 animate-gradient-shimmer z-10"></div>
-                            )}
+                            )} */}
 
                             {/* Image */}
                             <Image
@@ -188,8 +187,7 @@ const SectionIntroHome = () => {
                                 alt='oil'
                                 width={800}
                                 height={800}
-                                className={`size-full object-contain transition-opacity duration-500 ease-in-out ${isImageLoaded ? 'opacity-100' : 'opacity-0'
-                                    }`}
+                                className={`${isImageLoaded ? 'opacity-100' : 'opacity-0'} size-full object-contain transition-opacity duration-500 ease-in-out`}
                                 unoptimized
                                 priority
                                 onLoadingComplete={() => setIsImageLoaded(true)}

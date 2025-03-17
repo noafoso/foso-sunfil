@@ -3,6 +3,7 @@ import TitleDash from '@/components/title/TitleDash'
 import TitleHighlight from '@/components/title/TitleHighlight'
 import { Button } from '@/components/ui/button'
 import { uuidv4 } from '@/lib/uuid'
+import { useGetDataPageAboutUs } from '@/managers/api-management/ui/about-us/useGetDataPageAboutUs'
 import Image from 'next/image'
 
 const data = {
@@ -38,6 +39,8 @@ const data = {
     ]
 }
 const Sectionintroduce = () => {
+    const { data: dataPageAboutUs } = useGetDataPageAboutUs({ enebled: true })
+
     return (
         <div
             className='flex flex-col gap-12 custom-py-section'
@@ -47,7 +50,7 @@ const Sectionintroduce = () => {
                 <TitleHighlight
                     title='Giới thiệu chung về VietHung Auto'
                     titleClassName='text-start'
-                    highlightClassName='lg:w-[42%] md:w-[43%] w-[55%] lg:right-0 md:-right-1 bg-[#6AD6EEA6]/65'
+                    highlightClassName='w-full lg:w-[42%] md:w-[43%] w-[55%] lg:right-0 md:-right-1 bg-[#6AD6EEA6]/65'
                 />
                 <TitleDash
                     dashClassName='md:max-w-[76px] md:min-w-[76px] md:mt-0 mt-3'
@@ -57,7 +60,7 @@ const Sectionintroduce = () => {
             <div className="grid lg:grid-cols-2 grid-cols-1 2xl:gap-[80px] xl:gap-16 lg:gap-5 gap-8 xxl:pr-[112px] xl:pr-[92px] lg:pr-[72px] lg:pl-0 px-4">
                 <div className="col-span-1 h-full bg-[#F8F9F9] flex justify-center items-center lg:p-[92px] md:p-10 p-[60px] group">
                     <Image
-                        src={data.image}
+                        src={dataPageAboutUs?.banner[0]?.image ?? "/default/default.png"}
                         width={1280}
                         height={1024}
                         alt=''
@@ -67,7 +70,7 @@ const Sectionintroduce = () => {
                 <div className="col-span-1 flex flex-col xxl:gap-[62px] lg:gap-12 gap-[58px]">
                     <AnimateOnScroll className="flex flex-col gap-[30px]">
                         <h2 className='text-[#1A1B20CC]/80 text-content-common font-normal'>
-                            {data.content}
+                            {dataPageAboutUs?.banner[0]?.description}
                         </h2>
                         <div className='w-full text-start'>
                             <Button
@@ -78,21 +81,26 @@ const Sectionintroduce = () => {
                             </Button>
                         </div>
                     </AnimateOnScroll>
-                    <div className="flex lg:flex-nowrap flex-wrap items-center xxl:gap-12 xl:gap-8 lg:gap-4 gap-5 xl:justify-start lg:justify-start md:justify-between justify-start">
-                        {data.thumb.map((e, index: number) => {
-                            return (
-                                <AnimateOnScroll index={index} key={e.id} className="flex flex-col gap-2.5 group overflow-hidden cursor-pointer">
-                                    <Image
-                                        src={e.image}
-                                        width={1280}
-                                        height={1024}
-                                        alt=''
-                                        className='size-full aspect-1/1 group-hover:scale-105 ease-in-out duration-300'
-                                    />
-                                    <h1 className='text-[#1A1B20CC]/80 3xl:text-base 2xl:text-sm xxl:text-sm xl:text-sm lg:text-xs text-lg text-center'>{e.name} <span className='border-b border-black'>{e.code}</span></h1>
-                                </AnimateOnScroll>
-                            )
-                        })}
+                    <div className="grid lg:grid-cols-4 grid-cols-2 items-center xxl:gap-12 xl:gap-8 lg:gap-4 gap-5 xl:justify-start lg:justify-start md:justify-between justify-start">
+                        {
+                            dataPageAboutUs?.banner[0] && dataPageAboutUs?.banner[0]?.product?.map((e: any, index: number) => {
+                                return (
+                                    <AnimateOnScroll index={index} key={`banner-${e.id}`} className="col-span-1 flex flex-col gap-2.5 group overflow-hidden cursor-pointer">
+                                        <div className='w-full h-auto aspect-square'>
+                                            <Image
+                                                src={e.images ?? '/default/default.png'}
+                                                width={1280}
+                                                height={1024}
+                                                alt='image'
+                                                className='size-full aspect-square objcet-contain group-hover:scale-105 ease-in-out duration-300'
+                                            />
+                                        </div>
+
+                                        <h1 className='text-[#1A1B20CC]/80 3xl:text-base 2xl:text-sm xxl:text-sm xl:text-sm lg:text-xs text-lg text-center'>{e.name} <span className='border-b border-black'>{e.code}</span></h1>
+                                    </AnimateOnScroll>
+                                )
+                            })
+                        }
                     </div>
                 </div>
             </div>
