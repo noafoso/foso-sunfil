@@ -26,6 +26,65 @@ const config: Config = {
 			colors: {
 				background: 'hsl(var(--background))',
 				foreground: 'hsl(var(--foreground))',
+				primary: {
+					DEFAULT: 'hsl(var(--primary))',
+					foreground: 'hsl(var(--primary-foreground))',
+					lighter: '#C8FAD6',
+					light: '#5BE49B',
+					main: '#00A76F',
+					dark: '#007867',
+					darker: '#004B50'
+				},
+				secondary: {
+					DEFAULT: 'hsl(var(--secondary))',
+					foreground: 'hsl(var(--secondary-foreground))',
+					lighter: '#EFD6FF',
+					light: '#C684FF',
+					main: '#8E33FF',
+					dark: '#5119B7',
+					darker: '#27097A'
+				},
+				info: {
+					lighter: '#CAFDF5',
+					light: '#61F3F3',
+					main: '#00B8D9',
+					dark: '#006C9C',
+					darker: '#003768'
+				},
+				success: {
+					lighter: '#D3FCD2',
+					light: '#77ED8B',
+					main: '#22C55E',
+					dark: '#118D57',
+					darker: '#065E49'
+				},
+				warning: {
+					lighter: '#FFF5CC',
+					light: '#FFD666',
+					main: '#FFAB00',
+					dark: '#B76E00',
+					darker: '#7A4100'
+				},
+				error: {
+					lighter: '#FFE9D5',
+					light: '#FFAC82',
+					main: '#FF5630',
+					dark: '#B71D18',
+					darker: '#7A0916'
+				},
+				brand: {
+					50: '#E6F1FF',
+					100: '#CDE4FE',
+					200: '#9AC9FE',
+					300: '#68AEFD',
+					400: '#3592FD',
+					500: '#0373F3',
+					600: '#025FCA',
+					700: '#024897',
+					800: '#013065',
+					900: '#011832',
+					950: '#000C19'
+				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
@@ -33,14 +92,6 @@ const config: Config = {
 				popover: {
 					DEFAULT: 'hsl(var(--popover))',
 					foreground: 'hsl(var(--popover-foreground))'
-				},
-				primary: {
-					DEFAULT: 'hsl(var(--primary))',
-					foreground: 'hsl(var(--primary-foreground))'
-				},
-				secondary: {
-					DEFAULT: 'hsl(var(--secondary))',
-					foreground: 'hsl(var(--secondary-foreground))'
 				},
 				muted: {
 					DEFAULT: 'hsl(var(--muted))',
