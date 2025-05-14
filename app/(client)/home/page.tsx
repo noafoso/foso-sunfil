@@ -28,7 +28,7 @@ const Home = () => {
   }, [listCategories]);
 
   return (
-    <div className="w-full relative lg:h-screen md:h-dvh">
+    <div className="w-full relative lg:h-screen md:h-dvh 3xl:px-12 2xl:px-10 xl:px-8 px-4">
       {/* <div className="pt-[112px] flex flex-col justify-between md:gap-0 gap-16 3xl:pb-8 2xl:pb-6 pb-3 h-full relative z-10">
         <SectionIntroHome />
         {isVisibleMobile && (
