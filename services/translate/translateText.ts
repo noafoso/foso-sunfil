@@ -11,7 +11,7 @@ async function translateText(textArray: any, targetLanguage: string): Promise<st
     const requestBody = [
         [
             textArray, // nội dung cần dịch
-            `${targetLanguage === 'en' ? "auto" : "en"}`, // ngôn ngữ gốc
+            `${targetLanguage === 'vi' ? "auto" : "vi"}`, // ngôn ngữ gốc
             targetLanguage, // ngôn ngữ đích
         ],
         'te' // mã ngôn ngữ thứ hai nếu cần

@@ -17,7 +17,7 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
 
     const checkLanguage = getCookie('googletranslate');
 
-    const [language, setLanguage] = useState(checkLanguage ?? 'en');
+    const [language, setLanguage] = useState(checkLanguage ?? 'vi');
 
     const [loadingLang, setLoadingLang] = useState(false);
 
