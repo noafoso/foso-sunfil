@@ -9,7 +9,7 @@ export default function RootLayout({
     children: React.ReactNode;
 }>) {
     return (
-        <html lang="en">
+        <html lang="en" className={`${space_grotesk_sans.variable}`}>
             <body className={`${space_grotesk_sans.className} antialiased custom-tailwind text-responsive`}>
                 <Suspense>
                     <LayoutMain>

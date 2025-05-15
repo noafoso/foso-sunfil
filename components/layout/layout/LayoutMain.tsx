@@ -157,7 +157,8 @@ const LayoutMain = ({ children }: { children: React.ReactNode }) => {
                             {children}
                         </AnimatePresence>
                         <ButtonToTop />
-                        {!['/home', '/'].includes(pathname) && !pathname.startsWith("/auth") && <FooterContainer />}
+                        {/* {!['/home', '/'].includes(pathname) && !pathname.startsWith("/auth") &&  */}
+                        <FooterContainer />
                     </main>
 
                     {openDialogCustom && <DialogCustom />}

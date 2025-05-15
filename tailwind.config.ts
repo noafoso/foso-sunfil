@@ -11,6 +11,13 @@ const config: Config = {
 	],
 	theme: {
 		extend: {
+			fontFamily: {
+				spaceGrotesk: ['var(--font-space-grotesk)'],
+				montserrat: ['var(--font-montserrat)'],
+			},
+			backgroundImage: {
+				discountCodeBanner: "url('/home/discountCodeBanner.png')",
+			},
 			gridTemplateColumns: {
 				'13': 'repeat(13, minmax(0, 1fr))',
 				'14': 'repeat(14, minmax(0, 1fr))',
@@ -29,6 +36,7 @@ const config: Config = {
 				primary: {
 					DEFAULT: 'hsl(var(--primary))',
 					foreground: 'hsl(var(--primary-foreground))',
+					new: "#1C252E",
 					lighter: '#C8FAD6',
 					light: '#5BE49B',
 					main: '#00A76F',
@@ -38,6 +46,7 @@ const config: Config = {
 				secondary: {
 					DEFAULT: 'hsl(var(--secondary))',
 					foreground: 'hsl(var(--secondary-foreground))',
+					new: "#637381",
 					lighter: '#EFD6FF',
 					light: '#C684FF',
 					main: '#8E33FF',
@@ -84,6 +93,9 @@ const config: Config = {
 					800: '#013065',
 					900: '#011832',
 					950: '#000C19'
+				},
+				red: {
+					700: '#E53935',
 				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',

@@ -54,14 +54,14 @@ const dataHeader: IMenuHeader[] = [
 
 const dataCountryOptions = [
     {
-        code: 'en',
-        country: 'English',
-        flag: '/flag/en.png'
-    },
-    {
         code: 'vi',
         country: 'Việt Nam',
         flag: '/flag/vi.png'
+    },
+    {
+        code: 'en',
+        country: 'English',
+        flag: '/flag/en.png'
     },
 ]
 
