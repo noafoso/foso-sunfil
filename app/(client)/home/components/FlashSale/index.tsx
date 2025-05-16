@@ -5,6 +5,7 @@ import DoubleArrowRightIcon from "@/components/icons/DoubleArrowRight";
 import ProductCard from "@/components/productCard";
 import SwiperCarousel from "@/components/SwiperCarousel";
 import Countdown from "./Countdown";
+import Link from "next/link";
 
 const productImages = [
   IMAGES.product1,
@@ -49,9 +50,9 @@ const FlashSale = () => {
             <Countdown endTime={endTime} onComplete={handleCountdownComplete} />
           </div>
           <div className="py-1 px-3 rounded-[20px] flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-error-main hover:bg-opacity-10 group">
-            <p className="text-[8px] md:text-xs xl:text-base font-semibold text-error-main whitespace-nowrap group-hover:font-bold">
+            <Link href="/products" className="text-[8px] md:text-xs xl:text-base font-semibold text-error-main whitespace-nowrap group-hover:font-bold">
               Xem tất cả{" "}
-            </p>
+            </Link>
             <DoubleArrowRightIcon className="text-error-main size-5 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>

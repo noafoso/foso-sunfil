@@ -176,16 +176,17 @@ const NewDesktopHeader = ({
         <header className="w-full  py-3">
           <div className="flex items-center justify-between gap-x-8 w-full">
             {/* Logo */}
-            <Image
-              src={IMAGES.logo}
-              alt="logo"
-              width={600}
-              height={111}
-              className="object-contain w-[220px]"
-              quality={100}
-              loading="eager"
-            />
-
+            <Link href="/">
+              <Image
+                src={IMAGES.logo}
+                alt="logo"
+                width={600}
+                height={111}
+                className="object-contain w-[220px]"
+                quality={100}
+                loading="eager"
+              />
+            </Link>
             <div className="flex-1 flex flex-row justify-between w-full gap-x-6">
               {/* Search Bar */}
               <div className="flex flex-row items-center w-full  border-[2px] border-brand-500 rounded-full px-4 py-2">
@@ -285,7 +286,7 @@ const NewDesktopHeader = ({
                     />
                   </svg>
                 }
-                allowHover={pathname === "/" && false}
+                allowHover={pathname === "/" ? false : true}
               />
             </div>
 

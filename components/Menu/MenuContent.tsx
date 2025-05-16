@@ -4,6 +4,7 @@ import { cn } from "@/lib/utils";
 import { MenuItem } from "@/types/categories/ICategoryes";
 import { IMAGES } from "@/constants/Images";
 import ProductCard from "@/components/productCard";
+import Link from "next/link";
 
 const productImages = [
   IMAGES.product9,
@@ -120,9 +121,12 @@ const MenuContent = ({
                     <h3 className="text-2xl font-bold mb-2 text-[#1C252E]">
                       Sản Phẩm Bán Chạy
                     </h3>
-                    <p className="cursor-pointer font-semibold text-brand-500 text-base transform transition duration-200 hover:scale-105">
+                    <Link
+                      href="/products"
+                      className="cursor-pointer font-semibold text-brand-500 text-base transform transition duration-200 hover:scale-105"
+                    >
                       Xem tất cả
-                    </p>
+                    </Link>
                   </div>
                   <div className="flex-1 flex gap-3">{productCards}</div>
                 </div>

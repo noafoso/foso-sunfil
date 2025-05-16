@@ -22,7 +22,7 @@ const Products = () => {
 
   return (
     <>
-      <div className="bg-[#F4F6F8] flex flex-col gap-8 pt-32 3xl:px-12 2xl:px-10 xl:px-8 px-4">
+      <div className="bg-[#F4F6F8] flex flex-col gap-8 pt-6 3xl:px-12 2xl:px-10 xl:px-8 px-4">
         <Breadcrumbs items={breadcrumbs} />
         <BannerProduct />
         <MainContent />

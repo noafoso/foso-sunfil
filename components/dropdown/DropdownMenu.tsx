@@ -28,6 +28,7 @@ const MegaMenuDropdown = ({
   icon,
   allowHover = true,
 }: MegaMenuDropdownProps) => {
+
   const [activeItem, setActiveItem] = useState<MenuItem | null>(null);
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
