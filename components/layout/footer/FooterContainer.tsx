@@ -50,6 +50,11 @@ const FooterContainer = () => {
               {FormatPhoneNumber(`${dataFooter?.phonenumber ?? ""}`)}
             </PhoneLink>
           </div>
+          <div className="flex items-start gap-1">
+            <span className="font-normal text-nowrap">Opening hour:</span>
+            <span className="font-semibold">09:00 - 22:00 from Mon - Fri</span>
+            {/* <span className="font-semibold"> {dataFooter?.address ?? ""}</span> */}
+          </div>
         </div>
       </div>
       <div className="flex flex-col gap-9 w-[160px]">

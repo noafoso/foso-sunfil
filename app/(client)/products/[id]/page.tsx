@@ -1,20 +1,42 @@
-'use client'
+import Breadcrumbs from "@/components/Breadcrumbs";
+import StoreLocatorBanner from "@/components/storeLocatorBanner";
+import ServiceHighlights from "@/components/serviceHighlights";
+import ProductMainInfo from "./components/MainInfo";
+import ProductTabs from "./components/ProductTabs";
+import Promo from "./components/Promo";
+import RelatedProducts from "./components/Related";
+import Review from "./components/Review";
 
-import SectionCategoryDetailProduct from './components/SectionCategoryDetailProduct'
-import SectionContentDetailProduct from './components/SectionContentDetailProduct'
-
-
+const breadcrumbs = [
+  { label: "Trang chủ", href: "/" },
+  { label: "Sản phẩm", href: "/products" },
+  {
+    label:
+      "Lọc gió động cơ Air Filter – Chevrolet Colorado, Trailblazer (52046262)",
+    href: "/products/air-filter",
+  },
+];
 const DetailProduct = () => {
-    return (
-        <div className='pt-[162px] custom-px-responsive lg:bg-[url("/background/product/slug/bg.svg")] bg-[url("/background/product/slug/bg-mobi.svg")] flex items-start lg:gap-12 gap-8 lg:bg-bottom bg-top bg-cover bg-no-repeat h-full lg:pb-[127px] pb-[61px]'>
-            <div className="xl:w-[72%] lg:w-[60%] w-full">
-                <SectionContentDetailProduct />
-            </div>
-            <div className="xl:w-[28%] lg:w-[40%] lg:block hidden">
-                <SectionCategoryDetailProduct />
-            </div>
+  return (
+    <>
+      <div className="bg-[#F4F6F8] flex flex-col gap-8 pt-32 3xl:px-12 2xl:px-10 xl:px-8 px-4">
+        <Breadcrumbs items={breadcrumbs} />
+        <ProductMainInfo />
+        <div className="grid grid-cols-[2fr_1fr] gap-6">
+          <div className="flex flex-col gap-6">
+            <ProductTabs />
+            <Review />
+          </div>
+          <div className="flex flex-col gap-6">
+            <Promo />
+            <RelatedProducts />
+          </div>
         </div>
-    )
-}
+        <ServiceHighlights />
+      </div>
+      <StoreLocatorBanner />
+    </>
+  );
+};
 
-export default DetailProduct
+export default DetailProduct;
