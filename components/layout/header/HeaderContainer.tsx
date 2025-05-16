@@ -54,17 +54,17 @@ const dataHeader: IMenuHeader[] = [
 ];
 
 const dataCountryOptions = [
-    {
-        code: 'vi',
-        country: 'Việt Nam',
-        flag: '/flag/vi.png'
-    },
-    {
-        code: 'en',
-        country: 'English',
-        flag: '/flag/en.png'
-    },
-]
+  {
+    code: "vi",
+    country: "Việt Nam",
+    flag: "/flag/vi.png",
+  },
+  {
+    code: "en",
+    country: "English",
+    flag: "/flag/en.png",
+  },
+];
 
 const HeaderContainer = () => {
   const { getCookie, setCookie, removeCookie } = useCookieStore();
@@ -133,7 +133,7 @@ const HeaderContainer = () => {
   };
 
   return (
-    <header className="absolute top-0 md:bg-transparent bg-white w-full z-50 pb-4">
+    <header className="md:bg-transparent bg-white w-full z-[999]">
       <div
       //   className="custom-container"
       >
@@ -147,13 +147,13 @@ const HeaderContainer = () => {
         ) : (
           // màn hình laptop
           <>
-            <DesktopHeader
+            {/* <DesktopHeader
               dataHeader={dataHeader}
               dataCountryOptions={dataCountryOptions}
               handleToggleMenu={handleToggleMenu}
               handleCodeChange={handleCodeChange}
               handleOpenDialog={handleOpenDialog}
-            />
+            /> */}
             <NewDesktopHeader
               dataHeader={dataHeader}
               dataCountryOptions={dataCountryOptions}

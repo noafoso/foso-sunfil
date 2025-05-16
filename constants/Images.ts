@@ -42,4 +42,7 @@ export const IMAGES = {
   heart: "/product/Heart.svg",
   pos: "/product/POS.png",
   sale: "/product/sale.svg",
+  logo: "/logo/logo_sunfil.png",
+  topBanner_1: "/home/TopBanner/Banner_1.png",
+  topBanner_2: "/home/TopBanner/Banner_2.png",
 };

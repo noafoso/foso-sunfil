@@ -12,15 +12,17 @@ const config: Config = {
   theme: {
     extend: {
       fontFamily: {
-				spaceGrotesk: ['var(--font-space-grotesk)'],
-				montserrat: ['var(--font-montserrat)'],
-			},
-			backgroundImage: {
-				discountCodeBanner: "url('/home/discountCodeBanner.png')",
+        spaceGrotesk: ["var(--font-space-grotesk)"],
+        montserrat: ["var(--font-montserrat)"],
+      },
+      backgroundImage: {
+        discountCodeBanner: "url('/home/discountCodeBanner.png')",
         "linear-bg-top-header":
           "linear-gradient(270deg, #0D57C6 0%, #37CFFF 50.39%, #0F5ED6 100%);",
+        "linear-text-banner":
+          "linear-gradient(135deg, #FFF5CC 0%, #FFD666 100%)",
 				bannerProduct: "url('/product/banner.png')",
-			},
+      },
       gridTemplateColumns: {
         "13": "repeat(13, minmax(0, 1fr))",
         "14": "repeat(14, minmax(0, 1fr))",

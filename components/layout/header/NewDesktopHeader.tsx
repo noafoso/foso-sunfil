@@ -19,12 +19,13 @@ import { TooltipHeader } from "@/components/tooltip/TooltipHeader";
 import { Select, SelectItem, SelectTrigger } from "@/components/ui/select";
 import { SelectContent } from "@/components/ui/selectCustom";
 import { Tooltip } from "@/components/ui/tooltip";
-import { IMAGE } from "@/constants/Image";
+import { IMAGES } from "@/constants/Images";
 import { useStateHeader } from "@/states/Header/useStateHeader";
 import { MenuItem } from "@/types/categories/ICategoryes";
 import { IMenuHeader } from "@/types/menu/IMenu";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import React, { useState } from "react";
 
 interface DesktopHeaderProps {
@@ -35,7 +36,7 @@ interface DesktopHeaderProps {
   handleOpenDialog: (value: string, type_device: string) => void;
 }
 
-const categoryData: MenuItem[] = [
+export const categoryData: MenuItem[] = [
   {
     id: "filter1",
     name: "Bộ Lọc Dầu",
@@ -126,8 +127,12 @@ const NewDesktopHeader = ({
   const selectedOption = dataCountryOptions.find(
     (option) => option.code === isStateHeader.selectedCodeCountry
   );
+
+  const pathname = usePathname();
+  console.log("🚀 ~ pathname:", pathname);
+
   return (
-    <div className=" 3xl:px-12 2xl:px-10 xl:px-8 px-4 bg-white">
+    <>
       {/* Top notification bar */}
       <div className="w-full bg-linear-bg-top-header text-white py-1 text-sm flex items-center">
         <div className="container mx-auto flex justify-between items-center">
@@ -166,170 +171,176 @@ const NewDesktopHeader = ({
           </div>
         </div>
       </div>
+      <div className=" 3xl:px-12 2xl:px-10 xl:px-8 px-4 bg-white">
+        {/* Main header */}
+        <header className="w-full  py-3">
+          <div className="flex items-center justify-between gap-x-8 w-full">
+            {/* Logo */}
+            <Image
+              src={IMAGES.logo}
+              alt="logo"
+              width={600}
+              height={111}
+              className="object-contain w-[220px]"
+              quality={100}
+              loading="eager"
+            />
 
-      {/* Main header */}
-      <header className="w-full bg-white py-3">
-        <div className="container mx-auto flex items-center justify-between gap-x-8">
-          {/* Logo */}
-          <Image
-            src={IMAGE.logo}
-            alt="logo"
-            width={600}
-            height={111}
-            className="object-contain w-[220px]"
-            quality={100}
-            loading="eager"
-          />
-
-          <div className="flex-1 flex flex-row justify-between w-full gap-x-6">
-            {/* Search Bar */}
-            <div className="flex flex-row items-center w-full  border-[2px] border-brand-500 rounded-full px-4 py-2">
-              <input
-                type="text"
-                placeholder="Tìm sản phẩm"
-                className="flex-1 py-2 px-4 text-disable-50 border-none outline-none placeholder:text-disable-50 text-base  font-normal"
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-              />
-              <button className="mr-2">
-                <IconCameraHeader fill="#041F2F" />
-              </button>
-              <button className="bg-blue-600 rounded-full py-2 px-5">
-                <IconSearchHeader fill="white" />
-              </button>
-            </div>
-
-            {/* Right Navigation */}
-            <div className="flex items-center gap-x-8">
-              <div className="flex items-center">
-                <Select
-                  value={selectedOption?.code}
-                  onValueChange={handleCodeChange}
-                >
-                  <SelectTrigger className="flex items-center gap-2 h-full border-none shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0">
-                    {selectedOption && (
-                      <>
-                        <div className="size-8 rounded-full">
-                          <Image
-                            src={selectedOption.flag}
-                            alt={`${selectedOption.country} flag`}
-                            width={100}
-                            height={100}
-                            className="size-full object-cover rounded-full"
-                          />
-                        </div>
-                        <div className="text-base uppercase font-medium text-[#1C252E]">
-                          {selectedOption.code}
-                        </div>
-                      </>
-                    )}
-                  </SelectTrigger>
-                  <SelectContent>
-                    {dataCountryOptions.map((option) => (
-                      <SelectItem key={option.code} value={option.code}>
-                        {option.country} ({option.code})
-                      </SelectItem>
-                    ))}
-                  </SelectContent>
-                </Select>
+            <div className="flex-1 flex flex-row justify-between w-full gap-x-6">
+              {/* Search Bar */}
+              <div className="flex flex-row items-center w-full  border-[2px] border-brand-500 rounded-full px-4 py-2">
+                <input
+                  type="text"
+                  placeholder="Tìm sản phẩm"
+                  className="flex-1 py-2 px-4 text-disable-50 border-none outline-none placeholder:text-disable-50 text-base  font-normal"
+                  value={searchQuery}
+                  onChange={(e) => setSearchQuery(e.target.value)}
+                />
+                <button className="mr-2">
+                  <IconCameraHeader fill="#041F2F" />
+                </button>
+                <button className="bg-blue-600 rounded-full py-2 px-5">
+                  <IconSearchHeader fill="white" />
+                </button>
               </div>
 
-              <div className="flex items-center cursor-pointer relative">
-                <IconShopping fill="#0154C5" />
-                <span className="ml-1 text-base font-medium text-nowrap text-[#1C252E]">
-                  Giỏ hàng
-                </span>
-                <div className="absolute -top-3 left-6 bg-error-main rounded-full size-6 flex items-center justify-center">
-                  <span className="text-white text-xs font-medium ">12</span>
+              {/* Right Navigation */}
+              <div className="flex items-center gap-x-8 ">
+                <div className="flex items-center">
+                  <Select
+                    value={selectedOption?.code}
+                    onValueChange={handleCodeChange}
+                  >
+                    <SelectTrigger className="flex items-center gap-2 h-full border-none shadow-none focus:outline-none focus:ring-0 focus:ring-offset-0">
+                      {selectedOption && (
+                        <>
+                          <div className="size-8 rounded-full">
+                            <Image
+                              src={selectedOption.flag}
+                              alt={`${selectedOption.country} flag`}
+                              width={100}
+                              height={100}
+                              className="size-full object-cover rounded-full"
+                            />
+                          </div>
+                          <div className="text-base uppercase font-medium text-[#1C252E]">
+                            {selectedOption.code}
+                          </div>
+                        </>
+                      )}
+                    </SelectTrigger>
+                    <SelectContent>
+                      {dataCountryOptions.map((option) => (
+                        <SelectItem key={option.code} value={option.code}>
+                          {option.country} ({option.code})
+                        </SelectItem>
+                      ))}
+                    </SelectContent>
+                  </Select>
+                </div>
+
+                <div className="flex items-center cursor-pointer relative">
+                  <IconShopping fill="#0154C5" />
+                  <span className="ml-1 text-base font-medium text-nowrap text-[#1C252E]">
+                    Giỏ hàng
+                  </span>
+                  <div className="absolute -top-3 left-6 bg-error-main rounded-full size-6 flex items-center justify-center">
+                    <span className="text-white text-xs font-medium ">12</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center cursor-pointer">
+                  <IconAccountHeader fill="#0154C5" />
+                  <span className="ml-1 text-base font-medium text-nowrap text-[#1C252E]">
+                    Tài khoản
+                  </span>
                 </div>
               </div>
-
-              <div className="flex items-center cursor-pointer">
-                <IconAccountHeader fill="#0154C5" />
-                <span className="ml-1 text-base font-medium text-nowrap text-[#1C252E]">
-                  Tài khoản
-                </span>
-              </div>
             </div>
           </div>
-        </div>
-      </header>
+        </header>
 
-      {/* category */}
-      <div className="flex items-center justify-between w-full container mx-auto py-3">
-        {/* Left Side - Categories */}
-        <div className="flex items-center  gap-x-6 pr-2">
-          <div className="relative group cursor-pointer bg-white">
-            <MegaMenuDropdown
-              triggerLabel="Danh Mục Sản Phẩm"
-              items={categoryData}
-              IsProducts={true}
-              icon={
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5 mr-2"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M4 6h16M4 12h16M4 18h16"
-                  />
-                </svg>
-              }
-            />
+        {/* category */}
+        <div className="flex items-center justify-between w-full  py-3">
+          {/* Left Side - Categories */}
+          <div className="flex items-center  gap-x-6 pr-2">
+            <div className="relative group cursor-pointer bg-white">
+              <MegaMenuDropdown
+                triggerLabel="Danh Mục Sản Phẩm"
+                items={categoryData}
+                IsProducts={true}
+                icon={
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    className="h-5 w-5 mr-2"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M4 6h16M4 12h16M4 18h16"
+                    />
+                  </svg>
+                }
+                allowHover={pathname === "/" && false}
+              />
+            </div>
+
+            {/* Navigation Links */}
+            <nav className="hidden md:flex items-center gap-x-7">
+              <Link
+                href="#"
+                className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
+              >
+                Về Chúng Tôi
+              </Link>
+              <Link
+                href="#"
+                className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
+              >
+                Bài Viết
+              </Link>
+              <Link
+                href="#"
+                className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
+              >
+                Liên Hệ
+              </Link>
+            </nav>
           </div>
 
-          {/* Navigation Links */}
-          <nav className="hidden md:flex items-center gap-x-7">
-            <Link
-              href="#"
-              className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
-            >
-              Về Chúng Tôi
-            </Link>
-            <Link
-              href="#"
-              className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
-            >
-              Bài Viết
-            </Link>
-            <Link
-              href="#"
-              className="text-[#1C252E] hover:text-brand-400 text-base font-medium"
-            >
-              Liên Hệ
-            </Link>
-          </nav>
-        </div>
+          {/* Right Side - Features */}
+          <div className="hidden lg:flex items-center gap-x-5">
+            <div className="flex items-center gap-x-1">
+              <IconSupportHeader fill="#0373F3" />
+              <span className="text-base font-semibold">Hỗ trợ 24/7</span>
+            </div>
 
-        {/* Right Side - Features */}
-        <div className="hidden lg:flex items-center gap-x-5">
-          <div className="flex items-center gap-x-1">
-            <IconSupportHeader fill="#0373F3" />
-            <span className="text-base font-semibold">Hỗ trợ 24/7</span>
-          </div>
+            <div className="flex items-center gap-x-1">
+              <IconDelivery fill="#0373F3" />
+              <span className="text-base font-semibold">
+                Miễn Phí Vận Chuyển
+              </span>
+            </div>
 
-          <div className="flex items-center gap-x-1">
-            <IconDelivery fill="#0373F3" />
-            <span className="text-base font-semibold">Miễn Phí Vận Chuyển</span>
-          </div>
+            <div className="flex items-center gap-x-1">
+              <IconFastDeliveryHeader fill="#0373F3" />
+              <span className="text-base font-semibold">
+                Giao Hàng Nhanh 2h
+              </span>
+            </div>
 
-          <div className="flex items-center gap-x-1">
-            <IconFastDeliveryHeader fill="#0373F3" />
-            <span className="text-base font-semibold">Giao Hàng Nhanh 2h</span>
-          </div>
-
-          <div className="flex items-center gap-x-1">
-            <IconReturnHeader fill="#0373F3" />
-            <span className="text-base font-semibold">30 Ngày Đổi Trả</span>
+            <div className="flex items-center gap-x-1">
+              <IconReturnHeader fill="#0373F3" />
+              <span className="text-base font-semibold">30 Ngày Đổi Trả</span>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 };
 
