@@ -129,7 +129,6 @@ const NewDesktopHeader = ({
   );
 
   const pathname = usePathname();
-  console.log("🚀 ~ pathname:", pathname);
 
   return (
     <>
