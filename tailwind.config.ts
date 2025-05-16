@@ -17,6 +17,7 @@ const config: Config = {
 			},
 			backgroundImage: {
 				discountCodeBanner: "url('/home/discountCodeBanner.png')",
+				bannerProduct: "url('/product/banner.png')",
 			},
 			gridTemplateColumns: {
 				'13': 'repeat(13, minmax(0, 1fr))',
@@ -51,7 +52,9 @@ const config: Config = {
 					light: '#C684FF',
 					main: '#8E33FF',
 					dark: '#5119B7',
-					darker: '#27097A'
+					darker: '#27097A',
+					600: "#6A6662",
+					900: "#1B1A18"
 				},
 				info: {
 					lighter: '#CAFDF5',
@@ -97,6 +100,11 @@ const config: Config = {
 				red: {
 					700: '#E53935',
 				},
+				grey: {
+					600: '#637381',
+					700: '#454F5B',
+					800: '#1C252E',
+				},
 				card: {
 					DEFAULT: 'hsl(var(--card))',
 					foreground: 'hsl(var(--card-foreground))'
@@ -127,6 +135,10 @@ const config: Config = {
 					'4': 'hsl(var(--chart-4))',
 					'5': 'hsl(var(--chart-5))'
 				}
+			},
+			boxShadow: {
+				card: '0px 12px 24px -4px #919EAB1F, 0px 0px 2px 0px #919EAB33',
+				review: '0px 4px 48px 0px #0000001A'
 			},
 			borderRadius: {
 				lg: 'var(--radius)',
