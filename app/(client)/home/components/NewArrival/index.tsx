@@ -3,6 +3,7 @@ import ProductCard from "@/components/productCard";
 import SwiperCarousel from "@/components/SwiperCarousel";
 import { IMAGES } from "@/constants/Images";
 import Image from "next/image";
+import Link from "next/link";
 
 const productImages = [
   IMAGES.product12,
@@ -33,9 +34,9 @@ const NewArrival = () => {
             </div>
           </div>
           <div className="py-1 px-3 rounded-[20px] flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-brand-100 hover:bg-opacity-10 group">
-            <p className="text-base font-semibold text-brand-100 whitespace-nowrap group-hover:font-bold">
+            <Link href="/products" className="text-base font-semibold text-brand-100 whitespace-nowrap group-hover:font-bold">
               Xem tất cả{" "}
-            </p>
+            </Link>
             <DoubleArrowRightIcon className="text-brand-100 size-5 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>

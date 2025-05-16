@@ -4,6 +4,7 @@ import React from "react";
 import Image from "next/image";
 import ProductCard from "@/components/productCard";
 import DoubleArrowRightIcon from "@/components/icons/DoubleArrowRight";
+import Link from "next/link";
 
 const breakpoints = {
   320: { slidesPerView: 1 },
@@ -27,7 +28,9 @@ const productImages = [
 
 const productCards = Array(8)
   .fill(0)
-  .map((_, index) => <ProductCard key={index} imageSrc={productImages[index]} />);
+  .map((_, index) => (
+    <ProductCard key={index} imageSrc={productImages[index]} />
+  ));
 
 const SuggestedForYou = () => {
   return (
@@ -41,9 +44,12 @@ const SuggestedForYou = () => {
             </h2>
           </div>
           <div className="py-1 px-3 rounded-[20px] flex items-center gap-2 cursor-pointer transition-all duration-300 hover:bg-brand-500 hover:bg-opacity-10 group">
-            <p className="text-base font-semibold text-brand-500 whitespace-nowrap group-hover:font-bold">
+            <Link
+              href="/products"
+              className="text-base font-semibold text-brand-500 whitespace-nowrap group-hover:font-bold"
+            >
               Xem tất cả{" "}
-            </p>
+            </Link>
             <DoubleArrowRightIcon className="text-brand-500 size-5 transition-transform duration-300 group-hover:translate-x-1" />
           </div>
         </div>
